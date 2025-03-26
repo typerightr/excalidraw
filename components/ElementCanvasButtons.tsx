@@ -1,13 +1,16 @@
+import { sceneCoordsToViewportCoords } from "@excalidraw/common";
+import { getElementAbsoluteCoords } from "@excalidraw/element/bounds";
+
+import type {
+  ElementsMap,
+  NonDeletedExcalidrawElement,
+} from "@excalidraw/element/types";
+
 import { useExcalidrawAppState } from "../components/App";
-import { sceneCoordsToViewportCoords } from "../utils";
 
 import "./ElementCanvasButtons.scss";
 
-import { getElementAbsoluteCoords } from ".";
-
 import type { AppState } from "../types";
-
-import type { ElementsMap, NonDeletedExcalidrawElement } from "./types";
 
 const CONTAINER_PADDING = 5;
 

@@ -1,31 +1,21 @@
 import {
-  actionResetZoom,
-  actionZoomIn,
-  actionZoomOut,
-} from "../actions/actionCanvas";
-import {
-  actionDecreaseFontSize,
-  actionIncreaseFontSize,
-} from "../actions/actionProperties";
-import { parseClipboard } from "../clipboard";
-import { CLASSES, POINTER_BUTTON } from "../constants";
-import { CODES, KEYS } from "../keys";
-import Scene from "../scene/Scene";
-import {
+  CODES,
+  KEYS,
+  CLASSES,
+  POINTER_BUTTON,
   isWritableElement,
   getFontString,
   getFontFamilyString,
   isTestEnv,
-} from "../utils";
-
-import { actionSaveToActiveFile } from "../actions";
+} from "@excalidraw/common";
 
 import {
   originalContainerCache,
   updateOriginalContainerCache,
-} from "./containerCache";
-import { LinearElementEditor } from "./linearElementEditor";
-import { bumpVersion, mutateElement } from "./mutateElement";
+} from "@excalidraw/element/containerCache";
+
+import { LinearElementEditor } from "@excalidraw/element/linearElementEditor";
+import { bumpVersion, mutateElement } from "@excalidraw/element/mutateElement";
 import {
   getBoundTextElementId,
   getContainerElement,
@@ -36,22 +26,37 @@ import {
   computeContainerDimensionForBoundText,
   computeBoundTextPosition,
   getBoundTextElement,
-} from "./textElement";
-import { getTextWidth } from "./textMeasurements";
-import { normalizeText } from "./textMeasurements";
-import { wrapText } from "./textWrapping";
+} from "@excalidraw/element/textElement";
+import { getTextWidth } from "@excalidraw/element/textMeasurements";
+import { normalizeText } from "@excalidraw/element/textMeasurements";
+import { wrapText } from "@excalidraw/element/textWrapping";
 import {
   isArrowElement,
   isBoundToContainer,
   isTextElement,
-} from "./typeChecks";
+} from "@excalidraw/element/typeChecks";
 
 import type {
   ExcalidrawElement,
   ExcalidrawLinearElement,
   ExcalidrawTextElementWithContainer,
   ExcalidrawTextElement,
-} from "./types";
+} from "@excalidraw/element/types";
+
+import { actionSaveToActiveFile } from "../actions";
+
+import Scene from "../scene/Scene";
+import { parseClipboard } from "../clipboard";
+import {
+  actionDecreaseFontSize,
+  actionIncreaseFontSize,
+} from "../actions/actionProperties";
+import {
+  actionResetZoom,
+  actionZoomIn,
+  actionZoomOut,
+} from "../actions/actionCanvas";
+
 import type App from "../components/App";
 import type { AppState } from "../types";
 
