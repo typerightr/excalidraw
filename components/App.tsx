@@ -2134,6 +2134,9 @@ class App extends React.Component<AppProps, AppState> {
                             pendingFlowchartNodes:
                               this.flowChartCreator.pendingNodes,
                             theme: this.state.theme,
+                            stickyNotePlaceholder: t(
+                              "labels.addTextPlaceholder",
+                            ),
                           }}
                         />
                         {this.state.newElement && (
@@ -2155,6 +2158,9 @@ class App extends React.Component<AppProps, AppState> {
                                 this.elementsPendingErasure,
                               pendingFlowchartNodes: null,
                               theme: this.state.theme,
+                              stickyNotePlaceholder: t(
+                                "labels.addTextPlaceholder",
+                              ),
                             }}
                           />
                         )}
@@ -8724,9 +8730,13 @@ class App extends React.Component<AppProps, AppState> {
       values from appState. */
 
       const { currentItemStartArrowhead, currentItemEndArrowhead } = this.state;
+      // Default: no start arrowhead, arrow on end (avoids wrong persisted values showing e.g. crowfoot on both ends)
       const [startArrowhead, endArrowhead] =
         elementType === "arrow"
-          ? [currentItemStartArrowhead, currentItemEndArrowhead]
+          ? [
+              currentItemStartArrowhead ?? null,
+              currentItemEndArrowhead ?? "arrow",
+            ]
           : [null, null];
 
       const element =

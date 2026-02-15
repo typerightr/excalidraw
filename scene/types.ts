@@ -37,6 +37,8 @@ export type StaticCanvasRenderConfig = {
   elementsPendingErasure: ElementsPendingErasure;
   pendingFlowchartNodes: PendingExcalidrawElements | null;
   theme: AppState["theme"];
+  /** Placeholder text for empty sticky note bound text (ghost text when not focused) */
+  stickyNotePlaceholder?: string;
 };
 
 export type SVGRenderConfig = {

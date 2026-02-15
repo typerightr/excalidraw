@@ -292,20 +292,7 @@ const LayerUI = ({
     return (
       <FixedSideContainer side="top">
         <div className="App-menu App-menu_top">
-          <Stack.Col
-            gap={spacing.menuTopGap}
-            className={clsx("App-menu_top__left")}
-          >
-            {renderCanvasActions()}
-            <div
-              className={clsx("selected-shape-actions-container", {
-                "selected-shape-actions-container--compact":
-                  isCompactStylesPanel,
-              })}
-            >
-              {shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
-            </div>
-          </Stack.Col>
+          
           
           <div
             className={clsx(
@@ -316,13 +303,13 @@ const LayerUI = ({
               },
             )}
           >
-            {appState.collaborators.size > 0 && (
+            {/* {appState.collaborators.size > 0 && (
               <UserList
                 collaborators={appState.collaborators}
                 userToFollow={appState.userToFollow?.socketId || null}
               />
-            )}
-            {renderTopRightUI?.(
+            )} */}
+            {/* {renderTopRightUI?.(
               editorInterface.formFactor === "phone",
               appState,
             )}
@@ -341,8 +328,22 @@ const LayerUI = ({
                 }}
                 renderCustomStats={renderCustomStats}
               />
-            )}
+            )} */}
           </div>
+          <Stack.Col
+            gap={spacing.menuTopGap}
+            className={clsx("App-menu_top__right")}
+          >
+            {renderCanvasActions()}
+            <div
+              className={clsx("selected-shape-actions-container", {
+                "selected-shape-actions-container--compact":
+                  isCompactStylesPanel,
+              })}
+            >
+              {shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
+            </div>
+          </Stack.Col>
         </div>
       </FixedSideContainer>
     );

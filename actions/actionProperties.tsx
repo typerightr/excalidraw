@@ -39,6 +39,7 @@ import { newElementWith } from "@excalidraw/element";
 
 import {
   getBoundTextElement,
+  getContainerElement,
   redrawTextBoundingBox,
 } from "@excalidraw/element";
 
@@ -165,12 +166,27 @@ export const changeProperty = (
   appState: AppState,
   callback: (element: ExcalidrawElement) => ExcalidrawElement,
   includeBoundText = false,
+  applyToContainerWhenSingleBoundText = false,
 ) => {
-  const selectedElementIds = arrayToMap(
-    getSelectedElements(elements, appState, {
-      includeBoundTextElement: includeBoundText,
-    }),
-  );
+  let selectedElements = getSelectedElements(elements, appState, {
+    includeBoundTextElement: includeBoundText,
+  });
+
+  if (
+    applyToContainerWhenSingleBoundText &&
+    includeBoundText &&
+    selectedElements.length === 1 &&
+    isTextElement(selectedElements[0]) &&
+    selectedElements[0].containerId
+  ) {
+    const elementsMap = arrayToMap(elements);
+    const container = getContainerElement(selectedElements[0], elementsMap);
+    if (container) {
+      selectedElements = [container];
+    }
+  }
+
+  const selectedElementIds = arrayToMap(selectedElements);
 
   return elements.map((element) => {
     if (
@@ -329,6 +345,7 @@ export const actionChangeStrokeColor = register<
               : el;
           },
           true,
+          true,
         ),
       }),
       appState: {
@@ -409,14 +426,32 @@ export const actionChangeBackgroundColor = register<
         return el;
       });
     } else {
-      nextElements = changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          backgroundColor: value.currentItemBackgroundColor,
-        }),
+      nextElements = changeProperty(
+        elements,
+        appState,
+        (el) =>
+          newElementWith(el, {
+            backgroundColor: value.currentItemBackgroundColor,
+          }),
+        true,
+        true,
       );
     }
 
-    const hasStickyNote = selectedElements.some(
+    const elementsAppliedTo =
+      selectedElements.length === 1 &&
+      isTextElement(selectedElements[0]) &&
+      selectedElements[0].containerId
+        ? (() => {
+            const container = getContainerElement(
+              selectedElements[0],
+              arrayToMap(elements),
+            );
+            return container ? [container] : selectedElements;
+          })()
+        : selectedElements;
+
+    const hasStickyNote = elementsAppliedTo.some(
       (el) =>
         el.type === "rectangle" &&
         (el as { customData?: { isStickyNote?: boolean } }).customData
@@ -481,10 +516,15 @@ export const actionChangeFillStyle = register<ExcalidrawElement["fillStyle"]>({
       })`,
     );
     return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          fillStyle: value,
-        }),
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) =>
+          newElementWith(el, {
+            fillStyle: value,
+          }),
+        true,
+        true,
       ),
       appState: { ...appState, currentItemFillStyle: value },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
@@ -558,10 +598,15 @@ export const actionChangeStrokeWidth = register<
   trackEvent: false,
   perform: (elements, appState, value) => {
     return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          strokeWidth: value,
-        }),
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) =>
+          newElementWith(el, {
+            strokeWidth: value,
+          }),
+        true,
+        true,
       ),
       appState: { ...appState, currentItemStrokeWidth: value },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
@@ -614,11 +659,16 @@ export const actionChangeSloppiness = register<ExcalidrawElement["roughness"]>({
   trackEvent: false,
   perform: (elements, appState, value) => {
     return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          seed: randomInteger(),
-          roughness: value,
-        }),
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) =>
+          newElementWith(el, {
+            seed: randomInteger(),
+            roughness: value,
+          }),
+        true,
+        true,
       ),
       appState: { ...appState, currentItemRoughness: value },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
@@ -670,10 +720,15 @@ export const actionChangeStrokeStyle = register<
   trackEvent: false,
   perform: (elements, appState, value) => {
     return {
-      elements: changeProperty(elements, appState, (el) =>
-        newElementWith(el, {
-          strokeStyle: value,
-        }),
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) =>
+          newElementWith(el, {
+            strokeStyle: value,
+          }),
+        true,
+        true,
       ),
       appState: { ...appState, currentItemStrokeStyle: value },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
@@ -730,6 +785,7 @@ export const actionChangeOpacity = register<ExcalidrawElement["opacity"]>({
           newElementWith(el, {
             opacity: value,
           }),
+        true,
         true,
       ),
       appState: { ...appState, currentItemOpacity: value },
@@ -1485,22 +1541,28 @@ export const actionChangeRoundness = register<"sharp" | "round">({
   trackEvent: false,
   perform: (elements, appState, value) => {
     return {
-      elements: changeProperty(elements, appState, (el) => {
-        if (isElbowArrow(el)) {
-          return el;
-        }
+      elements: changeProperty(
+        elements,
+        appState,
+        (el) => {
+          if (isElbowArrow(el)) {
+            return el;
+          }
 
-        return newElementWith(el, {
-          roundness:
-            value === "round"
-              ? {
-                  type: isUsingAdaptiveRadius(el.type)
-                    ? ROUNDNESS.ADAPTIVE_RADIUS
-                    : ROUNDNESS.PROPORTIONAL_RADIUS,
-                }
-              : null,
-        });
-      }),
+          return newElementWith(el, {
+            roundness:
+              value === "round"
+                ? {
+                    type: isUsingAdaptiveRadius(el.type)
+                      ? ROUNDNESS.ADAPTIVE_RADIUS
+                      : ROUNDNESS.PROPORTIONAL_RADIUS,
+                  }
+                : null,
+          });
+        },
+        true,
+        true,
+      ),
       appState: {
         ...appState,
         currentItemRoundness: value,
