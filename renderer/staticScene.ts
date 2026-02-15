@@ -53,6 +53,42 @@ const GridLineColor = {
   },
 } as const;
 
+const GridDotColor = {
+  [THEME.LIGHT]: "#d1d1d1",
+  [THEME.DARK]: applyDarkModeFilter("#d1d1d1"),
+} as const;
+
+/** dot grid: small dots at grid intersections */
+const strokeDotGrid = (
+  context: CanvasRenderingContext2D,
+  gridSize: number,
+  scrollX: number,
+  scrollY: number,
+  theme: StaticCanvasRenderConfig["theme"],
+  width: number,
+  height: number,
+  zoom: Zoom,
+) => {
+  const offsetX = (scrollX % gridSize) - gridSize;
+  const offsetY = (scrollY % gridSize) - gridSize;
+  const actualGridSize = gridSize * zoom.value;
+  // Skip dots when zoomed out so we don't draw thousands of tiny dots
+  if (actualGridSize < 6) {
+    return;
+  }
+  const radius = Math.max(0.3, Math.min(1, 1.2 / zoom.value));
+  context.save();
+  context.fillStyle = GridDotColor[theme];
+  for (let x = offsetX; x < offsetX + width + gridSize * 2; x += gridSize) {
+    for (let y = offsetY; y < offsetY + height + gridSize * 2; y += gridSize) {
+      context.beginPath();
+      context.arc(x, y, radius, 0, Math.PI * 2);
+      context.fill();
+    }
+  }
+  context.restore();
+};
+
 const strokeGrid = (
   context: CanvasRenderingContext2D,
   /** grid cell pixel size */
@@ -260,7 +296,19 @@ const _renderStaticScene = ({
   // Apply zoom
   context.scale(appState.zoom.value, appState.zoom.value);
 
-  // Grid
+  // Dot grid (FigJam-style) — always visible by default
+  strokeDotGrid(
+    context,
+    appState.gridSize,
+    appState.scrollX,
+    appState.scrollY,
+    renderConfig.theme,
+    normalizedWidth / appState.zoom.value,
+    normalizedHeight / appState.zoom.value,
+    appState.zoom,
+  );
+
+  // Line grid — only when grid mode is enabled
   if (renderGrid) {
     strokeGrid(
       context,

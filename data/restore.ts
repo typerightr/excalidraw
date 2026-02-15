@@ -103,6 +103,7 @@ export const AllowedExcalidrawActiveTools: Record<
   lasso: true,
   text: true,
   rectangle: true,
+  StickyNote: true,
   diamond: true,
   ellipse: true,
   line: true,
@@ -271,7 +272,8 @@ const restoreElementWithProperties = <
     isDeleted: element.isDeleted ?? false,
     id: element.id || randomId(),
     fillStyle: element.fillStyle || DEFAULT_ELEMENT_PROPS.fillStyle,
-    strokeWidth: element.strokeWidth || DEFAULT_ELEMENT_PROPS.strokeWidth,
+    // use ?? so 0 is preserved (e.g. sticky notes with no border)
+    strokeWidth: element.strokeWidth ?? DEFAULT_ELEMENT_PROPS.strokeWidth,
     strokeStyle: element.strokeStyle ?? DEFAULT_ELEMENT_PROPS.strokeStyle,
     roughness: element.roughness ?? DEFAULT_ELEMENT_PROPS.roughness,
     opacity:

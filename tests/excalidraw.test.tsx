@@ -62,15 +62,16 @@ describe("<Excalidraw/>", () => {
   });
 
   it("should render the footer only when Footer is passed as children", async () => {
-    //Footer not passed hence it will not render the footer
+    // Footer not passed: footer center still shows shapes section (toolbar)
     let { container } = await render(
       <Excalidraw>
         <div>This is a custom footer</div>
       </Excalidraw>,
     );
-    expect(container.querySelector(".footer-center")).toBe(null);
+    expect(container.querySelector(".footer-center")).not.toBe(null);
+    expect(container.querySelector(".shapes-section")).not.toBe(null);
 
-    // Footer passed hence it will render the footer
+    // Footer passed: footer center shows shapes section and custom content from tunnel
     ({ container } = await render(
       <Excalidraw>
         <Footer>
@@ -78,17 +79,9 @@ describe("<Excalidraw/>", () => {
         </Footer>
       </Excalidraw>,
     ));
-    expect(container.querySelector(".footer-center")).toMatchInlineSnapshot(
-      `
-      <div
-        class="footer-center zen-mode-transition"
-      >
-        <div>
-          This is a custom footer
-        </div>
-      </div>
-    `,
-    );
+    expect(container.querySelector(".footer-center")).not.toBe(null);
+    expect(container.querySelector(".shapes-section")).not.toBe(null);
+    expect(container.textContent).toContain("This is a custom footer");
   });
 
   describe("Test gridModeEnabled prop", () => {

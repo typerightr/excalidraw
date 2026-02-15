@@ -20,6 +20,9 @@ import {
 import {
   COLOR_PALETTE,
   CODES,
+  DEFAULT_ELEMENT_PROPS,
+  DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX,
+  ROUGHNESS,
   shouldResizeFromCenter,
   shouldMaintainAspectRatio,
   shouldRotateWithDiscreteAngle,
@@ -43,6 +46,7 @@ import {
   POINTER_BUTTON,
   ROUNDNESS,
   SCROLL_TIMEOUT,
+  STICKY_NOTE_PADDING,
   TAP_TWICE_TIMEOUT,
   TEXT_TO_CENTER_SNAP_THRESHOLD,
   THEME,
@@ -265,6 +269,7 @@ import type {
   ExcalidrawFreeDrawElement,
   ExcalidrawGenericElement,
   ExcalidrawLinearElement,
+  ExcalidrawNonSelectionElement,
   ExcalidrawTextElement,
   NonDeleted,
   InitializedExcalidrawImageElement,
@@ -499,7 +504,7 @@ const AppPropsContext = React.createContext<AppProps>(null!);
 
 const editorInterfaceContextInitialValue: EditorInterface = {
   formFactor: "desktop",
-  desktopUIMode: "full",
+  desktopUIMode: "compact",
   userAgent: createUserAgentDescriptor(
     typeof navigator !== "undefined" ? navigator.userAgent : "",
   ),
@@ -5272,7 +5277,7 @@ class App extends React.Component<AppProps, AppState> {
               }),
         };
       } else if (nextActiveTool.type !== "selection") {
-        return {
+        const base = {
           ...prevState,
           ...commonResets,
           activeTool: nextActiveTool,
@@ -5281,6 +5286,45 @@ class App extends React.Component<AppProps, AppState> {
           editingGroupId: null,
           multiElement: null,
         };
+        // Sticky note defaults: yellow fill, no border, straight lines, text top-left
+        if (nextActiveTool.type === "StickyNote") {
+          return {
+            ...base,
+            currentItemBackgroundColor:
+              COLOR_PALETTE.yellow[DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX],
+            currentItemFillStyle: "solid",
+            currentItemStrokeWidth: 0,
+            currentItemStrokeStyle: "solid",
+            currentItemRoughness: ROUGHNESS.architect,
+            currentItemTextAlign: "left",
+          };
+        }
+        // When leaving Sticky Note, reset current item so rectangle/diamond/ellipse
+        // don't inherit sticky note styling (no border, shadow, yellow fill)
+        if (prevState.activeTool.type === "StickyNote") {
+          return {
+            ...base,
+            currentItemBackgroundColor: DEFAULT_ELEMENT_PROPS.backgroundColor,
+            currentItemFillStyle: DEFAULT_ELEMENT_PROPS.fillStyle,
+            currentItemStrokeWidth: DEFAULT_ELEMENT_PROPS.strokeWidth,
+            currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
+            currentItemRoughness: DEFAULT_ELEMENT_PROPS.roughness,
+            currentItemTextAlign: DEFAULT_TEXT_ALIGN,
+          };
+        }
+        // Rectangle, diamond, ellipse: always start with no fill (transparent)
+        // so only sticky note has yellow fill
+        if (
+          nextActiveTool.type === "rectangle" ||
+          nextActiveTool.type === "diamond" ||
+          nextActiveTool.type === "ellipse"
+        ) {
+          return {
+            ...base,
+            currentItemBackgroundColor: DEFAULT_ELEMENT_PROPS.backgroundColor,
+          };
+        }
+        return base;
       }
       return {
         ...prevState,
@@ -5389,8 +5433,10 @@ class App extends React.Component<AppProps, AppState> {
     element: ExcalidrawTextElement,
     {
       isExistingElement = false,
+      placeholder,
     }: {
       isExistingElement?: boolean;
+      placeholder?: string;
     },
   ) {
     const elementsMap = this.scene.getElementsMapIncludingDeleted();
@@ -5496,8 +5542,9 @@ class App extends React.Component<AppProps, AppState> {
       // when text is selected, it's hard (at least on iOS) to re-position the
       // caret (i.e. deselect). There's not much use for always selecting
       // the text on edit anyway (and users can select-all from contextmenu
-      // if needed)
-      autoSelect: !this.editorInterface.isTouchScreen,
+      // if needed). Don't select when showing placeholder so cursor stays at start
+      autoSelect: !this.editorInterface.isTouchScreen && !placeholder,
+      placeholder: placeholder ?? "",
     });
     // deselect all other elements when inserting text
     this.deselectElements();
@@ -5834,11 +5881,25 @@ class App extends React.Component<AppProps, AppState> {
       y: sceneY,
     });
 
+    // Sticky note: rectangle with explicit flag → text at top-left
+    const isStickyNoteContainer =
+      container &&
+      container.type === "rectangle" &&
+      container.customData?.isStickyNote === true;
+
     const element =
       existingTextElement ||
       newTextElement({
-        x: parentCenterPosition ? parentCenterPosition.elementCenterX : sceneX,
-        y: parentCenterPosition ? parentCenterPosition.elementCenterY : sceneY,
+        x: isStickyNoteContainer
+          ? container!.x + STICKY_NOTE_PADDING
+          : parentCenterPosition
+            ? parentCenterPosition.elementCenterX
+            : sceneX,
+        y: isStickyNoteContainer
+          ? container!.y + STICKY_NOTE_PADDING
+          : parentCenterPosition
+            ? parentCenterPosition.elementCenterY
+            : sceneY,
         strokeColor: this.state.currentItemStrokeColor,
         backgroundColor: this.state.currentItemBackgroundColor,
         fillStyle: this.state.currentItemFillStyle,
@@ -5849,12 +5910,16 @@ class App extends React.Component<AppProps, AppState> {
         text: "",
         fontSize,
         fontFamily,
-        textAlign: parentCenterPosition
-          ? "center"
-          : this.state.currentItemTextAlign,
-        verticalAlign: parentCenterPosition
-          ? VERTICAL_ALIGN.MIDDLE
-          : DEFAULT_VERTICAL_ALIGN,
+        textAlign: isStickyNoteContainer
+          ? "left"
+          : parentCenterPosition
+            ? "center"
+            : this.state.currentItemTextAlign,
+        verticalAlign: isStickyNoteContainer
+          ? "top"
+          : parentCenterPosition
+            ? VERTICAL_ALIGN.MIDDLE
+            : DEFAULT_VERTICAL_ALIGN,
         containerId: shouldBindToContainer ? container?.id : undefined,
         groupIds: container?.groupIds ?? [],
         lineHeight,
@@ -5888,6 +5953,8 @@ class App extends React.Component<AppProps, AppState> {
     if (autoEdit || existingTextElement || container) {
       this.handleTextWysiwyg(element, {
         isExistingElement: !!existingTextElement,
+        placeholder:
+          container && !existingTextElement ? t("labels.addTextPlaceholder") : undefined,
       });
     } else {
       this.setState({
@@ -7387,6 +7454,8 @@ class App extends React.Component<AppProps, AppState> {
         pointerDownState.lastCoords.x,
         pointerDownState.lastCoords.y,
       );
+    } else if (this.state.activeTool.type === "StickyNote") {
+      this.createStickyNoteOnPointerDown(pointerDownState);
     } else if (
       this.state.activeTool.type !== "eraser" &&
       this.state.activeTool.type !== "hand" &&
@@ -8877,6 +8946,65 @@ class App extends React.Component<AppProps, AppState> {
         newElement: element,
       });
     }
+  };
+
+  private createStickyNoteOnPointerDown = (
+    pointerDownState: PointerDownState,
+  ): void => {
+    const [gridX, gridY] = getGridPoint(
+      pointerDownState.origin.x,
+      pointerDownState.origin.y,
+      this.lastPointerDownEvent?.[KEYS.CTRL_OR_CMD]
+        ? null
+        : this.getEffectiveGridSize(),
+    );
+
+    const topLayerFrame = this.getTopLayerFrameAtSceneCoords({
+      x: gridX,
+      y: gridY,
+    });
+
+    const STICKY_NOTE_DEFAULT_WIDTH = 200;
+    const STICKY_NOTE_DEFAULT_HEIGHT = 205;
+
+    const element = newElement({
+      type: "rectangle",
+      x: gridX,
+      y: gridY,
+      width: STICKY_NOTE_DEFAULT_WIDTH,
+      height: STICKY_NOTE_DEFAULT_HEIGHT,
+      backgroundColor:
+        COLOR_PALETTE.yellow[DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX],
+      fillStyle: "solid",
+      strokeColor: this.state.currentItemStrokeColor,
+      strokeWidth: 0,
+      strokeStyle: "solid",
+      roughness: ROUGHNESS.architect,
+      opacity: this.state.currentItemOpacity,
+      roundness: null,
+      locked: false,
+      frameId: topLayerFrame ? topLayerFrame.id : null,
+      customData: { isStickyNote: true },
+    });
+
+    this.scene.insertElement(element);
+    // No newElement: skip drag-to-resize; sticky note is added at fixed size on click
+    this.setState(
+      {
+        multiElement: null,
+        newElement: null,
+      },
+      () => {
+        const sceneX = element.x + element.width / 2;
+        const sceneY = element.y + element.height / 2;
+        this.startTextEditing({
+          sceneX,
+          sceneY,
+          container: element as ExcalidrawTextContainer,
+          insertAtParentCenter: true,
+        });
+      },
+    );
   };
 
   private createFrameElementOnPointerDown = (
@@ -10833,6 +10961,30 @@ class App extends React.Component<AppProps, AppState> {
         return;
       }
 
+      const drawnElement = this.state.newElement;
+      const containerToEdit =
+        drawnElement && isTextBindableContainer(drawnElement, false)
+          ? drawnElement
+          : null;
+      const containerIdToEdit = containerToEdit?.id;
+
+      const openTextEditingForContainer = () => {
+        if (!containerIdToEdit) return;
+        const container = this.scene.getElement(containerIdToEdit);
+        if (
+          container &&
+          isTextBindableContainer(container, false) &&
+          !getBoundTextElement(container, this.scene.getElementsMapIncludingDeleted())
+        ) {
+          this.startTextEditing({
+            sceneX: container.x + container.width / 2,
+            sceneY: container.y + container.height / 2,
+            container,
+            insertAtParentCenter: true,
+          });
+        }
+      };
+
       if (
         !activeTool.locked &&
         activeTool.type !== "freedraw" &&
@@ -10841,18 +10993,24 @@ class App extends React.Component<AppProps, AppState> {
           (activeTool.type === "lasso" && activeTool.fromSelection))
       ) {
         resetCursor(this.interactiveCanvas);
-        this.setState({
-          newElement: null,
-          suggestedBinding: null,
-          activeTool: updateActiveTool(this.state, {
-            type: this.state.preferredSelectionTool.type,
-          }),
-        });
+        this.setState(
+          {
+            newElement: null,
+            suggestedBinding: null,
+            activeTool: updateActiveTool(this.state, {
+              type: this.state.preferredSelectionTool.type,
+            }),
+          },
+          openTextEditingForContainer,
+        );
       } else {
-        this.setState({
-          newElement: null,
-          suggestedBinding: null,
-        });
+        this.setState(
+          {
+            newElement: null,
+            suggestedBinding: null,
+          },
+          openTextEditingForContainer,
+        );
       }
 
       if (

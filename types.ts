@@ -145,6 +145,7 @@ export type ToolType =
   | "selection"
   | "lasso"
   | "rectangle"
+  | "StickyNote"
   | "diamond"
   | "ellipse"
   | "arrow"

@@ -4,7 +4,6 @@ import React from "react";
 import {
   CLASSES,
   DEFAULT_SIDEBAR,
-  TOOL_TYPE,
   arrayToMap,
   capitalizeString,
   isShallowEqual,
@@ -20,7 +19,6 @@ import type { NonDeletedExcalidrawElement } from "@excalidraw/element/types";
 
 import { actionToggleStats } from "../actions";
 import { trackEvent } from "../analytics";
-import { isHandToolActive } from "../appState";
 import { TunnelsContext, useInitializeTunnels } from "../context/tunnels";
 import { UIAppStateContext } from "../context/ui-appState";
 import { useAtom, useAtomValue } from "../editor-jotai";
@@ -30,17 +28,14 @@ import { calculateScrollCenter } from "../scene";
 
 import {
   SelectedShapeActions,
-  ShapesSwitcher,
   CompactShapeActions,
 } from "./Actions";
 import { LoadingMessage } from "./LoadingMessage";
-import { LockButton } from "./LockButton";
 import { MobileMenu } from "./MobileMenu";
 import { PasteChartDialog } from "./PasteChartDialog";
 import { Section } from "./Section";
 import Stack from "./Stack";
 import { UserList } from "./UserList";
-import { PenModeButton } from "./PenModeButton";
 import Footer from "./footer/Footer";
 import { isSidebarDockedAtom } from "./Sidebar/Sidebar";
 import MainMenu from "./main-menu/MainMenu";
@@ -55,13 +50,10 @@ import ElementLinkDialog from "./ElementLinkDialog";
 import { ErrorDialog } from "./ErrorDialog";
 import { EyeDropper, activeEyeDropperAtom } from "./EyeDropper";
 import { FixedSideContainer } from "./FixedSideContainer";
-import { HandButton } from "./HandButton";
 import { HelpDialog } from "./HelpDialog";
-import { HintViewer } from "./HintViewer";
 import { ImageExportDialog } from "./ImageExportDialog";
 import { Island } from "./Island";
 import { JSONExportDialog } from "./JSONExportDialog";
-import { LaserPointerButton } from "./LaserPointerButton";
 
 import "./LayerUI.scss";
 import "./Toolbar.scss";
@@ -314,92 +306,7 @@ const LayerUI = ({
               {shouldRenderSelectedShapeActions && renderSelectedShapeActions()}
             </div>
           </Stack.Col>
-          {!appState.viewModeEnabled &&
-            appState.openDialog?.name !== "elementLinkSelector" && (
-              <Section heading="shapes" className="shapes-section">
-                {(heading: React.ReactNode) => (
-                  <div style={{ position: "relative" }}>
-                    {renderWelcomeScreen && (
-                      <tunnels.WelcomeScreenToolbarHintTunnel.Out />
-                    )}
-                    <Stack.Col gap={spacing.toolbarColGap} align="start">
-                      <Stack.Row
-                        gap={spacing.toolbarRowGap}
-                        className={clsx("App-toolbar-container", {
-                          "zen-mode": appState.zenModeEnabled,
-                        })}
-                      >
-                        <Island
-                          padding={spacing.islandPadding}
-                          className={clsx("App-toolbar", {
-                            "zen-mode": appState.zenModeEnabled,
-                            "App-toolbar--compact": isCompactStylesPanel,
-                          })}
-                        >
-                          <HintViewer
-                            appState={appState}
-                            isMobile={editorInterface.formFactor === "phone"}
-                            editorInterface={editorInterface}
-                            app={app}
-                          />
-                          {heading}
-                          <Stack.Row gap={spacing.toolbarInnerRowGap}>
-                            <PenModeButton
-                              zenModeEnabled={appState.zenModeEnabled}
-                              checked={appState.penMode}
-                              onChange={() => onPenModeToggle(null)}
-                              title={t("toolBar.penMode")}
-                              penDetected={appState.penDetected}
-                            />
-                            <LockButton
-                              checked={appState.activeTool.locked}
-                              onChange={onLockToggle}
-                              title={t("toolBar.lock")}
-                            />
-
-                            <div className="App-toolbar__divider" />
-
-                            <HandButton
-                              checked={isHandToolActive(appState)}
-                              onChange={() => onHandToolToggle()}
-                              title={t("toolBar.hand")}
-                              isMobile
-                            />
-
-                            <ShapesSwitcher
-                              setAppState={setAppState}
-                              activeTool={appState.activeTool}
-                              UIOptions={UIOptions}
-                              app={app}
-                            />
-                          </Stack.Row>
-                        </Island>
-                        {isCollaborating && (
-                          <Island
-                            style={{
-                              marginLeft: spacing.collabMarginLeft,
-                              alignSelf: "center",
-                              height: "fit-content",
-                            }}
-                          >
-                            <LaserPointerButton
-                              title={t("toolBar.laser")}
-                              checked={
-                                appState.activeTool.type === TOOL_TYPE.laser
-                              }
-                              onChange={() =>
-                                app.setActiveTool({ type: TOOL_TYPE.laser })
-                              }
-                              isMobile
-                            />
-                          </Island>
-                        )}
-                      </Stack.Row>
-                    </Stack.Col>
-                  </div>
-                )}
-              </Section>
-            )}
+          
           <div
             className={clsx(
               "layer-ui__wrapper__top-right zen-mode-transition",
@@ -613,6 +520,16 @@ const LayerUI = ({
               actionManager={actionManager}
               showExitZenModeBtn={showExitZenModeBtn}
               renderWelcomeScreen={renderWelcomeScreen}
+              setAppState={setAppState}
+              onLockToggle={onLockToggle}
+              onHandToolToggle={onHandToolToggle}
+              onPenModeToggle={onPenModeToggle}
+              UIOptions={UIOptions}
+              app={app}
+              isCollaborating={isCollaborating}
+              editorInterface={editorInterface}
+              spacing={spacing}
+              isCompactStylesPanel={isCompactStylesPanel}
             />
             {appState.scrolledOutside && (
               <button

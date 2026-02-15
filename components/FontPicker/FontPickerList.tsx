@@ -75,6 +75,7 @@ const getFontFamilyIcon = (fontFamily: FontFamilyValues): JSX.Element => {
       return FreedrawIcon;
     case FONT_FAMILY.Nunito:
     case FONT_FAMILY.Helvetica:
+    case FONT_FAMILY.Arial:
       return FontFamilyNormalIcon;
     case FONT_FAMILY["Lilita One"]:
       return FontFamilyHeadingIcon;

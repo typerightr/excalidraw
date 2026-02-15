@@ -36,6 +36,7 @@ import { ComicShannsFontFaces } from "./ComicShanns";
 import { EmojiFontFaces } from "./Emoji";
 import { ExcalidrawFontFace } from "./ExcalidrawFontFace";
 import { ExcalifontFontFaces } from "./Excalifont";
+import { ArialFontFaces } from "./Arial";
 import { HelveticaFontFaces } from "./Helvetica";
 import { LiberationFontFaces } from "./Liberation";
 import { LilitaFontFaces } from "./Lilita";
@@ -382,6 +383,7 @@ export class Fonts {
       Fonts.register.call(fonts, family, metadata, ...fontFacesDescriptors);
     };
 
+    init("Arial", ...ArialFontFaces);
     init("Cascadia", ...CascadiaFontFaces);
     init("Comic Shanns", ...ComicShannsFontFaces);
     init("Excalifont", ...ExcalifontFontFaces);

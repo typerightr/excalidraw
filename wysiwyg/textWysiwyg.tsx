@@ -4,6 +4,7 @@ import {
   CLASSES,
   POINTER_BUTTON,
   THEME,
+  VERTICAL_ALIGN,
   isWritableElement,
   getFontString,
   getFontFamilyString,
@@ -23,6 +24,7 @@ import { LinearElementEditor } from "@excalidraw/element";
 import { bumpVersion } from "@excalidraw/element";
 import {
   getBoundTextElementId,
+  getContainerCoords,
   getContainerElement,
   getTextElementAngle,
   redrawTextBoundingBox,
@@ -32,7 +34,7 @@ import {
   computeBoundTextPosition,
   getBoundTextElement,
 } from "@excalidraw/element";
-import { getTextWidth } from "@excalidraw/element";
+import { getLineHeightInPx, getTextWidth } from "@excalidraw/element";
 import { normalizeText } from "@excalidraw/element";
 import { wrapText } from "@excalidraw/element";
 import {
@@ -103,6 +105,7 @@ export const textWysiwyg = ({
   excalidrawContainer,
   app,
   autoSelect = true,
+  placeholder = "",
 }: {
   id: ExcalidrawElement["id"];
   /**
@@ -119,6 +122,7 @@ export const textWysiwyg = ({
   excalidrawContainer: HTMLDivElement | null;
   app: App;
   autoSelect?: boolean;
+  placeholder?: string;
 }): SubmitHandler => {
   const textPropertiesUpdated = (
     updatedTextElement: ExcalidrawTextElement,
@@ -169,6 +173,7 @@ export const textWysiwyg = ({
 
       let maxWidth = updatedTextElement.width;
       let maxHeight = updatedTextElement.height;
+      let isEmptyContainerText = false;
 
       if (container && updatedTextElement.containerId) {
         if (isArrowElement(container)) {
@@ -208,6 +213,16 @@ export const textWysiwyg = ({
           updatedTextElement as ExcalidrawTextElementWithContainer,
         );
 
+        // Empty container text: size to content area and position at top-left
+        if (!updatedTextElement.originalText.trim()) {
+          isEmptyContainerText = true;
+          const contentTopLeft = getContainerCoords(container);
+          coordX = contentTopLeft.x;
+          coordY = contentTopLeft.y;
+          width = maxWidth;
+          height = Math.max(height, maxHeight);
+        }
+
         // autogrow container height if text exceeds
         if (!isArrowElement(container) && height > maxHeight) {
           const targetContainerHeight = computeContainerDimensionForBoundText(
@@ -231,7 +246,7 @@ export const textWysiwyg = ({
           );
           app.scene.mutateElement(container, { height: targetContainerHeight });
           updateBoundElements(container, app.scene);
-        } else {
+        } else if (!isEmptyContainerText) {
           const { x, y } = computeBoundTextPosition(
             container,
             updatedTextElement as ExcalidrawTextElementWithContainer,
@@ -246,14 +261,37 @@ export const textWysiwyg = ({
       if (!container) {
         maxWidth = (appState.width - 8 - viewportX) / appState.zoom.value;
         width = Math.min(width, maxWidth);
-      } else {
+      } else if (!isEmptyContainerText) {
         width += 0.5;
       }
 
-      // add 5% buffer otherwise it causes wysiwyg to jump
-      height *= 1.05;
+      if (!isEmptyContainerText) {
+        height *= 1.05;
+      }
 
       const font = getFontString(updatedTextElement);
+
+      // Center placeholder/cursor when empty (textarea doesn't support vertical-align)
+      let verticalPadding = 0;
+      let horizontalPadding = 0;
+      if (isEmptyContainerText) {
+        if (verticalAlign === VERTICAL_ALIGN.MIDDLE) {
+          const lineHeightPx = getLineHeightInPx(
+            updatedTextElement.fontSize,
+            updatedTextElement.lineHeight,
+          );
+          verticalPadding = Math.max(0, (height - lineHeightPx) / 2);
+        }
+        if (textAlign === "center" && placeholder) {
+          const placeholderWidth = getTextWidth(placeholder, font);
+          if (placeholderWidth > 0 && placeholderWidth < width) {
+            horizontalPadding = (width - placeholderWidth) / 2;
+          }
+        }
+      }
+
+      const styleWidth = width - 2 * horizontalPadding;
+      const styleHeight = height - 2 * verticalPadding;
 
       // Make sure text editor height doesn't go beyond viewport
       const editorMaxHeight =
@@ -262,8 +300,8 @@ export const textWysiwyg = ({
         font,
         // must be defined *after* font ¯\_(ツ)_/¯
         lineHeight: updatedTextElement.lineHeight,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `${styleWidth}px`,
+        height: `${styleHeight}px`,
         left: `${viewportX}px`,
         top: `${viewportY}px`,
         transform: getTransform(
@@ -276,6 +314,10 @@ export const textWysiwyg = ({
         ),
         textAlign,
         verticalAlign,
+        paddingTop: `${verticalPadding}px`,
+        paddingBottom: `${verticalPadding}px`,
+        paddingLeft: `${horizontalPadding}px`,
+        paddingRight: `${horizontalPadding}px`,
         color:
           appState.theme === THEME.DARK
             ? applyDarkModeFilter(updatedTextElement.strokeColor)
@@ -331,6 +373,7 @@ export const textWysiwyg = ({
     boxSizing: "content-box",
   });
   editable.value = element.originalText;
+  editable.placeholder = placeholder;
   updateWysiwygStyle();
 
   if (onChange) {

@@ -11,9 +11,11 @@ import {
   TextIcon,
   ImageIcon,
   EraserIcon,
+  StickyNoteIcon,
 } from "./icons";
 
 import type { AppClassProperties } from "../types";
+
 
 export const SHAPES = [
   {
@@ -24,18 +26,25 @@ export const SHAPES = [
     fillable: true,
   },
   {
-    icon: RectangleIcon,
-    value: "rectangle",
-    key: KEYS.R,
-    numericKey: KEYS["2"],
+    icon: StickyNoteIcon,
+    value: "StickyNote",
+    key: KEYS.N,
+    numericKey: KEYS["4"],
     fillable: true,
   },
-  {
+    {
     icon: DiamondIcon,
     value: "diamond",
     key: KEYS.D,
     numericKey: KEYS["3"],
     fillable: true,
+  },
+  {
+    icon: FreedrawIcon,
+    value: "freedraw",
+    key: [KEYS.P, KEYS.X],
+    numericKey: KEYS["7"],
+    fillable: false,
   },
   {
     icon: EllipseIcon,
@@ -44,6 +53,14 @@ export const SHAPES = [
     numericKey: KEYS["4"],
     fillable: true,
   },
+  {
+    icon: RectangleIcon,
+    value: "rectangle",
+    key: KEYS.R,
+    numericKey: KEYS["2"],
+    fillable: true,
+  },
+
   {
     icon: ArrowIcon,
     value: "arrow",
@@ -58,13 +75,7 @@ export const SHAPES = [
     numericKey: KEYS["6"],
     fillable: true,
   },
-  {
-    icon: FreedrawIcon,
-    value: "freedraw",
-    key: [KEYS.P, KEYS.X],
-    numericKey: KEYS["7"],
-    fillable: false,
-  },
+
   {
     icon: TextIcon,
     value: "text",
@@ -72,21 +83,22 @@ export const SHAPES = [
     numericKey: KEYS["8"],
     fillable: false,
   },
-  {
-    icon: ImageIcon,
-    value: "image",
-    key: null,
-    numericKey: KEYS["9"],
-    fillable: false,
-  },
-  {
-    icon: EraserIcon,
-    value: "eraser",
-    key: KEYS.E,
-    numericKey: KEYS["0"],
-    fillable: false,
-  },
+
 ] as const;
+// {
+//   icon: ImageIcon,
+//   value: "image",
+//   key: null,
+//   numericKey: KEYS["9"],
+//   fillable: false,
+// },
+// {
+//   icon: EraserIcon,
+//   value: "eraser",
+//   key: KEYS.E,
+//   numericKey: KEYS["0"],
+//   fillable: false,
+// },
 
 export const getToolbarTools = (app: AppClassProperties) => {
   return app.state.preferredSelectionTool.type === "lasso"
@@ -103,15 +115,15 @@ export const getToolbarTools = (app: AppClassProperties) => {
     : SHAPES;
 };
 
+type ShapeItem = (typeof SHAPES)[number];
+
 export const findShapeByKey = (key: string, app: AppClassProperties) => {
-  const shape = getToolbarTools(app).find((shape, index) => {
-    return (
-      (shape.numericKey != null && key === shape.numericKey.toString()) ||
-      (shape.key &&
-        (typeof shape.key === "string"
-          ? shape.key === key
-          : (shape.key as readonly string[]).includes(key)))
-    );
+  const tools = getToolbarTools(app) as readonly ShapeItem[];
+  const shape = tools.find((s) => {
+    if (s.numericKey != null && key === s.numericKey.toString()) return true;
+    const k = s.key;
+    if (k == null) return false;
+    return typeof k === "string" ? k === key : (k as readonly string[]).includes(key);
   });
   return shape?.value || null;
 };

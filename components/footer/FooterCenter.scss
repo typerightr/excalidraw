@@ -1,12 +1,34 @@
+.drawing-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+
+  /* Left and right columns don't grow; center takes remaining space */
+  .layer-ui__wrapper__footer-left,
+  .layer-ui__wrapper__footer-right {
+    flex: 0 0 auto;
+  }
+
+  /* Center column grows to fill space so the shapes menu can be centered between left and right */
+  .footer-center {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 .footer-center {
   pointer-events: none;
-
   display: flex;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   margin-inline-end: 0.6rem;
 
   & > * {
     pointer-events: var(--ui-pointerEvents);
+  }
+
+  .shapes-section {
+    width: fit-content;
   }
 }

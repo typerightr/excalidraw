@@ -1,5 +1,6 @@
 {
   "labels": {
+    "addTextPlaceholder": "Add text",
     "paste": "Paste",
     "pasteAsPlaintext": "Paste as plaintext",
     "pasteCharts": "Paste charts",
@@ -57,6 +58,7 @@
     "fontSize": "Font size",
     "fontFamily": "Font family",
     "addWatermark": "Add \"Made with Excalidraw\"",
+    "arial": "Arial",
     "handDrawn": "Hand-drawn",
     "normal": "Normal",
     "code": "Code",
@@ -301,6 +303,7 @@
     "ellipse": "Ellipse",
     "arrow": "Arrow",
     "line": "Line",
+    "StickyNote": "Sticky note",
     "freedraw": "Draw",
     "text": "Text",
     "library": "Library",

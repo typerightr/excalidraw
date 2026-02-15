@@ -1164,13 +1164,7 @@ export const ShapesSwitcher = ({
                 if (app.state.activeTool.type !== value) {
                   trackEvent("toolbar", value, "ui");
                 }
-                if (value === "image") {
-                  app.setActiveTool({
-                    type: value,
-                  });
-                } else {
-                  app.setActiveTool({ type: value });
-                }
+                app.setActiveTool({ type: value });
               }}
             />
           );
