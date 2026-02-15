@@ -10,6 +10,7 @@ import {
 } from "@excalidraw/common";
 
 import {
+  getContainerElement,
   shouldAllowVerticalAlign,
   suppportsHorizontalAlign,
   hasBoundTextElement,
@@ -799,6 +800,16 @@ export const CompactShapeActions = ({
   const targetElements = getTargetElements(elementsMap, appState);
   const { container } = useExcalidrawContainer();
 
+  const targetElementsForShapeActions =
+    targetElements.length === 1 &&
+    isTextElement(targetElements[0]) &&
+    targetElements[0].containerId
+      ? (() => {
+          const parent = getContainerElement(targetElements[0], elementsMap);
+          return parent ? [parent, ...targetElements] : targetElements;
+        })()
+      : targetElements;
+
   const isEditingTextOrNewElement = Boolean(
     appState.editingTextElement || appState.newElement,
   );
@@ -812,14 +823,14 @@ export const CompactShapeActions = ({
   return (
     <div className="compact-shape-actions">
       {/* Stroke Color */}
-      {canChangeStrokeColor(appState, targetElements) && (
+      {canChangeStrokeColor(appState, targetElementsForShapeActions) && (
         <div className={clsx("compact-action-item")}>
           {renderAction("changeStrokeColor")}
         </div>
       )}
 
       {/* Background Color */}
-      {canChangeBackgroundColor(appState, targetElements) && (
+      {canChangeBackgroundColor(appState, targetElementsForShapeActions) && (
         <div className="compact-action-item">
           {renderAction("changeBackgroundColor")}
         </div>
@@ -829,7 +840,7 @@ export const CompactShapeActions = ({
         appState={appState}
         renderAction={renderAction}
         setAppState={setAppState}
-        targetElements={targetElements}
+        targetElements={targetElementsForShapeActions}
         container={container}
       />
 
@@ -837,7 +848,7 @@ export const CompactShapeActions = ({
         appState={appState}
         renderAction={renderAction}
         setAppState={setAppState}
-        targetElements={targetElements}
+        targetElements={targetElementsForShapeActions}
         container={container}
         app={app}
       />
@@ -907,6 +918,17 @@ export const MobileShapeActions = ({
 }) => {
   const targetElements = getTargetElements(elementsMap, appState);
   const { container } = useExcalidrawContainer();
+
+  const targetElementsForShapeActions =
+    targetElements.length === 1 &&
+    isTextElement(targetElements[0]) &&
+    targetElements[0].containerId
+      ? (() => {
+          const parent = getContainerElement(targetElements[0], elementsMap);
+          return parent ? [parent, ...targetElements] : targetElements;
+        })()
+      : targetElements;
+
   const mobileActionsRef = useRef<HTMLDivElement>(null);
 
   const ACTIONS_WIDTH =
@@ -951,12 +973,12 @@ export const MobileShapeActions = ({
           flex: 1,
         }}
       >
-        {canChangeStrokeColor(appState, targetElements) && (
+        {canChangeStrokeColor(appState, targetElementsForShapeActions) && (
           <div className={clsx("compact-action-item")}>
             {renderAction("changeStrokeColor")}
           </div>
         )}
-        {canChangeBackgroundColor(appState, targetElements) && (
+        {canChangeBackgroundColor(appState, targetElementsForShapeActions) && (
           <div className="compact-action-item">
             {renderAction("changeBackgroundColor")}
           </div>
@@ -965,7 +987,7 @@ export const MobileShapeActions = ({
           appState={appState}
           renderAction={renderAction}
           setAppState={setAppState}
-          targetElements={targetElements}
+          targetElements={targetElementsForShapeActions}
           container={container}
         />
         {/* Combined Arrow Properties */}
@@ -973,7 +995,7 @@ export const MobileShapeActions = ({
           appState={appState}
           renderAction={renderAction}
           setAppState={setAppState}
-          targetElements={targetElements}
+          targetElements={targetElementsForShapeActions}
           container={container}
           app={app}
         />

@@ -11,11 +11,14 @@ import {
 
 import {
   BOUND_TEXT_PADDING,
+  DEFAULT_FONT_FAMILY,
+  DEFAULT_FONT_SIZE,
   DEFAULT_REDUCED_GLOBAL_ALPHA,
   ELEMENT_READY_TO_ERASE_OPACITY,
   FRAME_STYLE,
   DARK_THEME_FILTER,
   MIME_TYPES,
+  STICKY_NOTE_PADDING,
   THEME,
   distance,
   getFontString,
@@ -96,7 +99,7 @@ const getCanvasPadding = (element: ExcalidrawElement) => {
     case "text":
       return element.fontSize / 2;
     case "arrow":
-      if (element.endArrowhead || element.endArrowhead) {
+      if (element.startArrowhead || element.endArrowhead) {
         return 40;
       }
       return 20;
@@ -253,7 +256,7 @@ const generateElementCanvas = (
 
   const rc = rough.canvas(canvas);
 
-  drawElementOnCanvas(element, rc, context, renderConfig);
+  drawElementOnCanvas(element, rc, context, renderConfig, elementsMap);
 
   context.restore();
 
@@ -389,6 +392,7 @@ const drawElementOnCanvas = (
   rc: RoughCanvas,
   context: CanvasRenderingContext2D,
   renderConfig: StaticCanvasRenderConfig,
+  elementsMap?: ElementsMap,
 ) => {
   switch (element.type) {
     case "rectangle":
@@ -412,6 +416,42 @@ const drawElementOnCanvas = (
         context.shadowOffsetY = 0;
         rc.draw(shape);
         context.restore();
+        // When out of focus and no content, show "Add text" ghost placeholder (sticky notes only).
+        // Draw at top-left (same position as bound text) so it aligns with the other placeholder
+        // and persists in the same spot when that one hides.
+        if (!renderConfig.isExporting && elementsMap) {
+          const boundText = getBoundTextElement(element, elementsMap);
+          const showGhost =
+            !boundText || !boundText.originalText.trim();
+          if (showGhost) {
+            const placeholder =
+              renderConfig.stickyNotePlaceholder || "Add text";
+            const font = boundText
+              ? getFontString(boundText)
+              : getFontString({
+                  fontFamily: DEFAULT_FONT_FAMILY,
+                  fontSize: DEFAULT_FONT_SIZE,
+                });
+            context.save();
+            context.font = font;
+            context.textAlign = "left";
+            context.textBaseline = "top";
+            context.globalAlpha = 0.4;
+            context.fillStyle =
+              renderConfig.theme === THEME.DARK
+                ? applyDarkModeFilter(element.strokeColor)
+                : element.strokeColor;
+            // Slightly lower so this ghost sits behind the other placeholder
+            const ghostOffsetY = 3;
+            context.fillText(
+              placeholder,
+              STICKY_NOTE_PADDING,
+              STICKY_NOTE_PADDING + ghostOffsetY,
+            );
+            context.restore();
+          }
+        }
+        break;
       }
       rc.draw(shape);
       break;
@@ -910,7 +950,13 @@ export const renderElement = (
         context.translate(cx, cy);
         context.rotate(element.angle);
         context.translate(-shiftX, -shiftY);
-        drawElementOnCanvas(element, rc, context, renderConfig);
+        drawElementOnCanvas(
+          element,
+          rc,
+          context,
+          renderConfig,
+          allElementsMap,
+        );
         context.restore();
       } else {
         const elementWithCanvas = generateElementWithCanvas(
@@ -996,7 +1042,13 @@ export const renderElement = (
 
           tempCanvasContext.translate(-shiftX, -shiftY);
 
-          drawElementOnCanvas(element, tempRc, tempCanvasContext, renderConfig);
+          drawElementOnCanvas(
+            element,
+            tempRc,
+            tempCanvasContext,
+            renderConfig,
+            elementsMap,
+          );
 
           tempCanvasContext.translate(shiftX, shiftY);
 
@@ -1035,7 +1087,13 @@ export const renderElement = (
           }
 
           context.translate(-shiftX, -shiftY);
-          drawElementOnCanvas(element, rc, context, renderConfig);
+          drawElementOnCanvas(
+            element,
+            rc,
+            context,
+            renderConfig,
+            allElementsMap,
+          );
         }
 
         context.restore();

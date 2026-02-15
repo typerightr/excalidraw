@@ -846,6 +846,7 @@ const ExcalidrawWrapper = () => {
         onPointerUpdate={collabAPI?.onPointerUpdate}
         UIOptions={{
           canvasActions: {
+            clearCanvas: true,
             toggleTheme: true,
             export: {
               onExportToBackend,

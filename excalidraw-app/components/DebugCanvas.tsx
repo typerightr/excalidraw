@@ -357,7 +357,9 @@ const _debugRenderer = (
   );
 
   renderOrigin(context, appState.zoom.value);
-  renderBindings(context, elements, appState.zoom.value);
+  // Binding curves (red/green "infinity" at arrow connections) removed so they
+  // don't persist as unwanted debug visuals; re-enable via a dedicated option if needed.
+  // renderBindings(context, elements, appState.zoom.value);
 
   if (
     window.visualDebug?.currentFrame &&

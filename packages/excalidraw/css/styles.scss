@@ -687,6 +687,7 @@ body.excalidraw-cursor-resize * {
 
   .main-menu {
     z-index: var(--zIndex-ui-main-menu);
+    margin-inline-end: 24px;
   }
   .main-menu-trigger {
     @include filledButtonOnCanvas;

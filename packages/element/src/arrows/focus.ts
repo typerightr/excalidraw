@@ -54,6 +54,13 @@ export const isFocusPointVisible = (
     return false;
   }
 
+  // When connecting two shapes (2-point arrow with both ends bound), only the
+  // point handles are shown so we don't draw focus indicators and avoid
+  // the overlapping "infinity" double circle at each end.
+  if (arrow.startBinding && arrow.endBinding) {
+    return false;
+  }
+
   // Avoid showing the focus point indicator if the focus point is essentially
   // on top of the arrow point it belongs to itself, if not ignoring specifically
   if (!ignoreOverlap) {
