@@ -338,6 +338,10 @@ export const actionChangeStrokeColor = register<
           elements,
           appState,
           (el) => {
+            // Don't apply stroke color to text bound to a container (text stays independent, default black)
+            if (isTextElement(el) && el.containerId) {
+              return el;
+            }
             return hasStrokeColor(el.type)
               ? newElementWith(el, {
                   strokeColor: value.currentItemStrokeColor,

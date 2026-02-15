@@ -20,6 +20,7 @@ import {
 import {
   COLOR_PALETTE,
   CODES,
+  DEFAULT_BOUND_TEXT_STROKE_COLOR,
   DEFAULT_ELEMENT_PROPS,
   DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX,
   ROUGHNESS,
@@ -3144,9 +3145,10 @@ class App extends React.Component<AppProps, AppState> {
     const elements = this.scene.getElementsIncludingDeleted();
     const elementsMap = this.scene.getElementsMapIncludingDeleted();
 
-    if (!this.state.showWelcomeScreen && !elements.length) {
-      this.setState({ showWelcomeScreen: true });
-    }
+    // Welcome screen disabled for now — re-enable to show when canvas is empty
+    // if (!this.state.showWelcomeScreen && !elements.length) {
+    //   this.setState({ showWelcomeScreen: true });
+    // }
 
     const hasFollowedPersonLeft =
       prevState.userToFollow &&
@@ -5918,7 +5920,10 @@ class App extends React.Component<AppProps, AppState> {
           : parentCenterPosition
             ? parentCenterPosition.elementCenterY
             : sceneY,
-        strokeColor: this.state.currentItemStrokeColor,
+        strokeColor:
+          shouldBindToContainer && container
+            ? DEFAULT_BOUND_TEXT_STROKE_COLOR
+            : this.state.currentItemStrokeColor,
         backgroundColor: this.state.currentItemBackgroundColor,
         fillStyle: this.state.currentItemFillStyle,
         strokeWidth: this.state.currentItemStrokeWidth,
