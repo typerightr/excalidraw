@@ -2,6 +2,8 @@ import { getNonDeletedElements } from "@excalidraw/element";
 import { mutateElement } from "@excalidraw/element";
 import { newFrameElement } from "@excalidraw/element";
 import { isFrameLikeElement } from "@excalidraw/element";
+
+import { FRAME_STYLE } from "@excalidraw/common";
 import {
   addElementsToFrame,
   removeAllElementsFromFrame,
@@ -179,6 +181,7 @@ export const actionWrapSelectionInFrame = register({
     const [x1, y1, x2, y2] = getCommonBounds(selectedElements, elementsMap);
     const PADDING = 16;
     const frame = newFrameElement({
+      ...FRAME_STYLE,
       x: x1 - PADDING,
       y: y1 - PADDING,
       width: x2 - x1 + PADDING * 2,

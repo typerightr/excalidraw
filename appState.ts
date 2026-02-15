@@ -1,6 +1,7 @@
 import {
-  COLOR_PALETTE,
   ARROW_TYPE,
+  COLOR_PALETTE,
+  DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX,
   DEFAULT_ELEMENT_PROPS,
   DEFAULT_FONT_FAMILY,
   DEFAULT_FONT_SIZE,
@@ -37,6 +38,8 @@ export const getDefaultAppState = (): Omit<
     currentItemRoughness: DEFAULT_ELEMENT_PROPS.roughness,
     currentItemStartArrowhead: null,
     currentItemStrokeColor: DEFAULT_ELEMENT_PROPS.strokeColor,
+    lastStickyNoteBackgroundColor:
+      COLOR_PALETTE.yellow[DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX],
     currentItemRoundness: isTestEnv() ? "sharp" : "round",
     currentItemArrowType: ARROW_TYPE.round,
     currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
@@ -152,6 +155,11 @@ const APP_STATE_STORAGE_CONF = (<
   collaborators: { browser: false, export: false, server: false },
   currentChartType: { browser: true, export: false, server: false },
   currentItemBackgroundColor: { browser: true, export: false, server: false },
+  lastStickyNoteBackgroundColor: {
+    browser: true,
+    export: false,
+    server: false,
+  },
   currentItemEndArrowhead: { browser: true, export: false, server: false },
   currentItemFillStyle: { browser: true, export: false, server: false },
   currentItemFontFamily: { browser: true, export: false, server: false },

@@ -23,6 +23,7 @@ import { getBoundTextElement, getContainerElement } from "@excalidraw/element";
 import { getLineHeightInPx } from "@excalidraw/element";
 import {
   isArrowElement,
+  isFrameLikeElement,
   isIframeLikeElement,
   isInitializedImageElement,
   isTextElement,
@@ -716,6 +717,65 @@ export const renderSceneToSvg = (
   if (!svgRoot) {
     return;
   }
+
+  const FRAME_SHADOW_FILTER_ID = "frameShadow";
+
+  const ensureFrameShadowFilter = () => {
+    let defs = svgRoot.querySelector("defs");
+    if (!defs) {
+      defs = svgRoot.ownerDocument.createElementNS(SVG_NS, "defs");
+      svgRoot.insertBefore(defs, svgRoot.firstChild);
+    }
+    if (!svgRoot.querySelector(`#${FRAME_SHADOW_FILTER_ID}`)) {
+      const filter = svgRoot.ownerDocument.createElementNS(SVG_NS, "filter");
+      filter.setAttribute("id", FRAME_SHADOW_FILTER_ID);
+      const feDropShadow =
+        svgRoot.ownerDocument.createElementNS(SVG_NS, "feDropShadow");
+      feDropShadow.setAttribute("dx", String(FRAME_STYLE.shadowOffsetX));
+      feDropShadow.setAttribute("dy", String(FRAME_STYLE.shadowOffsetY));
+      feDropShadow.setAttribute(
+        "stdDeviation",
+        String(FRAME_STYLE.shadowBlur / 2),
+      );
+      feDropShadow.setAttribute("flood-color", "black");
+      feDropShadow.setAttribute("flood-opacity", "0.1");
+      filter.appendChild(feDropShadow);
+      defs.appendChild(filter);
+    }
+  };
+
+  // Render frame backgrounds first so they appear behind their contents
+  elements.forEach((element) => {
+    if (
+      !element.isDeleted &&
+      isFrameLikeElement(element) &&
+      element.backgroundColor !== "transparent" &&
+      renderConfig.frameRendering?.enabled
+    ) {
+      ensureFrameShadowFilter();
+
+      const [x1, y1, x2, y2] = getElementAbsoluteCoords(element, elementsMap);
+      const cx = (x2 - x1) / 2 - (element.x - x1);
+      const cy = (y2 - y1) / 2 - (element.y - y1);
+      const degree = (180 * element.angle) / Math.PI;
+      const offsetX = element.x + renderConfig.offsetX;
+      const offsetY = element.y + renderConfig.offsetY;
+
+      const rect = svgRoot.ownerDocument.createElementNS(SVG_NS, "rect");
+      rect.setAttribute(
+        "transform",
+        `translate(${offsetX} ${offsetY}) rotate(${degree} ${cx} ${cy})`,
+      );
+      rect.setAttribute("width", `${element.width}px`);
+      rect.setAttribute("height", `${element.height}px`);
+      rect.setAttribute("rx", FRAME_STYLE.radius.toString());
+      rect.setAttribute("ry", FRAME_STYLE.radius.toString());
+      rect.setAttribute("fill", element.backgroundColor);
+      rect.setAttribute("stroke", "none");
+      rect.setAttribute("filter", `url(#${FRAME_SHADOW_FILTER_ID})`);
+      svgRoot.appendChild(rect);
+    }
+  });
 
   // render elements
   elements

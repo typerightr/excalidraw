@@ -416,11 +416,21 @@ export const actionChangeBackgroundColor = register<
       );
     }
 
+    const hasStickyNote = selectedElements.some(
+      (el) =>
+        el.type === "rectangle" &&
+        (el as { customData?: { isStickyNote?: boolean } }).customData
+          ?.isStickyNote === true,
+    );
+
     return {
       elements: nextElements,
       appState: {
         ...appState,
         ...value,
+        ...(hasStickyNote && value.currentItemBackgroundColor
+          ? { lastStickyNoteBackgroundColor: value.currentItemBackgroundColor }
+          : {}),
       },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };

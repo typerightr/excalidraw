@@ -15,10 +15,11 @@ import {
 import {
   elementOverlapsWithFrame,
   getTargetFrame,
+  isFrameLikeElement,
   shouldApplyFrameClip,
 } from "@excalidraw/element";
 
-import { renderElement } from "@excalidraw/element";
+import { renderElement, renderFrameBackground } from "@excalidraw/element";
 
 import { getElementAbsoluteCoords } from "@excalidraw/element";
 
@@ -344,6 +345,17 @@ const _renderStaticScene = ({
   });
 
   const inFrameGroupsMap = new Map<string, boolean>();
+
+  // Draw frame backgrounds first so they appear behind their contents
+  visibleElements
+    .filter((el): el is NonDeletedExcalidrawElement => isFrameLikeElement(el))
+    .forEach((frame) => {
+      renderFrameBackground(
+        frame as ExcalidrawFrameLikeElement,
+        context,
+        appState,
+      );
+    });
 
   // Paint visible elements
   visibleElements
