@@ -5610,8 +5610,20 @@ class App extends React.Component<AppProps, AppState> {
           }
         }
       }
-      const elementWithHighestZIndex =
+      let elementWithHighestZIndex =
         allHitElements[allHitElements.length - 1];
+
+      // When the topmost hit is a frame, prefer an element inside that frame so
+      // shapes inside the frame can be selected instead of the frame.
+      if (isFrameLikeElement(elementWithHighestZIndex)) {
+        for (let i = allHitElements.length - 2; i >= 0; i--) {
+          const el = allHitElements[i];
+          if (el.frameId === elementWithHighestZIndex.id) {
+            elementWithHighestZIndex = el;
+            break;
+          }
+        }
+      }
 
       // If we're hitting element with highest z-index only on its bounding box
       // while also hitting other element figure, the latter should be considered.
@@ -8973,8 +8985,7 @@ class App extends React.Component<AppProps, AppState> {
       y: gridY,
       width: STICKY_NOTE_DEFAULT_WIDTH,
       height: STICKY_NOTE_DEFAULT_HEIGHT,
-      backgroundColor:
-        COLOR_PALETTE.yellow[DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX],
+      backgroundColor: this.state.lastStickyNoteBackgroundColor,
       fillStyle: "solid",
       strokeColor: this.state.currentItemStrokeColor,
       strokeWidth: 0,

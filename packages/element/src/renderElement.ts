@@ -791,6 +791,49 @@ export const renderSelectionElement = (
   context.restore();
 };
 
+/**
+ * Renders only the background fill of a frame. Called in a separate pass before
+ * other elements so the frame background appears behind its contents.
+ */
+export const renderFrameBackground = (
+  frame: ExcalidrawFrameLikeElement,
+  context: CanvasRenderingContext2D,
+  appState: StaticCanvasAppState | InteractiveCanvasAppState,
+) => {
+  if (
+    frame.backgroundColor === "transparent" ||
+    !appState.frameRendering?.enabled
+  ) {
+    return;
+  }
+  context.save();
+  context.translate(frame.x + appState.scrollX, frame.y + appState.scrollY);
+
+  const zoom = appState.zoom.value;
+  context.shadowColor = FRAME_STYLE.shadowColor;
+  context.shadowBlur = FRAME_STYLE.shadowBlur / zoom;
+  context.shadowOffsetX = FRAME_STYLE.shadowOffsetX / zoom;
+  context.shadowOffsetY = FRAME_STYLE.shadowOffsetY / zoom;
+
+  context.fillStyle = frame.backgroundColor;
+  if (FRAME_STYLE.radius && context.roundRect) {
+    context.beginPath();
+    context.roundRect(
+      0,
+      0,
+      frame.width,
+      frame.height,
+      FRAME_STYLE.radius / zoom,
+    );
+    context.fill();
+    context.closePath();
+  } else {
+    context.fillRect(0, 0, frame.width, frame.height);
+  }
+
+  context.restore();
+};
+
 export const renderElement = (
   element: NonDeletedExcalidrawElement,
   elementsMap: RenderableElementsMap,
@@ -822,7 +865,6 @@ export const renderElement = (
           element.x + appState.scrollX,
           element.y + appState.scrollY,
         );
-        context.fillStyle = "rgba(0, 0, 200, 0.04)";
 
         context.lineWidth = FRAME_STYLE.strokeWidth / appState.zoom.value;
         context.strokeStyle =

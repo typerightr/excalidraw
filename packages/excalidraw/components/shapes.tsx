@@ -12,6 +12,7 @@ import {
   ImageIcon,
   EraserIcon,
   StickyNoteIcon,
+  frameToolIcon,
 } from "./icons";
 
 import type { AppClassProperties } from "../types";
@@ -83,7 +84,13 @@ export const SHAPES = [
     numericKey: KEYS["8"],
     fillable: false,
   },
-
+  {
+    icon: frameToolIcon,
+    value: "frame",
+    key: KEYS.F,
+    numericKey: KEYS["9"],
+    fillable: false,
+  },
 ] as const;
 // {
 //   icon: ImageIcon,

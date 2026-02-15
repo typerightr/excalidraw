@@ -69,7 +69,6 @@ import { PropertiesPopover } from "./PropertiesPopover";
 import {
   EmbedIcon,
   extraToolsIcon,
-  frameToolIcon,
   mermaidLogoIcon,
   laserPointerToolIcon,
   MagicIcon,
@@ -1067,7 +1066,6 @@ export const ShapesSwitcher = ({
     },
   ] as const;
 
-  const frameToolSelected = activeTool.type === "frame";
   const laserToolSelected = activeTool.type === "laser";
   const lassoToolSelected =
     isFullStylesPanel &&
@@ -1176,7 +1174,6 @@ export const ShapesSwitcher = ({
         <DropdownMenu.Trigger
           className={clsx("App-toolbar__extra-tools-trigger", {
             "App-toolbar__extra-tools-trigger--selected":
-              frameToolSelected ||
               embeddableToolSelected ||
               lassoToolSelected ||
               // in collab we're already highlighting the laser button
@@ -1190,9 +1187,7 @@ export const ShapesSwitcher = ({
           }}
           title={t("toolBar.extraTools")}
         >
-          {frameToolSelected
-            ? frameToolIcon
-            : embeddableToolSelected
+          {embeddableToolSelected
             ? EmbedIcon
             : laserToolSelected && !app.props.isCollaborating
             ? laserPointerToolIcon
@@ -1205,15 +1200,6 @@ export const ShapesSwitcher = ({
           onSelect={() => setIsExtraToolsMenuOpen(false)}
           className="App-toolbar__extra-tools-dropdown"
         >
-          <DropdownMenu.Item
-            onSelect={() => app.setActiveTool({ type: "frame" })}
-            icon={frameToolIcon}
-            shortcut={KEYS.F.toLocaleUpperCase()}
-            data-testid="toolbar-frame"
-            selected={frameToolSelected}
-          >
-            {t("toolBar.frame")}
-          </DropdownMenu.Item>
           <DropdownMenu.Item
             onSelect={() => app.setActiveTool({ type: "embeddable" })}
             icon={EmbedIcon}

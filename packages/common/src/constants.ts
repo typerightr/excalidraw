@@ -195,19 +195,24 @@ export const THEME = {
 export const DARK_THEME_FILTER = "invert(93%) hue-rotate(180deg)";
 
 export const FRAME_STYLE = {
-  strokeColor: "#bbb" as ExcalidrawElement["strokeColor"],
+  strokeColor: "#d0d0d0" as ExcalidrawElement["strokeColor"],
   strokeWidth: 2 as ExcalidrawElement["strokeWidth"],
   strokeStyle: "solid" as ExcalidrawElement["strokeStyle"],
   fillStyle: "solid" as ExcalidrawElement["fillStyle"],
   roughness: 0 as ExcalidrawElement["roughness"],
   roundness: null as ExcalidrawElement["roundness"],
-  backgroundColor: "transparent" as ExcalidrawElement["backgroundColor"],
+  backgroundColor: "#ffffff" as ExcalidrawElement["backgroundColor"],
   radius: 8,
   nameOffsetY: 3,
   nameColorLightTheme: "#999999",
   nameColorDarkTheme: "#7a7a7a",
   nameFontSize: 14,
   nameLineHeight: 1.25,
+  /** Light drop shadow behind the frame */
+  shadowColor: "rgba(0, 0, 0, 0.1)",
+  shadowBlur: 12,
+  shadowOffsetX: 0,
+  shadowOffsetY: 2,
 };
 
 export const MIN_FONT_SIZE = 1;
