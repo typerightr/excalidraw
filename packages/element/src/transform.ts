@@ -1,6 +1,7 @@
 import { pointFrom, type LocalPoint } from "@excalidraw/math";
 
 import {
+  DEFAULT_BOUND_TEXT_STROKE_COLOR,
   DEFAULT_FONT_FAMILY,
   DEFAULT_FONT_SIZE,
   TEXT_ALIGN,
@@ -227,7 +228,7 @@ const bindTextToContainer = (
     verticalAlign: VERTICAL_ALIGN.MIDDLE,
     ...textProps,
     containerId: container.id,
-    strokeColor: textProps.strokeColor || container.strokeColor,
+    strokeColor: textProps.strokeColor ?? DEFAULT_BOUND_TEXT_STROKE_COLOR,
   });
 
   Object.assign(container, {

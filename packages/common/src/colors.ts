@@ -146,7 +146,7 @@ export const COLOR_PALETTE = {
   white: "#ffffff",
   // open-color from https://github.com/yeun/open-color/blob/master/open-color.js
   // corresponds to indexes [0,2,4,6,8] (weights: 50, 200, 400, 600, 800)
-  gray: ["#f8f9fa", "#e9ecef", "#ced4da", "#868e96", "#343a40"],
+  gray: ["#f8f9fa", "#e9ecef", "#ced4da", "#6C6866", "#343a40"],
   red: ["#fff5f5", "#ffc9c9", "#ff8787", "#fa5252", "#e03131"],
   pink: ["#fff0f6", "#fcc2d7", "#f783ac", "#e64980", "#c2255c"],
   grape: ["#f8f0fc", "#eebefa", "#da77f2", "#be4bdb", "#9c36b5"],

@@ -208,6 +208,8 @@ const _renderBindableBinding = (
   context.restore();
 };
 
+// Kept for optional re-enable of binding debug visuals (see commented call below)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const renderBindings = (
   context: CanvasRenderingContext2D,
   elements: readonly OrderedExcalidrawElement[],

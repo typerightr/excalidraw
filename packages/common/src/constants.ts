@@ -196,7 +196,7 @@ export const DARK_THEME_FILTER = "invert(93%) hue-rotate(180deg)";
 
 export const FRAME_STYLE = {
   strokeColor: "#d0d0d0" as ExcalidrawElement["strokeColor"],
-  strokeWidth: 2 as ExcalidrawElement["strokeWidth"],
+  strokeWidth: 4 as ExcalidrawElement["strokeWidth"],
   strokeStyle: "solid" as ExcalidrawElement["strokeStyle"],
   fillStyle: "solid" as ExcalidrawElement["fillStyle"],
   roughness: 0 as ExcalidrawElement["roughness"],
@@ -417,6 +417,9 @@ export const STROKE_WIDTH = {
   extraBold: 4,
 } as const;
 
+/** Default stroke (text) color for text bound to a container. Kept independent of container stroke. */
+export const DEFAULT_BOUND_TEXT_STROKE_COLOR = COLOR_PALETTE.black;
+
 export const DEFAULT_ELEMENT_PROPS: {
   strokeColor: ExcalidrawElement["strokeColor"];
   backgroundColor: ExcalidrawElement["backgroundColor"];
@@ -427,10 +430,10 @@ export const DEFAULT_ELEMENT_PROPS: {
   opacity: ExcalidrawElement["opacity"];
   locked: ExcalidrawElement["locked"];
 } = {
-  strokeColor: COLOR_PALETTE.black,
+  strokeColor: COLOR_PALETTE.gray[3],
   backgroundColor: COLOR_PALETTE.transparent,
   fillStyle: "solid",
-  strokeWidth: 2,
+  strokeWidth: 4,
   strokeStyle: "solid",
   roughness: ROUGHNESS.architect,
   opacity: 100,

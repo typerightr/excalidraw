@@ -26,7 +26,7 @@ const ExcalidrawScope = {
   Footer: ExcalidrawComp.Footer,
   useDevice: ExcalidrawComp.useDevice,
   MainMenu: ExcalidrawComp.MainMenu,
-  WelcomeScreen: ExcalidrawComp.WelcomeScreen,
+  // WelcomeScreen: ExcalidrawComp.WelcomeScreen,
   LiveCollaborationTrigger: ExcalidrawComp.LiveCollaborationTrigger,
   Sidebar: ExcalidrawComp.Sidebar,
   exportToCanvas: ExcalidrawComp.exportToCanvas,
