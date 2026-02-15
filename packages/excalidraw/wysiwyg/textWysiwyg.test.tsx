@@ -1030,8 +1030,8 @@ describe("textWysiwyg", () => {
       UI.resize(rectangle, "ne", [rectangle.x + 100, rectangle.y - 100]);
       expect([h.elements[1].x, h.elements[1].y]).toMatchInlineSnapshot(`
         [
-          85,
-          "5.00000",
+          30,
+          -10,
         ]
       `);
 
@@ -1051,7 +1051,7 @@ describe("textWysiwyg", () => {
       expect([h.elements[1].x, h.elements[1].y]).toMatchInlineSnapshot(`
         [
           15,
-          65,
+          -50,
         ]
       `);
 
@@ -1070,8 +1070,8 @@ describe("textWysiwyg", () => {
       UI.resize(rectangle, "ne", [rectangle.x + 100, rectangle.y - 100]);
       expect([h.elements[1].x, h.elements[1].y]).toMatchInlineSnapshot(`
         [
-          "375.00000",
-          "-535.00000",
+          45,
+          -50,
         ]
       `);
     });

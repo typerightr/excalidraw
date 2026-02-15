@@ -19,7 +19,7 @@
       "command": "yarn start",
       "runAtStart": true,
       "preview": {
-        "port": 3001
+        "port": 3002
       }
     },
     "install-deps": {

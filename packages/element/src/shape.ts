@@ -237,6 +237,13 @@ export const generateRoughOptions = (
         : isDarkMode
         ? applyDarkModeFilter(element.backgroundColor)
         : element.backgroundColor;
+      // Sticky note: no border (only when explicitly marked)
+      if (
+        element.type === "rectangle" &&
+        element.customData?.isStickyNote === true
+      ) {
+        options.stroke = "none";
+      }
       if (element.type === "ellipse") {
         options.curveFitting = 1;
       }

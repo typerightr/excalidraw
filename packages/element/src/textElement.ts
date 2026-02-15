@@ -3,6 +3,7 @@ import {
   ARROW_LABEL_WIDTH_FRACTION,
   BOUND_TEXT_PADDING,
   DEFAULT_FONT_SIZE,
+  STICKY_NOTE_PADDING,
   TEXT_ALIGN,
   VERTICAL_ALIGN,
   getFontString,
@@ -352,7 +353,15 @@ export const getContainerCenter = (
   return { x: midSegmentMidpoint[0], y: midSegmentMidpoint[1] };
 };
 
+const isStickyNoteContainer = (el: ExcalidrawElement) =>
+  el.type === "rectangle" && (el as { customData?: { isStickyNote?: boolean } }).customData?.isStickyNote === true;
+
 export const getContainerCoords = (container: NonDeletedExcalidrawElement) => {
+  if (container.type === "rectangle") {
+    const padding = isStickyNoteContainer(container) ? STICKY_NOTE_PADDING : BOUND_TEXT_PADDING;
+    return { x: container.x + padding, y: container.y + padding };
+  }
+
   let offsetX = BOUND_TEXT_PADDING;
   let offsetY = BOUND_TEXT_PADDING;
 
@@ -484,7 +493,8 @@ export const getBoundTextMaxWidth = (
     // Math.round(width / 2) - https://github.com/excalidraw/excalidraw/pull/6265
     return Math.round(width / 2) - BOUND_TEXT_PADDING * 2;
   }
-  return width - BOUND_TEXT_PADDING * 2;
+  const padding = isStickyNoteContainer(container) ? STICKY_NOTE_PADDING : BOUND_TEXT_PADDING;
+  return width - padding * 2;
 };
 
 export const getBoundTextMaxHeight = (
@@ -510,7 +520,8 @@ export const getBoundTextMaxHeight = (
     // Math.round(height / 2) - https://github.com/excalidraw/excalidraw/pull/6265
     return Math.round(height / 2) - BOUND_TEXT_PADDING * 2;
   }
-  return height - BOUND_TEXT_PADDING * 2;
+  const padding = isStickyNoteContainer(container) ? STICKY_NOTE_PADDING : BOUND_TEXT_PADDING;
+  return height - padding * 2;
 };
 
 /** retrieves text from text elements and concatenates to a single string */

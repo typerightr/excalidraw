@@ -399,7 +399,21 @@ const drawElementOnCanvas = (
       context.lineJoin = "round";
       context.lineCap = "round";
 
-      rc.draw(ShapeCache.generateElementShape(element, renderConfig));
+      const shape = ShapeCache.generateElementShape(element, renderConfig);
+      // Sticky note: no border, even drop shadow (only when explicitly marked)
+      const isStickyNote =
+        element.type === "rectangle" &&
+        element.customData?.isStickyNote === true;
+      if (isStickyNote) {
+        context.save();
+        context.shadowColor = "rgba(0, 0, 0, 0.18)";
+        context.shadowBlur = 8;
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        rc.draw(shape);
+        context.restore();
+      }
+      rc.draw(shape);
       break;
     }
     case "arrow":

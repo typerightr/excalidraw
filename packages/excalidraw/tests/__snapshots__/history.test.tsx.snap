@@ -6218,7 +6218,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#ffc9c9",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -6235,7 +6235,44 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id4",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id7",
+    "index": "a3",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 640725609,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 908564423,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 25,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -6283,9 +6320,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
     "initialized": true,
     "type": "selection",
   },
-  "previousSelectedElementIds": {
-    "id8": true,
-  },
+  "previousSelectedElementIds": {},
   "resizingElement": null,
   "scrollX": 0,
   "scrollY": 0,
@@ -6321,12 +6356,17 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -6340,8 +6380,8 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 3,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
@@ -6350,46 +6390,60 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
 exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] element 1 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffc9c9",
+  "autoResize": true,
+  "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 25,
   "id": "id3",
   "index": "a1",
-  "isDeleted": true,
+  "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
   "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
-  "version": 9,
+  "version": 2,
+  "verticalAlign": "middle",
   "width": 10,
-  "x": 20,
-  "y": 0,
+  "x": 15,
+  "y": 5,
 }
 `;
 
 exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] element 2 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffc9c9",
-  "boundElements": null,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id7",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id8",
+  "height": 35,
+  "id": "id4",
   "index": "a2",
-  "isDeleted": true,
+  "isDeleted": false,
   "link": null,
   "locked": false,
   "opacity": 100,
@@ -6400,16 +6454,55 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 10,
-  "x": 50,
-  "y": 50,
+  "version": 5,
+  "width": 20,
+  "x": 20,
+  "y": 0,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] number of elements 1`] = `3`;
+exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] element 3 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id4",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id7",
+  "index": "a3",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 25,
+  "y": 5,
+}
+`;
 
-exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] number of renders 1`] = `17`;
+exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] number of elements 1`] = `4`;
+
+exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] number of renders 1`] = `9`;
 
 exports[`history > multiplayer undo/redo > should iterate through the history when element changes relate only to remotely deleted elements > [end of test] redo stack 1`] = `[]`;
 
@@ -6472,7 +6565,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -6484,91 +6577,51 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {
+      "removed": {
         "id3": {
           "deleted": {
             "angle": 0,
+            "autoResize": true,
             "backgroundColor": "transparent",
             "boundElements": null,
+            "containerId": "id0",
             "customData": undefined,
             "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
             "frameId": null,
             "groupIds": [],
-            "height": 10,
+            "height": 25,
             "index": "a1",
-            "isDeleted": true,
+            "isDeleted": false,
+            "lineHeight": "1.25000",
             "link": null,
             "locked": false,
             "opacity": 100,
+            "originalText": "",
             "roughness": 1,
             "roundness": null,
             "strokeColor": "#1e1e1e",
             "strokeStyle": "solid",
             "strokeWidth": 2,
-            "type": "rectangle",
-            "version": 8,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
             "width": 10,
-            "x": 20,
-            "y": 0,
+            "x": 15,
+            "y": 5,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 1,
           },
         },
-      },
-    },
-    "id": "id18",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id3": {
-          "deleted": {
-            "backgroundColor": "#ffc9c9",
-            "version": 9,
-          },
-          "inserted": {
-            "backgroundColor": "transparent",
-            "version": 8,
-          },
-        },
-      },
-    },
-    "id": "id19",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id8": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {
-            "id3": true,
-          },
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id8": {
+        "id4": {
           "deleted": {
             "angle": 0,
-            "backgroundColor": "#ffc9c9",
+            "backgroundColor": "transparent",
             "boundElements": null,
             "customData": undefined,
             "fillStyle": "solid",
@@ -6576,7 +6629,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
             "groupIds": [],
             "height": 10,
             "index": "a2",
-            "isDeleted": true,
+            "isDeleted": false,
             "link": null,
             "locked": false,
             "opacity": 100,
@@ -6586,46 +6639,40 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
-            "x": 30,
-            "y": 30,
+            "x": 20,
+            "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
-    },
-    "id": "id20",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
       "updated": {
-        "id8": {
+        "id0": {
           "deleted": {
-            "version": 9,
-            "x": 50,
-            "y": 50,
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
           },
           "inserted": {
-            "version": 8,
-            "x": 30,
-            "y": 30,
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
           },
         },
       },
     },
-    "id": "id21",
+    "id": "id6",
   },
 ]
 `;
@@ -7635,7 +7682,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#ffc9c9",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -7652,7 +7699,44 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -7687,7 +7771,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "offsetTop": 0,
   "openDialog": null,
   "openMenu": null,
-  "openPopup": "elementBackground",
+  "openPopup": null,
   "openSidebar": null,
   "originSnapOffset": null,
   "pasteDialog": {
@@ -7735,16 +7819,21 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
 exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] element 0 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffec99",
-  "boundElements": null,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
-  "isDeleted": true,
+  "isDeleted": false,
   "link": null,
   "locked": false,
   "opacity": 100,
@@ -7755,16 +7844,55 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] number of elements 1`] = `1`;
+exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
+`;
 
-exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] number of renders 1`] = `9`;
+exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] number of elements 1`] = `2`;
+
+exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] number of renders 1`] = `6`;
 
 exports[`history > multiplayer undo/redo > should iterate through the history when when element change relates to remotely deleted element > [end of test] redo stack 1`] = `[]`;
 
@@ -7785,8 +7913,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {
+      "removed": {
         "id0": {
           "deleted": {
             "angle": 0,
@@ -7798,7 +7925,7 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
             "groupIds": [],
             "height": 10,
             "index": "a0",
-            "isDeleted": true,
+            "isDeleted": false,
             "link": null,
             "locked": false,
             "opacity": 100,
@@ -7808,44 +7935,20 @@ exports[`history > multiplayer undo/redo > should iterate through the history wh
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
             "x": 10,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
+      "updated": {},
     },
-    "id": "id7",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "#ffec99",
-            "version": 9,
-          },
-          "inserted": {
-            "backgroundColor": "transparent",
-            "version": 8,
-          },
-        },
-      },
-    },
-    "id": "id8",
+    "id": "id2",
   },
 ]
 `;
@@ -8591,11 +8694,48 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "currentItemStrokeStyle": "solid",
   "currentItemStrokeWidth": 2,
   "currentItemTextAlign": "left",
-  "cursorButton": "up",
+  "cursorButton": "down",
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id4",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id7",
+    "index": "a3",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 941653321,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1359939303,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 35,
+    "y": 35,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -8645,7 +8785,7 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   },
   "previousSelectedElementIds": {
     "id0": true,
-    "id3": true,
+    "id4": true,
   },
   "resizingElement": null,
   "scrollX": 0,
@@ -8653,11 +8793,38 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "searchMatches": null,
   "selectedElementIds": {
     "id0": true,
-    "id3": true,
   },
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
-  "selectionElement": null,
+  "selectionElement": {
+    "angle": 0,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "customData": undefined,
+    "fillStyle": "solid",
+    "frameId": null,
+    "groupIds": [],
+    "height": 0,
+    "id": "id14",
+    "index": null,
+    "isDeleted": false,
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "roughness": 1,
+    "roundness": null,
+    "seed": 927333447,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "type": "selection",
+    "updated": 1,
+    "version": 1,
+    "versionNonce": 0,
+    "width": 0,
+    "x": 20,
+    "y": 20,
+  },
   "shouldCacheIgnoreZoom": false,
   "showHyperlinkPopup": false,
   "showWelcomeScreen": true,
@@ -8685,12 +8852,17 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -8704,25 +8876,69 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 10,
-  "x": 90,
-  "y": 90,
+  "version": 5,
+  "width": 20,
+  "x": 10,
+  "y": 10,
 }
 `;
 
 exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 15,
+}
+`;
+
+exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id7",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id3",
-  "index": "a1",
+  "height": 35,
+  "id": "id4",
+  "index": "a2",
   "isDeleted": false,
   "link": null,
   "locked": false,
@@ -8734,46 +8950,55 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 10,
-  "x": 110,
-  "y": 110,
+  "version": 5,
+  "width": 20,
+  "x": 30,
+  "y": 30,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] element 2 1`] = `
+exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] element 3 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id4",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 100,
-  "id": "id13",
-  "index": "a2",
+  "height": 25,
+  "id": "id7",
+  "index": "a3",
   "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
-  "strokeColor": "#a5d8ff",
+  "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
   "version": 2,
-  "width": 100,
-  "x": 0,
-  "y": 0,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 35,
+  "y": 35,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] number of elements 1`] = `3`;
+exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] number of elements 1`] = `4`;
 
-exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] number of renders 1`] = `25`;
+exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] number of renders 1`] = `12`;
 
 exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress dragging > [end of test] redo stack 1`] = `[]`;
 
@@ -8816,27 +9041,27 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
             "x": 10,
             "y": 10,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id21",
+    "id": "id2",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -8852,6 +9077,46 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
         "id3": {
           "deleted": {
             "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id0",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a1",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 15,
+            "y": 15,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+        "id4": {
+          "deleted": {
+            "angle": 0,
             "backgroundColor": "transparent",
             "boundElements": null,
             "customData": undefined,
@@ -8859,7 +9124,7 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
             "frameId": null,
             "groupIds": [],
             "height": 10,
-            "index": "a1",
+            "index": "a2",
             "isDeleted": false,
             "link": null,
             "locked": false,
@@ -8870,20 +9135,40 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
             "x": 30,
             "y": 30,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
-      "updated": {},
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id22",
+    "id": "id6",
   },
   {
     "appState": AppStateDelta {
@@ -8895,24 +9180,85 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
         },
         "inserted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
       },
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {},
+      "removed": {
+        "id7": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id4",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a3",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 35,
+            "y": 35,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+      },
+      "updated": {
+        "id4": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id7",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id23",
+    "id": "id10",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -8925,46 +9271,7 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
       "removed": {},
       "updated": {},
     },
-    "id": "id24",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "version": 9,
-            "x": 90,
-            "y": 90,
-          },
-          "inserted": {
-            "version": 8,
-            "x": 10,
-            "y": 10,
-          },
-        },
-        "id3": {
-          "deleted": {
-            "version": 9,
-            "x": 110,
-            "y": 110,
-          },
-          "inserted": {
-            "version": 8,
-            "x": 30,
-            "y": 30,
-          },
-        },
-      },
-    },
-    "id": "id25",
+    "id": "id13",
   },
 ]
 `;
@@ -9282,11 +9589,48 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "currentItemStrokeStyle": "solid",
   "currentItemStrokeWidth": 2,
   "currentItemTextAlign": "left",
-  "cursorButton": "up",
+  "cursorButton": "down",
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 15,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -9344,7 +9688,35 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   },
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
-  "selectionElement": null,
+  "selectionElement": {
+    "angle": 0,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "customData": undefined,
+    "fillStyle": "solid",
+    "frameId": null,
+    "groupIds": [],
+    "height": 0,
+    "id": "id4",
+    "index": null,
+    "isDeleted": false,
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "roughness": 1,
+    "roundness": null,
+    "seed": 915032327,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "type": "selection",
+    "updated": 1,
+    "version": 1,
+    "versionNonce": 0,
+    "width": 0,
+    "x": 20,
+    "y": 20,
+  },
   "shouldCacheIgnoreZoom": false,
   "showHyperlinkPopup": false,
   "showWelcomeScreen": true,
@@ -9372,12 +9744,17 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 90,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -9391,8 +9768,8 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 90,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 10,
 }
@@ -9401,36 +9778,45 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
 exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress resizing > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 100,
-  "id": "id4",
+  "height": 25,
+  "id": "id3",
   "index": "a1",
   "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
-  "strokeColor": "#a5d8ff",
+  "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
   "version": 2,
-  "width": 100,
-  "x": 0,
-  "y": 0,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 15,
 }
 `;
 
 exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress resizing > [end of test] number of elements 1`] = `2`;
 
-exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress resizing > [end of test] number of renders 1`] = `13`;
+exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress resizing > [end of test] number of renders 1`] = `7`;
 
 exports[`history > multiplayer undo/redo > should not let remote changes to interfere with in progress resizing > [end of test] redo stack 1`] = `[]`;
 
@@ -9473,47 +9859,20 @@ exports[`history > multiplayer undo/redo > should not let remote changes to inte
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
             "x": 10,
             "y": 10,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id9",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "height": 90,
-            "version": 9,
-            "width": 90,
-          },
-          "inserted": {
-            "height": 10,
-            "version": 8,
-            "width": 10,
-          },
-        },
-      },
-    },
-    "id": "id10",
+    "id": "id2",
   },
 ]
 `;
@@ -9536,7 +9895,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#ffc9c9",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -9553,7 +9912,44 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -9588,7 +9984,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "offsetTop": 0,
   "openDialog": null,
   "openMenu": null,
-  "openPopup": "elementBackground",
+  "openPopup": null,
   "openSidebar": null,
   "originSnapOffset": null,
   "pasteDialog": {
@@ -9606,9 +10002,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id0": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -9639,12 +10033,17 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -9658,8 +10057,8 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 7,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
@@ -9668,66 +10067,47 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
 exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] element 1 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffc9c9",
+  "autoResize": true,
+  "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 100,
-  "id": "id5",
+  "height": 25,
+  "id": "id3",
   "index": "a1",
   "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
-  "strokeColor": "#a5d8ff",
+  "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
   "version": 2,
-  "width": 100,
-  "x": 0,
-  "y": 0,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
 }
 `;
 
 exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] number of elements 1`] = `2`;
 
-exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] number of renders 1`] = `10`;
+exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] number of renders 1`] = `6`;
 
-exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] redo stack 1`] = `
-[
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "transparent",
-            "version": 7,
-          },
-          "inserted": {
-            "backgroundColor": "#ffc9c9",
-            "version": 6,
-          },
-        },
-      },
-    },
-    "id": "id8",
-  },
-]
-`;
+exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] redo stack 1`] = `[]`;
 
 exports[`history > multiplayer undo/redo > should not override remote changes on different elements > [end of test] undo stack 1`] = `
 [
@@ -9804,7 +10184,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#ffc9c9",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -9821,7 +10201,44 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -9856,7 +10273,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "offsetTop": 0,
   "openDialog": null,
   "openMenu": null,
-  "openPopup": "elementBackground",
+  "openPopup": null,
   "openSidebar": null,
   "originSnapOffset": null,
   "pasteDialog": {
@@ -9874,9 +10291,7 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id0": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -9906,13 +10321,18 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
 exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] element 0 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffc9c9",
-  "boundElements": null,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -9921,21 +10341,60 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
   "opacity": 100,
   "roughness": 1,
   "roundness": null,
-  "strokeColor": "#ffec99",
+  "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 7,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] number of elements 1`] = `1`;
+exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
+`;
 
-exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] number of renders 1`] = `9`;
+exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] number of elements 1`] = `2`;
+
+exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] number of renders 1`] = `6`;
 
 exports[`history > multiplayer undo/redo > should not override remote changes on different properties > [end of test] redo stack 1`] = `[]`;
 
@@ -9992,31 +10451,6 @@ exports[`history > multiplayer undo/redo > should not override remote changes on
       "updated": {},
     },
     "id": "id2",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "#ffc9c9",
-            "version": 7,
-          },
-          "inserted": {
-            "backgroundColor": "transparent",
-            "version": 6,
-          },
-        },
-      },
-    },
-    "id": "id6",
   },
 ]
 `;
@@ -10676,7 +11110,44 @@ exports[`history > multiplayer undo/redo > should redistribute deltas when eleme
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -10759,13 +11230,18 @@ exports[`history > multiplayer undo/redo > should redistribute deltas when eleme
 exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] element 0 1`] = `
 {
   "angle": 0,
-  "backgroundColor": "#ffec99",
-  "boundElements": null,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -10779,16 +11255,55 @@ exports[`history > multiplayer undo/redo > should redistribute deltas when eleme
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 9,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] number of elements 1`] = `1`;
+exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
+`;
 
-exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] number of renders 1`] = `11`;
+exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] number of elements 1`] = `2`;
+
+exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] number of renders 1`] = `7`;
 
 exports[`history > multiplayer undo/redo > should redistribute deltas when element gets removed locally but is restored remotely > [end of test] redo stack 1`] = `[]`;
 
@@ -10813,7 +11328,7 @@ exports[`history > multiplayer undo/redo > should redistribute deltas when eleme
         "id0": {
           "deleted": {
             "angle": 0,
-            "backgroundColor": "#ffec99",
+            "backgroundColor": "transparent",
             "boundElements": null,
             "customData": undefined,
             "fillStyle": "solid",
@@ -10831,51 +11346,20 @@ exports[`history > multiplayer undo/redo > should redistribute deltas when eleme
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 8,
+            "version": 3,
             "width": 10,
             "x": 10,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 7,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id7",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {},
-        },
-        "inserted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "isDeleted": false,
-            "version": 9,
-          },
-          "inserted": {
-            "isDeleted": false,
-            "version": 8,
-          },
-        },
-      },
-    },
-    "id": "id8",
+    "id": "id2",
   },
 ]
 `;
@@ -11343,7 +11827,7 @@ exports[`history > multiplayer undo/redo > should update history entries after r
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#a5d8ff",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -11360,7 +11844,44 @@ exports[`history > multiplayer undo/redo > should update history entries after r
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -11395,7 +11916,7 @@ exports[`history > multiplayer undo/redo > should update history entries after r
   "offsetTop": 0,
   "openDialog": null,
   "openMenu": null,
-  "openPopup": "elementBackground",
+  "openPopup": null,
   "openSidebar": null,
   "originSnapOffset": null,
   "pasteDialog": {
@@ -11413,9 +11934,7 @@ exports[`history > multiplayer undo/redo > should update history entries after r
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id0": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -11446,12 +11965,17 @@ exports[`history > multiplayer undo/redo > should update history entries after r
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -11465,71 +11989,57 @@ exports[`history > multiplayer undo/redo > should update history entries after r
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 13,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] number of elements 1`] = `1`;
-
-exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] number of renders 1`] = `15`;
-
-exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] redo stack 1`] = `
-[
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "#d0bfff",
-            "version": 12,
-          },
-          "inserted": {
-            "backgroundColor": "#ffec99",
-            "version": 11,
-          },
-        },
-      },
-    },
-    "id": "id11",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "transparent",
-            "version": 13,
-          },
-          "inserted": {
-            "backgroundColor": "#d0bfff",
-            "version": 12,
-          },
-        },
-      },
-    },
-    "id": "id12",
-  },
-]
+exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
 `;
+
+exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] number of elements 1`] = `2`;
+
+exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] number of renders 1`] = `6`;
+
+exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] redo stack 1`] = `[]`;
 
 exports[`history > multiplayer undo/redo > should update history entries after remote changes on the same properties > [end of test] undo stack 1`] = `
 [
@@ -11623,7 +12133,44 @@ exports[`history > singleplayer undo/redo > remounting undo/redo buttons should 
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id1",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id4",
+    "index": "a2",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 400692809,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 23633383,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 5,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -11737,15 +12284,20 @@ exports[`history > singleplayer undo/redo > remounting undo/redo buttons should 
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id4",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id1",
   "index": "a1",
-  "isDeleted": true,
+  "isDeleted": false,
   "link": null,
   "locked": false,
   "opacity": 100,
@@ -11756,40 +12308,78 @@ exports[`history > singleplayer undo/redo > remounting undo/redo buttons should 
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 4,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 0,
   "y": 0,
 }
 `;
 
-exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] number of elements 1`] = `2`;
+exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id1",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id4",
+  "index": "a2",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 5,
+  "y": 5,
+}
+`;
 
-exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] number of renders 1`] = `11`;
+exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] number of elements 1`] = `3`;
 
-exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] redo stack 1`] = `
+exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] number of renders 1`] = `6`;
+
+exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] redo stack 1`] = `[]`;
+
+exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] undo stack 1`] = `
 [
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
-          "selectedElementIds": {},
-        },
-        "inserted": {
           "selectedElementIds": {
             "id1": true,
           },
         },
+        "inserted": {
+          "selectedElementIds": {},
+        },
       },
     },
     "elements": {
-      "added": {
+      "added": {},
+      "removed": {
         "id1": {
           "deleted": {
-            "isDeleted": true,
-            "version": 4,
-          },
-          "inserted": {
             "angle": 0,
             "backgroundColor": "transparent",
             "boundElements": null,
@@ -11814,17 +12404,18 @@ exports[`history > singleplayer undo/redo > remounting undo/redo buttons should 
             "x": 0,
             "y": 0,
           },
+          "inserted": {
+            "isDeleted": true,
+            "version": 2,
+          },
         },
       },
-      "removed": {},
       "updated": {},
     },
-    "id": "id4",
+    "id": "id3",
   },
 ]
 `;
-
-exports[`history > singleplayer undo/redo > remounting undo/redo buttons should initialize undo/redo state correctly > [end of test] undo stack 1`] = `[]`;
 
 exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] appState 1`] = `
 {
@@ -11861,7 +12452,44 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -11914,9 +12542,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id4": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -11947,44 +12573,19 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
-  "isDeleted": true,
-  "link": null,
-  "locked": false,
-  "opacity": 100,
-  "roughness": 1,
-  "roundness": null,
-  "strokeColor": "#1e1e1e",
-  "strokeStyle": "solid",
-  "strokeWidth": 2,
-  "type": "rectangle",
-  "updated": 1,
-  "version": 4,
-  "width": 10,
-  "x": 10,
-  "y": 0,
-}
-`;
-
-exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] element 1 1`] = `
-{
-  "angle": 0,
-  "backgroundColor": "transparent",
-  "boundElements": null,
-  "customData": undefined,
-  "fillStyle": "solid",
-  "frameId": null,
-  "groupIds": [],
-  "height": 10,
-  "id": "id4",
-  "index": "a1",
   "isDeleted": false,
   "link": null,
   "locked": false,
@@ -11996,16 +12597,55 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 3,
-  "width": 10,
-  "x": 20,
+  "version": 5,
+  "width": 20,
+  "x": 10,
   "y": 0,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
 }
 `;
 
 exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] number of elements 1`] = `2`;
 
-exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] number of renders 1`] = `8`;
+exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] number of renders 1`] = `6`;
 
 exports[`history > singleplayer undo/redo > should clear the redo stack on elements change > [end of test] redo stack 1`] = `[]`;
 
@@ -12016,7 +12656,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id4": true,
+            "id0": true,
           },
         },
         "inserted": {
@@ -12027,7 +12667,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
     "elements": {
       "added": {},
       "removed": {
-        "id4": {
+        "id0": {
           "deleted": {
             "angle": 0,
             "backgroundColor": "transparent",
@@ -12037,7 +12677,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
             "frameId": null,
             "groupIds": [],
             "height": 10,
-            "index": "a1",
+            "index": "a0",
             "isDeleted": false,
             "link": null,
             "locked": false,
@@ -12050,7 +12690,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
             "type": "rectangle",
             "version": 3,
             "width": 10,
-            "x": 20,
+            "x": 10,
             "y": 0,
           },
           "inserted": {
@@ -12061,7 +12701,7 @@ exports[`history > singleplayer undo/redo > should clear the redo stack on eleme
       },
       "updated": {},
     },
-    "id": "id6",
+    "id": "id2",
   },
 ]
 `;
@@ -12093,7 +12733,7 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
   "currentItemRoughness": 1,
   "currentItemRoundness": "sharp",
   "currentItemStartArrowhead": null,
-  "currentItemStrokeColor": "#e03131",
+  "currentItemStrokeColor": "#1e1e1e",
   "currentItemStrokeStyle": "solid",
   "currentItemStrokeWidth": 2,
   "currentItemTextAlign": "left",
@@ -12185,12 +12825,17 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -12204,8 +12849,8 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 3,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": -10,
   "y": -10,
 }
@@ -12214,50 +12859,39 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
 exports[`history > singleplayer undo/redo > should create entry when selecting freedraw > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id5",
+  "height": 25,
+  "id": "id3",
   "index": "a1",
-  "isDeleted": true,
+  "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
-  "points": [
-    [
-      0,
-      0,
-    ],
-    [
-      50,
-      10,
-    ],
-    [
-      50,
-      10,
-    ],
-  ],
-  "pressures": [
-    0,
-    0,
-    0,
-  ],
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
-  "simulatePressure": false,
   "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "freedraw",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
-  "version": 5,
-  "width": 50,
-  "x": 40,
-  "y": -20,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": -5,
+  "y": -5,
 }
 `;
 
@@ -12271,7 +12905,7 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
   "frameId": null,
   "groupIds": [],
   "height": 10,
-  "id": "id9",
+  "id": "id6",
   "index": "a2",
   "isDeleted": false,
   "link": null,
@@ -12299,21 +12933,21 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
   "roughness": 1,
   "roundness": null,
   "simulatePressure": false,
-  "strokeColor": "#e03131",
+  "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
   "type": "freedraw",
   "updated": 1,
   "version": 4,
   "width": 50,
-  "x": 130,
-  "y": -30,
+  "x": 40,
+  "y": -20,
 }
 `;
 
 exports[`history > singleplayer undo/redo > should create entry when selecting freedraw > [end of test] number of elements 1`] = `3`;
 
-exports[`history > singleplayer undo/redo > should create entry when selecting freedraw > [end of test] number of renders 1`] = `12`;
+exports[`history > singleplayer undo/redo > should create entry when selecting freedraw > [end of test] number of renders 1`] = `8`;
 
 exports[`history > singleplayer undo/redo > should create entry when selecting freedraw > [end of test] redo stack 1`] = `[]`;
 
@@ -12386,10 +13020,71 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {},
+      "removed": {
+        "id3": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id0",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a1",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": -5,
+            "y": -5,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+      },
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id4",
+    "id": "id5",
   },
   {
     "appState": AppStateDelta {
@@ -12401,7 +13096,7 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
     "elements": {
       "added": {},
       "removed": {
-        "id9": {
+        "id6": {
           "deleted": {
             "angle": 0,
             "backgroundColor": "transparent",
@@ -12438,14 +13133,14 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
             "roughness": 1,
             "roundness": null,
             "simulatePressure": false,
-            "strokeColor": "#e03131",
+            "strokeColor": "#1e1e1e",
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "freedraw",
             "version": 4,
             "width": 50,
-            "x": 130,
-            "y": -30,
+            "x": 40,
+            "y": -20,
           },
           "inserted": {
             "isDeleted": true,
@@ -12455,7 +13150,7 @@ exports[`history > singleplayer undo/redo > should create entry when selecting f
       },
       "updated": {},
     },
-    "id": "id11",
+    "id": "id8",
   },
 ]
 `;
@@ -13771,7 +14466,44 @@ exports[`history > singleplayer undo/redo > should disable undo/redo buttons whe
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id1",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id4",
+    "index": "a2",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 400692809,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 23633383,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 5,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -13824,9 +14556,7 @@ exports[`history > singleplayer undo/redo > should disable undo/redo buttons whe
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id1": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -13887,12 +14617,17 @@ exports[`history > singleplayer undo/redo > should disable undo/redo buttons whe
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id4",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id1",
   "index": "a1",
   "isDeleted": false,
@@ -13907,15 +14642,54 @@ exports[`history > singleplayer undo/redo > should disable undo/redo buttons whe
   "type": "rectangle",
   "updated": 1,
   "version": 5,
-  "width": 10,
+  "width": 20,
   "x": 0,
   "y": 0,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] number of elements 1`] = `2`;
+exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id1",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id4",
+  "index": "a2",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 5,
+  "y": 5,
+}
+`;
 
-exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] number of renders 1`] = `7`;
+exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] number of elements 1`] = `3`;
+
+exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] number of renders 1`] = `6`;
 
 exports[`history > singleplayer undo/redo > should disable undo/redo buttons when stacks empty > [end of test] redo stack 1`] = `[]`;
 
@@ -13958,20 +14732,20 @@ exports[`history > singleplayer undo/redo > should disable undo/redo buttons whe
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 5,
+            "version": 3,
             "width": 10,
             "x": 0,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 4,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id5",
+    "id": "id3",
   },
 ]
 `;
@@ -14011,7 +14785,44 @@ exports[`history > singleplayer undo/redo > should end up with no history entry 
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id1",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id4",
+    "index": "a2",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 1604849351,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 493213705,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 5,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -14064,9 +14875,7 @@ exports[`history > singleplayer undo/redo > should end up with no history entry 
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id1": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -14127,12 +14936,17 @@ exports[`history > singleplayer undo/redo > should end up with no history entry 
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id4",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id1",
   "index": "a1",
   "isDeleted": false,
@@ -14147,15 +14961,54 @@ exports[`history > singleplayer undo/redo > should end up with no history entry 
   "type": "rectangle",
   "updated": 1,
   "version": 5,
-  "width": 10,
+  "width": 20,
   "x": 0,
   "y": 0,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] number of elements 1`] = `2`;
+exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id1",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id4",
+  "index": "a2",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 5,
+  "y": 5,
+}
+`;
 
-exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] number of renders 1`] = `9`;
+exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] number of elements 1`] = `3`;
+
+exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] number of renders 1`] = `7`;
 
 exports[`history > singleplayer undo/redo > should end up with no history entry after initializing scene > [end of test] redo stack 1`] = `[]`;
 
@@ -14198,20 +15051,20 @@ exports[`history > singleplayer undo/redo > should end up with no history entry 
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 5,
+            "version": 3,
             "width": 10,
             "x": 0,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 4,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id5",
+    "id": "id3",
   },
 ]
 `;
@@ -14251,257 +15104,44 @@ exports[`history > singleplayer undo/redo > should iterate through the history w
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
-  "elementsToHighlight": null,
-  "errorMessage": null,
-  "exportBackground": true,
-  "exportEmbedScene": false,
-  "exportScale": 1,
-  "exportWithDarkMode": false,
-  "fileHandle": null,
-  "followedBy": Set {},
-  "frameRendering": {
-    "clip": true,
-    "enabled": true,
-    "name": true,
-    "outline": true,
-  },
-  "frameToHighlight": null,
-  "gridModeEnabled": false,
-  "gridSize": 20,
-  "gridStep": 5,
-  "height": 0,
-  "hoveredElementIds": {},
-  "isBindingEnabled": true,
-  "isCropping": false,
-  "isLoading": false,
-  "isResizing": false,
-  "isRotating": false,
-  "lastPointerDownWith": "mouse",
-  "lockedMultiSelections": {},
-  "multiElement": null,
-  "newElement": null,
-  "objectsSnapModeEnabled": false,
-  "offsetLeft": 0,
-  "offsetTop": 0,
-  "openDialog": null,
-  "openMenu": null,
-  "openPopup": null,
-  "openSidebar": null,
-  "originSnapOffset": null,
-  "pasteDialog": {
-    "data": null,
-    "shown": false,
-  },
-  "penDetected": false,
-  "penMode": false,
-  "preferredSelectionTool": {
-    "initialized": true,
-    "type": "selection",
-  },
-  "previousSelectedElementIds": {
-    "id0": true,
-  },
-  "resizingElement": null,
-  "scrollX": 0,
-  "scrollY": 0,
-  "searchMatches": null,
-  "selectedElementIds": {},
-  "selectedElementsAreBeingDragged": false,
-  "selectedGroupIds": {},
-  "selectionElement": null,
-  "shouldCacheIgnoreZoom": false,
-  "showHyperlinkPopup": false,
-  "showWelcomeScreen": true,
-  "snapLines": [],
-  "startBoundElement": null,
-  "stats": {
-    "open": false,
-    "panels": 3,
-  },
-  "suggestedBinding": null,
-  "theme": "light",
-  "toast": null,
-  "userToFollow": null,
-  "viewBackgroundColor": "#ffffff",
-  "viewModeEnabled": false,
-  "width": 0,
-  "zenModeEnabled": false,
-  "zoom": {
-    "value": 1,
-  },
-}
-`;
-
-exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] element 0 1`] = `
-{
-  "angle": 0,
-  "backgroundColor": "transparent",
-  "boundElements": null,
-  "customData": undefined,
-  "fillStyle": "solid",
-  "frameId": null,
-  "groupIds": [],
-  "height": 10,
-  "id": "id0",
-  "index": "a0",
-  "isDeleted": true,
-  "link": null,
-  "locked": false,
-  "opacity": 100,
-  "roughness": 1,
-  "roundness": null,
-  "strokeColor": "#1e1e1e",
-  "strokeStyle": "solid",
-  "strokeWidth": 2,
-  "type": "rectangle",
-  "updated": 1,
-  "version": 4,
-  "width": 10,
-  "x": 10,
-  "y": 0,
-}
-`;
-
-exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] number of elements 1`] = `1`;
-
-exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] number of renders 1`] = `13`;
-
-exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] redo stack 1`] = `
-[
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {},
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id13",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {},
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id14",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {},
-        },
-        "inserted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-      },
-    },
-    "elements": {
-      "added": {
-        "id0": {
-          "deleted": {
-            "isDeleted": true,
-            "version": 4,
-          },
-          "inserted": {
-            "angle": 0,
-            "backgroundColor": "transparent",
-            "boundElements": null,
-            "customData": undefined,
-            "fillStyle": "solid",
-            "frameId": null,
-            "groupIds": [],
-            "height": 10,
-            "index": "a0",
-            "isDeleted": false,
-            "link": null,
-            "locked": false,
-            "opacity": 100,
-            "roughness": 1,
-            "roundness": null,
-            "strokeColor": "#1e1e1e",
-            "strokeStyle": "solid",
-            "strokeWidth": 2,
-            "type": "rectangle",
-            "version": 3,
-            "width": 10,
-            "x": 10,
-            "y": 0,
-          },
-        },
-      },
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id15",
-  },
-]
-`;
-
-exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] undo stack 1`] = `[]`;
-
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] appState 1`] = `
-{
-  "activeEmbeddable": null,
-  "activeLockedId": null,
-  "activeTool": {
-    "customType": null,
-    "fromSelection": false,
-    "lastActiveTool": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
     "locked": false,
-    "type": "selection",
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
   },
-  "bindMode": "orbit",
-  "collaborators": Map {},
-  "contextMenu": null,
-  "croppingElementId": null,
-  "currentChartType": "bar",
-  "currentHoveredFontFamily": null,
-  "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "transparent",
-  "currentItemEndArrowhead": "arrow",
-  "currentItemFillStyle": "solid",
-  "currentItemFontFamily": 5,
-  "currentItemFontSize": 20,
-  "currentItemOpacity": 100,
-  "currentItemRoughness": 1,
-  "currentItemRoundness": "sharp",
-  "currentItemStartArrowhead": null,
-  "currentItemStrokeColor": "#1e1e1e",
-  "currentItemStrokeStyle": "solid",
-  "currentItemStrokeWidth": 2,
-  "currentItemTextAlign": "left",
-  "cursorButton": "up",
-  "defaultSidebarDockedPreference": false,
-  "editingFrame": null,
-  "editingGroupId": null,
-  "editingTextElement": null,
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -14554,9 +15194,7 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id3": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -14583,16 +15221,21 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
 }
 `;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 0 1`] = `
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] element 0 1`] = `
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -14606,50 +15249,59 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 3,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 1 1`] = `
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 25,
   "id": "id3",
   "index": "a1",
   "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
   "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
-  "version": 5,
+  "version": 2,
+  "verticalAlign": "middle",
   "width": 10,
-  "x": 20,
-  "y": 0,
+  "x": 15,
+  "y": 5,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] number of elements 1`] = `2`;
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] number of elements 1`] = `2`;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] number of renders 1`] = `12`;
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] number of renders 1`] = `7`;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] redo stack 1`] = `[]`;
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] redo stack 1`] = `[]`;
 
-exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] undo stack 1`] = `
+exports[`history > singleplayer undo/redo > should iterate through the history when selection changes do not produce visible change > [end of test] undo stack 1`] = `
 [
   {
     "appState": AppStateDelta {
@@ -14718,11 +15370,383 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {},
+      "removed": {
+        "id3": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id0",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a1",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 15,
+            "y": 5,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+      },
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id9",
+    "id": "id6",
   },
+]
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] appState 1`] = `
+{
+  "activeEmbeddable": null,
+  "activeLockedId": null,
+  "activeTool": {
+    "customType": null,
+    "fromSelection": false,
+    "lastActiveTool": null,
+    "locked": false,
+    "type": "selection",
+  },
+  "bindMode": "orbit",
+  "collaborators": Map {},
+  "contextMenu": null,
+  "croppingElementId": null,
+  "currentChartType": "bar",
+  "currentHoveredFontFamily": null,
+  "currentItemArrowType": "round",
+  "currentItemBackgroundColor": "transparent",
+  "currentItemEndArrowhead": "arrow",
+  "currentItemFillStyle": "solid",
+  "currentItemFontFamily": 5,
+  "currentItemFontSize": 20,
+  "currentItemOpacity": 100,
+  "currentItemRoughness": 1,
+  "currentItemRoundness": "sharp",
+  "currentItemStartArrowhead": null,
+  "currentItemStrokeColor": "#1e1e1e",
+  "currentItemStrokeStyle": "solid",
+  "currentItemStrokeWidth": 2,
+  "currentItemTextAlign": "left",
+  "cursorButton": "up",
+  "defaultSidebarDockedPreference": false,
+  "editingFrame": null,
+  "editingGroupId": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id4",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id7",
+    "index": "a3",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 640725609,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 908564423,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 25,
+    "y": 5,
+  },
+  "elementsToHighlight": null,
+  "errorMessage": null,
+  "exportBackground": true,
+  "exportEmbedScene": false,
+  "exportScale": 1,
+  "exportWithDarkMode": false,
+  "fileHandle": null,
+  "followedBy": Set {},
+  "frameRendering": {
+    "clip": true,
+    "enabled": true,
+    "name": true,
+    "outline": true,
+  },
+  "frameToHighlight": null,
+  "gridModeEnabled": false,
+  "gridSize": 20,
+  "gridStep": 5,
+  "height": 0,
+  "hoveredElementIds": {},
+  "isBindingEnabled": true,
+  "isCropping": false,
+  "isLoading": false,
+  "isResizing": false,
+  "isRotating": false,
+  "lastPointerDownWith": "mouse",
+  "lockedMultiSelections": {},
+  "multiElement": null,
+  "newElement": null,
+  "objectsSnapModeEnabled": false,
+  "offsetLeft": 0,
+  "offsetTop": 0,
+  "openDialog": null,
+  "openMenu": null,
+  "openPopup": null,
+  "openSidebar": null,
+  "originSnapOffset": null,
+  "pasteDialog": {
+    "data": null,
+    "shown": false,
+  },
+  "penDetected": false,
+  "penMode": false,
+  "preferredSelectionTool": {
+    "initialized": true,
+    "type": "selection",
+  },
+  "previousSelectedElementIds": {},
+  "resizingElement": null,
+  "scrollX": 0,
+  "scrollY": 0,
+  "searchMatches": null,
+  "selectedElementIds": {},
+  "selectedElementsAreBeingDragged": false,
+  "selectedGroupIds": {},
+  "selectionElement": null,
+  "shouldCacheIgnoreZoom": false,
+  "showHyperlinkPopup": false,
+  "showWelcomeScreen": true,
+  "snapLines": [],
+  "startBoundElement": null,
+  "stats": {
+    "open": false,
+    "panels": 3,
+  },
+  "suggestedBinding": null,
+  "theme": "light",
+  "toast": null,
+  "userToFollow": null,
+  "viewBackgroundColor": "#ffffff",
+  "viewModeEnabled": false,
+  "width": 0,
+  "zenModeEnabled": false,
+  "zoom": {
+    "value": 1,
+  },
+}
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 0 1`] = `
+{
+  "angle": 0,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
+  "customData": undefined,
+  "fillStyle": "solid",
+  "frameId": null,
+  "groupIds": [],
+  "height": 35,
+  "id": "id0",
+  "index": "a0",
+  "isDeleted": false,
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "type": "rectangle",
+  "updated": 1,
+  "version": 5,
+  "width": 20,
+  "x": 10,
+  "y": 0,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id7",
+      "type": "text",
+    },
+  ],
+  "customData": undefined,
+  "fillStyle": "solid",
+  "frameId": null,
+  "groupIds": [],
+  "height": 35,
+  "id": "id4",
+  "index": "a2",
+  "isDeleted": false,
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "type": "rectangle",
+  "updated": 1,
+  "version": 5,
+  "width": 20,
+  "x": 20,
+  "y": 0,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] element 3 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id4",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id7",
+  "index": "a3",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 25,
+  "y": 5,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] number of elements 1`] = `4`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] number of renders 1`] = `9`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] redo stack 1`] = `[]`;
+
+exports[`history > singleplayer undo/redo > should not clear the redo stack on standalone appstate change > [end of test] undo stack 1`] = `
+[
   {
     "appState": AppStateDelta {
       "delta": Delta {
@@ -14738,17 +15762,49 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
     },
     "elements": {
       "added": {},
-      "removed": {},
+      "removed": {
+        "id0": {
+          "deleted": {
+            "angle": 0,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "customData": undefined,
+            "fillStyle": "solid",
+            "frameId": null,
+            "groupIds": [],
+            "height": 10,
+            "index": "a0",
+            "isDeleted": false,
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "type": "rectangle",
+            "version": 3,
+            "width": 10,
+            "x": 10,
+            "y": 0,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 2,
+          },
+        },
+      },
       "updated": {},
     },
-    "id": "id12",
+    "id": "id2",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -14764,6 +15820,46 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
         "id3": {
           "deleted": {
             "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id0",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a1",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 15,
+            "y": 5,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+        "id4": {
+          "deleted": {
+            "angle": 0,
             "backgroundColor": "transparent",
             "boundElements": null,
             "customData": undefined,
@@ -14771,7 +15867,7 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
             "frameId": null,
             "groupIds": [],
             "height": 10,
-            "index": "a1",
+            "index": "a2",
             "isDeleted": false,
             "link": null,
             "locked": false,
@@ -14782,20 +15878,40 @@ exports[`history > singleplayer undo/redo > should not clear the redo stack on s
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 5,
+            "version": 3,
             "width": 10,
             "x": 20,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 4,
+            "version": 2,
           },
         },
       },
-      "updated": {},
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id13",
+    "id": "id6",
   },
 ]
 `;
@@ -15700,7 +16816,7 @@ exports[`history > singleplayer undo/redo > should not override appstate changes
   "currentChartType": "bar",
   "currentHoveredFontFamily": null,
   "currentItemArrowType": "round",
-  "currentItemBackgroundColor": "#a5d8ff",
+  "currentItemBackgroundColor": "transparent",
   "currentItemEndArrowhead": "arrow",
   "currentItemFillStyle": "solid",
   "currentItemFontFamily": 5,
@@ -15717,7 +16833,44 @@ exports[`history > singleplayer undo/redo > should not override appstate changes
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id0",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id3",
+    "index": "a1",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 238820263,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1505387817,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 15,
+    "y": 5,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -15765,16 +16918,12 @@ exports[`history > singleplayer undo/redo > should not override appstate changes
     "initialized": true,
     "type": "selection",
   },
-  "previousSelectedElementIds": {
-    "id0": true,
-  },
+  "previousSelectedElementIds": {},
   "resizingElement": null,
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id0": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -15805,12 +16954,17 @@ exports[`history > singleplayer undo/redo > should not override appstate changes
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -15824,91 +16978,57 @@ exports[`history > singleplayer undo/redo > should not override appstate changes
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 11,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] number of elements 1`] = `1`;
-
-exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] number of renders 1`] = `15`;
-
-exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] redo stack 1`] = `
-[
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "#ffc9c9",
-            "version": 10,
-          },
-          "inserted": {
-            "backgroundColor": "#a5d8ff",
-            "version": 9,
-          },
-        },
-      },
-    },
-    "id": "id14",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {
-        "id0": {
-          "deleted": {
-            "backgroundColor": "transparent",
-            "version": 11,
-          },
-          "inserted": {
-            "backgroundColor": "#ffc9c9",
-            "version": 10,
-          },
-        },
-      },
-    },
-    "id": "id15",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {},
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id16",
-  },
-]
+exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] element 1 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
 `;
+
+exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] number of elements 1`] = `2`;
+
+exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] number of renders 1`] = `6`;
+
+exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] redo stack 1`] = `[]`;
 
 exports[`history > singleplayer undo/redo > should not override appstate changes when redo stack is not cleared > [end of test] undo stack 1`] = `
 [
@@ -19739,7 +20859,44 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id8",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id11",
+    "index": "a5",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 1051383431,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1984422985,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 45,
+    "y": 45,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -19787,17 +20944,12 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
     "initialized": true,
     "type": "selection",
   },
-  "previousSelectedElementIds": {
-    "id0": true,
-  },
+  "previousSelectedElementIds": {},
   "resizingElement": null,
   "scrollX": 0,
   "scrollY": 0,
   "searchMatches": null,
-  "selectedElementIds": {
-    "id0": true,
-    "id6": true,
-  },
+  "selectedElementIds": {},
   "selectedElementsAreBeingDragged": false,
   "selectedGroupIds": {},
   "selectionElement": null,
@@ -19828,14 +20980,19 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id3",
-  "index": "a1",
+  "height": 35,
+  "id": "id0",
+  "index": "a0",
   "isDeleted": false,
   "link": null,
   "locked": false,
@@ -19847,24 +21004,68 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 3,
-  "width": 10,
-  "x": 20,
-  "y": 20,
+  "version": 5,
+  "width": 20,
+  "x": 10,
+  "y": 0,
 }
 `;
 
 exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id3",
+  "index": "a1",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 15,
+  "y": 5,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 2 1`] = `
+{
+  "angle": 0,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id7",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id0",
+  "height": 35,
+  "id": "id4",
   "index": "a2",
   "isDeleted": false,
   "link": null,
@@ -19877,25 +21078,69 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 7,
-  "width": 10,
-  "x": 10,
-  "y": 0,
+  "version": 5,
+  "width": 20,
+  "x": 20,
+  "y": 20,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 2 1`] = `
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 3 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id4",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id7",
+  "index": "a3",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 25,
+  "y": 25,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 4 1`] = `
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id11",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id6",
-  "index": "a3",
+  "height": 35,
+  "id": "id8",
+  "index": "a4",
   "isDeleted": false,
   "link": null,
   "locked": false,
@@ -19907,16 +21152,55 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 10,
-  "width": 10,
+  "version": 5,
+  "width": 20,
   "x": 40,
   "y": 40,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] number of elements 1`] = `3`;
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] element 5 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id8",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id11",
+  "index": "a5",
+  "isDeleted": false,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 2,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 45,
+  "y": 45,
+}
+`;
 
-exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] number of renders 1`] = `20`;
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] number of elements 1`] = `6`;
+
+exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] number of renders 1`] = `13`;
 
 exports[`history > singleplayer undo/redo > should support changes in elements' order > [end of test] redo stack 1`] = `[]`;
 
@@ -19979,7 +21263,7 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -19995,6 +21279,46 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
         "id3": {
           "deleted": {
             "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id0",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a1",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 15,
+            "y": 5,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+        "id4": {
+          "deleted": {
+            "angle": 0,
             "backgroundColor": "transparent",
             "boundElements": null,
             "customData": undefined,
@@ -20002,7 +21326,7 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
             "frameId": null,
             "groupIds": [],
             "height": 10,
-            "index": "a1",
+            "index": "a2",
             "isDeleted": false,
             "link": null,
             "locked": false,
@@ -20024,21 +21348,41 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
           },
         },
       },
-      "updated": {},
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id5",
+    "id": "id6",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id6": true,
+            "id8": true,
           },
         },
         "inserted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
       },
@@ -20046,7 +21390,47 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
     "elements": {
       "added": {},
       "removed": {
-        "id6": {
+        "id7": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id4",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a3",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 25,
+            "y": 25,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+        "id8": {
           "deleted": {
             "angle": 0,
             "backgroundColor": "transparent",
@@ -20056,7 +21440,7 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
             "frameId": null,
             "groupIds": [],
             "height": 10,
-            "index": "a2",
+            "index": "a4",
             "isDeleted": false,
             "link": null,
             "locked": false,
@@ -20078,111 +21462,110 @@ exports[`history > singleplayer undo/redo > should support changes in elements' 
           },
         },
       },
-      "updated": {},
-    },
-    "id": "id8",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
       "updated": {
-        "id6": {
+        "id4": {
           "deleted": {
-            "index": "a0V",
-            "version": 6,
+            "boundElements": [
+              {
+                "id": "id7",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
           },
           "inserted": {
-            "index": "a2",
-            "version": 5,
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
           },
         },
       },
     },
-    "id": "id12",
+    "id": "id10",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
-          "selectedElementIds": {
-            "id0": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {
-            "id6": true,
-          },
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id15",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id6": true,
-          },
-        },
-        "inserted": {
           "selectedElementIds": {},
         },
+        "inserted": {
+          "selectedElementIds": {
+            "id8": true,
+          },
+        },
       },
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {},
-    },
-    "id": "id18",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {},
-        "inserted": {},
+      "removed": {
+        "id11": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id8",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a5",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 45,
+            "y": 45,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
       },
-    },
-    "elements": {
-      "added": {},
-      "removed": {},
       "updated": {
-        "id0": {
+        "id8": {
           "deleted": {
-            "index": "a2",
-            "version": 7,
+            "boundElements": [
+              {
+                "id": "id11",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
           },
           "inserted": {
-            "index": "Zz",
-            "version": 6,
-          },
-        },
-        "id6": {
-          "deleted": {
-            "index": "a3",
-            "version": 10,
-          },
-          "inserted": {
-            "index": "a0",
-            "version": 9,
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
           },
         },
       },
     },
-    "id": "id22",
+    "id": "id13",
   },
 ]
 `;
@@ -20736,7 +22119,44 @@ exports[`history > singleplayer undo/redo > should support element creation, del
   "defaultSidebarDockedPreference": false,
   "editingFrame": null,
   "editingGroupId": null,
-  "editingTextElement": null,
+  "editingTextElement": {
+    "angle": 0,
+    "autoResize": true,
+    "backgroundColor": "transparent",
+    "boundElements": null,
+    "containerId": "id8",
+    "customData": undefined,
+    "fillStyle": "solid",
+    "fontFamily": 5,
+    "fontSize": 20,
+    "frameId": null,
+    "groupIds": [],
+    "height": 25,
+    "id": "id11",
+    "index": "a5",
+    "isDeleted": false,
+    "lineHeight": "1.25000",
+    "link": null,
+    "locked": false,
+    "opacity": 100,
+    "originalText": "",
+    "roughness": 1,
+    "roundness": null,
+    "seed": 1051383431,
+    "strokeColor": "#1e1e1e",
+    "strokeStyle": "solid",
+    "strokeWidth": 2,
+    "text": "",
+    "textAlign": "center",
+    "type": "text",
+    "updated": 1,
+    "version": 2,
+    "versionNonce": 1984422985,
+    "verticalAlign": "middle",
+    "width": 10,
+    "x": 45,
+    "y": 45,
+  },
   "elementsToHighlight": null,
   "errorMessage": null,
   "exportBackground": true,
@@ -20785,7 +22205,7 @@ exports[`history > singleplayer undo/redo > should support element creation, del
     "type": "selection",
   },
   "previousSelectedElementIds": {
-    "id3": true,
+    "id4": true,
   },
   "resizingElement": null,
   "scrollX": 0,
@@ -20822,12 +22242,17 @@ exports[`history > singleplayer undo/redo > should support element creation, del
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id3",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 35,
   "id": "id0",
   "index": "a0",
   "isDeleted": false,
@@ -20842,7 +22267,7 @@ exports[`history > singleplayer undo/redo > should support element creation, del
   "type": "rectangle",
   "updated": 1,
   "version": 5,
-  "width": 10,
+  "width": 20,
   "x": 10,
   "y": 0,
 }
@@ -20851,30 +22276,39 @@ exports[`history > singleplayer undo/redo > should support element creation, del
 exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] element 1 1`] = `
 {
   "angle": 0,
+  "autoResize": true,
   "backgroundColor": "transparent",
   "boundElements": null,
+  "containerId": "id0",
   "customData": undefined,
   "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
   "frameId": null,
   "groupIds": [],
-  "height": 10,
+  "height": 25,
   "id": "id3",
   "index": "a1",
-  "isDeleted": true,
+  "isDeleted": false,
+  "lineHeight": "1.25000",
   "link": null,
   "locked": false,
   "opacity": 100,
+  "originalText": "",
   "roughness": 1,
   "roundness": null,
   "strokeColor": "#1e1e1e",
   "strokeStyle": "solid",
   "strokeWidth": 2,
-  "type": "rectangle",
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
   "updated": 1,
-  "version": 8,
+  "version": 2,
+  "verticalAlign": "middle",
   "width": 10,
-  "x": 20,
-  "y": 20,
+  "x": 15,
+  "y": 5,
 }
 `;
 
@@ -20882,13 +22316,18 @@ exports[`history > singleplayer undo/redo > should support element creation, del
 {
   "angle": 0,
   "backgroundColor": "transparent",
-  "boundElements": null,
+  "boundElements": [
+    {
+      "id": "id7",
+      "type": "text",
+    },
+  ],
   "customData": undefined,
   "fillStyle": "solid",
   "frameId": null,
   "groupIds": [],
-  "height": 10,
-  "id": "id6",
+  "height": 35,
+  "id": "id4",
   "index": "a2",
   "isDeleted": true,
   "link": null,
@@ -20901,16 +22340,129 @@ exports[`history > singleplayer undo/redo > should support element creation, del
   "strokeWidth": 2,
   "type": "rectangle",
   "updated": 1,
-  "version": 8,
+  "version": 6,
+  "width": 20,
+  "x": 20,
+  "y": 20,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] element 3 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id4",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id7",
+  "index": "a3",
+  "isDeleted": true,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 3,
+  "verticalAlign": "middle",
   "width": 10,
+  "x": 25,
+  "y": 25,
+}
+`;
+
+exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] element 4 1`] = `
+{
+  "angle": 0,
+  "backgroundColor": "transparent",
+  "boundElements": [
+    {
+      "id": "id11",
+      "type": "text",
+    },
+  ],
+  "customData": undefined,
+  "fillStyle": "solid",
+  "frameId": null,
+  "groupIds": [],
+  "height": 35,
+  "id": "id8",
+  "index": "a4",
+  "isDeleted": true,
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "type": "rectangle",
+  "updated": 1,
+  "version": 6,
+  "width": 20,
   "x": 40,
   "y": 40,
 }
 `;
 
-exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] number of elements 1`] = `3`;
+exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] element 5 1`] = `
+{
+  "angle": 0,
+  "autoResize": true,
+  "backgroundColor": "transparent",
+  "boundElements": null,
+  "containerId": "id8",
+  "customData": undefined,
+  "fillStyle": "solid",
+  "fontFamily": 5,
+  "fontSize": 20,
+  "frameId": null,
+  "groupIds": [],
+  "height": 25,
+  "id": "id11",
+  "index": "a5",
+  "isDeleted": true,
+  "lineHeight": "1.25000",
+  "link": null,
+  "locked": false,
+  "opacity": 100,
+  "originalText": "",
+  "roughness": 1,
+  "roundness": null,
+  "strokeColor": "#1e1e1e",
+  "strokeStyle": "solid",
+  "strokeWidth": 2,
+  "text": "",
+  "textAlign": "center",
+  "type": "text",
+  "updated": 1,
+  "version": 3,
+  "verticalAlign": "middle",
+  "width": 10,
+  "x": 45,
+  "y": 45,
+}
+`;
 
-exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] number of renders 1`] = `29`;
+exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] number of elements 1`] = `6`;
+
+exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] number of renders 1`] = `16`;
 
 exports[`history > singleplayer undo/redo > should support element creation, deletion and appstate element selection change > [end of test] redo stack 1`] = `[]`;
 
@@ -20953,27 +22505,27 @@ exports[`history > singleplayer undo/redo > should support element creation, del
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 5,
+            "version": 3,
             "width": 10,
             "x": 10,
             "y": 0,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 4,
+            "version": 2,
           },
         },
       },
       "updated": {},
     },
-    "id": "id23",
+    "id": "id2",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
@@ -20989,58 +22541,44 @@ exports[`history > singleplayer undo/redo > should support element creation, del
         "id3": {
           "deleted": {
             "angle": 0,
+            "autoResize": true,
             "backgroundColor": "transparent",
             "boundElements": null,
+            "containerId": "id0",
             "customData": undefined,
             "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
             "frameId": null,
             "groupIds": [],
-            "height": 10,
+            "height": 25,
             "index": "a1",
             "isDeleted": false,
+            "lineHeight": "1.25000",
             "link": null,
             "locked": false,
             "opacity": 100,
+            "originalText": "",
             "roughness": 1,
             "roundness": null,
             "strokeColor": "#1e1e1e",
             "strokeStyle": "solid",
             "strokeWidth": 2,
-            "type": "rectangle",
-            "version": 7,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
             "width": 10,
-            "x": 20,
-            "y": 20,
+            "x": 15,
+            "y": 5,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 6,
+            "version": 1,
           },
         },
-      },
-      "updated": {},
-    },
-    "id": "id24",
-  },
-  {
-    "appState": AppStateDelta {
-      "delta": Delta {
-        "deleted": {
-          "selectedElementIds": {
-            "id6": true,
-          },
-        },
-        "inserted": {
-          "selectedElementIds": {
-            "id3": true,
-          },
-        },
-      },
-    },
-    "elements": {
-      "added": {},
-      "removed": {
-        "id6": {
+        "id4": {
           "deleted": {
             "angle": 0,
             "backgroundColor": "transparent",
@@ -21061,49 +22599,244 @@ exports[`history > singleplayer undo/redo > should support element creation, del
             "strokeStyle": "solid",
             "strokeWidth": 2,
             "type": "rectangle",
-            "version": 7,
+            "version": 3,
+            "width": 10,
+            "x": 20,
+            "y": 20,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 2,
+          },
+        },
+      },
+      "updated": {
+        "id0": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id3",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
+    },
+    "id": "id6",
+  },
+  {
+    "appState": AppStateDelta {
+      "delta": Delta {
+        "deleted": {
+          "selectedElementIds": {
+            "id8": true,
+          },
+        },
+        "inserted": {
+          "selectedElementIds": {
+            "id4": true,
+          },
+        },
+      },
+    },
+    "elements": {
+      "added": {},
+      "removed": {
+        "id7": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id4",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a3",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 25,
+            "y": 25,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+        "id8": {
+          "deleted": {
+            "angle": 0,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "customData": undefined,
+            "fillStyle": "solid",
+            "frameId": null,
+            "groupIds": [],
+            "height": 10,
+            "index": "a4",
+            "isDeleted": false,
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "type": "rectangle",
+            "version": 3,
             "width": 10,
             "x": 40,
             "y": 40,
           },
           "inserted": {
             "isDeleted": true,
-            "version": 6,
+            "version": 2,
           },
         },
       },
-      "updated": {},
+      "updated": {
+        "id4": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id7",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id25",
+    "id": "id10",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id3": true,
+            "id4": true,
           },
         },
         "inserted": {
           "selectedElementIds": {
-            "id6": true,
+            "id8": true,
           },
         },
       },
     },
     "elements": {
       "added": {},
-      "removed": {},
-      "updated": {},
+      "removed": {
+        "id11": {
+          "deleted": {
+            "angle": 0,
+            "autoResize": true,
+            "backgroundColor": "transparent",
+            "boundElements": null,
+            "containerId": "id8",
+            "customData": undefined,
+            "fillStyle": "solid",
+            "fontFamily": 5,
+            "fontSize": 20,
+            "frameId": null,
+            "groupIds": [],
+            "height": 25,
+            "index": "a5",
+            "isDeleted": false,
+            "lineHeight": "1.25000",
+            "link": null,
+            "locked": false,
+            "opacity": 100,
+            "originalText": "",
+            "roughness": 1,
+            "roundness": null,
+            "strokeColor": "#1e1e1e",
+            "strokeStyle": "solid",
+            "strokeWidth": 2,
+            "text": "",
+            "textAlign": "center",
+            "type": "text",
+            "version": 2,
+            "verticalAlign": "middle",
+            "width": 10,
+            "x": 45,
+            "y": 45,
+          },
+          "inserted": {
+            "isDeleted": true,
+            "version": 1,
+          },
+        },
+      },
+      "updated": {
+        "id8": {
+          "deleted": {
+            "boundElements": [
+              {
+                "id": "id11",
+                "type": "text",
+              },
+            ],
+            "height": 35,
+            "version": 5,
+            "width": 20,
+          },
+          "inserted": {
+            "boundElements": [],
+            "height": 10,
+            "version": 3,
+            "width": 10,
+          },
+        },
+      },
     },
-    "id": "id26",
+    "id": "id14",
   },
   {
     "appState": AppStateDelta {
       "delta": Delta {
         "deleted": {
           "selectedElementIds": {
-            "id6": true,
+            "id8": true,
           },
         },
         "inserted": {
@@ -21116,7 +22849,7 @@ exports[`history > singleplayer undo/redo > should support element creation, del
       "removed": {},
       "updated": {},
     },
-    "id": "id27",
+    "id": "id17",
   },
   {
     "appState": AppStateDelta {
@@ -21126,39 +22859,59 @@ exports[`history > singleplayer undo/redo > should support element creation, del
         },
         "inserted": {
           "selectedElementIds": {
-            "id3": true,
-            "id6": true,
+            "id4": true,
+            "id8": true,
           },
         },
       },
     },
     "elements": {
       "added": {
-        "id3": {
+        "id11": {
           "deleted": {
             "isDeleted": true,
-            "version": 8,
+            "version": 3,
           },
           "inserted": {
             "isDeleted": false,
-            "version": 7,
+            "version": 2,
           },
         },
-        "id6": {
+        "id4": {
           "deleted": {
             "isDeleted": true,
-            "version": 8,
+            "version": 6,
           },
           "inserted": {
             "isDeleted": false,
-            "version": 7,
+            "version": 5,
+          },
+        },
+        "id7": {
+          "deleted": {
+            "isDeleted": true,
+            "version": 3,
+          },
+          "inserted": {
+            "isDeleted": false,
+            "version": 2,
+          },
+        },
+        "id8": {
+          "deleted": {
+            "isDeleted": true,
+            "version": 6,
+          },
+          "inserted": {
+            "isDeleted": false,
+            "version": 5,
           },
         },
       },
       "removed": {},
       "updated": {},
     },
-    "id": "id28",
+    "id": "id19",
   },
 ]
 `;
