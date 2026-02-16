@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import {
+  COLOR_PALETTE,
   CURSOR_TYPE,
   isShallowEqual,
   sceneCoordsToViewportCoords,
@@ -133,12 +134,7 @@ const InteractiveCanvas = (props: InteractiveCanvasProps) => {
       remotePointerButton.set(socketId, user.button);
     });
 
-    const selectionColor =
-      (props.containerRef?.current &&
-        getComputedStyle(props.containerRef.current).getPropertyValue(
-          "--color-selection",
-        )) ||
-      "#6965db";
+    const selectionColor = COLOR_PALETTE.blue[2];
 
     rendererParams.current = {
       app: props.app,

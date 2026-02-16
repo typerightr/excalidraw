@@ -643,6 +643,11 @@ export interface ExcalidrawProps {
   aiEnabled?: boolean;
   showDeprecatedFonts?: boolean;
   renderScrollbars?: boolean;
+  /** Called when a quick-add handle is activated (Enter/Space or click). */
+  onQuickAddHandleActivate?: (
+    side: "top" | "right" | "bottom" | "left",
+    originShapeId: string,
+  ) => void;
 }
 
 export type SceneData = {

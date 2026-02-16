@@ -39,6 +39,8 @@ export type StaticCanvasRenderConfig = {
   theme: AppState["theme"];
   /** Placeholder text for empty sticky note bound text (ghost text when not focused) */
   stickyNotePlaceholder?: string;
+  /** When set, hide the sticky-note ghost for this bound text (it is being edited). */
+  editingTextElementId?: ExcalidrawElement["id"] | null;
 };
 
 export type SVGRenderConfig = {

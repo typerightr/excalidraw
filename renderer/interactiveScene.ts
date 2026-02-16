@@ -954,7 +954,7 @@ const renderSelectionBorder = (
 
   context.save();
   context.translate(appState.scrollX, appState.scrollY);
-  context.lineWidth = (activeEmbeddable ? 4 : 1) / appState.zoom.value;
+  context.lineWidth = (activeEmbeddable ? 4 : 3) / appState.zoom.value;
 
   const count = selectionColors.length;
   for (let index = 0; index < count; ++index) {
@@ -1334,7 +1334,7 @@ const renderTransformHandles = (
       const [x, y, width, height] = transformHandle;
 
       context.save();
-      context.lineWidth = 1 / appState.zoom.value;
+      context.lineWidth = 3 / appState.zoom.value;
       if (renderConfig.selectionColor) {
         context.strokeStyle = renderConfig.selectionColor;
       }
@@ -1829,18 +1829,30 @@ const _renderInteractiveScene = ({
 
     if (selectedElements.length === 1) {
       context.fillStyle = "#fff";
+      // When bound text is selected or in focus, show transform handles on the container
+      const selectedElement = selectedElements[0];
+      const elementForTransformHandles =
+        isTextElement(selectedElement) &&
+        selectedElement.containerId &&
+        elementsMap.get(selectedElement.containerId)
+          ? elementsMap.get(selectedElement.containerId)!
+          : selectedElement;
       const transformHandles = getTransformHandles(
-        selectedElements[0],
+        elementForTransformHandles,
         appState.zoom,
         elementsMap,
         "mouse", // when we render we don't know which pointer type so use mouse,
         getOmitSidesForEditorInterface(editorInterface),
       );
+      const isEditingBoundText =
+        appState.editingTextElement &&
+        isTextElement(appState.editingTextElement) &&
+        appState.editingTextElement.containerId != null;
       if (
         !appState.viewModeEnabled &&
         showBoundingBox &&
-        // do not show transform handles when text is being edited
-        !isTextElement(appState.editingTextElement) &&
+        // show transform handles when not editing, or when editing bound text (container handles)
+        (!appState.editingTextElement || isEditingBoundText) &&
         // do not show transform handles when image is being cropped
         !appState.croppingElementId
       ) {
@@ -1849,7 +1861,7 @@ const _renderInteractiveScene = ({
           renderConfig,
           appState,
           transformHandles,
-          selectedElements[0].angle,
+          elementForTransformHandles.angle,
         );
       }
 

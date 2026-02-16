@@ -33,19 +33,19 @@ export const SHAPES = [
     numericKey: KEYS["4"],
     fillable: true,
   },
-    {
-    icon: DiamondIcon,
-    value: "diamond",
-    key: KEYS.D,
-    numericKey: KEYS["3"],
-    fillable: true,
-  },
   {
     icon: FreedrawIcon,
     value: "freedraw",
     key: [KEYS.P, KEYS.X],
     numericKey: KEYS["7"],
     fillable: false,
+  },
+    {
+    icon: DiamondIcon,
+    value: "diamond",
+    key: KEYS.D,
+    numericKey: KEYS["3"],
+    fillable: true,
   },
   {
     icon: EllipseIcon,

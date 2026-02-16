@@ -1,0 +1,80 @@
+.quick-add-handles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.quick-add-handle {
+  position: absolute;
+  pointer-events: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--quick-add-handle-color, #4dabf7);
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--quick-add-handle-color, #4dabf7);
+    outline-offset: 2px;
+  }
+}
+
+.quick-add-handle__hit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.quick-add-handle__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.quick-add-handle__circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: none;
+  background: var(--quick-add-handle-color, #4dabf7);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.quick-add-handle__plus {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+  color: var(--quick-add-handle-color, #4dabf7);
+
+  svg {
+    display: block;
+  }
+}
+
+.quick-add-handle__icon--plus .quick-add-handle__circle {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.quick-add-handle__icon--plus .quick-add-handle__plus {
+  opacity: 1;
+  transform: scale(1);
+}
