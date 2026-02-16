@@ -10,6 +10,7 @@ import {
 } from "@excalidraw/math";
 
 import {
+  applyDarkModeFilter,
   arrayToMap,
   BIND_MODE_TIMEOUT,
   DEFAULT_TRANSFORM_HANDLE_SPACING,
@@ -582,32 +583,7 @@ const renderBindingHighlightForBindableElement_complex = (
   switch (element.type) {
     case "magicframe":
     case "frame":
-      context.save();
-
-      context.translate(element.x, element.y);
-
-      context.lineWidth = FRAME_STYLE.strokeWidth / appState.zoom.value;
-      context.strokeStyle =
-        appState.theme === THEME.DARK
-          ? `rgba(3, 93, 161, ${opacity})`
-          : `rgba(106, 189, 252, ${opacity})`;
-
-      if (FRAME_STYLE.radius && context.roundRect) {
-        context.beginPath();
-        context.roundRect(
-          0,
-          0,
-          element.width,
-          element.height,
-          FRAME_STYLE.radius / appState.zoom.value,
-        );
-        context.stroke();
-        context.closePath();
-      } else {
-        context.strokeRect(0, 0, element.width, element.height);
-      }
-
-      context.restore();
+      // Don't draw blue binding highlight on frames when elements inside move
       break;
     default:
       context.save();
@@ -990,7 +966,10 @@ const renderFrameHighlight = (
   const width = x2 - x1;
   const height = y2 - y1;
 
-  context.strokeStyle = "rgb(0,118,255)";
+  context.strokeStyle =
+    appState.theme === THEME.DARK
+      ? applyDarkModeFilter(FRAME_STYLE.strokeColor)
+      : FRAME_STYLE.strokeColor;
   context.lineWidth = FRAME_STYLE.strokeWidth / appState.zoom.value;
 
   context.save();

@@ -42,7 +42,9 @@ import { InlineIcon } from "../InlineIcon";
 import { TextField } from "../TextField";
 import { getSelectedElements } from "../../scene";
 import {
+  LassoIcon,
   LockedIcon,
+  SelectionIcon,
   UnlockedIcon,
   searchIcon,
   boltIcon,
@@ -513,6 +515,44 @@ function CommandPaletteInner({
             }));
           },
         },
+        ...(appProps.UIOptions.tools?.selection !== false
+          ? [
+              {
+                label: t("toolBar.selection"),
+                category: DEFAULT_CATEGORIES.tools,
+                shortcut: KEYS.V,
+                icon: SelectionIcon,
+                keywords: ["toolbar", "select"],
+                viewMode: false,
+                perform: () => {
+                  app.setActiveTool({ type: "selection" });
+                  setAppState({
+                    preferredSelectionTool: {
+                      type: "selection",
+                      initialized: true,
+                    },
+                  });
+                },
+              } as CommandPaletteItem,
+              {
+                label: t("toolBar.lasso"),
+                category: DEFAULT_CATEGORIES.tools,
+                shortcut: undefined,
+                icon: LassoIcon,
+                keywords: ["toolbar", "select"],
+                viewMode: false,
+                perform: () => {
+                  app.setActiveTool({ type: "lasso" });
+                  setAppState({
+                    preferredSelectionTool: {
+                      type: "lasso",
+                      initialized: true,
+                    },
+                  });
+                },
+              } as CommandPaletteItem,
+            ]
+          : []),
         ...SHAPES.reduce((acc: CommandPaletteItem[], shape) => {
           const { value, icon, key, numericKey } = shape;
 

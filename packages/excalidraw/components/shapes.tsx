@@ -1,7 +1,6 @@
 import { KEYS } from "@excalidraw/common";
 
 import {
-  SelectionIcon,
   RectangleIcon,
   DiamondIcon,
   EllipseIcon,
@@ -17,15 +16,7 @@ import {
 
 import type { AppClassProperties } from "../types";
 
-
 export const SHAPES = [
-  {
-    icon: SelectionIcon,
-    value: "selection",
-    key: KEYS.V,
-    numericKey: KEYS["1"],
-    fillable: true,
-  },
   {
     icon: StickyNoteIcon,
     value: "StickyNote",
@@ -107,26 +98,16 @@ export const SHAPES = [
 //   fillable: false,
 // },
 
-export const getToolbarTools = (app: AppClassProperties) => {
-  return app.state.preferredSelectionTool.type === "lasso"
-    ? ([
-        {
-          value: "lasso",
-          icon: SelectionIcon,
-          key: KEYS.V,
-          numericKey: KEYS["1"],
-          fillable: true,
-        },
-        ...SHAPES.slice(1),
-      ] as const)
-    : SHAPES;
-};
+export const getToolbarTools = (app: AppClassProperties) => SHAPES;
 
 type ShapeItem = (typeof SHAPES)[number];
 
 export const findShapeByKey = (key: string, app: AppClassProperties) => {
-  const tools = getToolbarTools(app) as readonly ShapeItem[];
-  const shape = tools.find((s) => {
+  // V and 1 switch to selection/lasso based on preferred tool
+  if (key === KEYS.V || key === KEYS["1"]) {
+    return app.state.preferredSelectionTool.type;
+  }
+  const shape = (SHAPES as readonly ShapeItem[]).find((s) => {
     if (s.numericKey != null && key === s.numericKey.toString()) return true;
     const k = s.key;
     if (k == null) return false;
