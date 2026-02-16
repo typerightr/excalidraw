@@ -73,14 +73,12 @@ import {
   mermaidLogoIcon,
   laserPointerToolIcon,
   MagicIcon,
-  LassoIcon,
   sharpArrowIcon,
   roundArrowIcon,
   elbowArrowIcon,
   TextSizeIcon,
   adjustmentsIcon,
   DotsHorizontalIcon,
-  SelectionIcon,
   pencilIcon,
 } from "./icons";
 
@@ -1075,19 +1073,6 @@ export const ShapesSwitcher = ({
   const isFullStylesPanel = stylesPanelMode === "full";
   const isCompactStylesPanel = stylesPanelMode === "compact";
 
-  const SELECTION_TOOLS = [
-    {
-      type: "selection",
-      icon: SelectionIcon,
-      title: capitalizeString(t("toolBar.selection")),
-    },
-    {
-      type: "lasso",
-      icon: LassoIcon,
-      title: capitalizeString(t("toolBar.lasso")),
-    },
-  ] as const;
-
   const laserToolSelected = activeTool.type === "laser";
   const lassoToolSelected =
     isFullStylesPanel &&
@@ -1119,42 +1104,8 @@ export const ShapesSwitcher = ({
           const shortcut = letter
             ? `${letter} ${t("helpDialog.or")} ${numericKey}`
             : `${numericKey}`;
-          // when in compact styles panel mode (tablet)
-          // use a ToolPopover for selection/lasso toggle as well
-          if (
-            (value === "selection" || value === "lasso") &&
-            isCompactStylesPanel
-          ) {
-            return (
-              <ToolPopover
-                key={"selection-popover"}
-                app={app}
-                options={SELECTION_TOOLS}
-                activeTool={activeTool}
-                defaultOption={app.state.preferredSelectionTool.type}
-                namePrefix="selectionType"
-                title={capitalizeString(t("toolBar.selection"))}
-                data-testid="toolbar-selection"
-                onToolChange={(type: string) => {
-                  if (type === "selection" || type === "lasso") {
-                    app.setActiveTool({ type });
-                    setAppState({
-                      preferredSelectionTool: { type, initialized: true },
-                    });
-                  }
-                }}
-                displayedOption={
-                  SELECTION_TOOLS.find(
-                    (tool) =>
-                      tool.type === app.state.preferredSelectionTool.type,
-                  ) || SELECTION_TOOLS[0]
-                }
-                fillable={activeTool.type === "selection"}
-              />
-            );
-          }
 
-          return (
+          const frameButton = (
             <ToolButton
               className={clsx("Shape", { fillable })}
               key={value}
@@ -1171,14 +1122,6 @@ export const ShapesSwitcher = ({
                 if (!app.state.penDetected && pointerType === "pen") {
                   app.togglePenMode(true);
                 }
-
-                if (value === "selection") {
-                  if (app.state.activeTool.type === "selection") {
-                    app.setActiveTool({ type: "lasso" });
-                  } else {
-                    app.setActiveTool({ type: "selection" });
-                  }
-                }
               }}
               onChange={({ pointerType }) => {
                 if (app.state.activeTool.type !== value) {
@@ -1188,11 +1131,22 @@ export const ShapesSwitcher = ({
               }}
             />
           );
+
+          if (value === "frame") {
+            return [
+              <div
+                key="divider-before-frame"
+                className="App-toolbar__divider"
+              />,
+              frameButton,
+            ];
+          }
+
+          return frameButton;
         },
       )}
-      <div className="App-toolbar__divider" />
 
-      <DropdownMenu open={isExtraToolsMenuOpen}>
+      {/* <DropdownMenu open={isExtraToolsMenuOpen}>
         <DropdownMenu.Trigger
           className={clsx("App-toolbar__extra-tools-trigger", {
             "App-toolbar__extra-tools-trigger--selected":
@@ -1271,7 +1225,7 @@ export const ShapesSwitcher = ({
             </DropdownMenu.Item>
           )}
         </DropdownMenu.Content>
-      </DropdownMenu>
+      </DropdownMenu> */}
     </>
   );
 };
@@ -1286,7 +1240,7 @@ export const ZoomActions = ({
   <Stack.Col gap={1} className={CLASSES.ZOOM_ACTIONS}>
     <Stack.Row align="center">
       {renderAction("zoomOut")}
-      {renderAction("resetZoom")}
+      {/* {renderAction("resetZoom")} */}
       {renderAction("zoomIn")}
     </Stack.Row>
   </Stack.Col>

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import type { ReactNode } from "react";
 
-import { TOOL_TYPE } from "@excalidraw/common";
+import { capitalizeString, TOOL_TYPE } from "@excalidraw/common";
 import type { EditorInterface } from "@excalidraw/common";
 
 import { actionShortcuts } from "../../actions";
@@ -18,11 +18,13 @@ import { HandButton } from "../HandButton";
 import { HelpButton } from "../HelpButton";
 import { HintViewer } from "../HintViewer";
 import { Island } from "../Island";
+import { LassoIcon, SelectionIcon } from "../icons";
 import { LaserPointerButton } from "../LaserPointerButton";
 import { LockButton } from "../LockButton";
 import { PenModeButton } from "../PenModeButton";
 import { Section } from "../Section";
 import Stack from "../Stack";
+import { ToolPopover } from "../ToolPopover";
 
 import type { ActionManager } from "../../actions/manager";
 import type { AppClassProperties, AppState, UIAppState } from "../../types";
@@ -93,7 +95,7 @@ const Footer = ({
               zoom={appState.zoom}
             />
 
-            {!appState.viewModeEnabled && (
+            {/* {!appState.viewModeEnabled && (
               <UndoRedoActions
                 renderAction={actionManager.renderAction}
                 className={clsx("zen-mode-transition", {
@@ -101,7 +103,7 @@ const Footer = ({
                     appState.zenModeEnabled,
                 })}
               />
-            )}
+            )} */}
           </Section>
         </Stack.Col>
       </div>
@@ -151,27 +153,69 @@ const Footer = ({
                             title={t("toolBar.penMode")}
                             penDetected={appState.penDetected}
                           />
-                          <LockButton
+                          {/* <LockButton
                             checked={appState.activeTool.locked}
                             onChange={onLockToggle}
                             title={t("toolBar.lock")}
-                          />
-
-                          <div className="App-toolbar__divider" />
-
+                          /> */}
+                          {UIOptions.tools?.selection !== false && (
+                            <ToolPopover
+                              app={app}
+                              options={[
+                                {
+                                  type: "selection",
+                                  icon: SelectionIcon,
+                                  title: capitalizeString(t("toolBar.selection")),
+                                },
+                                {
+                                  type: "lasso",
+                                  icon: LassoIcon,
+                                  title: capitalizeString(t("toolBar.lasso")),
+                                },
+                              ]}
+                              activeTool={appState.activeTool}
+                              defaultOption={app.state.preferredSelectionTool.type}
+                              namePrefix="selectionType"
+                              title={capitalizeString(t("toolBar.selection"))}
+                              data-testid="toolbar-selection"
+                              onToolChange={(type: string) => {
+                                if (type === "selection" || type === "lasso") {
+                                  app.setActiveTool({ type });
+                                  setAppState({
+                                    preferredSelectionTool: { type, initialized: true },
+                                  });
+                                }
+                              }}
+                              displayedOption={
+                                app.state.preferredSelectionTool.type === "lasso"
+                                  ? {
+                                      type: "lasso",
+                                      icon: LassoIcon,
+                                      title: capitalizeString(t("toolBar.lasso")),
+                                    }
+                                  : {
+                                      type: "selection",
+                                      icon: SelectionIcon,
+                                      title: capitalizeString(t("toolBar.selection")),
+                                    }
+                              }
+                              fillable={appState.activeTool.type === "selection"}
+                            />
+                          )}
                           <HandButton
                             checked={isHandToolActive(appState)}
                             onChange={() => onHandToolToggle()}
                             title={t("toolBar.hand")}
                             isMobile
                           />
-
+                           <div className="App-toolbar__divider" />
                           <ShapesSwitcher
                             setAppState={setAppState}
                             activeTool={appState.activeTool}
                             UIOptions={UIOptions}
                             app={app}
                           />
+                          
                         </Stack.Row>
                       </Island>
                       {isCollaborating && (

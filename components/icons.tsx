@@ -353,15 +353,109 @@ export const EllipseIcon = createIcon(
   tablerIconProps,
 );
 
-// tabler-icons: note (sticky note - rectangle with folded corner)
-export const StickyNoteIcon = createIcon(
-  <g strokeWidth="1.5">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M4 4h12l4 4v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2z" />
-    <path d="M16 4v4h4" />
-  </g>,
-  tablerIconProps,
-);
+// Custom sticky note icon (from public/stickyIcon.svg)
+const StickyNoteIconSvg = () => {
+  const id = React.useId().replace(/:/g, "");
+  return (
+    <svg
+      className="ToolIcon__sticky-note-icon"
+      width="28"
+      height="27"
+      viewBox="0 0 28 27"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      role="img"
+    >
+      <g filter={`url(#filter0_d_${id})`}>
+        <path
+          d="M5.30283 2L23.9728 4.80284L21.1699 23.4728L18.328 23.0461L2.49999 20.6699L5.30283 2Z"
+          fill="#F6D773"
+        />
+      </g>
+      <g filter={`url(#filter1_d_${id})`}>
+        <path
+          d="M7.56042 5.80286H26.4396V24.682H23.5658H7.56042V5.80286Z"
+          fill="#F6E073"
+        />
+      </g>
+      <defs>
+        <filter
+          id={`filter0_d_${id}`}
+          x="0"
+          y="0"
+          width="25.4727"
+          height="25.4728"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="-0.5" />
+          <feGaussianBlur stdDeviation="1" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.438796 0 0 0 0 0.366822 0 0 0 0 0.278854 0 0 0 0.6 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_1915_217"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_1915_217"
+            result="shape"
+          />
+        </filter>
+        <filter
+          id={`filter1_d_${id}`}
+          x="5.06042"
+          y="3.80286"
+          width="22.8792"
+          height="22.8792"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="-0.5" />
+          <feGaussianBlur stdDeviation="1" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.52956 0 0 0 0 0.407321 0 0 0 0 0.257918 0 0 0 0.6 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_1915_217"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_1915_217"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+};
+
+export const StickyNoteIcon = <StickyNoteIconSvg />;
 
 // tabler-icons: arrow-narrow-right
 export const ArrowIcon = createIcon(

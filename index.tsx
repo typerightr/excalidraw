@@ -71,6 +71,7 @@ const ExcalidrawBase = (props: ExcalidrawProps) => {
     },
     tools: {
       image: props.UIOptions?.tools?.image ?? true,
+      selection: props.UIOptions?.tools?.selection ?? true,
     },
   };
 
