@@ -245,6 +245,7 @@ const LayerUI = ({
               // we want to make sure this doesn't overflow so subtracting the
               // approximate height of hamburgerMenu + footer
               maxHeight: `${appState.height - 166}px`,
+              marginLeft: -12,
             }}
           >
             <CompactShapeActions
@@ -333,6 +334,9 @@ const LayerUI = ({
           <Stack.Col
             gap={spacing.menuTopGap}
             className={clsx("App-menu_top__right")}
+            style={{
+              width: '36px'
+            }}
           >
             {renderCanvasActions()}
             <div
