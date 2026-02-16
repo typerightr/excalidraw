@@ -119,6 +119,7 @@ import {
   getObservedAppState,
   getCommonBounds,
   getElementAbsoluteCoords,
+  bindBindingElement,
   bindOrUnbindBindingElements,
   fixBindingsAfterDeletion,
   getHoveredElementForBinding,
@@ -417,6 +418,10 @@ import {
   setCursorForShape,
 } from "../cursor";
 import { ElementCanvasButtons } from "../components/ElementCanvasButtons";
+import {
+  QuickAddHandles,
+  getQuickAddOriginShape,
+} from "../components/QuickAddHandles";
 import { LaserTrails } from "../laser-trails";
 import { withBatchedUpdates, withBatchedUpdatesThrottled } from "../reactUtils";
 import { textWysiwyg } from "../wysiwyg/textWysiwyg";
@@ -2138,6 +2143,8 @@ class App extends React.Component<AppProps, AppState> {
                             stickyNotePlaceholder: t(
                               "labels.addTextPlaceholder",
                             ),
+                            editingTextElementId:
+                              this.state.editingTextElement?.id ?? null,
                           }}
                         />
                         {this.state.newElement && (
@@ -2162,6 +2169,8 @@ class App extends React.Component<AppProps, AppState> {
                               stickyNotePlaceholder: t(
                                 "labels.addTextPlaceholder",
                               ),
+                              editingTextElementId:
+                                this.state.editingTextElement?.id ?? null,
                             }}
                           />
                         )}
@@ -2195,6 +2204,38 @@ class App extends React.Component<AppProps, AppState> {
                           onPointerDown={this.handleCanvasPointerDown}
                           onDoubleClick={this.handleCanvasDoubleClick}
                         />
+                        {(selectedElements.length === 1 ||
+                          this.state.editingTextElement) &&
+                          !this.state.resizingElement &&
+                          !this.state.isRotating &&
+                          !this.state.selectedElementsAreBeingDragged &&
+                          (() => {
+                            const focusedElement =
+                              this.state.editingTextElement ??
+                              (selectedElements.length === 1
+                                ? firstSelectedElement
+                                : null);
+                            // Use allElementsMap so the container is always found (e.g. new
+                            // shape or its bound text may be excluded from elementsMap).
+                            const originShape = focusedElement
+                              ? getQuickAddOriginShape(
+                                  focusedElement,
+                                  allElementsMap,
+                                )
+                              : null;
+                            return (
+                              originShape &&
+                              this.props.onQuickAddHandleActivate && (
+                                <QuickAddHandles
+                                  originShape={originShape}
+                                  appState={this.state}
+                                  onActivate={
+                                    this.handleQuickAddHandleActivate
+                                  }
+                                />
+                              )
+                            );
+                          })()}
                         {this.state.userToFollow && (
                           <FollowMode
                             width={this.state.width}
@@ -5320,6 +5361,24 @@ class App extends React.Component<AppProps, AppState> {
             currentItemTextAlign: DEFAULT_TEXT_ALIGN,
           };
         }
+        // Rectangle, diamond, ellipse: if stroke is 0 (e.g. leaked from StickyNote
+        // via a path that didn't go through "Leaving StickyNote"), reset to defaults
+        if (
+          (nextActiveTool.type === "rectangle" ||
+            nextActiveTool.type === "diamond" ||
+            nextActiveTool.type === "ellipse") &&
+          prevState.currentItemStrokeWidth === 0
+        ) {
+          return {
+            ...base,
+            currentItemBackgroundColor: DEFAULT_ELEMENT_PROPS.backgroundColor,
+            currentItemFillStyle: DEFAULT_ELEMENT_PROPS.fillStyle,
+            currentItemStrokeWidth: DEFAULT_ELEMENT_PROPS.strokeWidth,
+            currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
+            currentItemRoughness: DEFAULT_ELEMENT_PROPS.roughness,
+            currentItemTextAlign: DEFAULT_TEXT_ALIGN,
+          };
+        }
         // Rectangle, diamond, ellipse: always start with no fill (transparent)
         // so only sticky note has yellow fill
         if (
@@ -5333,6 +5392,21 @@ class App extends React.Component<AppProps, AppState> {
           };
         }
         return base;
+      }
+      // When switching to selection, reset current item if leaving Sticky Note
+      // so rectangle/diamond/ellipse tools keep correct defaults when used next
+      if (prevState.activeTool.type === "StickyNote") {
+        return {
+          ...prevState,
+          ...commonResets,
+          activeTool: nextActiveTool,
+          currentItemBackgroundColor: DEFAULT_ELEMENT_PROPS.backgroundColor,
+          currentItemFillStyle: DEFAULT_ELEMENT_PROPS.fillStyle,
+          currentItemStrokeWidth: DEFAULT_ELEMENT_PROPS.strokeWidth,
+          currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
+          currentItemRoughness: DEFAULT_ELEMENT_PROPS.roughness,
+          currentItemTextAlign: DEFAULT_TEXT_ALIGN,
+        };
       }
       return {
         ...prevState,
@@ -5554,8 +5628,11 @@ class App extends React.Component<AppProps, AppState> {
       autoSelect: !this.editorInterface.isTouchScreen && !placeholder,
       placeholder: placeholder ?? "",
     });
-    // deselect all other elements when inserting text
-    this.deselectElements();
+    // When editing bound text, keep the container selected so quick-add handles
+    // and selection state stay consistent. Otherwise deselect others.
+    if (!element.containerId) {
+      this.deselectElements();
+    }
 
     // do an initial update to re-initialize element position since we were
     // modifying element's x/y for sake of editor (case: syncing to remote)
@@ -5962,7 +6039,6 @@ class App extends React.Component<AppProps, AppState> {
         }),
       });
     }
-    this.setState({ editingTextElement: element });
 
     if (!existingTextElement) {
       if (container && shouldBindToContainer) {
@@ -5972,6 +6048,12 @@ class App extends React.Component<AppProps, AppState> {
         this.scene.insertElement(element);
       }
     }
+
+    // Commit editing state before any paint so the text is excluded from canvas
+    // and quick-add handles use the correct focused element (avoids double layer / missing handles).
+    flushSync(() => {
+      this.setState({ editingTextElement: element });
+    });
 
     if (autoEdit || existingTextElement || container) {
       this.handleTextWysiwyg(element, {
@@ -9021,16 +9103,250 @@ class App extends React.Component<AppProps, AppState> {
         newElement: null,
       },
       () => {
+        // Defer to avoid flushSync inside a lifecycle method (startTextEditing
+        // uses flushSync, and this callback runs during React's commit phase)
         const sceneX = element.x + element.width / 2;
         const sceneY = element.y + element.height / 2;
-        this.startTextEditing({
-          sceneX,
-          sceneY,
-          container: element as ExcalidrawTextContainer,
-          insertAtParentCenter: true,
+        const container = element as ExcalidrawTextContainer;
+        queueMicrotask(() => {
+          this.startTextEditing({
+            sceneX,
+            sceneY,
+            container,
+            insertAtParentCenter: true,
+          });
         });
       },
     );
+  };
+
+  private handleQuickAddHandleActivate = (
+    side: "top" | "right" | "bottom" | "left",
+    originShapeId: string,
+  ): void => {
+    // Hack: when text was being edited, unselect/reselect the new shape's text
+    // after quick-add to avoid double text layer on canvas.
+    const hadPreviousTextEditing = !!this.state.editingTextElement;
+    // Clear any in-progress text edit so the new shape gets handles (originShape
+    // would otherwise stay the previous container).
+    if (this.state.editingTextElement) {
+      flushSync(() => this.setState({ editingTextElement: null }));
+    }
+
+    const elementsMap = this.scene.getNonDeletedElementsMap();
+    const origin = elementsMap.get(originShapeId);
+    if (!origin || origin.isDeleted) {
+      return;
+    }
+    const isSticky =
+      origin.type === "rectangle" &&
+      (origin as any).customData?.isStickyNote === true;
+    const gap = isSticky ? 20 : 60;
+    const STICKY_NOTE_DEFAULT_WIDTH = 200;
+    const STICKY_NOTE_DEFAULT_HEIGHT = 205;
+    const w = isSticky ? STICKY_NOTE_DEFAULT_WIDTH : origin.width;
+    const h = isSticky ? STICKY_NOTE_DEFAULT_HEIGHT : origin.height;
+    let sceneX: number;
+    let sceneY: number;
+    switch (side) {
+      case "top":
+        sceneX = origin.x + origin.width / 2 - w / 2;
+        sceneY = origin.y - h - gap;
+        break;
+      case "right":
+        sceneX = origin.x + origin.width + gap;
+        sceneY = origin.y + (origin.height - h) / 2;
+        break;
+      case "bottom":
+        sceneX = origin.x + (origin.width - w) / 2;
+        sceneY = origin.y + origin.height + gap;
+        break;
+      case "left":
+        sceneX = origin.x - w - gap;
+        sceneY = origin.y + (origin.height - h) / 2;
+        break;
+    }
+    const [gridX, gridY] = getGridPoint(
+      sceneX,
+      sceneY,
+      this.lastPointerDownEvent?.[KEYS.CTRL_OR_CMD]
+        ? null
+        : this.getEffectiveGridSize(),
+    );
+    const topLayerFrame = this.getTopLayerFrameAtSceneCoords({
+      x: gridX,
+      y: gridY,
+    });
+
+    if (isSticky) {
+      const element = newElement({
+        type: "rectangle",
+        x: gridX,
+        y: gridY,
+        width: STICKY_NOTE_DEFAULT_WIDTH,
+        height: STICKY_NOTE_DEFAULT_HEIGHT,
+        backgroundColor: this.state.lastStickyNoteBackgroundColor,
+        fillStyle: "solid",
+        strokeColor: this.state.currentItemStrokeColor,
+        strokeWidth: 0,
+        strokeStyle: "solid",
+        roughness: ROUGHNESS.architect,
+        opacity: this.state.currentItemOpacity,
+        roundness: null,
+        locked: false,
+        frameId: topLayerFrame ? topLayerFrame.id : null,
+        customData: { isStickyNote: true },
+      });
+      this.scene.insertElement(element);
+      flushSync(() => {
+        this.setState({
+          multiElement: null,
+          newElement: null,
+          selectedElementIds: { [element.id]: true },
+        });
+      });
+      requestAnimationFrame(() => {
+        this.startTextEditing({
+          sceneX: element.x + element.width / 2,
+          sceneY: element.y + element.height / 2,
+          container: element as ExcalidrawTextContainer,
+          insertAtParentCenter: true,
+        });
+        if (hadPreviousTextEditing) {
+          requestAnimationFrame(() => {
+            const map = this.scene.getNonDeletedElementsMap();
+            const boundText = getBoundTextElement(element, map);
+            if (boundText) {
+              flushSync(() => this.setState({ editingTextElement: null }));
+              flushSync(() =>
+                this.setState({ editingTextElement: boundText }),
+              );
+            }
+          });
+        }
+      });
+    } else {
+      const elementType = origin.type as
+        | "rectangle"
+        | "diamond"
+        | "ellipse";
+      const baseElementAttributes = {
+        x: gridX,
+        y: gridY,
+        width: w,
+        height: h,
+        strokeColor: this.state.currentItemStrokeColor,
+        backgroundColor: this.state.currentItemBackgroundColor,
+        fillStyle: this.state.currentItemFillStyle,
+        strokeWidth: this.state.currentItemStrokeWidth,
+        strokeStyle: this.state.currentItemStrokeStyle,
+        roughness: this.state.currentItemRoughness,
+        opacity: this.state.currentItemOpacity,
+        roundness: this.getCurrentItemRoundness(elementType),
+        locked: false,
+        frameId: topLayerFrame ? topLayerFrame.id : null,
+      } as const;
+      const element = newElement({
+        type: elementType,
+        ...baseElementAttributes,
+      });
+      this.scene.insertElement(element);
+
+      const originCenterX =
+        side === "left" || side === "right"
+          ? side === "right"
+            ? origin.x + origin.width
+            : origin.x
+          : origin.x + origin.width / 2;
+      const originCenterY =
+        side === "top" || side === "bottom"
+          ? side === "bottom"
+            ? origin.y + origin.height
+            : origin.y
+          : origin.y + origin.height / 2;
+      const newShapeCenterX =
+        side === "left" || side === "right"
+          ? side === "right"
+            ? gridX
+            : gridX + w
+          : gridX + w / 2;
+      const newShapeCenterY =
+        side === "top" || side === "bottom"
+          ? side === "bottom"
+            ? gridY
+            : gridY + h
+          : gridY + h / 2;
+
+      const arrow = newArrowElement({
+        type: "arrow",
+        x: originCenterX,
+        y: originCenterY,
+        strokeColor: this.state.currentItemStrokeColor,
+        strokeWidth: this.state.currentItemStrokeWidth,
+        strokeStyle: this.state.currentItemStrokeStyle,
+        roughness: this.state.currentItemRoughness,
+        opacity: this.state.currentItemOpacity,
+        startArrowhead: null,
+        endArrowhead: this.state.currentItemEndArrowhead ?? "arrow",
+        points: [
+          pointFrom<LocalPoint>(0, 0),
+          pointFrom<LocalPoint>(
+            newShapeCenterX - originCenterX,
+            newShapeCenterY - originCenterY,
+          ),
+        ],
+        elbowed: this.state.currentItemArrowType === ARROW_TYPE.elbow,
+        fixedSegments:
+          this.state.currentItemArrowType === ARROW_TYPE.elbow ? [] : null,
+        frameId: topLayerFrame ? topLayerFrame.id : null,
+      });
+      this.scene.insertElement(arrow);
+
+      bindBindingElement(
+        arrow,
+        origin as ExcalidrawBindableElement,
+        "orbit",
+        "start",
+        this.scene,
+      );
+      bindBindingElement(
+        arrow,
+        element as ExcalidrawBindableElement,
+        "orbit",
+        "end",
+        this.scene,
+      );
+
+      flushSync(() => {
+        this.setState({
+          multiElement: null,
+          newElement: null,
+          selectedElementIds: { [element.id]: true },
+        });
+      });
+      requestAnimationFrame(() => {
+        this.startTextEditing({
+          sceneX: element.x + element.width / 2,
+          sceneY: element.y + element.height / 2,
+          container: element as ExcalidrawTextContainer,
+          insertAtParentCenter: true,
+        });
+        if (hadPreviousTextEditing) {
+          requestAnimationFrame(() => {
+            const map = this.scene.getNonDeletedElementsMap();
+            const boundText = getBoundTextElement(element, map);
+            if (boundText) {
+              flushSync(() => this.setState({ editingTextElement: null }));
+              flushSync(() =>
+                this.setState({ editingTextElement: boundText }),
+              );
+            }
+          });
+        }
+      });
+    }
+
+    this.props.onQuickAddHandleActivate?.(side, originShapeId);
   };
 
   private createFrameElementOnPointerDown = (
@@ -11002,11 +11318,15 @@ class App extends React.Component<AppProps, AppState> {
           isTextBindableContainer(container, false) &&
           !getBoundTextElement(container, this.scene.getElementsMapIncludingDeleted())
         ) {
-          this.startTextEditing({
-            sceneX: container.x + container.width / 2,
-            sceneY: container.y + container.height / 2,
-            container,
-            insertAtParentCenter: true,
+          const sceneX = container.x + container.width / 2;
+          const sceneY = container.y + container.height / 2;
+          queueMicrotask(() => {
+            this.startTextEditing({
+              sceneX,
+              sceneY,
+              container,
+              insertAtParentCenter: true,
+            });
           });
         }
       };

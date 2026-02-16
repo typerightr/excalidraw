@@ -384,7 +384,7 @@ export const ELEMENT_READY_TO_ERASE_OPACITY = 20;
 // below the cutoff size.
 export const DEFAULT_PROPORTIONAL_RADIUS = 0.25;
 // Fixed radius for the ADAPTIVE_RADIUS algorithm. In pixels.
-export const DEFAULT_ADAPTIVE_RADIUS = 32;
+export const DEFAULT_ADAPTIVE_RADIUS = 12;
 // roundness type (algorithm)
 export const ROUNDNESS = {
   // Used for legacy rounding (rectangles), which currently works the same
@@ -431,7 +431,7 @@ export const DEFAULT_ELEMENT_PROPS: {
   locked: ExcalidrawElement["locked"];
 } = {
   strokeColor: COLOR_PALETTE.gray[3],
-  backgroundColor: COLOR_PALETTE.transparent,
+  backgroundColor: COLOR_PALETTE.white,
   fillStyle: "solid",
   strokeWidth: 4,
   strokeStyle: "solid",

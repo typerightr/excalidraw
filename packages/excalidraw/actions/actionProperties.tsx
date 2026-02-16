@@ -152,6 +152,20 @@ import type { AppClassProperties, AppState, Primitive } from "../types";
 
 const FONT_SIZE_RELATIVE_INCREASE_STEP = 0.1;
 
+const isStickyNoteElement = (el: ExcalidrawElement) =>
+  el.type === "rectangle" &&
+  (el as { customData?: { isStickyNote?: boolean } }).customData?.isStickyNote ===
+    true;
+
+/** When true, don't update global currentItem* so other shapes keep their defaults. */
+const areOnlyStickyNotesSelected = (
+  elements: readonly ExcalidrawElement[],
+  appState: AppState,
+) => {
+  const selected = getSelectedElements(elements, appState);
+  return selected.length > 0 && selected.every(isStickyNoteElement);
+};
+
 const getStylesPanelInfo = (app: AppClassProperties) => {
   const stylesPanelMode = deriveStylesPanelMode(app.editorInterface);
   return {
@@ -332,6 +346,7 @@ export const actionChangeStrokeColor = register<
   label: "labels.stroke",
   trackEvent: false,
   perform: (elements, appState, value) => {
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       ...(value?.currentItemStrokeColor && {
         elements: changeProperty(
@@ -354,7 +369,7 @@ export const actionChangeStrokeColor = register<
       }),
       appState: {
         ...appState,
-        ...value,
+        ...(onlyStickies ? {} : value),
       },
       captureUpdate: !!value?.currentItemStrokeColor
         ? CaptureUpdateAction.IMMEDIATELY
@@ -519,6 +534,7 @@ export const actionChangeFillStyle = register<ExcalidrawElement["fillStyle"]>({
         app.editorInterface.formFactor === "phone" ? "mobile" : "desktop"
       })`,
     );
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       elements: changeProperty(
         elements,
@@ -530,7 +546,10 @@ export const actionChangeFillStyle = register<ExcalidrawElement["fillStyle"]>({
         true,
         true,
       ),
-      appState: { ...appState, currentItemFillStyle: value },
+      appState: {
+        ...appState,
+        ...(onlyStickies ? {} : { currentItemFillStyle: value }),
+      },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };
   },
@@ -601,6 +620,7 @@ export const actionChangeStrokeWidth = register<
   label: "labels.strokeWidth",
   trackEvent: false,
   perform: (elements, appState, value) => {
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       elements: changeProperty(
         elements,
@@ -612,7 +632,10 @@ export const actionChangeStrokeWidth = register<
         true,
         true,
       ),
-      appState: { ...appState, currentItemStrokeWidth: value },
+      appState: {
+        ...appState,
+        ...(onlyStickies ? {} : { currentItemStrokeWidth: value }),
+      },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };
   },
@@ -662,6 +685,7 @@ export const actionChangeSloppiness = register<ExcalidrawElement["roughness"]>({
   label: "labels.sloppiness",
   trackEvent: false,
   perform: (elements, appState, value) => {
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       elements: changeProperty(
         elements,
@@ -674,7 +698,10 @@ export const actionChangeSloppiness = register<ExcalidrawElement["roughness"]>({
         true,
         true,
       ),
-      appState: { ...appState, currentItemRoughness: value },
+      appState: {
+        ...appState,
+        ...(onlyStickies ? {} : { currentItemRoughness: value }),
+      },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };
   },
@@ -723,6 +750,7 @@ export const actionChangeStrokeStyle = register<
   label: "labels.strokeStyle",
   trackEvent: false,
   perform: (elements, appState, value) => {
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       elements: changeProperty(
         elements,
@@ -734,7 +762,10 @@ export const actionChangeStrokeStyle = register<
         true,
         true,
       ),
-      appState: { ...appState, currentItemStrokeStyle: value },
+      appState: {
+        ...appState,
+        ...(onlyStickies ? {} : { currentItemStrokeStyle: value }),
+      },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };
   },
@@ -781,6 +812,7 @@ export const actionChangeOpacity = register<ExcalidrawElement["opacity"]>({
   label: "labels.opacity",
   trackEvent: false,
   perform: (elements, appState, value) => {
+    const onlyStickies = areOnlyStickyNotesSelected(elements, appState);
     return {
       elements: changeProperty(
         elements,
@@ -792,7 +824,10 @@ export const actionChangeOpacity = register<ExcalidrawElement["opacity"]>({
         true,
         true,
       ),
-      appState: { ...appState, currentItemOpacity: value },
+      appState: {
+        ...appState,
+        ...(onlyStickies ? {} : { currentItemOpacity: value }),
+      },
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,
     };
   },

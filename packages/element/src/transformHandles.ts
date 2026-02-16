@@ -47,9 +47,9 @@ export type TransformHandles = Partial<{
 export type MaybeTransformHandleType = TransformHandleType | false;
 
 const transformHandleSizes: { [k in PointerType]: number } = {
-  mouse: 8,
-  pen: 16,
-  touch: 28,
+  mouse: 11,
+  pen: 18,
+  touch: 30,
 };
 
 const ROTATION_RESIZE_HANDLE_GAP = 16;

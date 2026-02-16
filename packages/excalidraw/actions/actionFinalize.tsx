@@ -15,6 +15,8 @@ import {
 } from "@excalidraw/element";
 
 import {
+  DEFAULT_ELEMENT_PROPS,
+  DEFAULT_TEXT_ALIGN,
   KEYS,
   arrayToMap,
   invariant,
@@ -294,6 +296,14 @@ export const actionFinalize = register<FormData>({
       });
     }
 
+    // When switching from Sticky Note to selection (e.g. after creating a sticky
+    // note), reset currentItem* so rectangle/diamond/ellipse keep correct
+    // defaults. Without this, the sticky note's strokeWidth:0 and yellow fill
+    // would leak into the next shape the user creates.
+    const resetStickyNoteStyles =
+      appState.activeTool.type === "StickyNote" &&
+      activeTool.type === app.state.preferredSelectionTool.type;
+
     let selectedLinearElement =
       element && isLinearElement(element)
         ? new LinearElementEditor(element, arrayToMap(newElements)) // To select the linear element when user has finished mutipoint editing
@@ -342,6 +352,17 @@ export const actionFinalize = register<FormData>({
             : appState.selectedElementIds,
 
         selectedLinearElement,
+
+        ...(resetStickyNoteStyles
+          ? {
+              currentItemBackgroundColor: DEFAULT_ELEMENT_PROPS.backgroundColor,
+              currentItemFillStyle: DEFAULT_ELEMENT_PROPS.fillStyle,
+              currentItemStrokeWidth: DEFAULT_ELEMENT_PROPS.strokeWidth,
+              currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
+              currentItemRoughness: DEFAULT_ELEMENT_PROPS.roughness,
+              currentItemTextAlign: DEFAULT_TEXT_ALIGN,
+            }
+          : {}),
       },
       // TODO: #7348 we should not capture everything, but if we don't, it leads to incosistencies -> revisit
       captureUpdate: CaptureUpdateAction.IMMEDIATELY,

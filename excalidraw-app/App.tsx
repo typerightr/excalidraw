@@ -913,6 +913,10 @@ const ExcalidrawWrapper = () => {
             excalidrawAPI?.scrollToContent(element.link, { animate: true });
           }
         }}
+        onQuickAddHandleActivate={() => {
+          // Shape creation and text editing are handled by the library.
+          // Optional: add analytics or app-specific side effects here.
+        }}
       >
         <AppMainMenu
           onCollabDialogOpen={onCollabDialogOpen}

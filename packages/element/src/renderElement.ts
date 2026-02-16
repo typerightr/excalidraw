@@ -147,6 +147,7 @@ export interface ExcalidrawElementWithCanvas {
   imageCrop: ExcalidrawImageElement["crop"] | null;
   containingFrameOpacity: number;
   boundTextCanvas: HTMLCanvasElement;
+  editingTextElementId?: ExcalidrawElement["id"] | null;
 }
 
 const cappedElementCanvasSize = (
@@ -338,6 +339,7 @@ const generateElementCanvas = (
     boundTextCanvas,
     angle: element.angle,
     imageCrop: isImageElement(element) ? element.crop : null,
+    editingTextElementId: renderConfig.editingTextElementId,
   };
 };
 
@@ -421,8 +423,12 @@ const drawElementOnCanvas = (
         // and persists in the same spot when that one hides.
         if (!renderConfig.isExporting && elementsMap) {
           const boundText = getBoundTextElement(element, elementsMap);
+          const isBoundTextBeingEdited =
+            boundText?.id != null &&
+            renderConfig.editingTextElementId === boundText.id;
           const showGhost =
-            !boundText || !boundText.originalText.trim();
+            !isBoundTextBeingEdited &&
+            (!boundText || !boundText.originalText.trim());
           if (showGhost) {
             const placeholder =
               renderConfig.stickyNotePlaceholder || "Add text";
@@ -682,9 +688,18 @@ const generateElementWithCanvas = (
   const containingFrameOpacity =
     getContainingFrame(element, elementsMap)?.opacity || 100;
 
+  const isStickyNote =
+    element.type === "rectangle" &&
+    element.customData?.isStickyNote === true;
+  const editingTextElementId = renderConfig.editingTextElementId;
+  const shouldRegenerateBecauseEditingText =
+    isStickyNote &&
+    prevElementWithCanvas?.editingTextElementId !== editingTextElementId;
+
   if (
     !prevElementWithCanvas ||
     shouldRegenerateBecauseZoom ||
+    shouldRegenerateBecauseEditingText ||
     prevElementWithCanvas.theme !== appState.theme ||
     prevElementWithCanvas.boundTextElementVersion !== boundTextElementVersion ||
     prevElementWithCanvas.imageCrop !== imageCrop ||

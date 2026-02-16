@@ -41,7 +41,7 @@ export const getDefaultAppState = (): Omit<
     lastStickyNoteBackgroundColor:
       COLOR_PALETTE.yellow[DEFAULT_ELEMENT_BACKGROUND_COLOR_INDEX],
     currentItemRoundness: isTestEnv() ? "sharp" : "round",
-    currentItemArrowType: ARROW_TYPE.round,
+    currentItemArrowType: ARROW_TYPE.elbow,
     currentItemStrokeStyle: DEFAULT_ELEMENT_PROPS.strokeStyle,
     currentItemStrokeWidth: DEFAULT_ELEMENT_PROPS.strokeWidth,
     currentItemTextAlign: DEFAULT_TEXT_ALIGN,
