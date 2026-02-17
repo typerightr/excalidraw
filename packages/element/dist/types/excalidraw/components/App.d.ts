@@ -1,11 +1,10 @@
 import React from "react";
 import { type EXPORT_IMAGE_TYPES, Emitter, type EditorInterface, type StylesPanelMode } from "@excalidraw/common";
-import { LinearElementEditor, FlowChartCreator, Scene, Store, type ElementUpdate, StoreDelta, type ApplyToOptions } from "@excalidraw/element";
+import { LinearElementEditor, FlowChartCreator, Scene, type ElementUpdate, StoreDelta, type ApplyToOptions } from "@excalidraw/element";
 import type { ExcalidrawElement, NonDeleted, NonDeletedExcalidrawElement, ExcalidrawFrameLikeElement, ExcalidrawIframeElement, ExcalidrawEmbeddableElement, Ordered, SceneElementsMap } from "@excalidraw/element/types";
 import type { Mutable } from "@excalidraw/common/utility-types";
 import { ActionManager } from "../actions/manager";
 import { AnimationFrameHandler } from "../animation-frame-handler";
-import { History } from "../history";
 import { Fonts } from "../fonts";
 import { type WritableAtom } from "../editor-jotai";
 import { Renderer } from "../scene/Renderer";
@@ -551,20 +550,6 @@ declare class App extends React.Component<AppProps, AppState> {
     private getCanvasOffsets;
     watchState: () => void;
     private updateLanguage;
-}
-declare global {
-    interface Window {
-        h: {
-            scene: Scene;
-            elements: readonly ExcalidrawElement[];
-            state: AppState;
-            setState: React.Component<any, AppState>["setState"];
-            watchState: (prev: any, next: any) => void | undefined;
-            app: InstanceType<typeof App>;
-            history: History;
-            store: Store;
-        };
-    }
 }
 export declare const createTestHook: () => void;
 export default App;

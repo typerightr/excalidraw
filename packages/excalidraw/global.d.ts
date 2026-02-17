@@ -1,3 +1,4 @@
+/// <reference path="./test-hooks.d.ts" />
 interface Window {
   ClipboardItem: any;
   __EXCALIDRAW_SHA__: string | undefined;

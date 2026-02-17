@@ -7,6 +7,18 @@ const { sassPlugin } = require("esbuild-sass-plugin");
 
 const { parseEnvVariables } = require("../packages/excalidraw/env.cjs");
 
+// Bundle roughjs to avoid ESM resolution issues (roughjs/bin/rough without .js fails in Node)
+const roughjsBundlePlugin = {
+  name: "roughjs-bundle",
+  setup(build) {
+    const roughjsPath = path.resolve(__dirname, "../node_modules/roughjs");
+    build.onResolve({ filter: /^roughjs\// }, (args) => ({
+      path: path.join(roughjsPath, args.path.replace(/^roughjs\//, "") + ".js"),
+      namespace: "file",
+    }));
+  },
+};
+
 const ENV_VARS = {
   development: {
     ...parseEnvVariables(`${__dirname}/../.env.development`),
@@ -63,7 +75,9 @@ const getConfig = (outdir) => ({
   splitting: true,
   format: "esm",
   packages: "external",
+  external: [],
   plugins: [
+    roughjsBundlePlugin,
     sassPlugin({
       precompile,
     }),
@@ -77,7 +91,6 @@ const getConfig = (outdir) => ({
     "@excalidraw/element": path.resolve(__dirname, "../packages/element/src"),
     "@excalidraw/math": path.resolve(__dirname, "../packages/math/src"),
   },
-  external: [],
   loader: {
     ".woff2": "file",
   },
