@@ -511,7 +511,7 @@ import {
   viewportCoordsToSceneCoords,
   wrapEvent,
   wrapText
-} from "./chunk-XTQWQTPZ.js";
+} from "./chunk-KJSWZCM5.js";
 import {
   define_import_meta_env_default
 } from "./chunk-SL6EXH2C.js";
@@ -9774,7 +9774,7 @@ var exportCanvas = async (type, elements, appState, files, {
     let blob = canvasToBlob(tempCanvas);
     if (appState.exportEmbedScene) {
       blob = blob.then(
-        (blob2) => import("./data/image-SSQW5EGB.js").then(
+        (blob2) => import("./data/image-IZUCECC4.js").then(
           ({ encodePngMetadata: encodePngMetadata2 }) => encodePngMetadata2({
             blob: blob2,
             metadata: serializeAsJSON(elements, appState, files, "local")

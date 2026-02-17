@@ -2,7 +2,7 @@ import {
   decodePngMetadata,
   encodePngMetadata,
   getTEXtChunk
-} from "../chunk-XTQWQTPZ.js";
+} from "../chunk-KJSWZCM5.js";
 import "../chunk-SL6EXH2C.js";
 import "../chunk-XDFCUUT6.js";
 export {
@@ -10,4 +10,4 @@ export {
   encodePngMetadata,
   getTEXtChunk
 };
-//# sourceMappingURL=image-SSQW5EGB.js.map
+//# sourceMappingURL=image-IZUCECC4.js.map
