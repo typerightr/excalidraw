@@ -35,7 +35,7 @@ exports[`COLOR_PALETTE > color palette doesn't regress 1`] = `
     "#f8f9fa",
     "#e9ecef",
     "#ced4da",
-    "#868e96",
+    "#6C6866",
     "#343a40",
   ],
   "green": [
@@ -127,7 +127,7 @@ exports[`applyDarkModeFilter > COLOR_PALETTE regression tests > matches snapshot
     "#161718",
     "#202325",
     "#33383d",
-    "#6e757c",
+    "#969291",
     "#b7bcc1",
   ],
   "green": [

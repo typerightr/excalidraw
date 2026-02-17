@@ -119,9 +119,9 @@ describe("multi point mode in linear elements", () => {
     });
 
     expect(renderInteractiveScene.mock.calls.length).toMatchInlineSnapshot(
-      `11`,
+      `9`,
     );
-    expect(renderStaticScene.mock.calls.length).toMatchInlineSnapshot(`7`);
+    expect(renderStaticScene.mock.calls.length).toMatchInlineSnapshot(`8`);
     expect(h.elements.length).toEqual(1);
 
     const element = h.elements[0] as ExcalidrawLinearElement;
