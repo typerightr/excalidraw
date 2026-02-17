@@ -16,9 +16,11 @@ import {
 
 import type { AppState, NormalizedZoomValue } from "./types";
 
-const defaultExportScale = EXPORT_SCALES.includes(devicePixelRatio)
-  ? devicePixelRatio
-  : 1;
+const defaultExportScale =
+  typeof window !== "undefined" &&
+  EXPORT_SCALES.includes(window.devicePixelRatio)
+    ? window.devicePixelRatio
+    : 1;
 
 export const getDefaultAppState = (): Omit<
   AppState,
