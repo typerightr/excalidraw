@@ -16,15 +16,36 @@ import type { AppState, UIAppState } from "../../types";
 
 export const DEFAULT_LINK_SIZE = 12;
 
-export const EXTERNAL_LINK_IMG = document.createElement("img");
-EXTERNAL_LINK_IMG.src = `data:${MIME_TYPES.svg}, ${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1971c2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
-)}`;
+let _externalLinkImg: HTMLImageElement | null = null;
+let _elementLinkImg: HTMLImageElement | null = null;
 
-export const ELEMENT_LINK_IMG = document.createElement("img");
-ELEMENT_LINK_IMG.src = `data:${MIME_TYPES.svg}, ${encodeURIComponent(
-  `<svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="#1971c2"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-big-right-line"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-6v-6h6z" /><path d="M3 9v6" /></svg>`,
-)}`;
+/** Lazy-initialized so module load is safe in SSR (no document). */
+export function getExternalLinkImg(): HTMLImageElement {
+  if (typeof document === "undefined") {
+    throw new Error("getExternalLinkImg is only available in browser");
+  }
+  if (!_externalLinkImg) {
+    _externalLinkImg = document.createElement("img");
+    _externalLinkImg.src = `data:${MIME_TYPES.svg}, ${encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1971c2" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
+    )}`;
+  }
+  return _externalLinkImg;
+}
+
+/** Lazy-initialized so module load is safe in SSR (no document). */
+export function getElementLinkImg(): HTMLImageElement {
+  if (typeof document === "undefined") {
+    throw new Error("getElementLinkImg is only available in browser");
+  }
+  if (!_elementLinkImg) {
+    _elementLinkImg = document.createElement("img");
+    _elementLinkImg.src = `data:${MIME_TYPES.svg}, ${encodeURIComponent(
+      `<svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="#1971c2"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-big-right-line"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 9v-3.586a1 1 0 0 1 1.707 -.707l6.586 6.586a1 1 0 0 1 0 1.414l-6.586 6.586a1 1 0 0 1 -1.707 -.707v-3.586h-6v-6h6z" /><path d="M3 9v6" /></svg>`,
+    )}`;
+  }
+  return _elementLinkImg;
+}
 
 export const getLinkHandleFromCoords = (
   [x1, y1, x2, y2]: Bounds,
