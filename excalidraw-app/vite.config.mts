@@ -200,7 +200,7 @@ export default defineConfig(({ mode }) => {
               },
             },
           ],
-          maximumFileSizeToCacheInBytes: 2.3 * 1024 ** 2, // 2.3MB
+          maximumFileSizeToCacheInBytes: 4 * 1024 ** 2, // 4MB (bundle includes roughjs + internal packages)
         },
         manifest: {
           short_name: "Excalidraw",
