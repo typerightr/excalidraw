@@ -11,9 +11,14 @@ const { parseEnvVariables } = require("../packages/excalidraw/env.cjs");
 const roughjsBundlePlugin = {
   name: "roughjs-bundle",
   setup(build) {
-    const roughjsPath = path.resolve(__dirname, "../node_modules/roughjs");
+    const roughjsRoot = path.dirname(
+      require.resolve("roughjs/package.json", { paths: [path.resolve(__dirname, "..")] }),
+    );
     build.onResolve({ filter: /^roughjs\// }, (args) => ({
-      path: path.join(roughjsPath, args.path.replace(/^roughjs\//, "") + ".js"),
+      path: path.join(
+        roughjsRoot,
+        args.path.replace(/^roughjs\//, "") + ".js",
+      ),
       namespace: "file",
     }));
   },
