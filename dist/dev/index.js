@@ -459,6 +459,7 @@ import {
   restoreElements,
   restoreLibraryItems,
   rgbToHex,
+  rough_default,
   round,
   roundToStep,
   saveAsJSON,
@@ -510,7 +511,7 @@ import {
   viewportCoordsToSceneCoords,
   wrapEvent,
   wrapText
-} from "./chunk-2LKIKOZR.js";
+} from "./chunk-XTQWQTPZ.js";
 import {
   define_import_meta_env_default
 } from "./chunk-SL6EXH2C.js";
@@ -534,7 +535,6 @@ import clsx62 from "clsx";
 import throttle2 from "lodash.throttle";
 import React47, { useContext as useContext3 } from "react";
 import { flushSync as flushSync3 } from "react-dom";
-import rough from "roughjs/bin/rough";
 import { nanoid } from "nanoid";
 
 // editor-jotai.ts
@@ -9774,7 +9774,7 @@ var exportCanvas = async (type, elements, appState, files, {
     let blob = canvasToBlob(tempCanvas);
     if (appState.exportEmbedScene) {
       blob = blob.then(
-        (blob2) => import("./data/image-CP2Q2SIT.js").then(
+        (blob2) => import("./data/image-SSQW5EGB.js").then(
           ({ encodePngMetadata: encodePngMetadata2 }) => encodePngMetadata2({
             blob: blob2,
             metadata: serializeAsJSON(elements, appState, files, "local")
@@ -36662,7 +36662,7 @@ var App = class _App extends React47.Component {
     );
     this.scene = new Scene();
     this.canvas = document.createElement("canvas");
-    this.rc = rough.canvas(this.canvas);
+    this.rc = rough_default.canvas(this.canvas);
     this.renderer = new Renderer(this.scene);
     this.visibleElements = [];
     this.store = new Store(this);
