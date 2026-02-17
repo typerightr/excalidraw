@@ -30,8 +30,8 @@ import type {
 } from "@excalidraw/element/types";
 
 import {
-  EXTERNAL_LINK_IMG,
-  ELEMENT_LINK_IMG,
+  getExternalLinkImg,
+  getElementLinkImg,
   getLinkHandleFromCoords,
 } from "../components/hyperlink/helpers";
 
@@ -245,10 +245,10 @@ const renderLinkIcon = (
       linkCanvasCacheContext.fillRect(0, 0, width, height);
 
       if (canvasKey === "elementLink") {
-        linkCanvasCacheContext.drawImage(ELEMENT_LINK_IMG, 0, 0, width, height);
+        linkCanvasCacheContext.drawImage(getElementLinkImg(), 0, 0, width, height);
       } else {
         linkCanvasCacheContext.drawImage(
-          EXTERNAL_LINK_IMG,
+          getExternalLinkImg(),
           0,
           0,
           width,
