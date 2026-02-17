@@ -2502,7 +2502,7 @@ var Emitter = class {
 import { nanoid as nanoid2 } from "nanoid";
 
 // appState.ts
-var defaultExportScale = EXPORT_SCALES.includes(devicePixelRatio) ? devicePixelRatio : 1;
+var defaultExportScale = typeof window !== "undefined" && EXPORT_SCALES.includes(window.devicePixelRatio) ? window.devicePixelRatio : 1;
 var getDefaultAppState = () => {
   return {
     showWelcomeScreen: false,
@@ -12862,13 +12862,13 @@ var drawElementOnCanvas = (element, rc, context, renderConfig, elementsMap) => {
         };
         const shouldInvertImage = renderConfig.theme === THEME.DARK && cacheEntry?.mimeType === MIME_TYPES.svg;
         if (shouldInvertImage && isSafari) {
-          const devicePixelRatio2 = window.devicePixelRatio || 1;
+          const devicePixelRatio = window.devicePixelRatio || 1;
           const tempCanvas = document.createElement("canvas");
-          tempCanvas.width = element.width * devicePixelRatio2;
-          tempCanvas.height = element.height * devicePixelRatio2;
+          tempCanvas.width = element.width * devicePixelRatio;
+          tempCanvas.height = element.height * devicePixelRatio;
           const tempContext = tempCanvas.getContext("2d");
           if (tempContext) {
-            tempContext.scale(devicePixelRatio2, devicePixelRatio2);
+            tempContext.scale(devicePixelRatio, devicePixelRatio);
             tempContext.drawImage(
               img,
               x,
@@ -26770,7 +26770,7 @@ var parseFileContents = async (blob) => {
   let contents;
   if (blob.type === MIME_TYPES.png) {
     try {
-      return await (await import("./data/image-SSQW5EGB.js")).decodePngMetadata(blob);
+      return await (await import("./data/image-IZUCECC4.js")).decodePngMetadata(blob);
     } catch (error) {
       if (error.message === "INVALID") {
         throw new ImageSceneDataError(
@@ -27650,4 +27650,4 @@ export {
   createFile,
   normalizeFile
 };
-//# sourceMappingURL=chunk-XTQWQTPZ.js.map
+//# sourceMappingURL=chunk-KJSWZCM5.js.map
