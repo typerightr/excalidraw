@@ -1293,8 +1293,7 @@ var TOOL_TYPE = {
   hand: "hand",
   frame: "frame",
   magicframe: "magicframe",
-  embeddable: "embeddable",
-  laser: "laser"
+  embeddable: "embeddable"
 };
 var EDITOR_LS_KEYS = {
   OAI_API_KEY: "excalidraw-oai-api-key",
@@ -19345,14 +19344,6 @@ var FlowChartCreator = class {
     this.numberOfNodes = 0;
   }
 };
-var isNodeInFlowchart = (element, elementsMap) => {
-  for (const [, el] of elementsMap) {
-    if (el.type === "arrow" && (el.startBinding?.elementId === element.id || el.endBinding?.elementId === element.id)) {
-      return true;
-    }
-  }
-  return false;
-};
 
 // ../element/src/zindex.ts
 var isOfTargetFrame = (element, frameId) => {
@@ -21592,7 +21583,7 @@ var getSelectionBorders = ([x1, y1], [x2, y2], center, angle) => {
 
 // ../element/src/showSelectedShapeActions.ts
 var showSelectedShapeActions = (appState, elements) => Boolean(
-  !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && (appState.activeTool.type !== "custom" && (appState.editingTextElement || appState.activeTool.type !== "selection" && appState.activeTool.type !== "lasso" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand" && appState.activeTool.type !== "laser") || getSelectedElements(elements, appState).length)
+  !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && (appState.activeTool.type !== "custom" && (appState.editingTextElement || appState.activeTool.type !== "selection" && appState.activeTool.type !== "lasso" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand") || getSelectedElements(elements, appState).length)
 );
 
 // ../element/src/transform.ts
@@ -26246,7 +26237,6 @@ var AllowedExcalidrawActiveTools = {
   frame: true,
   embeddable: true,
   hand: true,
-  laser: false,
   magicframe: false
 };
 var getFontFamilyByName = (fontFamilyName) => {
@@ -26788,7 +26778,7 @@ var parseFileContents = async (blob) => {
   let contents;
   if (blob.type === MIME_TYPES.png) {
     try {
-      return await (await import("./data/image-FBBIWDF2.js")).decodePngMetadata(blob);
+      return await (await import("./data/image-YMIIXEIV.js")).decodePngMetadata(blob);
     } catch (error) {
       if (error.message === "INVALID") {
         throw new ImageSceneDataError(
@@ -27572,7 +27562,6 @@ export {
   getLinkDirectionFromKey,
   FlowChartNavigator,
   FlowChartCreator,
-  isNodeInFlowchart,
   moveOneLeft,
   moveOneRight,
   moveAllLeft,
@@ -27668,4 +27657,4 @@ export {
   createFile,
   normalizeFile
 };
-//# sourceMappingURL=chunk-5YO4ZPSV.js.map
+//# sourceMappingURL=chunk-7AJFAKPR.js.map

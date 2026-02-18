@@ -16,10 +16,8 @@ import {
 } from "../Actions";
 import { HandButton } from "../HandButton";
 import { HelpButton } from "../HelpButton";
-import { HintViewer } from "../HintViewer";
 import { Island } from "../Island";
 import { LassoIcon, SelectionIcon } from "../icons";
-import { LaserPointerButton } from "../LaserPointerButton";
 import { LockButton } from "../LockButton";
 import { PenModeButton } from "../PenModeButton";
 import { Section } from "../Section";
@@ -138,12 +136,7 @@ const Footer = ({
                           "App-toolbar--compact": isCompactStylesPanel,
                         })}
                       >
-                        <HintViewer
-                          appState={appState}
-                          isMobile={editorInterface.formFactor === "phone"}
-                          editorInterface={editorInterface}
-                          app={app}
-                        />
+    
                         {heading}
                         <Stack.Row gap={spacing.toolbarInnerRowGap}>
                           <PenModeButton
@@ -218,26 +211,6 @@ const Footer = ({
                           
                         </Stack.Row>
                       </Island>
-                      {isCollaborating && (
-                        <Island
-                          style={{
-                            marginLeft: spacing.collabMarginLeft,
-                            alignSelf: "center",
-                            height: "fit-content",
-                          }}
-                        >
-                          <LaserPointerButton
-                            title={t("toolBar.laser")}
-                            checked={
-                              appState.activeTool.type === TOOL_TYPE.laser
-                            }
-                            onChange={() =>
-                              app.setActiveTool({ type: TOOL_TYPE.laser })
-                            }
-                            isMobile
-                          />
-                        </Island>
-                      )}
                     </Stack.Row>
                   </Stack.Col>
                 </div>
