@@ -191,7 +191,6 @@ export declare const mermaidLogoIcon: import("react/jsx-runtime").JSX.Element;
 export declare const RetryIcon: import("react/jsx-runtime").JSX.Element;
 export declare const stackPushIcon: import("react/jsx-runtime").JSX.Element;
 export declare const ArrowRightIcon: import("react/jsx-runtime").JSX.Element;
-export declare const laserPointerToolIcon: import("react/jsx-runtime").JSX.Element;
 export declare const MagicIcon: import("react/jsx-runtime").JSX.Element;
 export declare const MagicIconThin: import("react/jsx-runtime").JSX.Element;
 export declare const OpenAIIcon: import("react/jsx-runtime").JSX.Element;

@@ -21027,7 +21027,7 @@ var getSelectionBorders = ([x1, y1], [x2, y2], center, angle) => {
 // src/showSelectedShapeActions.ts
 init_define_import_meta_env();
 var showSelectedShapeActions = (appState, elements) => Boolean(
-  !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && (appState.activeTool.type !== "custom" && (appState.editingTextElement || appState.activeTool.type !== "selection" && appState.activeTool.type !== "lasso" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand" && appState.activeTool.type !== "laser") || getSelectedElements(elements, appState).length)
+  !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && (appState.activeTool.type !== "custom" && (appState.editingTextElement || appState.activeTool.type !== "selection" && appState.activeTool.type !== "lasso" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand") || getSelectedElements(elements, appState).length)
 );
 
 // src/transform.ts

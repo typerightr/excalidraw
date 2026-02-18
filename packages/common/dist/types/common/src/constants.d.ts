@@ -324,7 +324,6 @@ export declare const TOOL_TYPE: {
     readonly frame: "frame";
     readonly magicframe: "magicframe";
     readonly embeddable: "embeddable";
-    readonly laser: "laser";
 };
 export declare const EDITOR_LS_KEYS: {
     readonly OAI_API_KEY: "excalidraw-oai-api-key";

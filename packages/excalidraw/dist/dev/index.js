@@ -350,7 +350,6 @@ import {
   isMagicFrameElement,
   isMeasureTextSupported,
   isMemberOf,
-  isNodeInFlowchart,
   isNonDeletedElement,
   isPathALoop,
   isPointHittingLink,
@@ -511,7 +510,7 @@ import {
   viewportCoordsToSceneCoords,
   wrapEvent,
   wrapText
-} from "./chunk-5YO4ZPSV.js";
+} from "./chunk-7AJFAKPR.js";
 import {
   define_import_meta_env_default
 } from "./chunk-SL6EXH2C.js";
@@ -531,7 +530,7 @@ import {
 import React49, { useEffect as useEffect51 } from "react";
 
 // components/App.tsx
-import clsx62 from "clsx";
+import clsx61 from "clsx";
 import throttle2 from "lodash.throttle";
 import React47, { useContext as useContext3 } from "react";
 import { flushSync as flushSync3 } from "react-dom";
@@ -2705,30 +2704,6 @@ var ArrowRightIcon = createIcon(
     /* @__PURE__ */ jsx("path", { d: "M12.5 6.66666L15.8333 9.99999" })
   ] }),
   modifiedTablerIconProps
-);
-var laserPointerToolIcon = createIcon(
-  /* @__PURE__ */ jsxs(
-    "g",
-    {
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "1.25",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      transform: "rotate(90 10 10)",
-      children: [
-        /* @__PURE__ */ jsx(
-          "path",
-          {
-            clipRule: "evenodd",
-            d: "m9.644 13.69 7.774-7.773a2.357 2.357 0 0 0-3.334-3.334l-7.773 7.774L8 12l1.643 1.69Z"
-          }
-        ),
-        /* @__PURE__ */ jsx("path", { d: "m13.25 3.417 3.333 3.333M10 10l2-2M5 15l3-3M2.156 17.894l1-1M5.453 19.029l-.144-1.407M2.377 11.887l.866 1.118M8.354 17.273l-1.194-.758M.953 14.652l1.408.13" })
-      ]
-    }
-  ),
-  20
 );
 var MagicIcon = createIcon(
   /* @__PURE__ */ jsxs("g", { stroke: "currentColor", fill: "none", children: [
@@ -8002,15 +7977,6 @@ var Tooltip = ({
 };
 
 // cursor.ts
-var laserPointerCursorSVG_tag = `<svg viewBox="0 0 24 24" stroke-width="1" width="28" height="28" xmlns="http://www.w3.org/2000/svg">`;
-var laserPointerCursorBackgroundSVG = `<path d="M6.164 11.755a5.314 5.314 0 0 1-4.932-5.298 5.314 5.314 0 0 1 5.311-5.311 5.314 5.314 0 0 1 5.307 5.113l8.773 8.773a3.322 3.322 0 0 1 0 4.696l-.895.895a3.322 3.322 0 0 1-4.696 0l-8.868-8.868Z" style="fill:#fff"/>`;
-var laserPointerCursorIconSVG = `<path stroke="#1b1b1f" fill="#fff" d="m7.868 11.113 7.773 7.774a2.359 2.359 0 0 0 1.667.691 2.368 2.368 0 0 0 2.357-2.358c0-.625-.248-1.225-.69-1.667L11.201 7.78 9.558 9.469l-1.69 1.643v.001Zm10.273 3.606-3.333 3.333m-3.25-6.583 2 2m-7-7 3 3M3.664 3.625l1 1M2.529 6.922l1.407-.144m5.735-2.932-1.118.866M4.285 9.823l.758-1.194m1.863-6.207-.13 1.408"/>`;
-var laserPointerCursorDataURL_lightMode = `data:${MIME_TYPES.svg},${encodeURIComponent(
-  `${laserPointerCursorSVG_tag}${laserPointerCursorIconSVG}</svg>`
-)}`;
-var laserPointerCursorDataURL_darkMode = `data:${MIME_TYPES.svg},${encodeURIComponent(
-  `${laserPointerCursorSVG_tag}${laserPointerCursorBackgroundSVG}${laserPointerCursorIconSVG}</svg>`
-)}`;
 var resetCursor = (interactiveCanvas) => {
   if (interactiveCanvas) {
     interactiveCanvas.style.cursor = "";
@@ -8065,9 +8031,6 @@ var setCursorForShape = (interactiveCanvas, appState) => {
     interactiveCanvas.style.cursor = CURSOR_TYPE.GRAB;
   } else if (isEraserActive(appState)) {
     setEraserCursor(interactiveCanvas, appState.theme);
-  } else if (appState.activeTool.type === "laser") {
-    const url = appState.theme === THEME.LIGHT ? laserPointerCursorDataURL_lightMode : laserPointerCursorDataURL_darkMode;
-    interactiveCanvas.style.cursor = `url(${url}), auto`;
   } else if (!["image", "custom"].includes(appState.activeTool.type)) {
     interactiveCanvas.style.cursor = CURSOR_TYPE.CROSSHAIR;
   } else if (appState.activeTool.type !== "image") {
@@ -9774,7 +9737,7 @@ var exportCanvas = async (type, elements, appState, files, {
     let blob = canvasToBlob(tempCanvas);
     if (appState.exportEmbedScene) {
       blob = blob.then(
-        (blob2) => import("./data/image-FBBIWDF2.js").then(
+        (blob2) => import("./data/image-YMIIXEIV.js").then(
           ({ encodePngMetadata: encodePngMetadata2 }) => encodePngMetadata2({
             blob: blob2,
             metadata: serializeAsJSON(elements, appState, files, "local")
@@ -16731,7 +16694,7 @@ var CombinedShapeProperties = ({
   const showFillIcons = hasBackground(appState.activeTool.type) && !isTransparent(appState.currentItemBackgroundColor) || targetElements.some(
     (element) => hasBackground(element.type) && !isTransparent(element.backgroundColor)
   );
-  const shouldShowCombinedProperties = targetElements.length > 0 || appState.activeTool.type !== "selection" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand" && appState.activeTool.type !== "laser" && appState.activeTool.type !== "lasso";
+  const shouldShowCombinedProperties = targetElements.length > 0 || appState.activeTool.type !== "selection" && appState.activeTool.type !== "eraser" && appState.activeTool.type !== "hand" && appState.activeTool.type !== "lasso";
   const isOpen = appState.openPopup === "compactStrokeStyles";
   if (!shouldShowCombinedProperties) {
     return null;
@@ -17299,7 +17262,6 @@ var ShapesSwitcher = ({
   const stylesPanelMode = useStylesPanelMode();
   const isFullStylesPanel = stylesPanelMode === "full";
   const isCompactStylesPanel = stylesPanelMode === "compact";
-  const laserToolSelected = activeTool.type === "laser";
   const lassoToolSelected = isFullStylesPanel && activeTool.type === "lasso" && app.state.preferredSelectionTool.type !== "lasso";
   const embeddableToolSelected = activeTool.type === "embeddable";
   const { TTDDialogTriggerTunnel } = useTunnels();
@@ -20413,7 +20375,11 @@ function Handle({
         left: `${left}px`,
         top: `${top}px`,
         width: hitSize,
-        height: hitSize
+        height: hitSize,
+        // So handle stays clickable in packaged builds when consumer CSS is purged
+        position: "absolute",
+        pointerEvents: "auto",
+        cursor: "pointer"
       },
       onPointerDown: handlePointerDown,
       onPointerEnter: handlePointerEnter,
@@ -20487,7 +20453,14 @@ function QuickAddHandles({
     {
       className: "quick-add-handles",
       "aria-hidden": true,
-      style: { "--quick-add-handle-color": QUICK_ADD_HANDLE_BLUE },
+      style: {
+        "--quick-add-handle-color": QUICK_ADD_HANDLE_BLUE,
+        // Critical layout so handles show in packaged builds when consumer CSS is purged
+        position: "absolute",
+        inset: 0,
+        zIndex: 20,
+        pointerEvents: "none"
+      },
       children: positions.map((pos) => /* @__PURE__ */ jsx82(
         Handle,
         {
@@ -20501,224 +20474,19 @@ function QuickAddHandles({
   );
 }
 
-// animated-trail.ts
-import { LaserPointer } from "@excalidraw/laser-pointer";
-var AnimatedTrail = class {
-  constructor(animationFrameHandler, app, options) {
-    this.animationFrameHandler = animationFrameHandler;
-    this.app = app;
-    this.options = options;
-    __publicField(this, "currentTrail");
-    __publicField(this, "pastTrails", []);
-    __publicField(this, "container");
-    __publicField(this, "trailElement");
-    __publicField(this, "trailAnimation");
-    this.animationFrameHandler.register(this, this.onFrame.bind(this));
-    this.trailElement = document.createElementNS(SVG_NS, "path");
-    if (this.options.animateTrail) {
-      this.trailAnimation = document.createElementNS(SVG_NS, "animate");
-      this.trailAnimation.setAttribute("attributeName", "stroke-dashoffset");
-      this.trailElement.setAttribute("stroke-dasharray", "7 7");
-      this.trailElement.setAttribute("stroke-dashoffset", "10");
-      this.trailAnimation.setAttribute("from", "0");
-      this.trailAnimation.setAttribute("to", `-14`);
-      this.trailAnimation.setAttribute("dur", "0.3s");
-      this.trailElement.appendChild(this.trailAnimation);
-    }
-  }
-  get hasCurrentTrail() {
-    return !!this.currentTrail;
-  }
-  hasLastPoint(x, y) {
-    if (this.currentTrail) {
-      const len = this.currentTrail.originalPoints.length;
-      return this.currentTrail.originalPoints[len - 1][0] === x && this.currentTrail.originalPoints[len - 1][1] === y;
-    }
-    return false;
-  }
-  start(container) {
-    if (container) {
-      this.container = container;
-    }
-    if (this.trailElement.parentNode !== this.container && this.container) {
-      this.container.appendChild(this.trailElement);
-    }
-    this.animationFrameHandler.start(this);
-  }
-  stop() {
-    this.animationFrameHandler.stop(this);
-    if (this.trailElement.parentNode === this.container) {
-      this.container?.removeChild(this.trailElement);
-    }
-  }
-  startPath(x, y) {
-    this.currentTrail = new LaserPointer(this.options);
-    this.currentTrail.addPoint([x, y, performance.now()]);
-    this.update();
-  }
-  addPointToPath(x, y) {
-    if (this.currentTrail) {
-      this.currentTrail.addPoint([x, y, performance.now()]);
-      this.update();
-    }
-  }
-  endPath() {
-    if (this.currentTrail) {
-      this.currentTrail.close();
-      this.currentTrail.options.keepHead = false;
-      this.pastTrails.push(this.currentTrail);
-      this.currentTrail = void 0;
-      this.update();
-    }
-  }
-  getCurrentTrail() {
-    return this.currentTrail;
-  }
-  clearTrails() {
-    this.pastTrails = [];
-    this.currentTrail = void 0;
-    this.update();
-  }
-  update() {
-    this.start();
-    if (this.trailAnimation) {
-      this.trailAnimation.setAttribute("begin", "indefinite");
-      this.trailAnimation.setAttribute("repeatCount", "indefinite");
-    }
-  }
-  onFrame() {
-    const paths = [];
-    for (const trail of this.pastTrails) {
-      paths.push(this.drawTrail(trail, this.app.state));
-    }
-    if (this.currentTrail) {
-      const currentPath = this.drawTrail(this.currentTrail, this.app.state);
-      paths.push(currentPath);
-    }
-    this.pastTrails = this.pastTrails.filter((trail) => {
-      return trail.getStrokeOutline().length !== 0;
-    });
-    if (paths.length === 0) {
-      this.stop();
-    }
-    const svgPaths = paths.join(" ").trim();
-    this.trailElement.setAttribute("d", svgPaths);
-    if (this.trailAnimation) {
-      this.trailElement.setAttribute(
-        "fill",
-        (this.options.fill ?? (() => "black"))(this)
-      );
-      this.trailElement.setAttribute(
-        "stroke",
-        (this.options.stroke ?? (() => "black"))(this)
-      );
-    } else {
-      this.trailElement.setAttribute(
-        "fill",
-        (this.options.fill ?? (() => "black"))(this)
-      );
-    }
-  }
-  drawTrail(trail, state) {
-    const _stroke = trail.getStrokeOutline(trail.options.size / state.zoom.value).map(([x, y]) => {
-      const result = sceneCoordsToViewportCoords(
-        { sceneX: x, sceneY: y },
-        state
-      );
-      return [result.x, result.y];
-    });
-    const stroke = this.trailAnimation ? _stroke.slice(0, _stroke.length / 2) : _stroke;
-    return getSvgPathFromStroke(stroke, true);
-  }
-};
-
 // laser-trails.ts
 var LaserTrails = class {
-  constructor(animationFrameHandler, app) {
-    this.animationFrameHandler = animationFrameHandler;
-    this.app = app;
-    __publicField(this, "localTrail");
-    __publicField(this, "collabTrails", /* @__PURE__ */ new Map());
-    __publicField(this, "container");
-    this.animationFrameHandler.register(this, this.onFrame.bind(this));
-    this.localTrail = new AnimatedTrail(animationFrameHandler, app, {
-      ...this.getTrailOptions(),
-      fill: () => DEFAULT_LASER_COLOR
-    });
+  constructor(_animationFrameHandler, _app) {
   }
-  getTrailOptions() {
-    return {
-      simplify: 0,
-      streamline: 0.4,
-      sizeMapping: (c) => {
-        const DECAY_TIME = 1e3;
-        const DECAY_LENGTH = 50;
-        const t2 = Math.max(
-          0,
-          1 - (performance.now() - c.pressure) / DECAY_TIME
-        );
-        const l = (DECAY_LENGTH - Math.min(DECAY_LENGTH, c.totalLength - c.currentIndex)) / DECAY_LENGTH;
-        return Math.min(easeOut(l), easeOut(t2));
-      }
-    };
+  startPath(_x, _y) {
   }
-  startPath(x, y) {
-    this.localTrail.startPath(x, y);
-  }
-  addPointToPath(x, y) {
-    this.localTrail.addPointToPath(x, y);
+  addPointToPath(_x, _y) {
   }
   endPath() {
-    this.localTrail.endPath();
   }
-  start(container) {
-    this.container = container;
-    this.animationFrameHandler.start(this);
-    this.localTrail.start(container);
+  start(_container) {
   }
   stop() {
-    this.animationFrameHandler.stop(this);
-    this.localTrail.stop();
-  }
-  onFrame() {
-    this.updateCollabTrails();
-  }
-  updateCollabTrails() {
-    if (!this.container || this.app.state.collaborators.size === 0) {
-      return;
-    }
-    for (const [key, collaborator] of this.app.state.collaborators.entries()) {
-      let trail;
-      if (!this.collabTrails.has(key)) {
-        trail = new AnimatedTrail(this.animationFrameHandler, this.app, {
-          ...this.getTrailOptions(),
-          fill: () => collaborator.pointer?.laserColor || getClientColor(key, collaborator)
-        });
-        trail.start(this.container);
-        this.collabTrails.set(key, trail);
-      } else {
-        trail = this.collabTrails.get(key);
-      }
-      if (collaborator.pointer && collaborator.pointer.tool === "laser") {
-        if (collaborator.button === "down" && !trail.hasCurrentTrail) {
-          trail.startPath(collaborator.pointer.x, collaborator.pointer.y);
-        }
-        if (collaborator.button === "down" && trail.hasCurrentTrail && !trail.hasLastPoint(collaborator.pointer.x, collaborator.pointer.y)) {
-          trail.addPointToPath(collaborator.pointer.x, collaborator.pointer.y);
-        }
-        if (collaborator.button === "up" && trail.hasCurrentTrail) {
-          trail.addPointToPath(collaborator.pointer.x, collaborator.pointer.y);
-          trail.endPath();
-        }
-      }
-    }
-    for (const key of this.collabTrails.keys()) {
-      if (!this.app.state.collaborators.has(key)) {
-        const trail = this.collabTrails.get(key);
-        trail.stop();
-        this.collabTrails.delete(key);
-      }
-    }
   }
 };
 
@@ -21414,6 +21182,154 @@ var isMaybeMermaidDefinition = (text) => {
   return re.test(text.trim());
 };
 
+// animated-trail.ts
+var TrailBuffer = class {
+  constructor(options) {
+    __publicField(this, "originalPoints", []);
+    __publicField(this, "options", { size: 2, keepHead: false });
+    if (options) {
+      this.options = { ...this.options, ...options };
+    }
+  }
+  addPoint(point) {
+    const last = this.originalPoints[this.originalPoints.length - 1];
+    if (last && last[0] === point[0] && last[1] === point[1]) {
+      return;
+    }
+    this.originalPoints.push(point);
+  }
+  close() {
+  }
+  /** Returns points for stroke path; optional sizeOverride ignored in minimal impl. */
+  getStrokeOutline(_sizeOverride) {
+    return [...this.originalPoints];
+  }
+};
+var AnimatedTrail = class {
+  constructor(animationFrameHandler, app, options) {
+    this.animationFrameHandler = animationFrameHandler;
+    this.app = app;
+    this.options = options;
+    __publicField(this, "currentTrail");
+    __publicField(this, "pastTrails", []);
+    __publicField(this, "container");
+    __publicField(this, "trailElement");
+    __publicField(this, "trailAnimation");
+    this.animationFrameHandler.register(this, this.onFrame.bind(this));
+    this.trailElement = document.createElementNS(SVG_NS, "path");
+    if (this.options.animateTrail) {
+      this.trailAnimation = document.createElementNS(SVG_NS, "animate");
+      this.trailAnimation.setAttribute("attributeName", "stroke-dashoffset");
+      this.trailElement.setAttribute("stroke-dasharray", "7 7");
+      this.trailElement.setAttribute("stroke-dashoffset", "10");
+      this.trailAnimation.setAttribute("from", "0");
+      this.trailAnimation.setAttribute("to", `-14`);
+      this.trailAnimation.setAttribute("dur", "0.3s");
+      this.trailElement.appendChild(this.trailAnimation);
+    }
+  }
+  get hasCurrentTrail() {
+    return !!this.currentTrail;
+  }
+  hasLastPoint(x, y) {
+    if (this.currentTrail) {
+      const len = this.currentTrail.originalPoints.length;
+      return this.currentTrail.originalPoints[len - 1][0] === x && this.currentTrail.originalPoints[len - 1][1] === y;
+    }
+    return false;
+  }
+  start(container) {
+    if (container) {
+      this.container = container;
+    }
+    if (this.trailElement.parentNode !== this.container && this.container) {
+      this.container.appendChild(this.trailElement);
+    }
+    this.animationFrameHandler.start(this);
+  }
+  stop() {
+    this.animationFrameHandler.stop(this);
+    if (this.trailElement.parentNode === this.container) {
+      this.container?.removeChild(this.trailElement);
+    }
+  }
+  startPath(x, y) {
+    const size = typeof this.options.size === "number" ? this.options.size : 2;
+    const keepHead = typeof this.options.keepHead === "boolean" ? this.options.keepHead : false;
+    this.currentTrail = new TrailBuffer({ size, keepHead });
+    this.currentTrail.addPoint([x, y, performance.now()]);
+    this.update();
+  }
+  addPointToPath(x, y) {
+    if (this.currentTrail) {
+      this.currentTrail.addPoint([x, y, performance.now()]);
+      this.update();
+    }
+  }
+  endPath() {
+    if (this.currentTrail) {
+      this.currentTrail.close();
+      this.currentTrail.options.keepHead = false;
+      this.pastTrails.push(this.currentTrail);
+      this.currentTrail = void 0;
+      this.update();
+    }
+  }
+  getCurrentTrail() {
+    return this.currentTrail;
+  }
+  clearTrails() {
+    this.pastTrails = [];
+    this.currentTrail = void 0;
+    this.update();
+  }
+  update() {
+    this.start();
+    if (this.trailAnimation) {
+      this.trailAnimation.setAttribute("begin", "indefinite");
+      this.trailAnimation.setAttribute("repeatCount", "indefinite");
+    }
+  }
+  onFrame() {
+    const paths = [];
+    for (const trail of this.pastTrails) {
+      paths.push(this.drawTrail(trail, this.app.state));
+    }
+    if (this.currentTrail) {
+      paths.push(this.drawTrail(this.currentTrail, this.app.state));
+    }
+    this.pastTrails = this.pastTrails.filter(
+      (trail) => trail.getStrokeOutline().length !== 0
+    );
+    if (paths.length === 0) {
+      this.stop();
+    }
+    const svgPaths = paths.join(" ").trim();
+    this.trailElement.setAttribute("d", svgPaths);
+    const fill = (this.options.fill ?? (() => "black"))(this);
+    this.trailElement.setAttribute("fill", fill);
+    if (this.trailAnimation) {
+      this.trailElement.setAttribute(
+        "stroke",
+        (this.options.stroke ?? (() => "black"))(this)
+      );
+    }
+  }
+  drawTrail(trail, state) {
+    const size = trail.options.size / state.zoom.value;
+    const _stroke = trail.getStrokeOutline(size).map((point) => {
+      const [x, y] = point;
+      const result = sceneCoordsToViewportCoords(
+        { sceneX: x, sceneY: y },
+        state
+      );
+      return [result.x, result.y];
+    });
+    const stroke = this.trailAnimation ? _stroke.slice(0, Math.ceil(_stroke.length / 2)) : _stroke;
+    return getSvgPathFromStroke(stroke, true);
+  }
+};
+
 // lasso/utils.ts
 import { simplify } from "points-on-curve";
 var getLassoSelectedElementIds = (input) => {
@@ -22107,7 +22023,7 @@ var FollowMode = ({
 var FollowMode_default = FollowMode;
 
 // components/LayerUI.tsx
-import clsx60 from "clsx";
+import clsx59 from "clsx";
 import React44 from "react";
 
 // components/LoadingMessage.tsx
@@ -22318,7 +22234,6 @@ var MobileToolBar = ({
     }
   }, [activeTool.type]);
   const frameToolSelected = activeTool.type === "frame";
-  const laserToolSelected = activeTool.type === "laser";
   const embeddableToolSelected = activeTool.type === "embeddable";
   const { TTDDialogTriggerTunnel } = useTunnels();
   const handleToolChange = (toolType, pointerType) => {
@@ -22347,7 +22262,6 @@ var MobileToolBar = ({
     "text",
     "frame",
     "embeddable",
-    "laser",
     "magicframe"
   ].filter((tool) => {
     if (showTextToolOutside && tool === "text") {
@@ -22362,7 +22276,7 @@ var MobileToolBar = ({
     return true;
   });
   const extraToolSelected = extraTools.includes(activeTool.type);
-  const extraIcon = extraToolSelected ? activeTool.type === "text" ? TextIcon : activeTool.type === "image" ? ImageIcon : activeTool.type === "frame" ? frameToolIcon : activeTool.type === "embeddable" ? EmbedIcon : activeTool.type === "laser" ? laserPointerToolIcon : activeTool.type === "magicframe" ? MagicIcon : extraToolsIcon : extraToolsIcon;
+  const extraIcon = extraToolSelected ? activeTool.type === "text" ? TextIcon : activeTool.type === "image" ? ImageIcon : activeTool.type === "frame" ? frameToolIcon : activeTool.type === "embeddable" ? EmbedIcon : activeTool.type === "magicframe" ? MagicIcon : extraToolsIcon : extraToolsIcon;
   return /* @__PURE__ */ jsxs50(
     "div",
     {
@@ -22605,17 +22519,6 @@ var MobileToolBar = ({
                     "data-testid": "toolbar-embeddable",
                     selected: embeddableToolSelected,
                     children: t("toolBar.embeddable")
-                  }
-                ),
-                /* @__PURE__ */ jsx90(
-                  DropdownMenu_default.Item,
-                  {
-                    onSelect: () => app.setActiveTool({ type: "laser" }),
-                    icon: laserPointerToolIcon,
-                    "data-testid": "toolbar-laser",
-                    selected: laserToolSelected,
-                    shortcut: KEYS.K.toLocaleUpperCase(),
-                    children: t("toolBar.laser")
                   }
                 ),
                 /* @__PURE__ */ jsx90("div", { style: { margin: "6px 0", fontSize: 14, fontWeight: 600 }, children: "Generate" }),
@@ -22946,7 +22849,7 @@ var Section = ({ heading, children, ...props }) => {
 };
 
 // components/footer/Footer.tsx
-import clsx45 from "clsx";
+import clsx44 from "clsx";
 
 // components/HelpButton.tsx
 import { jsx as jsx96 } from "react/jsx-runtime";
@@ -22962,222 +22865,8 @@ var HelpButton = (props) => /* @__PURE__ */ jsx96(
   }
 );
 
-// components/HintViewer.tsx
-import { jsx as jsx97 } from "react/jsx-runtime";
-var getTaggedShortcutKey = (key) => Array.isArray(key) ? `<kbd>${key.map(getShortcutKey).join(" + ")}</kbd>` : `<kbd>${getShortcutKey(key)}</kbd>`;
-var getHints = ({
-  appState,
-  isMobile,
-  editorInterface,
-  app
-}) => {
-  const { activeTool, isResizing, isRotating, lastPointerDownWith } = appState;
-  const multiMode = appState.multiElement !== null;
-  if (appState.openSidebar?.name === DEFAULT_SIDEBAR.name && appState.openSidebar.tab === CANVAS_SEARCH_TAB && appState.searchMatches?.matches.length) {
-    return t("hints.dismissSearch", {
-      shortcut: getTaggedShortcutKey("Escape")
-    });
-  }
-  if (appState.openSidebar && !editorInterface.canFitSidebar) {
-    return null;
-  }
-  if (isEraserActive(appState)) {
-    return t("hints.eraserRevert", {
-      shortcut: getTaggedShortcutKey("Alt")
-    });
-  }
-  const selectedElements = app.scene.getSelectedElements(appState);
-  if (appState.selectedLinearElement?.isDragging && selectedElements[0]?.type === "arrow") {
-    return t("hints.arrowBindModifiers", {
-      shortcut_1: getTaggedShortcutKey("Ctrl"),
-      shortcut_2: getTaggedShortcutKey("Alt")
-    });
-  }
-  if (activeTool.type === "arrow" || activeTool.type === "line") {
-    if (multiMode) {
-      return t("hints.linearElementMulti", {
-        shortcut_1: getTaggedShortcutKey("Escape"),
-        shortcut_2: getTaggedShortcutKey("Enter")
-      });
-    }
-    if (activeTool.type === "arrow") {
-      return t("hints.arrowTool", {
-        shortcut: getTaggedShortcutKey("A")
-      });
-    }
-    return t("hints.linearElement");
-  }
-  if (activeTool.type === "freedraw") {
-    return t("hints.freeDraw");
-  }
-  if (activeTool.type === "text") {
-    return t("hints.text");
-  }
-  if (activeTool.type === "embeddable") {
-    return t("hints.embeddable");
-  }
-  if (isResizing && lastPointerDownWith === "mouse" && selectedElements.length === 1) {
-    const targetElement = selectedElements[0];
-    if (isLinearElement(targetElement) && targetElement.points.length === 2) {
-      return t("hints.lockAngle", {
-        shortcut: getTaggedShortcutKey("Shift")
-      });
-    }
-    return isImageElement(targetElement) ? t("hints.resizeImage", {
-      shortcut_1: getTaggedShortcutKey("Shift"),
-      shortcut_2: getTaggedShortcutKey("Alt")
-    }) : t("hints.resize", {
-      shortcut_1: getTaggedShortcutKey("Shift"),
-      shortcut_2: getTaggedShortcutKey("Alt")
-    });
-  }
-  if (isRotating && lastPointerDownWith === "mouse") {
-    return t("hints.rotate", {
-      shortcut: getTaggedShortcutKey("Shift")
-    });
-  }
-  if (selectedElements.length === 1 && isTextElement(selectedElements[0])) {
-    return t("hints.text_selected", {
-      shortcut: getTaggedShortcutKey("Enter")
-    });
-  }
-  if (appState.editingTextElement) {
-    return t("hints.text_editing", {
-      shortcut_1: getTaggedShortcutKey("Escape"),
-      shortcut_2: getTaggedShortcutKey(["CtrlOrCmd", "Enter"])
-    });
-  }
-  if (appState.croppingElementId) {
-    return t("hints.leaveCropEditor", {
-      shortcut_1: getTaggedShortcutKey("Enter"),
-      shortcut_2: getTaggedShortcutKey("Escape")
-    });
-  }
-  if (selectedElements.length === 1 && isImageElement(selectedElements[0])) {
-    return t("hints.enterCropEditor", {
-      shortcut: getTaggedShortcutKey("Enter")
-    });
-  }
-  if (activeTool.type === "selection") {
-    if (appState.selectionElement && !selectedElements.length && !appState.editingTextElement && !appState.selectedLinearElement?.isEditing) {
-      return t("hints.deepBoxSelect", {
-        shortcut: getTaggedShortcutKey("CtrlOrCmd")
-      });
-    }
-    if (isGridModeEnabled(app) && appState.selectedElementsAreBeingDragged) {
-      return t("hints.disableSnapping", {
-        shortcut: getTaggedShortcutKey("CtrlOrCmd")
-      });
-    }
-    if (!selectedElements.length && !isMobile) {
-      return t("hints.canvasPanning", {
-        shortcut_1: getTaggedShortcutKey(t("keys.mmb")),
-        shortcut_2: getTaggedShortcutKey("Space")
-      });
-    }
-    if (selectedElements.length === 1) {
-      if (isLinearElement(selectedElements[0])) {
-        if (appState.selectedLinearElement?.isEditing) {
-          return appState.selectedLinearElement.selectedPointsIndices ? t("hints.lineEditor_pointSelected", {
-            shortcut_1: getTaggedShortcutKey("Delete"),
-            shortcut_2: getTaggedShortcutKey(["CtrlOrCmd", "D"])
-          }) : t("hints.lineEditor_nothingSelected", {
-            shortcut_1: getTaggedShortcutKey("Shift"),
-            shortcut_2: getTaggedShortcutKey("Alt")
-          });
-        }
-        return isLineElement(selectedElements[0]) ? t("hints.lineEditor_line_info", {
-          shortcut: getTaggedShortcutKey("Enter")
-        }) : t("hints.lineEditor_info", {
-          shortcut_1: getTaggedShortcutKey("CtrlOrCmd"),
-          shortcut_2: getTaggedShortcutKey(["CtrlOrCmd", "Enter"])
-        });
-      }
-      if (!appState.newElement && !appState.selectedElementsAreBeingDragged && isTextBindableContainer(selectedElements[0])) {
-        const bindTextToElement = t("hints.bindTextToElement", {
-          shortcut: getTaggedShortcutKey("Enter")
-        });
-        const createFlowchart = t("hints.createFlowchart", {
-          shortcut: getTaggedShortcutKey(["CtrlOrCmd", "\u2191\u2193"])
-        });
-        if (isFlowchartNodeElement(selectedElements[0])) {
-          if (isNodeInFlowchart(
-            selectedElements[0],
-            app.scene.getNonDeletedElementsMap()
-          )) {
-            return [bindTextToElement, createFlowchart];
-          }
-          return [bindTextToElement, createFlowchart];
-        }
-        return bindTextToElement;
-      }
-    }
-  }
-  return null;
-};
-var HintViewer = ({
-  appState,
-  isMobile,
-  editorInterface,
-  app
-}) => {
-  const hints = getHints({
-    appState,
-    isMobile,
-    editorInterface,
-    app
-  });
-  if (!hints) {
-    return null;
-  }
-  const hint = Array.isArray(hints) ? hints.map((hint2) => hint2.replace(/\. ?$/, "")).join(", ") : hints;
-  const hintJSX = hint.split(/(<kbd>[^<]+<\/kbd>)/g).map((part, index) => {
-    if (index % 2 === 1) {
-      const shortcutMatch = part[0] === "<" && part.match(/^<kbd>([^<]+)<\/kbd>$/);
-      return /* @__PURE__ */ jsx97("kbd", { children: shortcutMatch ? shortcutMatch[1] : part }, index);
-    }
-    return part;
-  });
-  return /* @__PURE__ */ jsx97("div", { className: "HintViewer", children: /* @__PURE__ */ jsx97("span", { children: hintJSX }) });
-};
-
-// components/LaserPointerButton.tsx
-import clsx44 from "clsx";
-import { jsx as jsx98, jsxs as jsxs55 } from "react/jsx-runtime";
-var DEFAULT_SIZE2 = "small";
-var LaserPointerButton = (props) => {
-  return /* @__PURE__ */ jsxs55(
-    "label",
-    {
-      className: clsx44(
-        "ToolIcon ToolIcon__LaserPointer",
-        `ToolIcon_size_${DEFAULT_SIZE2}`,
-        {
-          "is-mobile": props.isMobile
-        }
-      ),
-      title: `${props.title}`,
-      children: [
-        /* @__PURE__ */ jsx98(
-          "input",
-          {
-            className: "ToolIcon_type_checkbox",
-            type: "checkbox",
-            name: props.name,
-            onChange: props.onChange,
-            checked: props.checked,
-            "aria-label": props.title,
-            "data-testid": "toolbar-LaserPointer"
-          }
-        ),
-        /* @__PURE__ */ jsx98("div", { className: "ToolIcon__icon", children: laserPointerToolIcon })
-      ]
-    }
-  );
-};
-
 // components/footer/Footer.tsx
-import { jsx as jsx99, jsxs as jsxs56 } from "react/jsx-runtime";
+import { jsx as jsx97, jsxs as jsxs55 } from "react/jsx-runtime";
 var Footer = ({
   appState,
   actionManager,
@@ -23200,19 +22889,19 @@ var Footer = ({
     WelcomeScreenHelpHintTunnel,
     WelcomeScreenToolbarHintTunnel
   } = useTunnels();
-  return /* @__PURE__ */ jsxs56(
+  return /* @__PURE__ */ jsxs55(
     "footer",
     {
       role: "contentinfo",
       className: "layer-ui__wrapper__footer App-menu App-menu_bottom drawing-footer",
       children: [
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx97(
           "div",
           {
-            className: clsx45("layer-ui__wrapper__footer-left zen-mode-transition", {
+            className: clsx44("layer-ui__wrapper__footer-left zen-mode-transition", {
               "layer-ui__wrapper__footer-left--transition-left": appState.zenModeEnabled
             }),
-            children: /* @__PURE__ */ jsx99(Stack_default.Col, { gap: 2, children: /* @__PURE__ */ jsx99(Section, { heading: "canvasActions", children: /* @__PURE__ */ jsx99(
+            children: /* @__PURE__ */ jsx97(Stack_default.Col, { gap: 2, children: /* @__PURE__ */ jsx97(Section, { heading: "canvasActions", children: /* @__PURE__ */ jsx97(
               ZoomActions,
               {
                 renderAction: actionManager.renderAction,
@@ -23221,141 +22910,111 @@ var Footer = ({
             ) }) })
           }
         ),
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx97(
           "div",
           {
-            className: clsx45("zen-mode-transition", {
+            className: clsx44("zen-mode-transition", {
               "layer-ui__wrapper__footer-left--transition-bottom": appState.zenModeEnabled
             }),
-            children: !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && /* @__PURE__ */ jsx99(
+            children: !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector" && /* @__PURE__ */ jsx97(
               Section,
               {
                 heading: "shapes",
                 className: "shapes-section App-menu_bottom_center",
-                children: (heading) => /* @__PURE__ */ jsxs56("div", { style: { position: "relative" }, children: [
-                  renderWelcomeScreen && /* @__PURE__ */ jsx99(WelcomeScreenToolbarHintTunnel.Out, {}),
-                  /* @__PURE__ */ jsx99(Stack_default.Col, { gap: spacing.toolbarColGap, align: "start", children: /* @__PURE__ */ jsxs56(
+                children: (heading) => /* @__PURE__ */ jsxs55("div", { style: { position: "relative" }, children: [
+                  renderWelcomeScreen && /* @__PURE__ */ jsx97(WelcomeScreenToolbarHintTunnel.Out, {}),
+                  /* @__PURE__ */ jsx97(Stack_default.Col, { gap: spacing.toolbarColGap, align: "start", children: /* @__PURE__ */ jsx97(
                     Stack_default.Row,
                     {
                       gap: spacing.toolbarRowGap,
-                      className: clsx45("App-toolbar-container", {
+                      className: clsx44("App-toolbar-container", {
                         "zen-mode": appState.zenModeEnabled
                       }),
-                      children: [
-                        /* @__PURE__ */ jsxs56(
-                          Island,
-                          {
-                            padding: spacing.islandPadding,
-                            className: clsx45("App-toolbar", {
-                              "zen-mode": appState.zenModeEnabled,
-                              "App-toolbar--compact": isCompactStylesPanel
-                            }),
-                            children: [
-                              /* @__PURE__ */ jsx99(
-                                HintViewer,
+                      children: /* @__PURE__ */ jsxs55(
+                        Island,
+                        {
+                          padding: spacing.islandPadding,
+                          className: clsx44("App-toolbar", {
+                            "zen-mode": appState.zenModeEnabled,
+                            "App-toolbar--compact": isCompactStylesPanel
+                          }),
+                          children: [
+                            heading,
+                            /* @__PURE__ */ jsxs55(Stack_default.Row, { gap: spacing.toolbarInnerRowGap, children: [
+                              /* @__PURE__ */ jsx97(
+                                PenModeButton,
                                 {
-                                  appState,
-                                  isMobile: editorInterface.formFactor === "phone",
-                                  editorInterface,
-                                  app
+                                  zenModeEnabled: appState.zenModeEnabled,
+                                  checked: appState.penMode,
+                                  onChange: () => onPenModeToggle(null),
+                                  title: t("toolBar.penMode"),
+                                  penDetected: appState.penDetected
                                 }
                               ),
-                              heading,
-                              /* @__PURE__ */ jsxs56(Stack_default.Row, { gap: spacing.toolbarInnerRowGap, children: [
-                                /* @__PURE__ */ jsx99(
-                                  PenModeButton,
-                                  {
-                                    zenModeEnabled: appState.zenModeEnabled,
-                                    checked: appState.penMode,
-                                    onChange: () => onPenModeToggle(null),
-                                    title: t("toolBar.penMode"),
-                                    penDetected: appState.penDetected
-                                  }
-                                ),
-                                UIOptions.tools?.selection !== false && /* @__PURE__ */ jsx99(
-                                  ToolPopover,
-                                  {
-                                    app,
-                                    options: [
-                                      {
-                                        type: "selection",
-                                        icon: SelectionIcon,
-                                        title: capitalizeString(t("toolBar.selection"))
-                                      },
-                                      {
-                                        type: "lasso",
-                                        icon: LassoIcon,
-                                        title: capitalizeString(t("toolBar.lasso"))
-                                      }
-                                    ],
-                                    activeTool: appState.activeTool,
-                                    defaultOption: app.state.preferredSelectionTool.type,
-                                    namePrefix: "selectionType",
-                                    title: capitalizeString(t("toolBar.selection")),
-                                    "data-testid": "toolbar-selection",
-                                    onToolChange: (type) => {
-                                      if (type === "selection" || type === "lasso") {
-                                        app.setActiveTool({ type });
-                                        setAppState({
-                                          preferredSelectionTool: { type, initialized: true }
-                                        });
-                                      }
-                                    },
-                                    displayedOption: app.state.preferredSelectionTool.type === "lasso" ? {
-                                      type: "lasso",
-                                      icon: LassoIcon,
-                                      title: capitalizeString(t("toolBar.lasso"))
-                                    } : {
+                              UIOptions.tools?.selection !== false && /* @__PURE__ */ jsx97(
+                                ToolPopover,
+                                {
+                                  app,
+                                  options: [
+                                    {
                                       type: "selection",
                                       icon: SelectionIcon,
                                       title: capitalizeString(t("toolBar.selection"))
                                     },
-                                    fillable: appState.activeTool.type === "selection"
-                                  }
-                                ),
-                                /* @__PURE__ */ jsx99(
-                                  HandButton,
-                                  {
-                                    checked: isHandToolActive(appState),
-                                    onChange: () => onHandToolToggle(),
-                                    title: t("toolBar.hand"),
-                                    isMobile: true
-                                  }
-                                ),
-                                /* @__PURE__ */ jsx99("div", { className: "App-toolbar__divider" }),
-                                /* @__PURE__ */ jsx99(
-                                  ShapesSwitcher,
-                                  {
-                                    setAppState,
-                                    activeTool: appState.activeTool,
-                                    UIOptions,
-                                    app
-                                  }
-                                )
-                              ] })
-                            ]
-                          }
-                        ),
-                        isCollaborating && /* @__PURE__ */ jsx99(
-                          Island,
-                          {
-                            style: {
-                              marginLeft: spacing.collabMarginLeft,
-                              alignSelf: "center",
-                              height: "fit-content"
-                            },
-                            children: /* @__PURE__ */ jsx99(
-                              LaserPointerButton,
-                              {
-                                title: t("toolBar.laser"),
-                                checked: appState.activeTool.type === TOOL_TYPE.laser,
-                                onChange: () => app.setActiveTool({ type: TOOL_TYPE.laser }),
-                                isMobile: true
-                              }
-                            )
-                          }
-                        )
-                      ]
+                                    {
+                                      type: "lasso",
+                                      icon: LassoIcon,
+                                      title: capitalizeString(t("toolBar.lasso"))
+                                    }
+                                  ],
+                                  activeTool: appState.activeTool,
+                                  defaultOption: app.state.preferredSelectionTool.type,
+                                  namePrefix: "selectionType",
+                                  title: capitalizeString(t("toolBar.selection")),
+                                  "data-testid": "toolbar-selection",
+                                  onToolChange: (type) => {
+                                    if (type === "selection" || type === "lasso") {
+                                      app.setActiveTool({ type });
+                                      setAppState({
+                                        preferredSelectionTool: { type, initialized: true }
+                                      });
+                                    }
+                                  },
+                                  displayedOption: app.state.preferredSelectionTool.type === "lasso" ? {
+                                    type: "lasso",
+                                    icon: LassoIcon,
+                                    title: capitalizeString(t("toolBar.lasso"))
+                                  } : {
+                                    type: "selection",
+                                    icon: SelectionIcon,
+                                    title: capitalizeString(t("toolBar.selection"))
+                                  },
+                                  fillable: appState.activeTool.type === "selection"
+                                }
+                              ),
+                              /* @__PURE__ */ jsx97(
+                                HandButton,
+                                {
+                                  checked: isHandToolActive(appState),
+                                  onChange: () => onHandToolToggle(),
+                                  title: t("toolBar.hand"),
+                                  isMobile: true
+                                }
+                              ),
+                              /* @__PURE__ */ jsx97("div", { className: "App-toolbar__divider" }),
+                              /* @__PURE__ */ jsx97(
+                                ShapesSwitcher,
+                                {
+                                  setAppState,
+                                  activeTool: appState.activeTool,
+                                  UIOptions,
+                                  app
+                                }
+                              )
+                            ] })
+                          ]
+                        }
+                      )
                     }
                   ) })
                 ] })
@@ -23363,15 +23022,15 @@ var Footer = ({
             )
           }
         ),
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx97(
           "div",
           {
-            className: clsx45("layer-ui__wrapper__footer-right zen-mode-transition", {
+            className: clsx44("layer-ui__wrapper__footer-right zen-mode-transition", {
               "transition-right": appState.zenModeEnabled
             }),
-            children: /* @__PURE__ */ jsxs56("div", { style: { position: "relative" }, children: [
-              renderWelcomeScreen && /* @__PURE__ */ jsx99(WelcomeScreenHelpHintTunnel.Out, {}),
-              /* @__PURE__ */ jsx99(
+            children: /* @__PURE__ */ jsxs55("div", { style: { position: "relative" }, children: [
+              renderWelcomeScreen && /* @__PURE__ */ jsx97(WelcomeScreenHelpHintTunnel.Out, {}),
+              /* @__PURE__ */ jsx97(
                 HelpButton,
                 {
                   onClick: () => actionManager.executeAction(actionShortcuts)
@@ -23380,7 +23039,7 @@ var Footer = ({
             ] })
           }
         ),
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx97(
           ExitZenModeButton,
           {
             actionManager,
@@ -23395,7 +23054,7 @@ var Footer_default = Footer;
 Footer.displayName = "Footer";
 
 // components/Sidebar/Sidebar.tsx
-import clsx48 from "clsx";
+import clsx47 from "clsx";
 import {
   useEffect as useEffect32,
   useLayoutEffect as useLayoutEffect6,
@@ -23407,7 +23066,7 @@ import {
 } from "react";
 
 // components/Sidebar/SidebarHeader.tsx
-import clsx46 from "clsx";
+import clsx45 from "clsx";
 import { useContext as useContext2 } from "react";
 
 // components/Sidebar/common.ts
@@ -23415,7 +23074,7 @@ import React33 from "react";
 var SidebarPropsContext = React33.createContext({});
 
 // components/Sidebar/SidebarHeader.tsx
-import { jsx as jsx100, jsxs as jsxs57 } from "react/jsx-runtime";
+import { jsx as jsx98, jsxs as jsxs56 } from "react/jsx-runtime";
 var SidebarHeader = ({
   children,
   className
@@ -23423,15 +23082,15 @@ var SidebarHeader = ({
   const editorInterface = useEditorInterface();
   const props = useContext2(SidebarPropsContext);
   const renderDockButton = !!(editorInterface.canFitSidebar && props.shouldRenderDockButton);
-  return /* @__PURE__ */ jsxs57(
+  return /* @__PURE__ */ jsxs56(
     "div",
     {
-      className: clsx46("sidebar__header", className),
+      className: clsx45("sidebar__header", className),
       "data-testid": "sidebar-header",
       children: [
         children,
-        /* @__PURE__ */ jsxs57("div", { className: "sidebar__header__buttons", children: [
-          renderDockButton && /* @__PURE__ */ jsx100(Tooltip, { label: t("labels.sidebarLock"), children: /* @__PURE__ */ jsx100(
+        /* @__PURE__ */ jsxs56("div", { className: "sidebar__header__buttons", children: [
+          renderDockButton && /* @__PURE__ */ jsx98(Tooltip, { label: t("labels.sidebarLock"), children: /* @__PURE__ */ jsx98(
             Button,
             {
               onSelect: () => props.onDock?.(!props.docked),
@@ -23442,7 +23101,7 @@ var SidebarHeader = ({
               children: PinIcon
             }
           ) }),
-          /* @__PURE__ */ jsx100(
+          /* @__PURE__ */ jsx98(
             Button,
             {
               "data-testid": "sidebar-close",
@@ -23461,14 +23120,14 @@ SidebarHeader.displayName = "SidebarHeader";
 
 // components/Sidebar/SidebarTabTrigger.tsx
 import { Tabs as RadixTabs } from "radix-ui";
-import { jsx as jsx101 } from "react/jsx-runtime";
+import { jsx as jsx99 } from "react/jsx-runtime";
 var SidebarTabTrigger = ({
   children,
   tab,
   onSelect,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx101(RadixTabs.Trigger, { value: tab, asChild: true, onSelect, children: /* @__PURE__ */ jsx101(
+  return /* @__PURE__ */ jsx99(RadixTabs.Trigger, { value: tab, asChild: true, onSelect, children: /* @__PURE__ */ jsx99(
     "button",
     {
       type: "button",
@@ -23482,18 +23141,18 @@ SidebarTabTrigger.displayName = "SidebarTabTrigger";
 
 // components/Sidebar/SidebarTabTriggers.tsx
 import { Tabs as RadixTabs2 } from "radix-ui";
-import { jsx as jsx102 } from "react/jsx-runtime";
+import { jsx as jsx100 } from "react/jsx-runtime";
 var SidebarTabTriggers = ({
   children,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx102(RadixTabs2.List, { className: "sidebar-triggers", ...rest, children });
+  return /* @__PURE__ */ jsx100(RadixTabs2.List, { className: "sidebar-triggers", ...rest, children });
 };
 SidebarTabTriggers.displayName = "SidebarTabTriggers";
 
 // components/Sidebar/SidebarTrigger.tsx
-import clsx47 from "clsx";
-import { jsx as jsx103, jsxs as jsxs58 } from "react/jsx-runtime";
+import clsx46 from "clsx";
+import { jsx as jsx101, jsxs as jsxs57 } from "react/jsx-runtime";
 var SidebarTrigger = ({
   name,
   tab,
@@ -23506,8 +23165,8 @@ var SidebarTrigger = ({
 }) => {
   const setAppState = useExcalidrawSetAppState();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsxs58("label", { title, className: "sidebar-trigger__label-element", children: [
-    /* @__PURE__ */ jsx103(
+  return /* @__PURE__ */ jsxs57("label", { title, className: "sidebar-trigger__label-element", children: [
+    /* @__PURE__ */ jsx101(
       "input",
       {
         className: "ToolIcon_type_checkbox",
@@ -23527,9 +23186,9 @@ var SidebarTrigger = ({
         "aria-keyshortcuts": "0"
       }
     ),
-    /* @__PURE__ */ jsxs58("div", { className: clsx47("sidebar-trigger", className), style, children: [
-      icon && /* @__PURE__ */ jsx103("div", { children: icon }),
-      children && /* @__PURE__ */ jsx103("div", { className: "sidebar-trigger__label", children })
+    /* @__PURE__ */ jsxs57("div", { className: clsx46("sidebar-trigger", className), style, children: [
+      icon && /* @__PURE__ */ jsx101("div", { children: icon }),
+      children && /* @__PURE__ */ jsx101("div", { className: "sidebar-trigger__label", children })
     ] })
   ] });
 };
@@ -23537,7 +23196,7 @@ SidebarTrigger.displayName = "SidebarTrigger";
 
 // components/Sidebar/SidebarTabs.tsx
 import { Tabs as RadixTabs3 } from "radix-ui";
-import { jsx as jsx104 } from "react/jsx-runtime";
+import { jsx as jsx102 } from "react/jsx-runtime";
 var SidebarTabs = ({
   children,
   ...rest
@@ -23548,7 +23207,7 @@ var SidebarTabs = ({
     return null;
   }
   const { name } = appState.openSidebar;
-  return /* @__PURE__ */ jsx104(
+  return /* @__PURE__ */ jsx102(
     RadixTabs3.Root,
     {
       className: "sidebar-tabs-root",
@@ -23566,18 +23225,18 @@ SidebarTabs.displayName = "SidebarTabs";
 
 // components/Sidebar/SidebarTab.tsx
 import { Tabs as RadixTabs4 } from "radix-ui";
-import { jsx as jsx105 } from "react/jsx-runtime";
+import { jsx as jsx103 } from "react/jsx-runtime";
 var SidebarTab = ({
   tab,
   children,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx105(RadixTabs4.Content, { ...rest, value: tab, "data-testid": tab, children });
+  return /* @__PURE__ */ jsx103(RadixTabs4.Content, { ...rest, value: tab, "data-testid": tab, children });
 };
 SidebarTab.displayName = "SidebarTab";
 
 // components/Sidebar/Sidebar.tsx
-import { jsx as jsx106 } from "react/jsx-runtime";
+import { jsx as jsx104 } from "react/jsx-runtime";
 import { createElement } from "react";
 var isSidebarDockedAtom = atom(false);
 var SidebarInner = forwardRef4(
@@ -23651,17 +23310,17 @@ var SidebarInner = forwardRef4(
         document.removeEventListener("keydown" /* KEYDOWN */, handleKeyDown);
       };
     }, [closeLibrary, docked, editorInterface.canFitSidebar]);
-    return /* @__PURE__ */ jsx106(
+    return /* @__PURE__ */ jsx104(
       Island,
       {
         ...rest,
-        className: clsx48(
+        className: clsx47(
           CLASSES.SIDEBAR,
           { "sidebar--docked": docked },
           className
         ),
         ref: islandRef,
-        children: /* @__PURE__ */ jsx106(SidebarPropsContext.Provider, { value: headerPropsRef.current, children })
+        children: /* @__PURE__ */ jsx104(SidebarPropsContext.Provider, { value: headerPropsRef.current, children })
       }
     );
   }
@@ -23709,16 +23368,16 @@ Sidebar.displayName = "Sidebar";
 
 // components/UserList.tsx
 import { Popover as Popover9 } from "radix-ui";
-import clsx49 from "clsx";
+import clsx48 from "clsx";
 import React35, { useLayoutEffect as useLayoutEffect7 } from "react";
-import { Fragment as Fragment14, jsx as jsx107, jsxs as jsxs59 } from "react/jsx-runtime";
+import { Fragment as Fragment14, jsx as jsx105, jsxs as jsxs58 } from "react/jsx-runtime";
 var DEFAULT_MAX_AVATARS = 4;
 var SHOW_COLLABORATORS_FILTER_AT = 8;
 var ConditionalTooltipWrapper = ({
   shouldWrap,
   children,
   username
-}) => shouldWrap ? /* @__PURE__ */ jsx107(Tooltip, { label: username || "Unknown user", children }) : /* @__PURE__ */ jsx107(Fragment14, { children });
+}) => shouldWrap ? /* @__PURE__ */ jsx105(Tooltip, { label: username || "Unknown user", children }) : /* @__PURE__ */ jsx105(Fragment14, { children });
 var renderCollaborator = ({
   actionManager,
   collaborator,
@@ -23734,7 +23393,7 @@ var renderCollaborator = ({
     isBeingFollowed
   };
   const avatarJSX = actionManager.renderAction("goToCollaborator", data);
-  return /* @__PURE__ */ jsx107(
+  return /* @__PURE__ */ jsx105(
     ConditionalTooltipWrapper,
     {
       username: collaborator.username,
@@ -23809,7 +23468,7 @@ var UserList = React35.memo(
         isBeingFollowed: collaborator.socketId === userToFollow
       })
     );
-    return mobile ? /* @__PURE__ */ jsx107("div", { className: clsx49("UserList UserList_mobile", className), children: uniqueCollaboratorsArray.map(
+    return mobile ? /* @__PURE__ */ jsx105("div", { className: clsx48("UserList UserList_mobile", className), children: uniqueCollaboratorsArray.map(
       (collaborator) => renderCollaborator({
         actionManager,
         collaborator,
@@ -23817,19 +23476,19 @@ var UserList = React35.memo(
         shouldWrapWithTooltip: true,
         isBeingFollowed: collaborator.socketId === userToFollow
       })
-    ) }) : /* @__PURE__ */ jsx107("div", { className: "UserList__wrapper", ref: userListWrapper, children: /* @__PURE__ */ jsxs59(
+    ) }) : /* @__PURE__ */ jsx105("div", { className: "UserList__wrapper", ref: userListWrapper, children: /* @__PURE__ */ jsxs58(
       "div",
       {
-        className: clsx49("UserList", className),
+        className: clsx48("UserList", className),
         style: { [`--max-avatars`]: maxAvatars },
         children: [
           firstNAvatarsJSX,
-          uniqueCollaboratorsArray.length > maxAvatars - 1 && /* @__PURE__ */ jsxs59(Popover9.Root, { children: [
-            /* @__PURE__ */ jsxs59(Popover9.Trigger, { className: "UserList__more", children: [
+          uniqueCollaboratorsArray.length > maxAvatars - 1 && /* @__PURE__ */ jsxs58(Popover9.Root, { children: [
+            /* @__PURE__ */ jsxs58(Popover9.Trigger, { className: "UserList__more", children: [
               "+",
               uniqueCollaboratorsArray.length - maxAvatars + 1
             ] }),
-            /* @__PURE__ */ jsx107(
+            /* @__PURE__ */ jsx105(
               Popover9.Content,
               {
                 style: {
@@ -23839,21 +23498,21 @@ var UserList = React35.memo(
                 },
                 align: "end",
                 sideOffset: 10,
-                children: /* @__PURE__ */ jsxs59(Island, { padding: 2, children: [
-                  uniqueCollaboratorsArray.length >= SHOW_COLLABORATORS_FILTER_AT && /* @__PURE__ */ jsx107(
+                children: /* @__PURE__ */ jsxs58(Island, { padding: 2, children: [
+                  uniqueCollaboratorsArray.length >= SHOW_COLLABORATORS_FILTER_AT && /* @__PURE__ */ jsx105(
                     QuickSearch,
                     {
                       placeholder: t("quickSearch.placeholder"),
                       onChange: setSearchTerm
                     }
                   ),
-                  /* @__PURE__ */ jsx107(
+                  /* @__PURE__ */ jsx105(
                     ScrollableList,
                     {
                       className: "dropdown-menu UserList__collaborators",
                       placeholder: t("userList.empty"),
                       children: filteredCollaborators.length > 0 ? [
-                        /* @__PURE__ */ jsx107("div", { className: "hint", children: t("userList.hint.text") }),
+                        /* @__PURE__ */ jsx105("div", { className: "hint", children: t("userList.hint.text") }),
                         filteredCollaborators.map(
                           (collaborator) => renderCollaborator({
                             actionManager,
@@ -23866,7 +23525,7 @@ var UserList = React35.memo(
                       ] : []
                     }
                   ),
-                  /* @__PURE__ */ jsx107(
+                  /* @__PURE__ */ jsx105(
                     Popover9.Arrow,
                     {
                       width: 20,
@@ -23908,7 +23567,7 @@ var UserList = React35.memo(
 
 // components/hoc/withInternalFallback.tsx
 import { useLayoutEffect as useLayoutEffect8, useRef as useRef28 } from "react";
-import { jsx as jsx108 } from "react/jsx-runtime";
+import { jsx as jsx106 } from "react/jsx-runtime";
 var withInternalFallback = (componentName, Component) => {
   const renderAtom = atom(0);
   const WrapperComponent = (props) => {
@@ -23953,7 +23612,7 @@ var withInternalFallback = (componentName, Component) => {
     ) {
       return null;
     }
-    return /* @__PURE__ */ jsx108(Component, { ...props });
+    return /* @__PURE__ */ jsx106(Component, { ...props });
   };
   WrapperComponent.displayName = componentName;
   return WrapperComponent;
@@ -23978,7 +23637,7 @@ __export(DefaultItems_exports, {
   Socials: () => Socials,
   ToggleTheme: () => ToggleTheme
 });
-import clsx51 from "clsx";
+import clsx50 from "clsx";
 
 // components/OverwriteConfirm/OverwriteConfirmState.ts
 var overwriteConfirmStateAtom = atom({
@@ -24005,23 +23664,23 @@ async function openConfirmModal({
 }
 
 // components/RadioGroup.tsx
-import clsx50 from "clsx";
-import { jsx as jsx109, jsxs as jsxs60 } from "react/jsx-runtime";
+import clsx49 from "clsx";
+import { jsx as jsx107, jsxs as jsxs59 } from "react/jsx-runtime";
 var RadioGroup = function({
   onChange,
   value,
   choices,
   name
 }) {
-  return /* @__PURE__ */ jsx109("div", { className: "RadioGroup", children: choices.map((choice) => /* @__PURE__ */ jsxs60(
+  return /* @__PURE__ */ jsx107("div", { className: "RadioGroup", children: choices.map((choice) => /* @__PURE__ */ jsxs59(
     "div",
     {
-      className: clsx50("RadioGroup__choice", {
+      className: clsx49("RadioGroup__choice", {
         active: choice.value === value
       }),
       title: choice.ariaLabel,
       children: [
-        /* @__PURE__ */ jsx109(
+        /* @__PURE__ */ jsx107(
           "input",
           {
             name,
@@ -24039,7 +23698,7 @@ var RadioGroup = function({
 };
 
 // components/dropdownMenu/DropdownMenuItemContentRadio.tsx
-import { Fragment as Fragment15, jsx as jsx110, jsxs as jsxs61 } from "react/jsx-runtime";
+import { Fragment as Fragment15, jsx as jsx108, jsxs as jsxs60 } from "react/jsx-runtime";
 var DropdownMenuItemContentRadio = ({
   value,
   shortcut,
@@ -24049,10 +23708,10 @@ var DropdownMenuItemContentRadio = ({
   name
 }) => {
   const editorInterface = useEditorInterface();
-  return /* @__PURE__ */ jsxs61(Fragment15, { children: [
-    /* @__PURE__ */ jsxs61("div", { className: "dropdown-menu-item-base dropdown-menu-item-bare", children: [
-      /* @__PURE__ */ jsx110("label", { className: "dropdown-menu-item__text", children }),
-      /* @__PURE__ */ jsx110(
+  return /* @__PURE__ */ jsxs60(Fragment15, { children: [
+    /* @__PURE__ */ jsxs60("div", { className: "dropdown-menu-item-base dropdown-menu-item-bare", children: [
+      /* @__PURE__ */ jsx108("label", { className: "dropdown-menu-item__text", children }),
+      /* @__PURE__ */ jsx108(
         RadioGroup,
         {
           name,
@@ -24062,14 +23721,14 @@ var DropdownMenuItemContentRadio = ({
         }
       )
     ] }),
-    shortcut && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx110("div", { className: "dropdown-menu-item__shortcut dropdown-menu-item__shortcut--orphaned", children: shortcut })
+    shortcut && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx108("div", { className: "dropdown-menu-item__shortcut dropdown-menu-item__shortcut--orphaned", children: shortcut })
   ] });
 };
 DropdownMenuItemContentRadio.displayName = "DropdownMenuItemContentRadio";
 var DropdownMenuItemContentRadio_default = DropdownMenuItemContentRadio;
 
 // components/main-menu/DefaultItems.tsx
-import { Fragment as Fragment16, jsx as jsx111, jsxs as jsxs62 } from "react/jsx-runtime";
+import { Fragment as Fragment16, jsx as jsx109, jsxs as jsxs61 } from "react/jsx-runtime";
 var LoadScene = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
@@ -24082,19 +23741,19 @@ var LoadScene = () => {
       title: t2("overwriteConfirm.modal.loadFromFile.title"),
       actionLabel: t2("overwriteConfirm.modal.loadFromFile.button"),
       color: "warning",
-      description: /* @__PURE__ */ jsx111(
+      description: /* @__PURE__ */ jsx109(
         Trans_default,
         {
           i18nKey: "overwriteConfirm.modal.loadFromFile.description",
-          bold: (text) => /* @__PURE__ */ jsx111("strong", { children: text }),
-          br: () => /* @__PURE__ */ jsx111("br", {})
+          bold: (text) => /* @__PURE__ */ jsx109("strong", { children: text }),
+          br: () => /* @__PURE__ */ jsx109("br", {})
         }
       )
     })) {
       actionManager.executeAction(actionLoadScene);
     }
   };
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: LoadIcon,
@@ -24113,7 +23772,7 @@ var SaveToActiveFile = () => {
   if (!actionManager.isActionEnabled(actionSaveToActiveFile)) {
     return null;
   }
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       shortcut: getShortcutFromShortcutName("saveScene"),
@@ -24129,7 +23788,7 @@ SaveToActiveFile.displayName = "SaveToActiveFile";
 var SaveAsImage = () => {
   const setAppState = useExcalidrawSetAppState();
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: ExportImageIcon,
@@ -24145,7 +23804,7 @@ SaveAsImage.displayName = "SaveAsImage";
 var CommandPalette2 = (opts) => {
   const setAppState = useExcalidrawSetAppState();
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: boltIcon,
@@ -24165,7 +23824,7 @@ CommandPalette2.displayName = "CommandPalette";
 var SearchMenu = (opts) => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: searchIcon,
@@ -24184,7 +23843,7 @@ SearchMenu.displayName = "SearchMenu";
 var Help = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       "data-testid": "help-menu-item",
@@ -24204,7 +23863,7 @@ var ClearCanvas = () => {
   if (!actionManager.isActionEnabled(actionClearCanvas)) {
     return null;
   }
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: TrashIcon,
@@ -24225,7 +23884,7 @@ var ToggleTheme = (props) => {
     return null;
   }
   if (props?.allowSystemTheme) {
-    return /* @__PURE__ */ jsx111(
+    return /* @__PURE__ */ jsx109(
       DropdownMenuItemContentRadio_default,
       {
         name: "theme",
@@ -24252,7 +23911,7 @@ var ToggleTheme = (props) => {
       }
     );
   }
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       onSelect: (event) => {
@@ -24282,8 +23941,8 @@ var ChangeCanvasBackground = () => {
   if (appState.viewModeEnabled || !appProps.UIOptions.canvasActions.changeViewBackgroundColor) {
     return null;
   }
-  return /* @__PURE__ */ jsxs62("div", { style: { marginTop: "0.75rem" }, children: [
-    /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsxs61("div", { style: { marginTop: "0.75rem" }, children: [
+    /* @__PURE__ */ jsx109(
       "div",
       {
         "data-testid": "canvas-background-label",
@@ -24295,14 +23954,14 @@ var ChangeCanvasBackground = () => {
         children: t2("labels.canvasBackground")
       }
     ),
-    /* @__PURE__ */ jsx111("div", { style: { padding: "0 0.625rem" }, children: actionManager.renderAction("changeViewBackgroundColor") })
+    /* @__PURE__ */ jsx109("div", { style: { padding: "0 0.625rem" }, children: actionManager.renderAction("changeViewBackgroundColor") })
   ] });
 };
 ChangeCanvasBackground.displayName = "ChangeCanvasBackground";
 var Export = () => {
   const { t: t2 } = useI18n();
   const setAppState = useExcalidrawSetAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       icon: ExportIcon,
@@ -24318,8 +23977,8 @@ var Export = () => {
 Export.displayName = "Export";
 var Socials = () => {
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsxs62(Fragment16, { children: [
-    /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsxs61(Fragment16, { children: [
+    /* @__PURE__ */ jsx109(
       DropdownMenuItemLink_default,
       {
         icon: GithubIcon,
@@ -24328,7 +23987,7 @@ var Socials = () => {
         children: "GitHub"
       }
     ),
-    /* @__PURE__ */ jsx111(
+    /* @__PURE__ */ jsx109(
       DropdownMenuItemLink_default,
       {
         icon: XBrandIcon,
@@ -24337,7 +23996,7 @@ var Socials = () => {
         children: t2("labels.followUs")
       }
     ),
-    /* @__PURE__ */ jsx111(
+    /* @__PURE__ */ jsx109(
       DropdownMenuItemLink_default,
       {
         icon: DiscordIcon,
@@ -24354,12 +24013,12 @@ var LiveCollaborationTrigger = ({
   isCollaborating
 }) => {
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItem_default,
     {
       "data-testid": "collab-button",
       icon: usersIcon,
-      className: clsx51({
+      className: clsx50({
         "active-collab": isCollaborating
       }),
       onSelect,
@@ -24372,7 +24031,7 @@ var PreferencesToggleToolLockItem = () => {
   const { t: t2 } = useI18n();
   const app = useApp();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.activeTool.locked,
@@ -24389,7 +24048,7 @@ var PreferencesToggleSnapModeItem = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.objectsSnapModeEnabled,
@@ -24406,7 +24065,7 @@ var PreferencesToggleGridModeItem = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.gridModeEnabled,
@@ -24423,7 +24082,7 @@ var PreferencesToggleZenModeItem = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.zenModeEnabled,
@@ -24440,7 +24099,7 @@ var PreferencesToggleViewModeItem = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.viewModeEnabled,
@@ -24457,7 +24116,7 @@ var PreferencesToggleElementPropertiesItem = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx111(
+  return /* @__PURE__ */ jsx109(
     DropdownMenuItemCheckbox_default,
     {
       checked: appState.stats.open,
@@ -24475,16 +24134,16 @@ var Preferences = ({
   additionalItems
 }) => {
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsxs62(DropdownMenuSub_default, { children: [
-    /* @__PURE__ */ jsx111(DropdownMenuSub_default.Trigger, { icon: settingsIcon, children: t2("labels.preferences") }),
-    /* @__PURE__ */ jsxs62(DropdownMenuSub_default.Content, { className: "excalidraw-main-menu-preferences-submenu", children: [
-      children || /* @__PURE__ */ jsxs62(Fragment16, { children: [
-        /* @__PURE__ */ jsx111(PreferencesToggleToolLockItem, {}),
-        /* @__PURE__ */ jsx111(PreferencesToggleSnapModeItem, {}),
-        /* @__PURE__ */ jsx111(PreferencesToggleGridModeItem, {}),
-        /* @__PURE__ */ jsx111(PreferencesToggleZenModeItem, {}),
-        /* @__PURE__ */ jsx111(PreferencesToggleViewModeItem, {}),
-        /* @__PURE__ */ jsx111(PreferencesToggleElementPropertiesItem, {})
+  return /* @__PURE__ */ jsxs61(DropdownMenuSub_default, { children: [
+    /* @__PURE__ */ jsx109(DropdownMenuSub_default.Trigger, { icon: settingsIcon, children: t2("labels.preferences") }),
+    /* @__PURE__ */ jsxs61(DropdownMenuSub_default.Content, { className: "excalidraw-main-menu-preferences-submenu", children: [
+      children || /* @__PURE__ */ jsxs61(Fragment16, { children: [
+        /* @__PURE__ */ jsx109(PreferencesToggleToolLockItem, {}),
+        /* @__PURE__ */ jsx109(PreferencesToggleSnapModeItem, {}),
+        /* @__PURE__ */ jsx109(PreferencesToggleGridModeItem, {}),
+        /* @__PURE__ */ jsx109(PreferencesToggleZenModeItem, {}),
+        /* @__PURE__ */ jsx109(PreferencesToggleViewModeItem, {}),
+        /* @__PURE__ */ jsx109(PreferencesToggleElementPropertiesItem, {})
       ] }),
       additionalItems
     ] })
@@ -24499,7 +24158,7 @@ Preferences.ToggleElementProperties = PreferencesToggleElementPropertiesItem;
 Preferences.displayName = "Preferences";
 
 // components/main-menu/MainMenu.tsx
-import { jsx as jsx112, jsxs as jsxs63 } from "react/jsx-runtime";
+import { jsx as jsx110, jsxs as jsxs62 } from "react/jsx-runtime";
 var MainMenu = Object.assign(
   withInternalFallback(
     "MainMenu",
@@ -24511,8 +24170,8 @@ var MainMenu = Object.assign(
       const editorInterface = useEditorInterface();
       const appState = useUIAppState();
       const setAppState = useExcalidrawSetAppState();
-      return /* @__PURE__ */ jsx112(MainMenuTunnel.In, { children: /* @__PURE__ */ jsxs63(DropdownMenu_default, { open: appState.openMenu === "canvas", children: [
-        /* @__PURE__ */ jsx112(
+      return /* @__PURE__ */ jsx110(MainMenuTunnel.In, { children: /* @__PURE__ */ jsxs62(DropdownMenu_default, { open: appState.openMenu === "canvas", children: [
+        /* @__PURE__ */ jsx110(
           DropdownMenu_default.Trigger,
           {
             onToggle: () => {
@@ -24527,7 +24186,7 @@ var MainMenu = Object.assign(
             children: HamburgerMenuIcon
           }
         ),
-        /* @__PURE__ */ jsxs63(
+        /* @__PURE__ */ jsxs62(
           DropdownMenu_default.Content,
           {
             onClickOutside: () => setAppState({ openMenu: null }),
@@ -24538,9 +24197,9 @@ var MainMenu = Object.assign(
             align: "start",
             children: [
               children,
-              editorInterface.formFactor === "phone" && appState.collaborators.size > 0 && /* @__PURE__ */ jsxs63("fieldset", { className: "UserList-Wrapper", children: [
-                /* @__PURE__ */ jsx112("legend", { children: t("labels.collaborators") }),
-                /* @__PURE__ */ jsx112(
+              editorInterface.formFactor === "phone" && appState.collaborators.size > 0 && /* @__PURE__ */ jsxs62("fieldset", { className: "UserList-Wrapper", children: [
+                /* @__PURE__ */ jsx110("legend", { children: t("labels.collaborators") }),
+                /* @__PURE__ */ jsx110(
                   UserList,
                   {
                     mobile: true,
@@ -24569,9 +24228,9 @@ var MainMenu = Object.assign(
 var MainMenu_default = MainMenu;
 
 // components/FilledButton.tsx
-import clsx52 from "clsx";
+import clsx51 from "clsx";
 import { forwardRef as forwardRef5, useState as useState32 } from "react";
-import { jsx as jsx113, jsxs as jsxs64 } from "react/jsx-runtime";
+import { jsx as jsx111, jsxs as jsxs63 } from "react/jsx-runtime";
 var FilledButton = forwardRef5(
   ({
     children,
@@ -24609,10 +24268,10 @@ var FilledButton = forwardRef5(
     };
     const _status = isLoading ? "loading" : status;
     color = _status === "success" ? "success" : color;
-    return /* @__PURE__ */ jsx113(
+    return /* @__PURE__ */ jsx111(
       "button",
       {
-        className: clsx52(
+        className: clsx51(
           "ExcButton",
           `ExcButton--color-${color}`,
           `ExcButton--variant-${variant}`,
@@ -24626,9 +24285,9 @@ var FilledButton = forwardRef5(
         "aria-label": label,
         ref,
         disabled: disabled || _status === "loading" || _status === "success",
-        children: /* @__PURE__ */ jsxs64("div", { className: "ExcButton__contents", children: [
-          _status === "loading" ? /* @__PURE__ */ jsx113(Spinner_default, { className: "ExcButton__statusIcon" }) : _status === "success" && /* @__PURE__ */ jsx113("div", { className: "ExcButton__statusIcon", children: tablerCheckIcon }),
-          icon && /* @__PURE__ */ jsx113("div", { className: "ExcButton__icon", "aria-hidden": true, children: icon }),
+        children: /* @__PURE__ */ jsxs63("div", { className: "ExcButton__contents", children: [
+          _status === "loading" ? /* @__PURE__ */ jsx111(Spinner_default, { className: "ExcButton__statusIcon" }) : _status === "success" && /* @__PURE__ */ jsx111("div", { className: "ExcButton__statusIcon", children: tablerCheckIcon }),
+          icon && /* @__PURE__ */ jsx111("div", { className: "ExcButton__icon", "aria-hidden": true, children: icon }),
           variant !== "icon" && (children ?? label)
         ] })
       }
@@ -24637,17 +24296,17 @@ var FilledButton = forwardRef5(
 );
 
 // components/OverwriteConfirm/OverwriteConfirmActions.tsx
-import { jsx as jsx114, jsxs as jsxs65 } from "react/jsx-runtime";
+import { jsx as jsx112, jsxs as jsxs64 } from "react/jsx-runtime";
 var Action = ({
   title,
   children,
   actionLabel,
   onClick
 }) => {
-  return /* @__PURE__ */ jsxs65("div", { className: "OverwriteConfirm__Actions__Action", children: [
-    /* @__PURE__ */ jsx114("h4", { children: title }),
-    /* @__PURE__ */ jsx114("div", { className: "OverwriteConfirm__Actions__Action__content", children }),
-    /* @__PURE__ */ jsx114(
+  return /* @__PURE__ */ jsxs64("div", { className: "OverwriteConfirm__Actions__Action", children: [
+    /* @__PURE__ */ jsx112("h4", { children: title }),
+    /* @__PURE__ */ jsx112("div", { className: "OverwriteConfirm__Actions__Action__content", children }),
+    /* @__PURE__ */ jsx112(
       FilledButton,
       {
         variant: "outlined",
@@ -24664,7 +24323,7 @@ var ExportToImage = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
   const setAppState = useExcalidrawSetAppState();
-  return /* @__PURE__ */ jsx114(
+  return /* @__PURE__ */ jsx112(
     Action,
     {
       title: t2("overwriteConfirm.action.exportToImage.title"),
@@ -24680,7 +24339,7 @@ var ExportToImage = () => {
 var SaveToDisk = () => {
   const { t: t2 } = useI18n();
   const actionManager = useExcalidrawActionManager();
-  return /* @__PURE__ */ jsx114(
+  return /* @__PURE__ */ jsx112(
     Action,
     {
       title: t2("overwriteConfirm.action.saveToDisk.title"),
@@ -24694,7 +24353,7 @@ var SaveToDisk = () => {
 };
 var Actions = Object.assign(
   ({ children }) => {
-    return /* @__PURE__ */ jsx114("div", { className: "OverwriteConfirm__Actions", children });
+    return /* @__PURE__ */ jsx112("div", { className: "OverwriteConfirm__Actions", children });
   },
   {
     ExportToImage,
@@ -24703,7 +24362,7 @@ var Actions = Object.assign(
 );
 
 // components/OverwriteConfirm/OverwriteConfirm.tsx
-import { jsx as jsx115, jsxs as jsxs66 } from "react/jsx-runtime";
+import { jsx as jsx113, jsxs as jsxs65 } from "react/jsx-runtime";
 var OverwriteConfirmDialog = Object.assign(
   withInternalFallback(
     "OverwriteConfirmDialog",
@@ -24723,17 +24382,17 @@ var OverwriteConfirmDialog = Object.assign(
         overwriteConfirmState.onConfirm();
         setState((state) => ({ ...state, active: false }));
       };
-      return /* @__PURE__ */ jsx115(OverwriteConfirmDialogTunnel.In, { children: /* @__PURE__ */ jsx115(Dialog, { onCloseRequest: handleClose, title: false, size: 916, children: /* @__PURE__ */ jsxs66("div", { className: "OverwriteConfirm", children: [
-        /* @__PURE__ */ jsx115("h3", { children: overwriteConfirmState.title }),
-        /* @__PURE__ */ jsxs66(
+      return /* @__PURE__ */ jsx113(OverwriteConfirmDialogTunnel.In, { children: /* @__PURE__ */ jsx113(Dialog, { onCloseRequest: handleClose, title: false, size: 916, children: /* @__PURE__ */ jsxs65("div", { className: "OverwriteConfirm", children: [
+        /* @__PURE__ */ jsx113("h3", { children: overwriteConfirmState.title }),
+        /* @__PURE__ */ jsxs65(
           "div",
           {
             className: `OverwriteConfirm__Description OverwriteConfirm__Description--color-${overwriteConfirmState.color}`,
             children: [
-              /* @__PURE__ */ jsx115("div", { className: "OverwriteConfirm__Description__icon", children: alertTriangleIcon }),
-              /* @__PURE__ */ jsx115("div", { children: overwriteConfirmState.description }),
-              /* @__PURE__ */ jsx115("div", { className: "OverwriteConfirm__Description__spacer" }),
-              /* @__PURE__ */ jsx115(
+              /* @__PURE__ */ jsx113("div", { className: "OverwriteConfirm__Description__icon", children: alertTriangleIcon }),
+              /* @__PURE__ */ jsx113("div", { children: overwriteConfirmState.description }),
+              /* @__PURE__ */ jsx113("div", { className: "OverwriteConfirm__Description__spacer" }),
+              /* @__PURE__ */ jsx113(
                 FilledButton,
                 {
                   color: overwriteConfirmState.color,
@@ -24745,7 +24404,7 @@ var OverwriteConfirmDialog = Object.assign(
             ]
           }
         ),
-        /* @__PURE__ */ jsx115(Actions, { children })
+        /* @__PURE__ */ jsx113(Actions, { children })
       ] }) }) });
     }
   ),
@@ -24756,13 +24415,13 @@ var OverwriteConfirmDialog = Object.assign(
 );
 
 // components/DefaultSidebar.tsx
-import clsx54 from "clsx";
+import clsx53 from "clsx";
 
 // components/SearchMenu.tsx
-import clsx53 from "clsx";
+import clsx52 from "clsx";
 import debounce2 from "lodash.debounce";
 import { Fragment as Fragment17, memo as memo4, useEffect as useEffect33, useMemo as useMemo8, useRef as useRef29, useState as useState33 } from "react";
-import { Fragment as Fragment18, jsx as jsx116, jsxs as jsxs67 } from "react/jsx-runtime";
+import { Fragment as Fragment18, jsx as jsx114, jsxs as jsxs66 } from "react/jsx-runtime";
 var searchQueryAtom = atom("");
 var searchItemInFocusAtom = atom(null);
 var SEARCH_DEBOUNCE = 350;
@@ -24973,8 +24632,8 @@ var SearchMenu2 = () => {
     });
   }, [setAppState, stableState, app]);
   const matchCount = `${searchMatches.items.length} ${searchMatches.items.length === 1 ? t("search.singleResult") : t("search.multipleResults")}`;
-  return /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search", children: [
-    /* @__PURE__ */ jsx116("div", { className: "layer-ui__search-header", children: /* @__PURE__ */ jsx116(
+  return /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search", children: [
+    /* @__PURE__ */ jsx114("div", { className: "layer-ui__search-header", children: /* @__PURE__ */ jsx114(
       TextField,
       {
         className: CLASSES.SEARCH_MENU_INPUT_WRAPPER,
@@ -25010,15 +24669,15 @@ var SearchMenu2 = () => {
         selectOnRender: true
       }
     ) }),
-    /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search-count", children: [
-      searchMatches.items.length > 0 && /* @__PURE__ */ jsxs67(Fragment18, { children: [
-        focusIndex !== null && focusIndex > -1 ? /* @__PURE__ */ jsxs67("div", { children: [
+    /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search-count", children: [
+      searchMatches.items.length > 0 && /* @__PURE__ */ jsxs66(Fragment18, { children: [
+        focusIndex !== null && focusIndex > -1 ? /* @__PURE__ */ jsxs66("div", { children: [
           focusIndex + 1,
           " / ",
           matchCount
-        ] }) : /* @__PURE__ */ jsx116("div", { children: matchCount }),
-        /* @__PURE__ */ jsxs67("div", { className: "result-nav", children: [
-          /* @__PURE__ */ jsx116(
+        ] }) : /* @__PURE__ */ jsx114("div", { children: matchCount }),
+        /* @__PURE__ */ jsxs66("div", { className: "result-nav", children: [
+          /* @__PURE__ */ jsx114(
             Button,
             {
               onSelect: () => {
@@ -25028,7 +24687,7 @@ var SearchMenu2 = () => {
               children: collapseDownIcon
             }
           ),
-          /* @__PURE__ */ jsx116(
+          /* @__PURE__ */ jsx114(
             Button,
             {
               onSelect: () => {
@@ -25040,9 +24699,9 @@ var SearchMenu2 = () => {
           )
         ] })
       ] }),
-      searchMatches.items.length === 0 && searchQuery && searchedQueryRef.current && /* @__PURE__ */ jsx116("div", { style: { margin: "1rem auto" }, children: t("search.noMatch") })
+      searchMatches.items.length === 0 && searchQuery && searchedQueryRef.current && /* @__PURE__ */ jsx114("div", { style: { margin: "1rem auto" }, children: t("search.noMatch") })
     ] }),
-    /* @__PURE__ */ jsx116(
+    /* @__PURE__ */ jsx114(
       MatchList,
       {
         matches: searchMatches,
@@ -25066,11 +24725,11 @@ var ListItem = (props) => {
     ),
     props.preview.moreAfter ? "..." : ""
   ];
-  return /* @__PURE__ */ jsx116(
+  return /* @__PURE__ */ jsx114(
     "div",
     {
       tabIndex: -1,
-      className: clsx53("layer-ui__result-item", {
+      className: clsx52("layer-ui__result-item", {
         active: props.highlighted
       }),
       onClick: props.onClick,
@@ -25079,7 +24738,7 @@ var ListItem = (props) => {
           ref?.scrollIntoView({ behavior: "auto", block: "nearest" });
         }
       },
-      children: /* @__PURE__ */ jsx116("div", { className: "preview-text", children: preview.flatMap((text, idx) => /* @__PURE__ */ jsx116(Fragment17, { children: idx === 2 ? /* @__PURE__ */ jsx116("b", { children: text }) : text }, idx)) })
+      children: /* @__PURE__ */ jsx114("div", { className: "preview-text", children: preview.flatMap((text, idx) => /* @__PURE__ */ jsx114(Fragment17, { children: idx === 2 ? /* @__PURE__ */ jsx114("b", { children: text }) : text }, idx)) })
     }
   );
 };
@@ -25092,13 +24751,13 @@ var MatchListBase = (props) => {
     () => props.matches.items.filter((match) => isTextElement(match.element)),
     [props.matches]
   );
-  return /* @__PURE__ */ jsxs67("div", { children: [
-    frameNameMatches.length > 0 && /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search-result-container", children: [
-      /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search-result-title", children: [
-        /* @__PURE__ */ jsx116("div", { className: "title-icon", children: frameToolIcon }),
-        /* @__PURE__ */ jsx116("div", { children: t("search.frames") })
+  return /* @__PURE__ */ jsxs66("div", { children: [
+    frameNameMatches.length > 0 && /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search-result-container", children: [
+      /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search-result-title", children: [
+        /* @__PURE__ */ jsx114("div", { className: "title-icon", children: frameToolIcon }),
+        /* @__PURE__ */ jsx114("div", { children: t("search.frames") })
       ] }),
-      frameNameMatches.map((searchMatch, index) => /* @__PURE__ */ jsx116(
+      frameNameMatches.map((searchMatch, index) => /* @__PURE__ */ jsx114(
         ListItem,
         {
           searchQuery: props.searchQuery,
@@ -25108,14 +24767,14 @@ var MatchListBase = (props) => {
         },
         searchMatch.element.id + searchMatch.index
       )),
-      textMatches.length > 0 && /* @__PURE__ */ jsx116("div", { className: "layer-ui__divider" })
+      textMatches.length > 0 && /* @__PURE__ */ jsx114("div", { className: "layer-ui__divider" })
     ] }),
-    textMatches.length > 0 && /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search-result-container", children: [
-      /* @__PURE__ */ jsxs67("div", { className: "layer-ui__search-result-title", children: [
-        /* @__PURE__ */ jsx116("div", { className: "title-icon", children: TextIcon }),
-        /* @__PURE__ */ jsx116("div", { children: t("search.texts") })
+    textMatches.length > 0 && /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search-result-container", children: [
+      /* @__PURE__ */ jsxs66("div", { className: "layer-ui__search-result-title", children: [
+        /* @__PURE__ */ jsx114("div", { className: "title-icon", children: TextIcon }),
+        /* @__PURE__ */ jsx114("div", { children: t("search.texts") })
       ] }),
-      textMatches.map((searchMatch, index) => /* @__PURE__ */ jsx116(
+      textMatches.map((searchMatch, index) => /* @__PURE__ */ jsx114(
         ListItem,
         {
           searchQuery: props.searchQuery,
@@ -25354,13 +25013,13 @@ var handleSearch = debounce2(
 );
 
 // components/DefaultSidebar.tsx
-import { jsx as jsx117, jsxs as jsxs68 } from "react/jsx-runtime";
+import { jsx as jsx115, jsxs as jsxs67 } from "react/jsx-runtime";
 import { createElement as createElement2 } from "react";
 var DefaultSidebarTrigger = withInternalFallback(
   "DefaultSidebarTrigger",
   (props) => {
     const { DefaultSidebarTriggerTunnel } = useTunnels();
-    return /* @__PURE__ */ jsx117(DefaultSidebarTriggerTunnel.In, { children: /* @__PURE__ */ jsx117(
+    return /* @__PURE__ */ jsx115(DefaultSidebarTriggerTunnel.In, { children: /* @__PURE__ */ jsx115(
       Sidebar.Trigger,
       {
         ...props,
@@ -25373,7 +25032,7 @@ var DefaultSidebarTrigger = withInternalFallback(
 DefaultSidebarTrigger.displayName = "DefaultSidebarTrigger";
 var DefaultTabTriggers = ({ children }) => {
   const { DefaultSidebarTabTriggersTunnel } = useTunnels();
-  return /* @__PURE__ */ jsx117(DefaultSidebarTabTriggersTunnel.In, { children });
+  return /* @__PURE__ */ jsx115(DefaultSidebarTabTriggersTunnel.In, { children });
 };
 DefaultTabTriggers.displayName = "DefaultTabTriggers";
 var DefaultSidebar = Object.assign(
@@ -25396,7 +25055,7 @@ var DefaultSidebar = Object.assign(
           ...rest,
           name: "default",
           key: "default",
-          className: clsx54("default-sidebar", className),
+          className: clsx53("default-sidebar", className),
           docked: isForceDocked || (docked ?? appState.defaultSidebarDockedPreference),
           onDock: (
             // `onDock=false` disables docking.
@@ -25409,14 +25068,14 @@ var DefaultSidebar = Object.assign(
             )
           )
         },
-        /* @__PURE__ */ jsxs68(Sidebar.Tabs, { children: [
-          /* @__PURE__ */ jsx117(Sidebar.Header, { children: /* @__PURE__ */ jsxs68(Sidebar.TabTriggers, { children: [
-            /* @__PURE__ */ jsx117(Sidebar.TabTrigger, { tab: CANVAS_SEARCH_TAB, children: searchIcon }),
-            /* @__PURE__ */ jsx117(Sidebar.TabTrigger, { tab: LIBRARY_SIDEBAR_TAB, children: LibraryIcon }),
-            /* @__PURE__ */ jsx117(DefaultSidebarTabTriggersTunnel.Out, {})
+        /* @__PURE__ */ jsxs67(Sidebar.Tabs, { children: [
+          /* @__PURE__ */ jsx115(Sidebar.Header, { children: /* @__PURE__ */ jsxs67(Sidebar.TabTriggers, { children: [
+            /* @__PURE__ */ jsx115(Sidebar.TabTrigger, { tab: CANVAS_SEARCH_TAB, children: searchIcon }),
+            /* @__PURE__ */ jsx115(Sidebar.TabTrigger, { tab: LIBRARY_SIDEBAR_TAB, children: LibraryIcon }),
+            /* @__PURE__ */ jsx115(DefaultSidebarTabTriggersTunnel.Out, {})
           ] }) }),
-          /* @__PURE__ */ jsx117(Sidebar.Tab, { tab: LIBRARY_SIDEBAR_TAB, children: /* @__PURE__ */ jsx117(LibraryMenu, {}) }),
-          /* @__PURE__ */ jsx117(Sidebar.Tab, { tab: CANVAS_SEARCH_TAB, children: /* @__PURE__ */ jsx117(SearchMenu2, {}) }),
+          /* @__PURE__ */ jsx115(Sidebar.Tab, { tab: LIBRARY_SIDEBAR_TAB, children: /* @__PURE__ */ jsx115(LibraryMenu, {}) }),
+          /* @__PURE__ */ jsx115(Sidebar.Tab, { tab: CANVAS_SEARCH_TAB, children: /* @__PURE__ */ jsx115(SearchMenu2, {}) }),
           children
         ] })
       );
@@ -25436,7 +25095,7 @@ import { useState as useState34, useRef as useRef31, useEffect as useEffect35, u
 
 // components/TTDDialog/TTDDialogInput.tsx
 import { useEffect as useEffect34, useRef as useRef30 } from "react";
-import { jsx as jsx118 } from "react/jsx-runtime";
+import { jsx as jsx116 } from "react/jsx-runtime";
 var TTDDialogInput = ({
   input,
   placeholder,
@@ -25465,7 +25124,7 @@ var TTDDialogInput = ({
       };
     }
   }, []);
-  return /* @__PURE__ */ jsx118(
+  return /* @__PURE__ */ jsx116(
     "textarea",
     {
       className: "ttd-dialog-input",
@@ -25478,51 +25137,51 @@ var TTDDialogInput = ({
 };
 
 // components/TTDDialog/TTDDialogOutput.tsx
-import clsx55 from "clsx";
-import { jsx as jsx119, jsxs as jsxs69 } from "react/jsx-runtime";
+import clsx54 from "clsx";
+import { jsx as jsx117, jsxs as jsxs68 } from "react/jsx-runtime";
 var TTDDialogOutput = ({
   error,
   canvasRef,
   loaded,
   hideErrorDetails
 }) => {
-  return /* @__PURE__ */ jsxs69(
+  return /* @__PURE__ */ jsxs68(
     "div",
     {
       className: `ttd-dialog-output-wrapper ${error ? "ttd-dialog-output-wrapper--error" : ""}`,
       children: [
-        error && /* @__PURE__ */ jsx119(
+        error && /* @__PURE__ */ jsx117(
           "div",
           {
             "data-testid": "ttd-dialog-output-error",
             className: "ttd-dialog-output-error",
-            children: /* @__PURE__ */ jsxs69("div", { className: "ttd-dialog-output-error-content", children: [
-              /* @__PURE__ */ jsx119("div", { className: "ttd-dialog-output-error-icon", children: alertTriangleIcon }),
-              /* @__PURE__ */ jsx119("div", { className: "ttd-dialog-output-error-title", children: t("ttd.error") }),
-              /* @__PURE__ */ jsx119("div", { className: "ttd-dialog-output-error-message", children: hideErrorDetails ? t("chat.errors.mermaidParseError") : error.message })
+            children: /* @__PURE__ */ jsxs68("div", { className: "ttd-dialog-output-error-content", children: [
+              /* @__PURE__ */ jsx117("div", { className: "ttd-dialog-output-error-icon", children: alertTriangleIcon }),
+              /* @__PURE__ */ jsx117("div", { className: "ttd-dialog-output-error-title", children: t("ttd.error") }),
+              /* @__PURE__ */ jsx117("div", { className: "ttd-dialog-output-error-message", children: hideErrorDetails ? t("chat.errors.mermaidParseError") : error.message })
             ] })
           },
           "error"
         ),
-        loaded ? /* @__PURE__ */ jsx119(
+        loaded ? /* @__PURE__ */ jsx117(
           "div",
           {
-            className: clsx55("ttd-dialog-output-canvas-container", {
+            className: clsx54("ttd-dialog-output-canvas-container", {
               invisible: !!error
             }),
-            children: /* @__PURE__ */ jsx119("div", { ref: canvasRef, className: "ttd-dialog-output-canvas-content" })
+            children: /* @__PURE__ */ jsx117("div", { ref: canvasRef, className: "ttd-dialog-output-canvas-content" })
           },
           "canvas"
-        ) : /* @__PURE__ */ jsx119(Spinner_default, { size: "2rem" })
+        ) : /* @__PURE__ */ jsx117(Spinner_default, { size: "2rem" })
       ]
     }
   );
 };
 
 // components/TTDDialog/TTDDialogPanel.tsx
-import clsx56 from "clsx";
+import clsx55 from "clsx";
 import { Fragment as Fragment19 } from "react";
-import { jsx as jsx120, jsxs as jsxs70 } from "react/jsx-runtime";
+import { jsx as jsx118, jsxs as jsxs69 } from "react/jsx-runtime";
 var TTDDialogPanel = ({
   label,
   children,
@@ -25535,10 +25194,10 @@ var TTDDialogPanel = ({
 }) => {
   const renderPanelAction = (panelAction) => {
     if (panelAction?.variant === "link") {
-      return /* @__PURE__ */ jsxs70(
+      return /* @__PURE__ */ jsxs69(
         "button",
         {
-          className: clsx56(
+          className: clsx55(
             "ttd-dialog-panel-action-link",
             panelAction.className
           ),
@@ -25547,34 +25206,34 @@ var TTDDialogPanel = ({
           type: "button",
           children: [
             panelAction.label,
-            panelAction.icon && /* @__PURE__ */ jsx120("span", { className: "ttd-dialog-panel-action-link__icon", children: panelAction.icon })
+            panelAction.icon && /* @__PURE__ */ jsx118("span", { className: "ttd-dialog-panel-action-link__icon", children: panelAction.icon })
           ]
         }
       );
     }
     if (panelAction?.variant === "button") {
-      return /* @__PURE__ */ jsxs70(
+      return /* @__PURE__ */ jsxs69(
         Button,
         {
-          className: clsx56("ttd-dialog-panel-button", panelAction.className),
+          className: clsx55("ttd-dialog-panel-button", panelAction.className),
           onSelect: panelAction.action ? panelAction.action : () => {
           },
           disabled: panelAction?.disabled || onTextSubmitInProgess,
           children: [
-            /* @__PURE__ */ jsxs70("div", { className: clsx56({ invisible: onTextSubmitInProgess }), children: [
+            /* @__PURE__ */ jsxs69("div", { className: clsx55({ invisible: onTextSubmitInProgess }), children: [
               panelAction?.label,
-              panelAction?.icon && /* @__PURE__ */ jsx120("span", { children: panelAction.icon })
+              panelAction?.icon && /* @__PURE__ */ jsx118("span", { children: panelAction.icon })
             ] }),
-            onTextSubmitInProgess && /* @__PURE__ */ jsx120(Spinner_default, {})
+            onTextSubmitInProgess && /* @__PURE__ */ jsx118(Spinner_default, {})
           ]
         }
       );
     }
     if (panelAction?.variant === "rateLimit") {
-      return /* @__PURE__ */ jsx120(
+      return /* @__PURE__ */ jsx118(
         "div",
         {
-          className: clsx56(
+          className: clsx55(
             "ttd-dialog-panel__rate-limit",
             panelAction.className
           ),
@@ -25583,23 +25242,23 @@ var TTDDialogPanel = ({
       );
     }
   };
-  return /* @__PURE__ */ jsxs70("div", { className: clsx56("ttd-dialog-panel", className), children: [
-    (label || renderTopRight) && /* @__PURE__ */ jsxs70("div", { className: "ttd-dialog-panel__header", children: [
-      typeof label === "string" ? /* @__PURE__ */ jsx120("label", { children: label }) : label,
+  return /* @__PURE__ */ jsxs69("div", { className: clsx55("ttd-dialog-panel", className), children: [
+    (label || renderTopRight) && /* @__PURE__ */ jsxs69("div", { className: "ttd-dialog-panel__header", children: [
+      typeof label === "string" ? /* @__PURE__ */ jsx118("label", { children: label }) : label,
       renderTopRight?.()
     ] }),
     children,
-    /* @__PURE__ */ jsxs70(
+    /* @__PURE__ */ jsxs69(
       "div",
       {
-        className: clsx56("ttd-dialog-panel-button-container", {
+        className: clsx55("ttd-dialog-panel-button-container", {
           invisible: !panelActions.length
         }),
         style: {
           justifyContent: panelActionJustifyContent
         },
         children: [
-          panelActions.filter(Boolean).map((panelAction) => /* @__PURE__ */ jsx120(Fragment19, { children: renderPanelAction(panelAction) }, panelAction.label)),
+          panelActions.filter(Boolean).map((panelAction) => /* @__PURE__ */ jsx118(Fragment19, { children: renderPanelAction(panelAction) }, panelAction.label)),
           !onTextSubmitInProgess && renderSubmitShortcut?.()
         ]
       }
@@ -25608,17 +25267,17 @@ var TTDDialogPanel = ({
 };
 
 // components/TTDDialog/TTDDialogPanels.tsx
-import { jsx as jsx121 } from "react/jsx-runtime";
+import { jsx as jsx119 } from "react/jsx-runtime";
 var TTDDialogPanels = ({ children }) => {
-  return /* @__PURE__ */ jsx121("div", { className: "ttd-dialog-panels", children });
+  return /* @__PURE__ */ jsx119("div", { className: "ttd-dialog-panels", children });
 };
 
 // components/TTDDialog/TTDDialogSubmitShortcut.tsx
-import { jsx as jsx122, jsxs as jsxs71 } from "react/jsx-runtime";
+import { jsx as jsx120, jsxs as jsxs70 } from "react/jsx-runtime";
 var TTDDialogSubmitShortcut = () => {
-  return /* @__PURE__ */ jsxs71("div", { className: "ttd-dialog-submit-shortcut", children: [
-    /* @__PURE__ */ jsx122("div", { className: "ttd-dialog-submit-shortcut__key", children: getShortcutKey("CtrlOrCmd") }),
-    /* @__PURE__ */ jsx122("div", { className: "ttd-dialog-submit-shortcut__key", children: getShortcutKey("Enter") })
+  return /* @__PURE__ */ jsxs70("div", { className: "ttd-dialog-submit-shortcut", children: [
+    /* @__PURE__ */ jsx120("div", { className: "ttd-dialog-submit-shortcut__key", children: getShortcutKey("CtrlOrCmd") }),
+    /* @__PURE__ */ jsx120("div", { className: "ttd-dialog-submit-shortcut__key", children: getShortcutKey("Enter") })
   ] });
 };
 
@@ -25727,7 +25386,7 @@ var insertToEditor = ({
 };
 
 // components/TTDDialog/MermaidToExcalidraw.tsx
-import { Fragment as Fragment20, jsx as jsx123, jsxs as jsxs72 } from "react/jsx-runtime";
+import { Fragment as Fragment20, jsx as jsx121, jsxs as jsxs71 } from "react/jsx-runtime";
 var MERMAID_EXAMPLE = "flowchart TD\n A[Christmas] -->|Get money| B(Go shopping)\n B --> C{Let me think}\n C -->|One| D[Laptop]\n C -->|Two| E[iPhone]\n C -->|Three| F[Car]";
 var debouncedSaveMermaidDefinition = debounce(saveMermaidDataToStorage, 300);
 var MermaidToExcalidraw = ({
@@ -25787,18 +25446,18 @@ var MermaidToExcalidraw = ({
       shouldSaveMermaidDataToStorage: true
     });
   };
-  return /* @__PURE__ */ jsxs72(Fragment20, { children: [
-    /* @__PURE__ */ jsx123("div", { className: "ttd-dialog-desc", children: /* @__PURE__ */ jsx123(
+  return /* @__PURE__ */ jsxs71(Fragment20, { children: [
+    /* @__PURE__ */ jsx121("div", { className: "ttd-dialog-desc", children: /* @__PURE__ */ jsx121(
       Trans_default,
       {
         i18nKey: "mermaid.description",
-        flowchartLink: (el) => /* @__PURE__ */ jsx123("a", { href: "https://mermaid.js.org/syntax/flowchart.html", children: el }),
-        sequenceLink: (el) => /* @__PURE__ */ jsx123("a", { href: "https://mermaid.js.org/syntax/sequenceDiagram.html", children: el }),
-        classLink: (el) => /* @__PURE__ */ jsx123("a", { href: "https://mermaid.js.org/syntax/classDiagram.html", children: el })
+        flowchartLink: (el) => /* @__PURE__ */ jsx121("a", { href: "https://mermaid.js.org/syntax/flowchart.html", children: el }),
+        sequenceLink: (el) => /* @__PURE__ */ jsx121("a", { href: "https://mermaid.js.org/syntax/sequenceDiagram.html", children: el }),
+        classLink: (el) => /* @__PURE__ */ jsx121("a", { href: "https://mermaid.js.org/syntax/classDiagram.html", children: el })
       }
     ) }),
-    /* @__PURE__ */ jsxs72(TTDDialogPanels, { children: [
-      /* @__PURE__ */ jsx123(TTDDialogPanel, { children: /* @__PURE__ */ jsx123(
+    /* @__PURE__ */ jsxs71(TTDDialogPanels, { children: [
+      /* @__PURE__ */ jsx121(TTDDialogPanel, { children: /* @__PURE__ */ jsx121(
         TTDDialogInput,
         {
           input: text,
@@ -25809,7 +25468,7 @@ var MermaidToExcalidraw = ({
           }
         }
       ) }),
-      /* @__PURE__ */ jsx123(
+      /* @__PURE__ */ jsx121(
         TTDDialogPanel,
         {
           panelActions: [
@@ -25822,8 +25481,8 @@ var MermaidToExcalidraw = ({
               variant: "button"
             }
           ],
-          renderSubmitShortcut: () => /* @__PURE__ */ jsx123(TTDDialogSubmitShortcut, {}),
-          children: /* @__PURE__ */ jsx123(
+          renderSubmitShortcut: () => /* @__PURE__ */ jsx121(TTDDialogSubmitShortcut, {}),
+          children: /* @__PURE__ */ jsx121(
             TTDDialogOutput,
             {
               canvasRef,
@@ -25845,19 +25504,19 @@ import { useRef as useRef36 } from "react";
 import { useRef as useRef32, useEffect as useEffect37, useLayoutEffect as useLayoutEffect9 } from "react";
 
 // components/TTDDialog/TTDWelcomeMessage.tsx
-import { jsx as jsx124, jsxs as jsxs73 } from "react/jsx-runtime";
+import { jsx as jsx122, jsxs as jsxs72 } from "react/jsx-runtime";
 var TTDWelcomeMessage = () => {
-  return /* @__PURE__ */ jsxs73("div", { className: "chat-interface__welcome-screen__welcome-message", children: [
-    /* @__PURE__ */ jsx124("h3", { children: t("chat.placeholder.title") }),
-    /* @__PURE__ */ jsx124("p", { children: t("chat.placeholder.description") }),
-    /* @__PURE__ */ jsx124("p", { children: t("chat.placeholder.hint") })
+  return /* @__PURE__ */ jsxs72("div", { className: "chat-interface__welcome-screen__welcome-message", children: [
+    /* @__PURE__ */ jsx122("h3", { children: t("chat.placeholder.title") }),
+    /* @__PURE__ */ jsx122("p", { children: t("chat.placeholder.description") }),
+    /* @__PURE__ */ jsx122("p", { children: t("chat.placeholder.hint") })
   ] });
 };
 
 // components/TTDDialog/Chat/ChatMessage.tsx
-import clsx57 from "clsx";
+import clsx56 from "clsx";
 import { useState as useState35, useEffect as useEffect36 } from "react";
-import { Fragment as Fragment21, jsx as jsx125, jsxs as jsxs74 } from "react/jsx-runtime";
+import { Fragment as Fragment21, jsx as jsx123, jsxs as jsxs73 } from "react/jsx-runtime";
 var ChatMessage = ({
   message,
   onMermaidTabClick,
@@ -25896,14 +25555,14 @@ var ChatMessage = ({
   };
   if (message.type === "warning") {
     const customOverride = renderWarning?.(message);
-    return /* @__PURE__ */ jsx125("div", { className: "chat-message chat-message--system", children: /* @__PURE__ */ jsxs74("div", { className: "chat-message__content", children: [
-      /* @__PURE__ */ jsxs74("div", { className: "chat-message__header", children: [
-        /* @__PURE__ */ jsx125("span", { className: "chat-message__role", children: t("chat.role.system") }),
-        /* @__PURE__ */ jsx125("span", { className: "chat-message__timestamp", children: formatTime(message.timestamp) })
+    return /* @__PURE__ */ jsx123("div", { className: "chat-message chat-message--system", children: /* @__PURE__ */ jsxs73("div", { className: "chat-message__content", children: [
+      /* @__PURE__ */ jsxs73("div", { className: "chat-message__header", children: [
+        /* @__PURE__ */ jsx123("span", { className: "chat-message__role", children: t("chat.role.system") }),
+        /* @__PURE__ */ jsx123("span", { className: "chat-message__timestamp", children: formatTime(message.timestamp) })
       ] }),
-      /* @__PURE__ */ jsx125("div", { className: "chat-message__body", children: /* @__PURE__ */ jsx125("div", { className: "chat-message__text", children: customOverride ? customOverride : message.warningType === "messageLimitExceeded" ? /* @__PURE__ */ jsxs74(Fragment21, { children: [
+      /* @__PURE__ */ jsx123("div", { className: "chat-message__body", children: /* @__PURE__ */ jsx123("div", { className: "chat-message__text", children: customOverride ? customOverride : message.warningType === "messageLimitExceeded" ? /* @__PURE__ */ jsxs73(Fragment21, { children: [
         t("chat.rateLimit.messageLimit"),
-        /* @__PURE__ */ jsx125("div", { style: { marginTop: "10px" }, children: /* @__PURE__ */ jsx125(
+        /* @__PURE__ */ jsx123("div", { style: { marginTop: "10px" }, children: /* @__PURE__ */ jsx123(
           FilledButton,
           {
             onClick: () => {
@@ -25919,22 +25578,22 @@ var ChatMessage = ({
       ] }) : t("chat.rateLimit.generalRateLimit") }) })
     ] }) });
   }
-  return /* @__PURE__ */ jsxs74("div", { className: `chat-message chat-message--${message.type}`, children: [
-    /* @__PURE__ */ jsxs74("div", { className: "chat-message__content", children: [
-      /* @__PURE__ */ jsxs74("div", { className: "chat-message__header", children: [
-        /* @__PURE__ */ jsx125("span", { className: "chat-message__role", children: message.type === "user" ? t("chat.role.user") : t("chat.role.assistant") }),
-        /* @__PURE__ */ jsx125("span", { className: "chat-message__timestamp", children: formatTime(message.timestamp) })
+  return /* @__PURE__ */ jsxs73("div", { className: `chat-message chat-message--${message.type}`, children: [
+    /* @__PURE__ */ jsxs73("div", { className: "chat-message__content", children: [
+      /* @__PURE__ */ jsxs73("div", { className: "chat-message__header", children: [
+        /* @__PURE__ */ jsx123("span", { className: "chat-message__role", children: message.type === "user" ? t("chat.role.user") : t("chat.role.assistant") }),
+        /* @__PURE__ */ jsx123("span", { className: "chat-message__timestamp", children: formatTime(message.timestamp) })
       ] }),
-      /* @__PURE__ */ jsx125("div", { className: "chat-message__body", children: message.error ? /* @__PURE__ */ jsxs74(Fragment21, { children: [
-        /* @__PURE__ */ jsx125("div", { className: "chat-message__error", children: message.content }),
-        message.errorType !== "parse" && /* @__PURE__ */ jsxs74("div", { className: "chat-message__error_message", children: [
+      /* @__PURE__ */ jsx123("div", { className: "chat-message__body", children: message.error ? /* @__PURE__ */ jsxs73(Fragment21, { children: [
+        /* @__PURE__ */ jsx123("div", { className: "chat-message__error", children: message.content }),
+        message.errorType !== "parse" && /* @__PURE__ */ jsxs73("div", { className: "chat-message__error_message", children: [
           "Error: ",
           message.error || t("chat.errors.generationFailed")
         ] }),
-        message.errorType === "parse" && allowFixingParseError && /* @__PURE__ */ jsxs74("div", { className: "chat-message__error_message", children: [
-          /* @__PURE__ */ jsx125("p", { children: t("chat.errors.invalidDiagram") }),
-          /* @__PURE__ */ jsxs74("div", { className: "chat-message__error-actions", children: [
-            onMermaidTabClick && /* @__PURE__ */ jsx125(
+        message.errorType === "parse" && allowFixingParseError && /* @__PURE__ */ jsxs73("div", { className: "chat-message__error_message", children: [
+          /* @__PURE__ */ jsx123("p", { children: t("chat.errors.invalidDiagram") }),
+          /* @__PURE__ */ jsxs73("div", { className: "chat-message__error-actions", children: [
+            onMermaidTabClick && /* @__PURE__ */ jsx123(
               "button",
               {
                 className: "chat-message__error-link",
@@ -25943,7 +25602,7 @@ var ChatMessage = ({
                 children: t("chat.errors.fixInMermaid")
               }
             ),
-            onAiRepairClick && /* @__PURE__ */ jsx125(
+            onAiRepairClick && /* @__PURE__ */ jsx123(
               "button",
               {
                 className: "chat-message__error-link",
@@ -25955,13 +25614,13 @@ var ChatMessage = ({
             )
           ] })
         ] })
-      ] }) : /* @__PURE__ */ jsxs74("div", { className: "chat-message__text", children: [
+      ] }) : /* @__PURE__ */ jsxs73("div", { className: "chat-message__text", children: [
         message.content,
-        message.isGenerating && /* @__PURE__ */ jsx125("span", { className: "chat-message__cursor", children: "\u258B" })
+        message.isGenerating && /* @__PURE__ */ jsx123("span", { className: "chat-message__cursor", children: "\u258B" })
       ] }) })
     ] }),
-    message.type === "assistant" && !message.isGenerating && /* @__PURE__ */ jsxs74("div", { className: "chat-message__actions", children: [
-      !message.error && onInsertMessage && /* @__PURE__ */ jsx125(
+    message.type === "assistant" && !message.isGenerating && /* @__PURE__ */ jsxs73("div", { className: "chat-message__actions", children: [
+      !message.error && onInsertMessage && /* @__PURE__ */ jsx123(
         "button",
         {
           className: "chat-message__action",
@@ -25972,7 +25631,7 @@ var ChatMessage = ({
           children: stackPushIcon
         }
       ),
-      onMermaidTabClick && message.content && /* @__PURE__ */ jsx125(
+      onMermaidTabClick && message.content && /* @__PURE__ */ jsx123(
         "button",
         {
           className: "chat-message__action",
@@ -25983,7 +25642,7 @@ var ChatMessage = ({
           children: codeIcon
         }
       ),
-      onDeleteMessage && message.errorType !== "network" && /* @__PURE__ */ jsx125(
+      onDeleteMessage && message.errorType !== "network" && /* @__PURE__ */ jsx123(
         "button",
         {
           className: "chat-message__action chat-message__action--danger",
@@ -25994,10 +25653,10 @@ var ChatMessage = ({
           children: TrashIcon
         }
       ),
-      message.errorType === "network" && onRetry && isLastMessage && /* @__PURE__ */ jsx125(
+      message.errorType === "network" && onRetry && isLastMessage && /* @__PURE__ */ jsx123(
         "button",
         {
-          className: clsx57("chat-message__action", { invisible: !canRetry }),
+          className: clsx56("chat-message__action", { invisible: !canRetry }),
           onClick: () => onRetry(message),
           type: "button",
           "aria-label": t("chat.retry"),
@@ -26010,7 +25669,7 @@ var ChatMessage = ({
 };
 
 // components/TTDDialog/Chat/ChatInterface.tsx
-import { jsx as jsx126, jsxs as jsxs75 } from "react/jsx-runtime";
+import { jsx as jsx124, jsxs as jsxs74 } from "react/jsx-runtime";
 var ChatInterface = ({
   chatId,
   messages,
@@ -26069,9 +25728,9 @@ var ChatInterface = ({
     target.style.height = "auto";
     target.style.height = `${Math.min(target.scrollHeight, 120)}px`;
   };
-  return /* @__PURE__ */ jsxs75("div", { className: "chat-interface", children: [
-    /* @__PURE__ */ jsxs75("div", { className: "chat-interface__messages", children: [
-      messages.length === 0 ? /* @__PURE__ */ jsx126("div", { className: "chat-interface__welcome-screen", children: renderWelcomeScreen ? renderWelcomeScreen({ rateLimits: rateLimits ?? null }) : /* @__PURE__ */ jsx126(TTDWelcomeMessage, {}) }) : messages.map((message, index) => /* @__PURE__ */ jsx126(
+  return /* @__PURE__ */ jsxs74("div", { className: "chat-interface", children: [
+    /* @__PURE__ */ jsxs74("div", { className: "chat-interface__messages", children: [
+      messages.length === 0 ? /* @__PURE__ */ jsx124("div", { className: "chat-interface__welcome-screen", children: renderWelcomeScreen ? renderWelcomeScreen({ rateLimits: rateLimits ?? null }) : /* @__PURE__ */ jsx124(TTDWelcomeMessage, {}) }) : messages.map((message, index) => /* @__PURE__ */ jsx124(
         ChatMessage,
         {
           message,
@@ -26087,9 +25746,9 @@ var ChatInterface = ({
         },
         message.id
       )),
-      /* @__PURE__ */ jsx126("div", { ref: messagesEndRef, id: "messages-end" })
+      /* @__PURE__ */ jsx124("div", { ref: messagesEndRef, id: "messages-end" })
     ] }),
-    /* @__PURE__ */ jsx126("div", { className: "chat-interface__input-container", children: /* @__PURE__ */ jsx126("div", { className: "chat-interface__input-outer", children: /* @__PURE__ */ jsxs75(
+    /* @__PURE__ */ jsx124("div", { className: "chat-interface__input-container", children: /* @__PURE__ */ jsx124("div", { className: "chat-interface__input-outer", children: /* @__PURE__ */ jsxs74(
       "div",
       {
         className: "chat-interface__input-wrapper",
@@ -26097,7 +25756,7 @@ var ChatInterface = ({
           borderColor: isGenerating ? "var(--dialog-border-color)" : void 0
         },
         children: [
-          /* @__PURE__ */ jsx126(
+          /* @__PURE__ */ jsx124(
             "textarea",
             {
               ref: textareaRef,
@@ -26113,14 +25772,14 @@ var ChatInterface = ({
               onInput
             }
           ),
-          /* @__PURE__ */ jsx126(
+          /* @__PURE__ */ jsx124(
             "button",
             {
               className: "chat-interface__send-button",
               onClick: handleSubmit,
               disabled: !canSend && !canStop,
               type: "button",
-              children: /* @__PURE__ */ jsx126(
+              children: /* @__PURE__ */ jsx124(
                 InlineIcon,
                 {
                   size: "1.5em",
@@ -26831,8 +26490,8 @@ var useChatManagement = ({
 };
 
 // components/TTDDialog/Chat/ChatHistoryMenu.tsx
-import clsx58 from "clsx";
-import { Fragment as Fragment22, jsx as jsx127, jsxs as jsxs76 } from "react/jsx-runtime";
+import clsx57 from "clsx";
+import { Fragment as Fragment22, jsx as jsx125, jsxs as jsxs75 } from "react/jsx-runtime";
 var ChatHistoryMenu = ({
   isOpen,
   onToggle,
@@ -26845,10 +26504,10 @@ var ChatHistoryMenu = ({
   activeSessionId,
   disabled
 }) => {
-  return /* @__PURE__ */ jsxs76("div", { className: "ttd-chat-history-menu", children: [
-    isNewChatBtnVisible && /* @__PURE__ */ jsx127(FilledButton, { onClick: onNewChat, disabled, children: t("chat.newChat") }),
-    savedChats.length > 0 && /* @__PURE__ */ jsx127("div", { className: "ttd-dialog-panel__menu-wrapper", children: /* @__PURE__ */ jsxs76(DropdownMenu_default, { open: isOpen, children: [
-      /* @__PURE__ */ jsx127(
+  return /* @__PURE__ */ jsxs75("div", { className: "ttd-chat-history-menu", children: [
+    isNewChatBtnVisible && /* @__PURE__ */ jsx125(FilledButton, { onClick: onNewChat, disabled, children: t("chat.newChat") }),
+    savedChats.length > 0 && /* @__PURE__ */ jsx125("div", { className: "ttd-dialog-panel__menu-wrapper", children: /* @__PURE__ */ jsxs75(DropdownMenu_default, { open: isOpen, children: [
+      /* @__PURE__ */ jsx125(
         DropdownMenu_default.Trigger,
         {
           onToggle,
@@ -26859,18 +26518,18 @@ var ChatHistoryMenu = ({
           children: historyIcon
         }
       ),
-      /* @__PURE__ */ jsx127(DropdownMenu_default.Content, { onClickOutside: onClose, onSelect: onClose, children: /* @__PURE__ */ jsx127(Fragment22, { children: savedChats.map((chat) => /* @__PURE__ */ jsxs76(
+      /* @__PURE__ */ jsx125(DropdownMenu_default.Content, { onClickOutside: onClose, onSelect: onClose, children: /* @__PURE__ */ jsx125(Fragment22, { children: savedChats.map((chat) => /* @__PURE__ */ jsxs75(
         DropdownMenu_default.ItemCustom,
         {
-          className: clsx58("ttd-chat-menu-item", {
+          className: clsx57("ttd-chat-menu-item", {
             "ttd-chat-menu-item--active": chat.id === activeSessionId
           }),
           onClick: () => {
             onRestoreChat(chat);
           },
           children: [
-            /* @__PURE__ */ jsx127("span", { className: "ttd-chat-menu-item__title", children: chat.title }),
-            /* @__PURE__ */ jsx127(
+            /* @__PURE__ */ jsx125("span", { className: "ttd-chat-menu-item__title", children: chat.title }),
+            /* @__PURE__ */ jsx125(
               "button",
               {
                 className: "ttd-chat-menu-item__delete",
@@ -26890,7 +26549,7 @@ var ChatHistoryMenu = ({
 };
 
 // components/TTDDialog/Chat/TTDChatPanel.tsx
-import { jsx as jsx128, jsxs as jsxs77 } from "react/jsx-runtime";
+import { jsx as jsx126, jsxs as jsxs76 } from "react/jsx-runtime";
 var TTDChatPanel = ({
   chatId,
   messages,
@@ -26933,7 +26592,7 @@ var TTDChatPanel = ({
       actions3.push({
         action: onViewAsMermaid,
         label: t("chat.viewAsMermaid"),
-        icon: /* @__PURE__ */ jsx128(InlineIcon, { icon: ArrowRightIcon }),
+        icon: /* @__PURE__ */ jsx126(InlineIcon, { icon: ArrowRightIcon }),
         variant: "link"
       });
     }
@@ -26949,12 +26608,12 @@ var TTDChatPanel = ({
     }
     return "flex-end";
   };
-  return /* @__PURE__ */ jsx128(
+  return /* @__PURE__ */ jsx126(
     TTDDialogPanel,
     {
-      label: /* @__PURE__ */ jsxs77("div", { className: "ttd-dialog-panel__label-wrapper", children: [
-        /* @__PURE__ */ jsx128("div", { className: "ttd-dialog-panel__label-group" }),
-        /* @__PURE__ */ jsx128("div", { className: "ttd-dialog-panel__header-right", children: /* @__PURE__ */ jsx128(
+      label: /* @__PURE__ */ jsxs76("div", { className: "ttd-dialog-panel__label-wrapper", children: [
+        /* @__PURE__ */ jsx126("div", { className: "ttd-dialog-panel__label-group" }),
+        /* @__PURE__ */ jsx126("div", { className: "ttd-dialog-panel__header-right", children: /* @__PURE__ */ jsx126(
           ChatHistoryMenu,
           {
             isNewChatBtnVisible: !!messages.length,
@@ -26973,7 +26632,7 @@ var TTDChatPanel = ({
       className: "ttd-dialog-chat-panel",
       panelActionJustifyContent: getPanelActionFlexProp(),
       panelActions: actions2,
-      children: /* @__PURE__ */ jsx128(
+      children: /* @__PURE__ */ jsx126(
         ChatInterface,
         {
           chatId,
@@ -26999,7 +26658,7 @@ var TTDChatPanel = ({
 };
 
 // components/TTDDialog/TTDPreviewPanel.tsx
-import { jsx as jsx129 } from "react/jsx-runtime";
+import { jsx as jsx127 } from "react/jsx-runtime";
 var TTDPreviewPanel = ({
   canvasRef,
   error,
@@ -27015,13 +26674,13 @@ var TTDPreviewPanel = ({
       variant: "button"
     }
   ];
-  return /* @__PURE__ */ jsx129(
+  return /* @__PURE__ */ jsx127(
     TTDDialogPanel,
     {
       panelActionJustifyContent: "flex-end",
       panelActions: actions2,
       className: "ttd-dialog-preview-panel",
-      children: /* @__PURE__ */ jsx129(
+      children: /* @__PURE__ */ jsx127(
         TTDDialogOutput,
         {
           canvasRef,
@@ -27035,7 +26694,7 @@ var TTDPreviewPanel = ({
 };
 
 // components/TTDDialog/TextToDiagram.tsx
-import { jsx as jsx130, jsxs as jsxs78 } from "react/jsx-runtime";
+import { jsx as jsx128, jsxs as jsxs77 } from "react/jsx-runtime";
 var TextToDiagramContent = ({
   mermaidToExcalidrawLib,
   onTextSubmit,
@@ -27166,12 +26825,12 @@ Please fix the Mermaid syntax and regenerate a valid diagram.`;
       currentPrompt: newPrompt
     }));
   };
-  return /* @__PURE__ */ jsxs78(
+  return /* @__PURE__ */ jsxs77(
     "div",
     {
       className: `ttd-dialog-layout ${showPreview ? "ttd-dialog-layout--split" : "ttd-dialog-layout--chat-only"}`,
       children: [
-        /* @__PURE__ */ jsx130(
+        /* @__PURE__ */ jsx128(
           TTDChatPanel,
           {
             chatId: chatHistory.id,
@@ -27200,7 +26859,7 @@ Please fix the Mermaid syntax and regenerate a valid diagram.`;
             renderWelcomeScreen
           }
         ),
-        showPreview && /* @__PURE__ */ jsx130(
+        showPreview && /* @__PURE__ */ jsx128(
           TTDPreviewPanel,
           {
             canvasRef,
@@ -27221,7 +26880,7 @@ var TextToDiagram = ({
   renderWarning,
   persistenceAdapter
 }) => {
-  return /* @__PURE__ */ jsx130(
+  return /* @__PURE__ */ jsx128(
     TextToDiagramContent,
     {
       mermaidToExcalidrawLib,
@@ -27237,12 +26896,12 @@ var TextToDiagram_default = TextToDiagram;
 // components/TTDDialog/TTDDialogTabs.tsx
 import { Tabs as RadixTabs5 } from "radix-ui";
 import { useRef as useRef37 } from "react";
-import { jsx as jsx131 } from "react/jsx-runtime";
+import { jsx as jsx129 } from "react/jsx-runtime";
 var TTDDialogTabs = (props) => {
   const setAppState = useExcalidrawSetAppState();
   const rootRef = useRef37(null);
   const minHeightRef = useRef37(0);
-  return /* @__PURE__ */ jsx131(
+  return /* @__PURE__ */ jsx129(
     RadixTabs5.Root,
     {
       ref: rootRef,
@@ -27275,48 +26934,48 @@ var TTDDialogTabs_default = TTDDialogTabs;
 
 // components/TTDDialog/TTDDialogTabTriggers.tsx
 import { Tabs as RadixTabs6 } from "radix-ui";
-import { jsx as jsx132 } from "react/jsx-runtime";
+import { jsx as jsx130 } from "react/jsx-runtime";
 var TTDDialogTabTriggers = ({
   children,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx132(RadixTabs6.List, { className: "ttd-dialog-triggers", ...rest, children });
+  return /* @__PURE__ */ jsx130(RadixTabs6.List, { className: "ttd-dialog-triggers", ...rest, children });
 };
 TTDDialogTabTriggers.displayName = "TTDDialogTabTriggers";
 
 // components/TTDDialog/TTDDialogTabTrigger.tsx
 import { Tabs as RadixTabs7 } from "radix-ui";
-import { jsx as jsx133 } from "react/jsx-runtime";
+import { jsx as jsx131 } from "react/jsx-runtime";
 var TTDDialogTabTrigger = ({
   children,
   tab,
   onSelect,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx133(RadixTabs7.Trigger, { value: tab, asChild: true, onSelect, children: /* @__PURE__ */ jsx133("button", { type: "button", className: "ttd-dialog-tab-trigger", ...rest, children }) });
+  return /* @__PURE__ */ jsx131(RadixTabs7.Trigger, { value: tab, asChild: true, onSelect, children: /* @__PURE__ */ jsx131("button", { type: "button", className: "ttd-dialog-tab-trigger", ...rest, children }) });
 };
 TTDDialogTabTrigger.displayName = "TTDDialogTabTrigger";
 
 // components/TTDDialog/TTDDialogTab.tsx
 import { Tabs as RadixTabs8 } from "radix-ui";
-import { jsx as jsx134 } from "react/jsx-runtime";
+import { jsx as jsx132 } from "react/jsx-runtime";
 var TTDDialogTab = ({
   tab,
   children,
   ...rest
 }) => {
-  return /* @__PURE__ */ jsx134(RadixTabs8.Content, { ...rest, value: tab, children });
+  return /* @__PURE__ */ jsx132(RadixTabs8.Content, { ...rest, value: tab, children });
 };
 TTDDialogTab.displayName = "TTDDialogTab";
 
 // components/TTDDialog/TTDDialog.tsx
-import { jsx as jsx135, jsxs as jsxs79 } from "react/jsx-runtime";
+import { jsx as jsx133, jsxs as jsxs78 } from "react/jsx-runtime";
 var TTDDialog = (props) => {
   const appState = useUIAppState();
   if (appState.openDialog?.name !== "ttd") {
     return null;
   }
-  return /* @__PURE__ */ jsx135(TTDDialogBase, { ...props, tab: appState.openDialog.tab });
+  return /* @__PURE__ */ jsx133(TTDDialogBase, { ...props, tab: appState.openDialog.tab });
 };
 TTDDialog.WelcomeMessage = TTDWelcomeMessage;
 var TTDDialogBase = withInternalFallback(
@@ -27337,7 +26996,7 @@ var TTDDialogBase = withInternalFallback(
       };
       fn();
     }, [mermaidToExcalidrawLib.api]);
-    return /* @__PURE__ */ jsx135(
+    return /* @__PURE__ */ jsx133(
       Dialog,
       {
         className: "ttd-dialog",
@@ -27348,15 +27007,15 @@ var TTDDialogBase = withInternalFallback(
         title: false,
         ...rest,
         autofocus: false,
-        children: /* @__PURE__ */ jsxs79(TTDDialogTabs_default, { dialog: "ttd", tab, children: [
-          "__fallback" in rest && rest.__fallback ? /* @__PURE__ */ jsx135("p", { className: "dialog-mermaid-title", children: t("mermaid.title") }) : /* @__PURE__ */ jsxs79(TTDDialogTabTriggers, { children: [
-            /* @__PURE__ */ jsx135(TTDDialogTabTrigger, { tab: "text-to-diagram", children: /* @__PURE__ */ jsxs79("div", { className: "ttd-dialog-tab-trigger__content", children: [
+        children: /* @__PURE__ */ jsxs78(TTDDialogTabs_default, { dialog: "ttd", tab, children: [
+          "__fallback" in rest && rest.__fallback ? /* @__PURE__ */ jsx133("p", { className: "dialog-mermaid-title", children: t("mermaid.title") }) : /* @__PURE__ */ jsxs78(TTDDialogTabTriggers, { children: [
+            /* @__PURE__ */ jsx133(TTDDialogTabTrigger, { tab: "text-to-diagram", children: /* @__PURE__ */ jsxs78("div", { className: "ttd-dialog-tab-trigger__content", children: [
               t("labels.textToDiagram"),
-              /* @__PURE__ */ jsx135("div", { className: "ttd-dialog-tab-trigger__badge", children: t("chat.aiBeta") })
+              /* @__PURE__ */ jsx133("div", { className: "ttd-dialog-tab-trigger__badge", children: t("chat.aiBeta") })
             ] }) }),
-            /* @__PURE__ */ jsx135(TTDDialogTabTrigger, { tab: "mermaid", children: t("mermaid.label") })
+            /* @__PURE__ */ jsx133(TTDDialogTabTrigger, { tab: "mermaid", children: t("mermaid.label") })
           ] }),
-          !("__fallback" in rest) && /* @__PURE__ */ jsx135(TTDDialogTab, { className: "ttd-dialog-content", tab: "text-to-diagram", children: /* @__PURE__ */ jsx135(
+          !("__fallback" in rest) && /* @__PURE__ */ jsx133(TTDDialogTab, { className: "ttd-dialog-content", tab: "text-to-diagram", children: /* @__PURE__ */ jsx133(
             TextToDiagram_default,
             {
               mermaidToExcalidrawLib,
@@ -27366,7 +27025,7 @@ var TTDDialogBase = withInternalFallback(
               persistenceAdapter: rest.persistenceAdapter
             }
           ) }),
-          /* @__PURE__ */ jsx135(TTDDialogTab, { className: "ttd-dialog-content", tab: "mermaid", children: /* @__PURE__ */ jsx135(
+          /* @__PURE__ */ jsx133(TTDDialogTab, { className: "ttd-dialog-content", tab: "mermaid", children: /* @__PURE__ */ jsx133(
             MermaidToExcalidraw_default,
             {
               mermaidToExcalidrawLib,
@@ -27381,7 +27040,7 @@ var TTDDialogBase = withInternalFallback(
 
 // components/ElementLinkDialog.tsx
 import { useCallback as useCallback19, useEffect as useEffect41, useState as useState38 } from "react";
-import { jsx as jsx136, jsxs as jsxs80 } from "react/jsx-runtime";
+import { jsx as jsx134, jsxs as jsxs79 } from "react/jsx-runtime";
 var ElementLinkDialog = ({
   sourceElementId,
   onClose,
@@ -27444,13 +27103,13 @@ var ElementLinkDialog = ({
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [appState, onClose, handleConfirm]);
-  return /* @__PURE__ */ jsxs80("div", { className: "ElementLinkDialog", children: [
-    /* @__PURE__ */ jsxs80("div", { className: "ElementLinkDialog__header", children: [
-      /* @__PURE__ */ jsx136("h2", { children: t("elementLink.title") }),
-      /* @__PURE__ */ jsx136("p", { children: t("elementLink.desc") })
+  return /* @__PURE__ */ jsxs79("div", { className: "ElementLinkDialog", children: [
+    /* @__PURE__ */ jsxs79("div", { className: "ElementLinkDialog__header", children: [
+      /* @__PURE__ */ jsx134("h2", { children: t("elementLink.title") }),
+      /* @__PURE__ */ jsx134("p", { children: t("elementLink.desc") })
     ] }),
-    /* @__PURE__ */ jsxs80("div", { className: "ElementLinkDialog__input", children: [
-      /* @__PURE__ */ jsx136(
+    /* @__PURE__ */ jsxs79("div", { className: "ElementLinkDialog__input", children: [
+      /* @__PURE__ */ jsx134(
         TextField,
         {
           value: nextLink ?? "",
@@ -27469,7 +27128,7 @@ var ElementLinkDialog = ({
           selectOnRender: true
         }
       ),
-      originalLink && nextLink && /* @__PURE__ */ jsx136(
+      originalLink && nextLink && /* @__PURE__ */ jsx134(
         ToolButton,
         {
           type: "button",
@@ -27485,8 +27144,8 @@ var ElementLinkDialog = ({
         }
       )
     ] }),
-    /* @__PURE__ */ jsxs80("div", { className: "ElementLinkDialog__actions", children: [
-      /* @__PURE__ */ jsx136(
+    /* @__PURE__ */ jsxs79("div", { className: "ElementLinkDialog__actions", children: [
+      /* @__PURE__ */ jsx134(
         DialogActionButton_default,
         {
           label: t("buttons.cancel"),
@@ -27498,7 +27157,7 @@ var ElementLinkDialog = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx136(
+      /* @__PURE__ */ jsx134(
         DialogActionButton_default,
         {
           label: t("buttons.confirm"),
@@ -27513,7 +27172,7 @@ var ElementLinkDialog_default = ElementLinkDialog;
 
 // components/ErrorDialog.tsx
 import React40, { useState as useState39 } from "react";
-import { Fragment as Fragment23, jsx as jsx137 } from "react/jsx-runtime";
+import { Fragment as Fragment23, jsx as jsx135 } from "react/jsx-runtime";
 var ErrorDialog = ({
   children,
   onClose
@@ -27527,22 +27186,22 @@ var ErrorDialog = ({
     }
     excalidrawContainer?.focus();
   }, [onClose, excalidrawContainer]);
-  return /* @__PURE__ */ jsx137(Fragment23, { children: modalIsShown && /* @__PURE__ */ jsx137(
+  return /* @__PURE__ */ jsx135(Fragment23, { children: modalIsShown && /* @__PURE__ */ jsx135(
     Dialog,
     {
       size: "small",
       onCloseRequest: handleClose,
       title: t("errorDialog.title"),
-      children: /* @__PURE__ */ jsx137("div", { style: { whiteSpace: "pre-wrap" }, children })
+      children: /* @__PURE__ */ jsx135("div", { style: { whiteSpace: "pre-wrap" }, children })
     }
   ) });
 };
 
 // components/HelpDialog.tsx
 import React41 from "react";
-import { Fragment as Fragment24, jsx as jsx138, jsxs as jsxs81 } from "react/jsx-runtime";
-var Header = () => /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__header", children: [
-  /* @__PURE__ */ jsxs81(
+import { Fragment as Fragment24, jsx as jsx136, jsxs as jsxs80 } from "react/jsx-runtime";
+var Header = () => /* @__PURE__ */ jsxs80("div", { className: "HelpDialog__header", children: [
+  /* @__PURE__ */ jsxs80(
     "a",
     {
       className: "HelpDialog__btn",
@@ -27550,12 +27209,12 @@ var Header = () => /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__heade
       target: "_blank",
       rel: "noopener",
       children: [
-        /* @__PURE__ */ jsx138("div", { className: "HelpDialog__link-icon", children: ExternalLinkIcon }),
+        /* @__PURE__ */ jsx136("div", { className: "HelpDialog__link-icon", children: ExternalLinkIcon }),
         t("helpDialog.documentation")
       ]
     }
   ),
-  /* @__PURE__ */ jsxs81(
+  /* @__PURE__ */ jsxs80(
     "a",
     {
       className: "HelpDialog__btn",
@@ -27563,12 +27222,12 @@ var Header = () => /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__heade
       target: "_blank",
       rel: "noopener",
       children: [
-        /* @__PURE__ */ jsx138("div", { className: "HelpDialog__link-icon", children: ExternalLinkIcon }),
+        /* @__PURE__ */ jsx136("div", { className: "HelpDialog__link-icon", children: ExternalLinkIcon }),
         t("helpDialog.blog")
       ]
     }
   ),
-  /* @__PURE__ */ jsxs81(
+  /* @__PURE__ */ jsxs80(
     "a",
     {
       className: "HelpDialog__btn",
@@ -27576,12 +27235,12 @@ var Header = () => /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__heade
       target: "_blank",
       rel: "noopener noreferrer",
       children: [
-        /* @__PURE__ */ jsx138("div", { className: "HelpDialog__link-icon", children: GithubIcon }),
+        /* @__PURE__ */ jsx136("div", { className: "HelpDialog__link-icon", children: GithubIcon }),
         t("helpDialog.github")
       ]
     }
   ),
-  /* @__PURE__ */ jsxs81(
+  /* @__PURE__ */ jsxs80(
     "a",
     {
       className: "HelpDialog__btn",
@@ -27589,19 +27248,19 @@ var Header = () => /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__heade
       target: "_blank",
       rel: "noopener noreferrer",
       children: [
-        /* @__PURE__ */ jsx138("div", { className: "HelpDialog__link-icon", children: youtubeIcon }),
+        /* @__PURE__ */ jsx136("div", { className: "HelpDialog__link-icon", children: youtubeIcon }),
         "YouTube"
       ]
     }
   )
 ] });
-var Section2 = (props) => /* @__PURE__ */ jsxs81(Fragment24, { children: [
-  /* @__PURE__ */ jsx138("h3", { children: props.title }),
-  /* @__PURE__ */ jsx138("div", { className: "HelpDialog__islands-container", children: props.children })
+var Section2 = (props) => /* @__PURE__ */ jsxs80(Fragment24, { children: [
+  /* @__PURE__ */ jsx136("h3", { children: props.title }),
+  /* @__PURE__ */ jsx136("div", { className: "HelpDialog__islands-container", children: props.children })
 ] });
-var ShortcutIsland = (props) => /* @__PURE__ */ jsxs81("div", { className: `HelpDialog__island ${props.className}`, children: [
-  /* @__PURE__ */ jsx138("h4", { className: "HelpDialog__island-title", children: props.caption }),
-  /* @__PURE__ */ jsx138("div", { className: "HelpDialog__island-content", children: props.children })
+var ShortcutIsland = (props) => /* @__PURE__ */ jsxs80("div", { className: `HelpDialog__island ${props.className}`, children: [
+  /* @__PURE__ */ jsx136("h4", { className: "HelpDialog__island-title", children: props.caption }),
+  /* @__PURE__ */ jsx136("div", { className: "HelpDialog__island-content", children: props.children })
 ] });
 function* intersperse(as, delim) {
   let first = true;
@@ -27623,124 +27282,123 @@ var Shortcut = ({
 }) => {
   const splitShortcutKeys = shortcuts.map((shortcut) => {
     const keys = shortcut.endsWith("++") ? [...shortcut.slice(0, -2).split("+"), "+"] : shortcut.split("+");
-    return keys.map((key) => /* @__PURE__ */ jsx138(ShortcutKey, { children: upperCaseSingleChars(key) }, key));
+    return keys.map((key) => /* @__PURE__ */ jsx136(ShortcutKey, { children: upperCaseSingleChars(key) }, key));
   });
-  return /* @__PURE__ */ jsxs81("div", { className: "HelpDialog__shortcut", children: [
-    /* @__PURE__ */ jsx138("div", { children: label }),
-    /* @__PURE__ */ jsx138("div", { className: "HelpDialog__key-container", children: [...intersperse(splitShortcutKeys, isOr ? t("helpDialog.or") : null)] })
+  return /* @__PURE__ */ jsxs80("div", { className: "HelpDialog__shortcut", children: [
+    /* @__PURE__ */ jsx136("div", { children: label }),
+    /* @__PURE__ */ jsx136("div", { className: "HelpDialog__key-container", children: [...intersperse(splitShortcutKeys, isOr ? t("helpDialog.or") : null)] })
   ] });
 };
-var ShortcutKey = (props) => /* @__PURE__ */ jsx138("kbd", { className: "HelpDialog__key", ...props });
+var ShortcutKey = (props) => /* @__PURE__ */ jsx136("kbd", { className: "HelpDialog__key", ...props });
 var HelpDialog = ({ onClose }) => {
   const handleClose = React41.useCallback(() => {
     if (onClose) {
       onClose();
     }
   }, [onClose]);
-  return /* @__PURE__ */ jsx138(Fragment24, { children: /* @__PURE__ */ jsxs81(
+  return /* @__PURE__ */ jsx136(Fragment24, { children: /* @__PURE__ */ jsxs80(
     Dialog,
     {
       onCloseRequest: handleClose,
       title: t("helpDialog.title"),
       className: "HelpDialog",
       children: [
-        /* @__PURE__ */ jsx138(Header, {}),
-        /* @__PURE__ */ jsxs81(Section2, { title: t("helpDialog.shortcuts"), children: [
-          /* @__PURE__ */ jsxs81(
+        /* @__PURE__ */ jsx136(Header, {}),
+        /* @__PURE__ */ jsxs80(Section2, { title: t("helpDialog.shortcuts"), children: [
+          /* @__PURE__ */ jsxs80(
             ShortcutIsland,
             {
               className: "HelpDialog__island--tools",
               caption: t("helpDialog.tools"),
               children: [
-                /* @__PURE__ */ jsx138(Shortcut, { label: t("toolBar.hand"), shortcuts: [KEYS.H] }),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(Shortcut, { label: t("toolBar.hand"), shortcuts: [KEYS.H] }),
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.selection"),
                     shortcuts: [KEYS.V, KEYS["1"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.rectangle"),
                     shortcuts: [KEYS.R, KEYS["2"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.diamond"),
                     shortcuts: [KEYS.D, KEYS["3"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.ellipse"),
                     shortcuts: [KEYS.O, KEYS["4"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.arrow"),
                     shortcuts: [KEYS.A, KEYS["5"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.line"),
                     shortcuts: [KEYS.L, KEYS["6"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.freedraw"),
                     shortcuts: [KEYS.P, KEYS["7"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.text"),
                     shortcuts: [KEYS.T, KEYS["8"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(Shortcut, { label: t("toolBar.image"), shortcuts: [KEYS["9"]] }),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(Shortcut, { label: t("toolBar.image"), shortcuts: [KEYS["9"]] }),
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.eraser"),
                     shortcuts: [KEYS.E, KEYS["0"]]
                   }
                 ),
-                /* @__PURE__ */ jsx138(Shortcut, { label: t("toolBar.frame"), shortcuts: [KEYS.F] }),
-                /* @__PURE__ */ jsx138(Shortcut, { label: t("toolBar.laser"), shortcuts: [KEYS.K] }),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(Shortcut, { label: t("toolBar.frame"), shortcuts: [KEYS.F] }),
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.eyeDropper"),
                     shortcuts: [KEYS.I, "Shift+S", "Shift+G"]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.editLineArrowPoints"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Enter")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.editText"),
                     shortcuts: [getShortcutKey("Enter")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.textNewLine"),
@@ -27750,7 +27408,7 @@ var HelpDialog = ({ onClose }) => {
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.textFinish"),
@@ -27760,7 +27418,7 @@ var HelpDialog = ({ onClose }) => {
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.curvedArrow"),
@@ -27773,7 +27431,7 @@ var HelpDialog = ({ onClose }) => {
                     isOr: false
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.curvedLine"),
@@ -27786,7 +27444,7 @@ var HelpDialog = ({ onClose }) => {
                     isOr: false
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.cropStart"),
@@ -27794,7 +27452,7 @@ var HelpDialog = ({ onClose }) => {
                     isOr: true
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.cropFinish"),
@@ -27802,22 +27460,22 @@ var HelpDialog = ({ onClose }) => {
                     isOr: true
                   }
                 ),
-                /* @__PURE__ */ jsx138(Shortcut, { label: t("toolBar.lock"), shortcuts: [KEYS.Q] }),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(Shortcut, { label: t("toolBar.lock"), shortcuts: [KEYS.Q] }),
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.preventBinding"),
                     shortcuts: [getShortcutKey("CtrlOrCmd")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.link"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+K")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("toolBar.convertElementType"),
@@ -27828,111 +27486,111 @@ var HelpDialog = ({ onClose }) => {
               ]
             }
           ),
-          /* @__PURE__ */ jsxs81(
+          /* @__PURE__ */ jsxs80(
             ShortcutIsland,
             {
               className: "HelpDialog__island--view",
               caption: t("helpDialog.view"),
               children: [
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.zoomIn"),
                     shortcuts: [getShortcutKey("CtrlOrCmd++")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.zoomOut"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+-")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.resetZoom"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+0")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.zoomToFit"),
                     shortcuts: ["Shift+1"]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.zoomToSelection"),
                     shortcuts: ["Shift+2"]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.movePageUpDown"),
                     shortcuts: ["PgUp/PgDn"]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.movePageLeftRight"),
                     shortcuts: ["Shift+PgUp/PgDn"]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.zenMode"),
                     shortcuts: [getShortcutKey("Alt+Z")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.objectsSnapMode"),
                     shortcuts: [getShortcutKey("Alt+S")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.toggleGrid"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+'")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.viewMode"),
                     shortcuts: [getShortcutKey("Alt+R")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.toggleTheme"),
                     shortcuts: [getShortcutKey("Alt+Shift+D")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("stats.fullTitle"),
                     shortcuts: [getShortcutKey("Alt+/")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("search.title"),
                     shortcuts: [getShortcutFromShortcutName("searchMenu")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("commandPalette.title"),
@@ -27945,13 +27603,13 @@ var HelpDialog = ({ onClose }) => {
               ]
             }
           ),
-          /* @__PURE__ */ jsxs81(
+          /* @__PURE__ */ jsxs80(
             ShortcutIsland,
             {
               className: "HelpDialog__island--editor",
               caption: t("helpDialog.editor"),
               children: [
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.createFlowchart"),
@@ -27959,7 +27617,7 @@ var HelpDialog = ({ onClose }) => {
                     isOr: true
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.navigateFlowchart"),
@@ -27967,7 +27625,7 @@ var HelpDialog = ({ onClose }) => {
                     isOr: true
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.moveCanvas"),
@@ -27978,98 +27636,98 @@ var HelpDialog = ({ onClose }) => {
                     isOr: true
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.clearReset"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Delete")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.delete"),
                     shortcuts: [getShortcutKey("Delete")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.cut"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+X")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.copy"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+C")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.paste"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+V")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.pasteAsPlaintext"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+V")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.selectAll"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+A")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.multiSelect"),
                     shortcuts: [getShortcutKey(`Shift+${t("helpDialog.click")}`)]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.deepSelect"),
                     shortcuts: [getShortcutKey(`CtrlOrCmd+${t("helpDialog.click")}`)]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.deepBoxSelect"),
                     shortcuts: [getShortcutKey(`CtrlOrCmd+${t("helpDialog.drag")}`)]
                   }
                 ),
-                (probablySupportsClipboardBlob || isFirefox) && /* @__PURE__ */ jsx138(
+                (probablySupportsClipboardBlob || isFirefox) && /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.copyAsPng"),
                     shortcuts: [getShortcutKey("Shift+Alt+C")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.copyStyles"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Alt+C")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.pasteStyles"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Alt+V")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.sendToBack"),
@@ -28078,7 +27736,7 @@ var HelpDialog = ({ onClose }) => {
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.bringToFront"),
@@ -28087,49 +27745,49 @@ var HelpDialog = ({ onClose }) => {
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.sendBackward"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+[")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.bringForward"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+]")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.alignTop"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+Up")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.alignBottom"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+Down")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.alignLeft"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+Left")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.alignRight"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+Right")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.duplicateSelection"),
@@ -28139,21 +27797,21 @@ var HelpDialog = ({ onClose }) => {
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("helpDialog.toggleElementLock"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+L")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.undo"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Z")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("buttons.redo"),
@@ -28163,63 +27821,63 @@ var HelpDialog = ({ onClose }) => {
                     ] : [getShortcutKey("CtrlOrCmd+Shift+Z")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.group"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+G")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.ungroup"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+G")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.flipHorizontal"),
                     shortcuts: [getShortcutKey("Shift+H")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.flipVertical"),
                     shortcuts: [getShortcutKey("Shift+V")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.showStroke"),
                     shortcuts: [getShortcutKey("S")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.showBackground"),
                     shortcuts: [getShortcutKey("G")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.showFonts"),
                     shortcuts: [getShortcutKey("Shift+F")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.decreaseFontSize"),
                     shortcuts: [getShortcutKey("CtrlOrCmd+Shift+<")]
                   }
                 ),
-                /* @__PURE__ */ jsx138(
+                /* @__PURE__ */ jsx136(
                   Shortcut,
                   {
                     label: t("labels.increaseFontSize"),
@@ -28262,8 +27920,8 @@ var useCopyStatus = () => {
 };
 
 // components/Switch.tsx
-import clsx59 from "clsx";
-import { jsx as jsx139 } from "react/jsx-runtime";
+import clsx58 from "clsx";
+import { jsx as jsx137 } from "react/jsx-runtime";
 var Switch = ({
   title,
   name,
@@ -28271,7 +27929,7 @@ var Switch = ({
   onChange,
   disabled = false
 }) => {
-  return /* @__PURE__ */ jsx139("div", { className: clsx59("Switch", { toggled: checked, disabled }), children: /* @__PURE__ */ jsx139(
+  return /* @__PURE__ */ jsx137("div", { className: clsx58("Switch", { toggled: checked, disabled }), children: /* @__PURE__ */ jsx137(
     "input",
     {
       name,
@@ -28291,12 +27949,12 @@ var Switch = ({
 };
 
 // components/ImageExportDialog.tsx
-import { jsx as jsx140, jsxs as jsxs82 } from "react/jsx-runtime";
+import { jsx as jsx138, jsxs as jsxs81 } from "react/jsx-runtime";
 var ErrorCanvasPreview = () => {
-  return /* @__PURE__ */ jsxs82("div", { children: [
-    /* @__PURE__ */ jsx140("h3", { children: t("canvasError.cannotShowPreview") }),
-    /* @__PURE__ */ jsx140("p", { children: /* @__PURE__ */ jsx140("span", { children: t("canvasError.canvasTooBig") }) }),
-    /* @__PURE__ */ jsxs82("em", { children: [
+  return /* @__PURE__ */ jsxs81("div", { children: [
+    /* @__PURE__ */ jsx138("h3", { children: t("canvasError.cannotShowPreview") }),
+    /* @__PURE__ */ jsx138("p", { children: /* @__PURE__ */ jsx138("span", { children: t("canvasError.canvasTooBig") }) }),
+    /* @__PURE__ */ jsxs81("em", { children: [
       "(",
       t("canvasError.canvasTooBigTip"),
       ")"
@@ -28394,11 +28052,11 @@ var ImageExportModal = ({
     exportScale,
     embedScene
   ]);
-  return /* @__PURE__ */ jsxs82("div", { className: "ImageExportModal", children: [
-    /* @__PURE__ */ jsx140("h3", { children: t("imageExportDialog.header") }),
-    /* @__PURE__ */ jsxs82("div", { className: "ImageExportModal__preview", children: [
-      /* @__PURE__ */ jsx140("div", { className: "ImageExportModal__preview__canvas", ref: previewRef, children: renderError && /* @__PURE__ */ jsx140(ErrorCanvasPreview, {}) }),
-      /* @__PURE__ */ jsx140("div", { className: "ImageExportModal__preview__filename", children: !nativeFileSystemSupported && /* @__PURE__ */ jsx140(
+  return /* @__PURE__ */ jsxs81("div", { className: "ImageExportModal", children: [
+    /* @__PURE__ */ jsx138("h3", { children: t("imageExportDialog.header") }),
+    /* @__PURE__ */ jsxs81("div", { className: "ImageExportModal__preview", children: [
+      /* @__PURE__ */ jsx138("div", { className: "ImageExportModal__preview__canvas", ref: previewRef, children: renderError && /* @__PURE__ */ jsx138(ErrorCanvasPreview, {}) }),
+      /* @__PURE__ */ jsx138("div", { className: "ImageExportModal__preview__filename", children: !nativeFileSystemSupported && /* @__PURE__ */ jsx138(
         "input",
         {
           type: "text",
@@ -28416,14 +28074,14 @@ var ImageExportModal = ({
         }
       ) })
     ] }),
-    /* @__PURE__ */ jsxs82("div", { className: "ImageExportModal__settings", children: [
-      /* @__PURE__ */ jsx140("h3", { children: t("imageExportDialog.header") }),
-      hasSelection && /* @__PURE__ */ jsx140(
+    /* @__PURE__ */ jsxs81("div", { className: "ImageExportModal__settings", children: [
+      /* @__PURE__ */ jsx138("h3", { children: t("imageExportDialog.header") }),
+      hasSelection && /* @__PURE__ */ jsx138(
         ExportSetting,
         {
           label: t("imageExportDialog.label.onlySelected"),
           name: "exportOnlySelected",
-          children: /* @__PURE__ */ jsx140(
+          children: /* @__PURE__ */ jsx138(
             Switch,
             {
               name: "exportOnlySelected",
@@ -28435,12 +28093,12 @@ var ImageExportModal = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx140(
+      /* @__PURE__ */ jsx138(
         ExportSetting,
         {
           label: t("imageExportDialog.label.withBackground"),
           name: "exportBackgroundSwitch",
-          children: /* @__PURE__ */ jsx140(
+          children: /* @__PURE__ */ jsx138(
             Switch,
             {
               name: "exportBackgroundSwitch",
@@ -28457,12 +28115,12 @@ var ImageExportModal = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx140(
+      /* @__PURE__ */ jsx138(
         ExportSetting,
         {
           label: t("imageExportDialog.label.darkMode"),
           name: "exportDarkModeSwitch",
-          children: /* @__PURE__ */ jsx140(
+          children: /* @__PURE__ */ jsx138(
             Switch,
             {
               name: "exportDarkModeSwitch",
@@ -28479,13 +28137,13 @@ var ImageExportModal = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx140(
+      /* @__PURE__ */ jsx138(
         ExportSetting,
         {
           label: t("imageExportDialog.label.embedScene"),
           tooltip: t("imageExportDialog.tooltip.embedScene"),
           name: "exportEmbedSwitch",
-          children: /* @__PURE__ */ jsx140(
+          children: /* @__PURE__ */ jsx138(
             Switch,
             {
               name: "exportEmbedSwitch",
@@ -28502,12 +28160,12 @@ var ImageExportModal = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx140(
+      /* @__PURE__ */ jsx138(
         ExportSetting,
         {
           label: t("imageExportDialog.label.scale"),
           name: "exportScale",
-          children: /* @__PURE__ */ jsx140(
+          children: /* @__PURE__ */ jsx138(
             RadioGroup,
             {
               name: "exportScale",
@@ -28524,8 +28182,8 @@ var ImageExportModal = ({
           )
         }
       ),
-      /* @__PURE__ */ jsxs82("div", { className: "ImageExportModal__settings__buttons", children: [
-        /* @__PURE__ */ jsx140(
+      /* @__PURE__ */ jsxs81("div", { className: "ImageExportModal__settings__buttons", children: [
+        /* @__PURE__ */ jsx138(
           FilledButton,
           {
             className: "ImageExportModal__settings__buttons__button",
@@ -28537,7 +28195,7 @@ var ImageExportModal = ({
             children: t("imageExportDialog.button.exportToPng")
           }
         ),
-        /* @__PURE__ */ jsx140(
+        /* @__PURE__ */ jsx138(
           FilledButton,
           {
             className: "ImageExportModal__settings__buttons__button",
@@ -28549,7 +28207,7 @@ var ImageExportModal = ({
             children: t("imageExportDialog.button.exportToSvg")
           }
         ),
-        (probablySupportsClipboardBlob || isFirefox) && /* @__PURE__ */ jsx140(
+        (probablySupportsClipboardBlob || isFirefox) && /* @__PURE__ */ jsx138(
           FilledButton,
           {
             className: "ImageExportModal__settings__buttons__button",
@@ -28579,19 +28237,19 @@ var ExportSetting = ({
   tooltip,
   name
 }) => {
-  return /* @__PURE__ */ jsxs82("div", { className: "ImageExportModal__settings__setting", title: label, children: [
-    /* @__PURE__ */ jsxs82(
+  return /* @__PURE__ */ jsxs81("div", { className: "ImageExportModal__settings__setting", title: label, children: [
+    /* @__PURE__ */ jsxs81(
       "label",
       {
         htmlFor: name,
         className: "ImageExportModal__settings__setting__label",
         children: [
           label,
-          tooltip && /* @__PURE__ */ jsx140(Tooltip, { label: tooltip, long: true, children: helpIcon })
+          tooltip && /* @__PURE__ */ jsx138(Tooltip, { label: tooltip, long: true, children: helpIcon })
         ]
       }
     ),
-    /* @__PURE__ */ jsx140("div", { className: "ImageExportModal__settings__setting__content", children })
+    /* @__PURE__ */ jsx138("div", { className: "ImageExportModal__settings__setting__content", children })
   ] });
 };
 var ImageExportDialog = ({
@@ -28609,7 +28267,7 @@ var ImageExportDialog = ({
       elementsSnapshot: cloneJSON(elements)
     };
   });
-  return /* @__PURE__ */ jsx140(Dialog, { onCloseRequest, size: "wide", title: false, children: /* @__PURE__ */ jsx140(
+  return /* @__PURE__ */ jsx138(Dialog, { onCloseRequest, size: "wide", title: false, children: /* @__PURE__ */ jsx138(
     ImageExportModal,
     {
       elementsSnapshot,
@@ -28626,7 +28284,7 @@ var ImageExportDialog = ({
 import React43 from "react";
 
 // components/Card.tsx
-import { jsx as jsx141 } from "react/jsx-runtime";
+import { jsx as jsx139 } from "react/jsx-runtime";
 var COLOR_MAP = {
   primary: {
     base: "var(--color-primary)",
@@ -28651,7 +28309,7 @@ var COLOR_MAP = {
   }
 };
 var Card = ({ children, color }) => {
-  return /* @__PURE__ */ jsx141(
+  return /* @__PURE__ */ jsx139(
     "div",
     {
       className: "Card",
@@ -28666,7 +28324,7 @@ var Card = ({ children, color }) => {
 };
 
 // components/JSONExportDialog.tsx
-import { Fragment as Fragment25, jsx as jsx142, jsxs as jsxs83 } from "react/jsx-runtime";
+import { Fragment as Fragment25, jsx as jsx140, jsxs as jsxs82 } from "react/jsx-runtime";
 var JSONExportModal = ({
   elements,
   appState,
@@ -28678,15 +28336,15 @@ var JSONExportModal = ({
   onCloseRequest
 }) => {
   const { onExportToBackend } = exportOpts;
-  return /* @__PURE__ */ jsx142("div", { className: "ExportDialog ExportDialog--json", children: /* @__PURE__ */ jsxs83("div", { className: "ExportDialog-cards", children: [
-    exportOpts.saveFileToDisk && /* @__PURE__ */ jsxs83(Card, { color: "lime", children: [
-      /* @__PURE__ */ jsx142("div", { className: "Card-icon", children: exportToFileIcon }),
-      /* @__PURE__ */ jsx142("h2", { children: t("exportDialog.disk_title") }),
-      /* @__PURE__ */ jsxs83("div", { className: "Card-details", children: [
+  return /* @__PURE__ */ jsx140("div", { className: "ExportDialog ExportDialog--json", children: /* @__PURE__ */ jsxs82("div", { className: "ExportDialog-cards", children: [
+    exportOpts.saveFileToDisk && /* @__PURE__ */ jsxs82(Card, { color: "lime", children: [
+      /* @__PURE__ */ jsx140("div", { className: "Card-icon", children: exportToFileIcon }),
+      /* @__PURE__ */ jsx140("h2", { children: t("exportDialog.disk_title") }),
+      /* @__PURE__ */ jsxs82("div", { className: "Card-details", children: [
         t("exportDialog.disk_details"),
         !nativeFileSystemSupported && actionManager.renderAction("changeProjectName")
       ] }),
-      /* @__PURE__ */ jsx142(
+      /* @__PURE__ */ jsx140(
         ToolButton,
         {
           className: "Card-button",
@@ -28700,11 +28358,11 @@ var JSONExportModal = ({
         }
       )
     ] }),
-    onExportToBackend && /* @__PURE__ */ jsxs83(Card, { color: "pink", children: [
-      /* @__PURE__ */ jsx142("div", { className: "Card-icon", children: LinkIcon }),
-      /* @__PURE__ */ jsx142("h2", { children: t("exportDialog.link_title") }),
-      /* @__PURE__ */ jsx142("div", { className: "Card-details", children: t("exportDialog.link_details") }),
-      /* @__PURE__ */ jsx142(
+    onExportToBackend && /* @__PURE__ */ jsxs82(Card, { color: "pink", children: [
+      /* @__PURE__ */ jsx140("div", { className: "Card-icon", children: LinkIcon }),
+      /* @__PURE__ */ jsx140("h2", { children: t("exportDialog.link_title") }),
+      /* @__PURE__ */ jsx140("div", { className: "Card-details", children: t("exportDialog.link_details") }),
+      /* @__PURE__ */ jsx140(
         ToolButton,
         {
           className: "Card-button",
@@ -28739,7 +28397,7 @@ var JSONExportDialog = ({
   const handleClose = React43.useCallback(() => {
     setAppState({ openDialog: null });
   }, [setAppState]);
-  return /* @__PURE__ */ jsx142(Fragment25, { children: appState.openDialog?.name === "jsonExport" && /* @__PURE__ */ jsx142(Dialog, { onCloseRequest: handleClose, title: t("buttons.export"), children: /* @__PURE__ */ jsx142(
+  return /* @__PURE__ */ jsx140(Fragment25, { children: appState.openDialog?.name === "jsonExport" && /* @__PURE__ */ jsx140(Dialog, { onCloseRequest: handleClose, title: t("buttons.export"), children: /* @__PURE__ */ jsx140(
     JSONExportModal,
     {
       elements,
@@ -28755,27 +28413,27 @@ var JSONExportDialog = ({
 };
 
 // components/LayerUI.tsx
-import { Fragment as Fragment26, jsx as jsx143, jsxs as jsxs84 } from "react/jsx-runtime";
+import { Fragment as Fragment26, jsx as jsx141, jsxs as jsxs83 } from "react/jsx-runtime";
 var DefaultMainMenu = ({ UIOptions }) => {
-  return /* @__PURE__ */ jsxs84(MainMenu_default, { __fallback: true, children: [
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.LoadScene, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.SaveToActiveFile, {}),
-    UIOptions.canvasActions.export && /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.Export, {}),
-    UIOptions.canvasActions.saveAsImage && /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.SaveAsImage, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.SearchMenu, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.Help, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.ClearCanvas, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.Separator, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.Group, { title: "Excalidraw links", children: /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.Socials, {}) }),
-    /* @__PURE__ */ jsx143(MainMenu_default.Separator, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.ToggleTheme, {}),
-    /* @__PURE__ */ jsx143(MainMenu_default.DefaultItems.ChangeCanvasBackground, {})
+  return /* @__PURE__ */ jsxs83(MainMenu_default, { __fallback: true, children: [
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.LoadScene, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.SaveToActiveFile, {}),
+    UIOptions.canvasActions.export && /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.Export, {}),
+    UIOptions.canvasActions.saveAsImage && /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.SaveAsImage, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.SearchMenu, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.Help, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.ClearCanvas, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.Separator, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.Group, { title: "Excalidraw links", children: /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.Socials, {}) }),
+    /* @__PURE__ */ jsx141(MainMenu_default.Separator, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.ToggleTheme, {}),
+    /* @__PURE__ */ jsx141(MainMenu_default.DefaultItems.ChangeCanvasBackground, {})
   ] });
 };
 var DefaultOverwriteConfirmDialog = () => {
-  return /* @__PURE__ */ jsxs84(OverwriteConfirmDialog, { __fallback: true, children: [
-    /* @__PURE__ */ jsx143(OverwriteConfirmDialog.Actions.SaveToDisk, {}),
-    /* @__PURE__ */ jsx143(OverwriteConfirmDialog.Actions.ExportToImage, {})
+  return /* @__PURE__ */ jsxs83(OverwriteConfirmDialog, { __fallback: true, children: [
+    /* @__PURE__ */ jsx141(OverwriteConfirmDialog.Actions.SaveToDisk, {}),
+    /* @__PURE__ */ jsx141(OverwriteConfirmDialog.Actions.ExportToImage, {})
   ] });
 };
 var LayerUI = ({
@@ -28825,7 +28483,7 @@ var LayerUI = ({
     if (!UIOptions.canvasActions.export) {
       return null;
     }
-    return /* @__PURE__ */ jsx143(
+    return /* @__PURE__ */ jsx141(
       JSONExportDialog,
       {
         elements,
@@ -28842,7 +28500,7 @@ var LayerUI = ({
     if (!UIOptions.canvasActions.saveAsImage || appState.openDialog?.name !== "imageExport") {
       return null;
     }
-    return /* @__PURE__ */ jsx143(
+    return /* @__PURE__ */ jsx141(
       ImageExportDialog,
       {
         elements,
@@ -28855,23 +28513,23 @@ var LayerUI = ({
       }
     );
   };
-  const renderCanvasActions = () => /* @__PURE__ */ jsxs84("div", { style: { position: "relative" }, children: [
-    /* @__PURE__ */ jsx143(tunnels.MainMenuTunnel.Out, {}),
-    renderWelcomeScreen && /* @__PURE__ */ jsx143(tunnels.WelcomeScreenMenuHintTunnel.Out, {})
+  const renderCanvasActions = () => /* @__PURE__ */ jsxs83("div", { style: { position: "relative" }, children: [
+    /* @__PURE__ */ jsx141(tunnels.MainMenuTunnel.Out, {}),
+    renderWelcomeScreen && /* @__PURE__ */ jsx141(tunnels.WelcomeScreenMenuHintTunnel.Out, {})
   ] });
   const renderSelectedShapeActions = () => {
     const isCompactMode = isCompactStylesPanel;
-    return /* @__PURE__ */ jsx143(
+    return /* @__PURE__ */ jsx141(
       Section,
       {
         heading: "selectedShapeActions",
-        className: clsx60("selected-shape-actions zen-mode-transition", {
+        className: clsx59("selected-shape-actions zen-mode-transition", {
           "transition-left": appState.zenModeEnabled
         }),
-        children: isCompactMode ? /* @__PURE__ */ jsx143(
+        children: isCompactMode ? /* @__PURE__ */ jsx141(
           Island,
           {
-            className: clsx60("compact-shape-actions-island"),
+            className: clsx59("compact-shape-actions-island"),
             padding: 0,
             style: {
               // we want to make sure this doesn't overflow so subtracting the
@@ -28879,7 +28537,7 @@ var LayerUI = ({
               maxHeight: `${appState.height - 166}px`,
               marginLeft: -12
             },
-            children: /* @__PURE__ */ jsx143(
+            children: /* @__PURE__ */ jsx141(
               CompactShapeActions,
               {
                 appState,
@@ -28890,7 +28548,7 @@ var LayerUI = ({
               }
             )
           }
-        ) : /* @__PURE__ */ jsx143(
+        ) : /* @__PURE__ */ jsx141(
           Island,
           {
             className: CLASSES.SHAPE_ACTIONS_MENU,
@@ -28900,7 +28558,7 @@ var LayerUI = ({
               // approximate height of hamburgerMenu + footer
               maxHeight: `${appState.height - 166}px`
             },
-            children: /* @__PURE__ */ jsx143(
+            children: /* @__PURE__ */ jsx141(
               SelectedShapeActions,
               {
                 appState,
@@ -28920,11 +28578,11 @@ var LayerUI = ({
       elements
     );
     const shouldShowStats = appState.stats.open && !appState.zenModeEnabled && !appState.viewModeEnabled && appState.openDialog?.name !== "elementLinkSelector";
-    return /* @__PURE__ */ jsx143(FixedSideContainer, { side: "top", children: /* @__PURE__ */ jsxs84("div", { className: "App-menu App-menu_top", children: [
-      /* @__PURE__ */ jsx143(
+    return /* @__PURE__ */ jsx141(FixedSideContainer, { side: "top", children: /* @__PURE__ */ jsxs83("div", { className: "App-menu App-menu_top", children: [
+      /* @__PURE__ */ jsx141(
         "div",
         {
-          className: clsx60(
+          className: clsx59(
             "layer-ui__wrapper__top-right zen-mode-transition",
             {
               "transition-right": appState.zenModeEnabled,
@@ -28933,20 +28591,20 @@ var LayerUI = ({
           )
         }
       ),
-      /* @__PURE__ */ jsxs84(
+      /* @__PURE__ */ jsxs83(
         Stack_default.Col,
         {
           gap: spacing.menuTopGap,
-          className: clsx60("App-menu_top__right"),
+          className: clsx59("App-menu_top__right"),
           style: {
             width: "36px"
           },
           children: [
             renderCanvasActions(),
-            /* @__PURE__ */ jsx143(
+            /* @__PURE__ */ jsx141(
               "div",
               {
-                className: clsx60("selected-shape-actions-container", {
+                className: clsx59("selected-shape-actions-container", {
                   "selected-shape-actions-container--compact": isCompactStylesPanel
                 }),
                 children: shouldRenderSelectedShapeActions && renderSelectedShapeActions()
@@ -28958,7 +28616,7 @@ var LayerUI = ({
     ] }) });
   };
   const renderSidebars = () => {
-    return /* @__PURE__ */ jsx143(
+    return /* @__PURE__ */ jsx141(
       DefaultSidebar,
       {
         __fallback: true,
@@ -28973,10 +28631,10 @@ var LayerUI = ({
     );
   };
   const isSidebarDocked = useAtomValue(isSidebarDockedAtom);
-  const layerUIJSX = /* @__PURE__ */ jsxs84(Fragment26, { children: [
+  const layerUIJSX = /* @__PURE__ */ jsxs83(Fragment26, { children: [
     children,
-    /* @__PURE__ */ jsx143(DefaultMainMenu, { UIOptions }),
-    /* @__PURE__ */ jsx143(
+    /* @__PURE__ */ jsx141(DefaultMainMenu, { UIOptions }),
+    /* @__PURE__ */ jsx141(
       DefaultSidebar.Trigger,
       {
         __fallback: true,
@@ -28994,11 +28652,11 @@ var LayerUI = ({
         tab: DEFAULT_SIDEBAR.defaultTab
       }
     ),
-    /* @__PURE__ */ jsx143(DefaultOverwriteConfirmDialog, {}),
-    appState.openDialog?.name === "ttd" && /* @__PURE__ */ jsx143(TTDDialog, { __fallback: true }),
-    appState.isLoading && /* @__PURE__ */ jsx143(LoadingMessage, { delay: 250 }),
-    appState.errorMessage && /* @__PURE__ */ jsx143(ErrorDialog, { onClose: () => setAppState({ errorMessage: null }), children: appState.errorMessage }),
-    eyeDropperState && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx143(
+    /* @__PURE__ */ jsx141(DefaultOverwriteConfirmDialog, {}),
+    appState.openDialog?.name === "ttd" && /* @__PURE__ */ jsx141(TTDDialog, { __fallback: true }),
+    appState.isLoading && /* @__PURE__ */ jsx141(LoadingMessage, { delay: 250 }),
+    appState.errorMessage && /* @__PURE__ */ jsx141(ErrorDialog, { onClose: () => setAppState({ errorMessage: null }), children: appState.errorMessage }),
+    eyeDropperState && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx141(
       EyeDropper,
       {
         colorPickerType: eyeDropperState.colorPickerType,
@@ -29033,7 +28691,7 @@ var LayerUI = ({
         }
       }
     ),
-    appState.openDialog?.name === "help" && /* @__PURE__ */ jsx143(
+    appState.openDialog?.name === "help" && /* @__PURE__ */ jsx141(
       HelpDialog,
       {
         onClose: () => {
@@ -29041,8 +28699,8 @@ var LayerUI = ({
         }
       }
     ),
-    /* @__PURE__ */ jsx143(ActiveConfirmDialog, {}),
-    appState.openDialog?.name === "elementLinkSelector" && /* @__PURE__ */ jsx143(
+    /* @__PURE__ */ jsx141(ActiveConfirmDialog, {}),
+    appState.openDialog?.name === "elementLinkSelector" && /* @__PURE__ */ jsx141(
       ElementLinkDialog_default,
       {
         sourceElementId: appState.openDialog.sourceElementId,
@@ -29056,10 +28714,10 @@ var LayerUI = ({
         generateLinkForSelection
       }
     ),
-    /* @__PURE__ */ jsx143(tunnels.OverwriteConfirmDialogTunnel.Out, {}),
+    /* @__PURE__ */ jsx141(tunnels.OverwriteConfirmDialogTunnel.Out, {}),
     renderImageExportDialog(),
     renderJSONExportDialog(),
-    appState.pasteDialog.shown && /* @__PURE__ */ jsx143(
+    appState.pasteDialog.shown && /* @__PURE__ */ jsx141(
       PasteChartDialog,
       {
         setAppState,
@@ -29069,7 +28727,7 @@ var LayerUI = ({
         })
       }
     ),
-    editorInterface.formFactor === "phone" && /* @__PURE__ */ jsx143(
+    editorInterface.formFactor === "phone" && /* @__PURE__ */ jsx141(
       MobileMenu,
       {
         app,
@@ -29088,16 +28746,16 @@ var LayerUI = ({
         UIOptions
       }
     ),
-    editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsxs84(Fragment26, { children: [
-      /* @__PURE__ */ jsxs84(
+    editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsxs83(Fragment26, { children: [
+      /* @__PURE__ */ jsxs83(
         "div",
         {
           className: "layer-ui__wrapper",
           style: appState.openSidebar && isSidebarDocked && editorInterface.canFitSidebar ? { width: `calc(100% - var(--right-sidebar-width))` } : {},
           children: [
-            renderWelcomeScreen && /* @__PURE__ */ jsx143(tunnels.WelcomeScreenCenterTunnel.Out, {}),
+            renderWelcomeScreen && /* @__PURE__ */ jsx141(tunnels.WelcomeScreenCenterTunnel.Out, {}),
             renderFixedSideContainer(),
-            /* @__PURE__ */ jsx143(
+            /* @__PURE__ */ jsx141(
               Footer_default,
               {
                 appState,
@@ -29116,7 +28774,7 @@ var LayerUI = ({
                 isCompactStylesPanel
               }
             ),
-            appState.scrolledOutside && /* @__PURE__ */ jsx143(
+            appState.scrolledOutside && /* @__PURE__ */ jsx141(
               "button",
               {
                 type: "button",
@@ -29135,7 +28793,7 @@ var LayerUI = ({
       renderSidebars()
     ] })
   ] });
-  return /* @__PURE__ */ jsx143(UIAppStateContext.Provider, { value: appState, children: /* @__PURE__ */ jsx143(TunnelsJotaiProvider, { children: /* @__PURE__ */ jsx143(TunnelsContext.Provider, { value: tunnels, children: layerUIJSX }) }) });
+  return /* @__PURE__ */ jsx141(UIAppStateContext.Provider, { value: appState, children: /* @__PURE__ */ jsx141(TunnelsJotaiProvider, { children: /* @__PURE__ */ jsx141(TunnelsContext.Provider, { value: tunnels, children: layerUIJSX }) }) });
 };
 var stripIrrelevantAppStateProps = (appState) => {
   const { startBoundElement, cursorButton, scrollX, scrollY, ...ret } = appState;
@@ -29161,23 +28819,23 @@ var areEqual2 = (prevProps, nextProps) => {
 var LayerUI_default = React44.memo(LayerUI, areEqual2);
 
 // components/MagicButton.tsx
-import clsx61 from "clsx";
-import { jsx as jsx144, jsxs as jsxs85 } from "react/jsx-runtime";
-var DEFAULT_SIZE3 = "small";
+import clsx60 from "clsx";
+import { jsx as jsx142, jsxs as jsxs84 } from "react/jsx-runtime";
+var DEFAULT_SIZE2 = "small";
 var ElementCanvasButton = (props) => {
-  return /* @__PURE__ */ jsxs85(
+  return /* @__PURE__ */ jsxs84(
     "label",
     {
-      className: clsx61(
+      className: clsx60(
         "ToolIcon ToolIcon__MagicButton",
-        `ToolIcon_size_${DEFAULT_SIZE3}`,
+        `ToolIcon_size_${DEFAULT_SIZE2}`,
         {
           "is-mobile": props.isMobile
         }
       ),
       title: `${props.title}`,
       children: [
-        /* @__PURE__ */ jsx144(
+        /* @__PURE__ */ jsx142(
           "input",
           {
             className: "ToolIcon_type_checkbox",
@@ -29188,7 +28846,7 @@ var ElementCanvasButton = (props) => {
             "aria-label": props.title
           }
         ),
-        /* @__PURE__ */ jsx144("div", { className: "ToolIcon__icon", children: props.icon })
+        /* @__PURE__ */ jsx142("div", { className: "ToolIcon__icon", children: props.icon })
       ]
     }
   );
@@ -29196,7 +28854,7 @@ var ElementCanvasButton = (props) => {
 
 // components/SVGLayer.tsx
 import { useEffect as useEffect43, useRef as useRef40 } from "react";
-import { jsx as jsx145 } from "react/jsx-runtime";
+import { jsx as jsx143 } from "react/jsx-runtime";
 var SVGLayer = ({ trails }) => {
   const svgRef = useRef40(null);
   useEffect43(() => {
@@ -29211,7 +28869,7 @@ var SVGLayer = ({ trails }) => {
       }
     };
   }, trails);
-  return /* @__PURE__ */ jsx145("div", { className: "SVGLayer", children: /* @__PURE__ */ jsx145("svg", { ref: svgRef }) });
+  return /* @__PURE__ */ jsx143("div", { className: "SVGLayer", children: /* @__PURE__ */ jsx143("svg", { ref: svgRef }) });
 };
 
 // components/canvases/InteractiveCanvas.tsx
@@ -30795,7 +30453,7 @@ var renderInteractiveScene = (renderConfig) => {
 };
 
 // components/canvases/InteractiveCanvas.tsx
-import { jsx as jsx146 } from "react/jsx-runtime";
+import { jsx as jsx144 } from "react/jsx-runtime";
 var INTERACTIVE_SCENE_ANIMATION_KEY = "animateInteractiveScene";
 var InteractiveCanvas = (props) => {
   const isComponentMounted = useRef41(false);
@@ -30889,7 +30547,7 @@ var InteractiveCanvas = (props) => {
       );
     }
   });
-  return /* @__PURE__ */ jsx146(
+  return /* @__PURE__ */ jsx144(
     "canvas",
     {
       className: "excalidraw__canvas interactive",
@@ -30968,7 +30626,7 @@ var InteractiveCanvas_default = React45.memo(InteractiveCanvas, areEqual3);
 
 // components/canvases/StaticCanvas.tsx
 import React46, { useEffect as useEffect45, useRef as useRef42 } from "react";
-import { jsx as jsx147 } from "react/jsx-runtime";
+import { jsx as jsx145 } from "react/jsx-runtime";
 var StaticCanvas = (props) => {
   const wrapperRef = useRef42(null);
   const isComponentMounted = useRef42(false);
@@ -31003,7 +30661,7 @@ var StaticCanvas = (props) => {
       isRenderThrottlingEnabled()
     );
   });
-  return /* @__PURE__ */ jsx147("div", { className: "excalidraw__canvas-wrapper", ref: wrapperRef });
+  return /* @__PURE__ */ jsx145("div", { className: "excalidraw__canvas-wrapper", ref: wrapperRef });
 };
 var getRelevantAppStateProps2 = (appState) => {
   const relevantAppStateProps = {
@@ -31118,7 +30776,7 @@ var renderNewElementScene = (renderConfig, throttle5) => {
 };
 
 // components/canvases/NewElementCanvas.tsx
-import { jsx as jsx148 } from "react/jsx-runtime";
+import { jsx as jsx146 } from "react/jsx-runtime";
 var NewElementCanvas = (props) => {
   const canvasRef = useRef43(null);
   useEffect46(() => {
@@ -31139,7 +30797,7 @@ var NewElementCanvas = (props) => {
       isRenderThrottlingEnabled()
     );
   });
-  return /* @__PURE__ */ jsx148(
+  return /* @__PURE__ */ jsx146(
     "canvas",
     {
       className: "excalidraw__canvas",
@@ -31157,7 +30815,7 @@ var NewElementCanvas_default = NewElementCanvas;
 
 // components/Toast.tsx
 import { useCallback as useCallback21, useEffect as useEffect47, useRef as useRef44 } from "react";
-import { jsx as jsx149, jsxs as jsxs86 } from "react/jsx-runtime";
+import { jsx as jsx147, jsxs as jsxs85 } from "react/jsx-runtime";
 var DEFAULT_TOAST_TIMEOUT = 5e3;
 var Toast = ({
   message,
@@ -31184,7 +30842,7 @@ var Toast = ({
   }, [scheduleTimeout, message, duration, shouldAutoClose]);
   const onMouseEnter = shouldAutoClose ? () => clearTimeout(timerRef?.current) : void 0;
   const onMouseLeave = shouldAutoClose ? scheduleTimeout : void 0;
-  return /* @__PURE__ */ jsxs86(
+  return /* @__PURE__ */ jsxs85(
     "div",
     {
       className: "Toast",
@@ -31192,8 +30850,8 @@ var Toast = ({
       onMouseLeave,
       style,
       children: [
-        /* @__PURE__ */ jsx149("p", { className: "Toast__message", children: message }),
-        closable && /* @__PURE__ */ jsx149(
+        /* @__PURE__ */ jsx147("p", { className: "Toast__message", children: message }),
+        closable && /* @__PURE__ */ jsx147(
           ToolButton,
           {
             icon: CloseIcon,
@@ -31210,7 +30868,7 @@ var Toast = ({
 
 // components/UnlockPopup.tsx
 import { flushSync as flushSync2 } from "react-dom";
-import { jsx as jsx150 } from "react/jsx-runtime";
+import { jsx as jsx148 } from "react/jsx-runtime";
 var UnlockPopup = ({
   app,
   activeLockedId
@@ -31225,7 +30883,7 @@ var UnlockPopup = ({
     { sceneX: x, sceneY: y },
     app.state
   );
-  return /* @__PURE__ */ jsx150(
+  return /* @__PURE__ */ jsx148(
     "div",
     {
       className: "UnlockPopup",
@@ -31258,7 +30916,7 @@ var UnlockPopup = ({
 var UnlockPopup_default = UnlockPopup;
 
 // components/App.tsx
-import { Fragment as Fragment27, jsx as jsx151, jsxs as jsxs87 } from "react/jsx-runtime";
+import { Fragment as Fragment27, jsx as jsx149, jsxs as jsxs86 } from "react/jsx-runtime";
 var AppContext = React47.createContext(null);
 var AppPropsContext = React47.createContext(null);
 var editorInterfaceContextInitialValue = {
@@ -31520,7 +31178,7 @@ var App = class _App extends React47.Component {
         const frameName = getFrameLikeTitle(f);
         if (f.id === this.state.editingFrame) {
           const frameNameInEdit = frameName;
-          frameNameJSX = /* @__PURE__ */ jsx151(
+          frameNameJSX = /* @__PURE__ */ jsx149(
             "input",
             {
               autoFocus: true,
@@ -31562,7 +31220,7 @@ var App = class _App extends React47.Component {
         } else {
           frameNameJSX = frameName;
         }
-        return /* @__PURE__ */ jsx151(
+        return /* @__PURE__ */ jsx149(
           "div",
           {
             id: this.getFrameNameDOMId(f),
@@ -32961,14 +32619,6 @@ var App = class _App extends React47.Component {
             event.preventDefault();
             this.setState({ openPopup: "fontFamily" });
           }
-        }
-        if (event.key === KEYS.K && !event.altKey && !event[KEYS.CTRL_OR_CMD]) {
-          if (this.state.activeTool.type === "laser") {
-            this.setActiveTool({ type: this.state.preferredSelectionTool.type });
-          } else {
-            this.setActiveTool({ type: "laser" });
-          }
-          return;
         }
         if (event[KEYS.CTRL_OR_CMD] && (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE)) {
           this.updateEditorAtom(activeConfirmDialogAtom, "clearCanvas");
@@ -34413,11 +34063,6 @@ var App = class _App extends React47.Component {
           pointerDownState,
           this.state.activeTool.type
         );
-      } else if (this.state.activeTool.type === "laser") {
-        this.laserTrails.startPath(
-          pointerDownState.lastCoords.x,
-          pointerDownState.lastCoords.y
-        );
       } else if (this.state.activeTool.type === "StickyNote") {
         this.createStickyNoteOnPointerDown(pointerDownState);
       } else if (this.state.activeTool.type !== "eraser" && this.state.activeTool.type !== "hand" && this.state.activeTool.type !== "image") {
@@ -34445,7 +34090,7 @@ var App = class _App extends React47.Component {
       this.missingPointerEventCleanupEmitter.once(
         (_event) => onPointerUp(_event || event.nativeEvent)
       );
-      if (!this.state.viewModeEnabled || this.state.activeTool.type === "laser") {
+      if (!this.state.viewModeEnabled) {
         window.addEventListener("pointermove" /* POINTER_MOVE */, onPointerMove);
         window.addEventListener("pointerup" /* POINTER_UP */, onPointerUp);
         window.addEventListener("keydown" /* KEYDOWN */, onKeyDown);
@@ -36575,7 +36220,7 @@ var App = class _App extends React47.Component {
       const pointer = {
         x: sceneX,
         y: sceneY,
-        tool: this.state.activeTool.type === "laser" ? "laser" : "pointer"
+        tool: "pointer"
       };
       this.props.onPointerUpdate?.({
         pointer,
@@ -37056,7 +36701,7 @@ var App = class _App extends React47.Component {
     const embeddableElements = this.scene.getNonDeletedElements().filter(
       (el) => isEmbeddableElement(el) && this.embedsValidationStatus.get(el.id) === true || isIframeElement(el)
     );
-    return /* @__PURE__ */ jsx151(Fragment27, { children: embeddableElements.map((el) => {
+    return /* @__PURE__ */ jsx149(Fragment27, { children: embeddableElements.map((el) => {
       const { x, y } = sceneCoordsToViewportCoords(
         { sceneX: el.x, sceneY: el.y },
         this.state
@@ -37212,10 +36857,10 @@ var App = class _App extends React47.Component {
       }
       const isActive = this.state.activeEmbeddable?.element === el && this.state.activeEmbeddable?.state === "active";
       const isHovered = this.state.activeEmbeddable?.element === el && this.state.activeEmbeddable?.state === "hover";
-      return /* @__PURE__ */ jsx151(
+      return /* @__PURE__ */ jsx149(
         "div",
         {
-          className: clsx62("excalidraw__embeddable-container", {
+          className: clsx61("excalidraw__embeddable-container", {
             "is-hovered": isHovered
           }),
           style: {
@@ -37233,7 +36878,7 @@ var App = class _App extends React47.Component {
               el
             )}px`
           },
-          children: /* @__PURE__ */ jsxs87(
+          children: /* @__PURE__ */ jsxs86(
             "div",
             {
               className: "excalidraw__embeddable-container__inner",
@@ -37244,15 +36889,15 @@ var App = class _App extends React47.Component {
                 pointerEvents: isActive ? POINTER_EVENTS.enabled : POINTER_EVENTS.disabled
               },
               children: [
-                isHovered && /* @__PURE__ */ jsx151("div", { className: "excalidraw__embeddable-hint", children: t("buttons.embeddableInteractionButton") }),
-                /* @__PURE__ */ jsx151(
+                isHovered && /* @__PURE__ */ jsx149("div", { className: "excalidraw__embeddable-hint", children: t("buttons.embeddableInteractionButton") }),
+                /* @__PURE__ */ jsx149(
                   "div",
                   {
                     className: "excalidraw__embeddable__outer",
                     style: {
                       padding: `${el.strokeWidth}px`
                     },
-                    children: (isEmbeddableElement(el) ? this.props.renderEmbeddable?.(el, this.state) : null) ?? /* @__PURE__ */ jsx151(
+                    children: (isEmbeddableElement(el) ? this.props.renderEmbeddable?.(el, this.state) : null) ?? /* @__PURE__ */ jsx149(
                       "iframe",
                       {
                         ref: (ref) => this.cacheEmbeddableRef(el, ref),
@@ -37301,16 +36946,15 @@ var App = class _App extends React47.Component {
     const shouldBlockPointerEvents = (
       // default back to `--ui-pointerEvents` flow if setPointerCapture
       // not supported
-      "setPointerCapture" in HTMLElement.prototype ? false : this.state.selectionElement || this.state.newElement || this.state.selectedElementsAreBeingDragged || this.state.resizingElement || this.state.activeTool.type === "laser" && // technically we can just test on this once we make it more safe
-      this.state.cursorButton === "down"
+      "setPointerCapture" in HTMLElement.prototype ? false : this.state.selectionElement || this.state.newElement || this.state.selectedElementsAreBeingDragged || this.state.resizingElement
     );
     const firstSelectedElement = selectedElements[0];
     const showShapeSwitchPanel = editorJotaiStore.get(convertElementTypePopupAtom)?.type === "panel";
-    return /* @__PURE__ */ jsx151(
+    return /* @__PURE__ */ jsx149(
       "div",
       {
         translate: "no",
-        className: clsx62("excalidraw excalidraw-container notranslate", {
+        className: clsx61("excalidraw excalidraw-container notranslate", {
           "excalidraw--view-mode": this.state.viewModeEnabled || this.state.openDialog?.name === "elementLinkSelector",
           "excalidraw--mobile": this.editorInterface.formFactor === "phone"
         }),
@@ -37324,21 +36968,21 @@ var App = class _App extends React47.Component {
         onKeyDown: this.props.handleKeyboardGlobally ? void 0 : this.onKeyDown,
         onPointerEnter: this.toggleOverscrollBehavior,
         onPointerLeave: this.toggleOverscrollBehavior,
-        children: /* @__PURE__ */ jsx151(AppContext.Provider, { value: this, children: /* @__PURE__ */ jsx151(AppPropsContext.Provider, { value: this.props, children: /* @__PURE__ */ jsx151(
+        children: /* @__PURE__ */ jsx149(AppContext.Provider, { value: this, children: /* @__PURE__ */ jsx149(AppPropsContext.Provider, { value: this.props, children: /* @__PURE__ */ jsx149(
           ExcalidrawContainerContext.Provider,
           {
             value: this.excalidrawContainerValue,
-            children: /* @__PURE__ */ jsx151(EditorInterfaceContext.Provider, { value: this.editorInterface, children: /* @__PURE__ */ jsx151(ExcalidrawSetAppStateContext.Provider, { value: this.setAppState, children: /* @__PURE__ */ jsx151(ExcalidrawAppStateContext.Provider, { value: this.state, children: /* @__PURE__ */ jsxs87(
+            children: /* @__PURE__ */ jsx149(EditorInterfaceContext.Provider, { value: this.editorInterface, children: /* @__PURE__ */ jsx149(ExcalidrawSetAppStateContext.Provider, { value: this.setAppState, children: /* @__PURE__ */ jsx149(ExcalidrawAppStateContext.Provider, { value: this.state, children: /* @__PURE__ */ jsxs86(
               ExcalidrawElementsContext.Provider,
               {
                 value: this.scene.getNonDeletedElements(),
                 children: [
-                  /* @__PURE__ */ jsxs87(
+                  /* @__PURE__ */ jsxs86(
                     ExcalidrawActionManagerContext.Provider,
                     {
                       value: this.actionManager,
                       children: [
-                        /* @__PURE__ */ jsx151(
+                        /* @__PURE__ */ jsx149(
                           LayerUI_default,
                           {
                             canvas: this.canvas,
@@ -37364,10 +37008,10 @@ var App = class _App extends React47.Component {
                             children: this.props.children
                           }
                         ),
-                        /* @__PURE__ */ jsx151("div", { className: "excalidraw-textEditorContainer" }),
-                        /* @__PURE__ */ jsx151("div", { className: "excalidraw-contextMenuContainer" }),
-                        /* @__PURE__ */ jsx151("div", { className: "excalidraw-eye-dropper-container" }),
-                        /* @__PURE__ */ jsx151(
+                        /* @__PURE__ */ jsx149("div", { className: "excalidraw-textEditorContainer" }),
+                        /* @__PURE__ */ jsx149("div", { className: "excalidraw-contextMenuContainer" }),
+                        /* @__PURE__ */ jsx149("div", { className: "excalidraw-eye-dropper-container" }),
+                        /* @__PURE__ */ jsx149(
                           SVGLayer,
                           {
                             trails: [
@@ -37377,7 +37021,7 @@ var App = class _App extends React47.Component {
                             ]
                           }
                         ),
-                        selectedElements.length === 1 && this.state.openDialog?.name !== "elementLinkSelector" && this.state.showHyperlinkPopup && /* @__PURE__ */ jsx151(
+                        selectedElements.length === 1 && this.state.openDialog?.name !== "elementLinkSelector" && this.state.showHyperlinkPopup && /* @__PURE__ */ jsx149(
                           Hyperlink,
                           {
                             element: firstSelectedElement,
@@ -37389,12 +37033,12 @@ var App = class _App extends React47.Component {
                           },
                           firstSelectedElement.id
                         ),
-                        this.props.aiEnabled !== false && selectedElements.length === 1 && isMagicFrameElement(firstSelectedElement) && /* @__PURE__ */ jsx151(
+                        this.props.aiEnabled !== false && selectedElements.length === 1 && isMagicFrameElement(firstSelectedElement) && /* @__PURE__ */ jsx149(
                           ElementCanvasButtons,
                           {
                             element: firstSelectedElement,
                             elementsMap,
-                            children: /* @__PURE__ */ jsx151(
+                            children: /* @__PURE__ */ jsx149(
                               ElementCanvasButton,
                               {
                                 title: t("labels.convertToCode"),
@@ -37408,13 +37052,13 @@ var App = class _App extends React47.Component {
                             )
                           }
                         ),
-                        selectedElements.length === 1 && isIframeElement(firstSelectedElement) && firstSelectedElement.customData?.generationData?.status === "done" && /* @__PURE__ */ jsxs87(
+                        selectedElements.length === 1 && isIframeElement(firstSelectedElement) && firstSelectedElement.customData?.generationData?.status === "done" && /* @__PURE__ */ jsxs86(
                           ElementCanvasButtons,
                           {
                             element: firstSelectedElement,
                             elementsMap,
                             children: [
-                              /* @__PURE__ */ jsx151(
+                              /* @__PURE__ */ jsx149(
                                 ElementCanvasButton,
                                 {
                                   title: t("labels.copySource"),
@@ -37423,7 +37067,7 @@ var App = class _App extends React47.Component {
                                   onChange: () => this.onIframeSrcCopy(firstSelectedElement)
                                 }
                               ),
-                              /* @__PURE__ */ jsx151(
+                              /* @__PURE__ */ jsx149(
                                 ElementCanvasButton,
                                 {
                                   title: "Enter fullscreen",
@@ -37460,7 +37104,7 @@ var App = class _App extends React47.Component {
                             ]
                           }
                         ),
-                        this.state.toast !== null && /* @__PURE__ */ jsx151(
+                        this.state.toast !== null && /* @__PURE__ */ jsx149(
                           Toast,
                           {
                             message: this.state.toast.message,
@@ -37469,7 +37113,7 @@ var App = class _App extends React47.Component {
                             closable: this.state.toast.closable
                           }
                         ),
-                        this.state.contextMenu && /* @__PURE__ */ jsx151(
+                        this.state.contextMenu && /* @__PURE__ */ jsx149(
                           ContextMenu,
                           {
                             items: this.state.contextMenu.items,
@@ -37484,7 +37128,7 @@ var App = class _App extends React47.Component {
                             }
                           }
                         ),
-                        /* @__PURE__ */ jsx151(
+                        /* @__PURE__ */ jsx149(
                           StaticCanvas_default,
                           {
                             canvas: this.canvas,
@@ -37512,7 +37156,7 @@ var App = class _App extends React47.Component {
                             }
                           }
                         ),
-                        this.state.newElement && /* @__PURE__ */ jsx151(
+                        this.state.newElement && /* @__PURE__ */ jsx149(
                           NewElementCanvas_default,
                           {
                             appState: this.state,
@@ -37536,7 +37180,7 @@ var App = class _App extends React47.Component {
                             }
                           }
                         ),
-                        /* @__PURE__ */ jsx151(
+                        /* @__PURE__ */ jsx149(
                           InteractiveCanvas_default,
                           {
                             app: this,
@@ -37569,7 +37213,7 @@ var App = class _App extends React47.Component {
                             focusedElement,
                             allElementsMap
                           ) : null;
-                          return originShape && this.props.onQuickAddHandleActivate && /* @__PURE__ */ jsx151(
+                          return originShape && /* @__PURE__ */ jsx149(
                             QuickAddHandles,
                             {
                               originShape,
@@ -37578,7 +37222,7 @@ var App = class _App extends React47.Component {
                             }
                           );
                         })(),
-                        this.state.userToFollow && /* @__PURE__ */ jsx151(
+                        this.state.userToFollow && /* @__PURE__ */ jsx149(
                           FollowMode_default,
                           {
                             width: this.state.width,
@@ -37588,14 +37232,14 @@ var App = class _App extends React47.Component {
                           }
                         ),
                         this.renderFrameNames(),
-                        this.state.activeLockedId && /* @__PURE__ */ jsx151(
+                        this.state.activeLockedId && /* @__PURE__ */ jsx149(
                           UnlockPopup_default,
                           {
                             app: this,
                             activeLockedId: this.state.activeLockedId
                           }
                         ),
-                        showShapeSwitchPanel && /* @__PURE__ */ jsx151(ConvertElementTypePopup_default, { app: this })
+                        showShapeSwitchPanel && /* @__PURE__ */ jsx149(ConvertElementTypePopup_default, { app: this })
                       ]
                     }
                   ),
@@ -37770,7 +37414,7 @@ var App = class _App extends React47.Component {
     }
     if (isBrave() && !isMeasureTextSupported()) {
       this.setState({
-        errorMessage: /* @__PURE__ */ jsx151(BraveMeasureTextError_default, {})
+        errorMessage: /* @__PURE__ */ jsx149(BraveMeasureTextError_default, {})
       });
     }
   }
@@ -38840,9 +38484,6 @@ var App = class _App extends React47.Component {
       if (isEraserActive(this.state)) {
         this.handleEraser(event, pointerCoords);
         return;
-      }
-      if (this.state.activeTool.type === "laser") {
-        this.laserTrails.addPointToPath(pointerCoords.x, pointerCoords.y);
       }
       const [gridX, gridY] = getGridPoint(
         pointerCoords.x,
@@ -40087,10 +39728,6 @@ var App = class _App extends React47.Component {
         const linearElements = this.scene.getSelectedElements(this.state).filter(isArrowElement);
         bindOrUnbindBindingElements(linearElements, this.scene, this.state);
       }
-      if (activeTool.type === "laser") {
-        this.laserTrails.endPath();
-        return;
-      }
       const drawnElement = this.state.newElement;
       const containerToEdit = drawnElement && isTextBindableContainer(drawnElement, false) ? drawnElement : null;
       const containerIdToEdit = containerToEdit?.id;
@@ -40230,12 +39867,14 @@ var createTestHook = () => {
     });
   }
 };
-createTestHook();
+if (typeof window !== "undefined") {
+  createTestHook();
+}
 var App_default = App;
 
 // components/InitializeApp.tsx
 import { useEffect as useEffect48, useState as useState42 } from "react";
-import { jsx as jsx152 } from "react/jsx-runtime";
+import { jsx as jsx150 } from "react/jsx-runtime";
 var InitializeApp = (props) => {
   const [loading, setLoading] = useState42(true);
   useEffect48(() => {
@@ -40246,19 +39885,19 @@ var InitializeApp = (props) => {
     const currentLang2 = languages.find((lang) => lang.code === props.langCode) || defaultLang;
     updateLang();
   }, [props.langCode]);
-  return loading ? /* @__PURE__ */ jsx152(LoadingMessage, { theme: props.theme }) : props.children;
+  return loading ? /* @__PURE__ */ jsx150(LoadingMessage, { theme: props.theme }) : props.children;
 };
 
 // components/footer/FooterCenter.tsx
-import clsx63 from "clsx";
-import { jsx as jsx153 } from "react/jsx-runtime";
+import clsx62 from "clsx";
+import { jsx as jsx151 } from "react/jsx-runtime";
 var FooterCenter = ({ children }) => {
   const { FooterCenterTunnel } = useTunnels();
   const appState = useUIAppState();
-  return /* @__PURE__ */ jsx153(FooterCenterTunnel.In, { children: /* @__PURE__ */ jsx153(
+  return /* @__PURE__ */ jsx151(FooterCenterTunnel.In, { children: /* @__PURE__ */ jsx151(
     "div",
     {
-      className: clsx63("footer-center zen-mode-transition", {
+      className: clsx62("footer-center zen-mode-transition", {
         "layer-ui__wrapper__footer-left--transition-bottom": appState.zenModeEnabled
       }),
       children
@@ -40269,8 +39908,8 @@ var FooterCenter_default = FooterCenter;
 FooterCenter.displayName = "FooterCenter";
 
 // components/live-collaboration/LiveCollaborationTrigger.tsx
-import clsx64 from "clsx";
-import { jsx as jsx154, jsxs as jsxs88 } from "react/jsx-runtime";
+import clsx63 from "clsx";
+import { jsx as jsx152, jsxs as jsxs87 } from "react/jsx-runtime";
 var LiveCollaborationTrigger2 = ({
   isCollaborating,
   onSelect,
@@ -40279,18 +39918,18 @@ var LiveCollaborationTrigger2 = ({
 }) => {
   const appState = useUIAppState();
   const showIconOnly = editorInterface?.formFactor !== "desktop" || appState.width < MQ_MIN_WIDTH_DESKTOP;
-  return /* @__PURE__ */ jsxs88(
+  return /* @__PURE__ */ jsxs87(
     Button,
     {
       ...rest,
-      className: clsx64("collab-button", { active: isCollaborating }),
+      className: clsx63("collab-button", { active: isCollaborating }),
       type: "button",
       onSelect,
       style: { position: "relative", width: showIconOnly ? void 0 : "auto" },
       title: t("labels.liveCollaboration"),
       children: [
         showIconOnly ? share : t("labels.share"),
-        appState.collaborators.size > 0 && /* @__PURE__ */ jsx154("div", { className: "CollabButton-collaborators", children: appState.collaborators.size })
+        appState.collaborators.size > 0 && /* @__PURE__ */ jsx152("div", { className: "CollabButton-collaborators", children: appState.collaborators.size })
       ]
     }
   );
@@ -40299,15 +39938,15 @@ var LiveCollaborationTrigger_default = LiveCollaborationTrigger2;
 LiveCollaborationTrigger2.displayName = "LiveCollaborationTrigger";
 
 // components/ExcalidrawLogo.tsx
-import { jsx as jsx155, jsxs as jsxs89 } from "react/jsx-runtime";
-var LogoIcon = () => /* @__PURE__ */ jsx155(
+import { jsx as jsx153, jsxs as jsxs88 } from "react/jsx-runtime";
+var LogoIcon = () => /* @__PURE__ */ jsx153(
   "svg",
   {
     viewBox: "0 0 40 40",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
     className: "ExcalidrawLogo-icon",
-    children: /* @__PURE__ */ jsx155(
+    children: /* @__PURE__ */ jsx153(
       "path",
       {
         d: "M39.9 32.889a.326.326 0 0 0-.279-.056c-2.094-3.083-4.774-6-7.343-8.833l-.419-.472a.212.212 0 0 0-.056-.139.586.586 0 0 0-.167-.111l-.084-.083-.056-.056c-.084-.167-.28-.278-.475-.167-.782.39-1.507.973-2.206 1.528-.92.722-1.842 1.445-2.708 2.25a8.405 8.405 0 0 0-.977 1.028c-.14.194-.028.361.14.444-.615.611-1.23 1.223-1.843 1.861a.315.315 0 0 0-.084.223c0 .083.056.166.111.194l1.09.833v.028c1.535 1.528 4.244 3.611 7.12 5.861.418.334.865.667 1.284 1 .195.223.39.473.558.695.084.11.28.139.391.055.056.056.14.111.196.167a.398.398 0 0 0 .167.056.255.255 0 0 0 .224-.111.394.394 0 0 0 .055-.167c.029 0 .028.028.056.028a.318.318 0 0 0 .224-.084l5.082-5.528a.309.309 0 0 0 0-.444Zm-14.63-1.917a.485.485 0 0 0 .111.14c.586.5 1.2 1 1.843 1.555l-2.569-1.945-.251-.166c-.056-.028-.112-.084-.168-.111l-.195-.167.056-.056.055-.055.112-.111c.866-.861 2.346-2.306 3.1-3.028-.81.805-2.43 3.167-2.095 3.944Zm8.767 6.89-2.122-1.612a44.713 44.713 0 0 0-2.625-2.5c1.145.861 2.122 1.611 2.262 1.75 1.117.972 1.06.806 1.815 1.445l.921.666a1.06 1.06 0 0 1-.251.25Zm.558.416-.056-.028c.084-.055.168-.111.252-.194l-.196.222ZM1.089 5.75c.055.361.14.722.195 1.056.335 1.833.67 3.5 1.284 4.75l.252.944c.084.361.223.806.363.917 1.424 1.25 3.602 3.11 5.947 4.889a.295.295 0 0 0 .363 0s0 .027.028.027a.254.254 0 0 0 .196.084.318.318 0 0 0 .223-.084c2.988-3.305 5.221-6.027 6.813-8.305.112-.111.14-.278.14-.417.111-.111.195-.25.307-.333.111-.111.111-.306 0-.39l-.028-.027c0-.055-.028-.139-.084-.167-.698-.666-1.2-1.138-1.731-1.638-.922-.862-1.871-1.75-3.881-3.75l-.028-.028c-.028-.028-.056-.056-.112-.056-.558-.194-1.703-.389-3.127-.639C6.087 2.223 3.21 1.723.614.944c0 0-.168 0-.196.028l-.083.084c-.028.027-.056.055-.224.11h.056-.056c.028.167.028.278.084.473 0 .055.112.5.112.555l.782 3.556Zm15.496 3.278-.335-.334c.084.112.196.195.335.334Zm-3.546 4.666-.056.056c0-.028.028-.056.056-.056Zm-2.038-10c.168.167.866.834 1.033.973-.726-.334-2.54-1.167-3.379-1.445.838.167 1.983.334 2.346.472ZM1.424 2.306c.419.722.754 3.222 1.089 5.666-.196-.778-.335-1.555-.503-2.278-.251-1.277-.503-2.416-.838-3.416.056 0 .14 0 .252.028Zm-.168-.584c-.112 0-.223-.028-.307-.028 0-.027 0-.055-.028-.055.14 0 .223.028.335.083Zm-1.089.222c0-.027 0-.027 0 0ZM39.453 1.333c.028-.11-.558-.61-.363-.639.42-.027.42-.666 0-.666-.558.028-1.144.166-1.675.25-.977.194-1.982.389-2.96.61-2.205.473-4.383.973-6.561 1.557-.67.194-1.424.333-2.066.666-.224.111-.196.333-.084.472-.056.028-.084.028-.14.056-.195.028-.363.056-.558.083-.168.028-.252.167-.224.334 0 .027.028.083.028.11-1.173 1.556-2.485 3.195-3.909 4.945-1.396 1.611-2.876 3.306-4.356 5.056-4.719 5.5-10.052 11.75-15.943 17.25a.268.268 0 0 0 0 .389c.028.027.056.055.084.055-.084.084-.168.14-.252.222-.056.056-.084.111-.084.167a.605.605 0 0 0-.111.139c-.112.111-.112.305.028.389.111.11.307.11.39-.028.029-.028.029-.056.056-.056a.44.44 0 0 1 .615 0c.335.362.67.723.977 1.028l-.698-.583c-.112-.111-.307-.083-.39.028-.113.11-.085.305.027.389l7.427 6.194c.056.056.112.056.196.056s.14-.028.195-.084l.168-.166c.028.027.083.027.111.027.084 0 .14-.027.196-.083 10.052-10.055 18.15-17.639 27.42-24.417.083-.055.111-.166.111-.25.112 0 .196-.083.251-.194 1.704-5.194 2.039-9.806 2.15-12.083v-.028c0-.028.028-.056.028-.083.028-.056.028-.084.028-.084a1.626 1.626 0 0 0-.111-1.028ZM21.472 9.5c.446-.5.893-1.028 1.34-1.5-2.876 3.778-7.65 9.583-14.408 16.5 4.607-5.083 9.242-10.333 13.068-15ZM5.193 35.778h.084-.084Zm3.462 3.194c-.027-.028-.027-.028 0-.028v.028Zm4.16-3.583c.224-.25.448-.472.699-.722 0 0 0 .027.028.027-.252.223-.475.445-.726.695Zm1.146-1.111c.14-.14.279-.334.446-.5l.028-.028c1.648-1.694 3.351-3.389 5.082-5.111l.028-.028c.419-.333.921-.694 1.368-1.028a379.003 379.003 0 0 0-6.952 6.695ZM24.794 6.472c-.921 1.195-1.954 2.778-2.82 4.028-2.736 3.944-11.532 13.583-11.727 13.75a1976.983 1976.983 0 0 1-8.042 7.639l-.167.167c-.14-.167-.14-.417.028-.556C14.49 19.861 22.03 10.167 25.074 5.917c-.084.194-.14.36-.28.555Zm4.83 5.695c-1.116-.64-1.646-1.64-1.34-2.611l.084-.334c.028-.083.084-.194.14-.277.307-.5.754-.917 1.257-1.167.027 0 .055 0 .083-.028-.028-.056-.028-.139-.028-.222.028-.167.14-.278.335-.278.335 0 1.369.306 1.76.639.111.083.223.194.335.305.14.167.363.445.474.667.056.028.112.306.196.445.056.222.111.472.084.694-.028.028 0 .194-.028.194a2.668 2.668 0 0 1-.363 1.028c-.028.028-.028.056-.056.084l-.028.027c-.14.223-.335.417-.53.556-.643.444-1.369.583-2.095.389 0 0-.195-.084-.28-.111Zm8.154-.834a39.098 39.098 0 0 1-.893 3.167c0 .028-.028.083 0 .111-.056 0-.084.028-.14.056-2.206 1.61-4.356 3.305-6.506 5.028 1.843-1.64 3.686-3.306 5.613-4.945.558-.5.949-1.139 1.06-1.861l.28-1.667v-.055c.14-.334.67-.195.586.166Z",
@@ -40316,7 +39955,7 @@ var LogoIcon = () => /* @__PURE__ */ jsx155(
     )
   }
 );
-var LogoText = () => /* @__PURE__ */ jsxs89(
+var LogoText = () => /* @__PURE__ */ jsxs88(
   "svg",
   {
     viewBox: "0 0 450 55",
@@ -40324,28 +39963,28 @@ var LogoText = () => /* @__PURE__ */ jsxs89(
     fill: "none",
     className: "ExcalidrawLogo-text",
     children: [
-      /* @__PURE__ */ jsx155(
+      /* @__PURE__ */ jsx153(
         "path",
         {
           d: "M429.27 96.74c2.47-1.39 4.78-3.02 6.83-4.95 1.43-1.35 2.73-2.86 3.81-4.51-.66.9-1.4 1.77-2.23 2.59-2.91 2.84-5.72 5.09-8.42 6.87h.01ZM343.6 69.36c.33 3.13.58 6.27.79 9.4.09 1.37.18 2.75.25 4.12-.12-4.46-.27-8.93-.5-13.39-.11-2.08-.24-4.16-.4-6.24-.06 1.79-.11 3.85-.13 6.11h-.01ZM378.47 98.34c.01-.37.07-1.13.01-6.51-.11 1.9-.22 3.81-.31 5.71-.07 1.42-.22 2.91-.16 4.35.39.03.78.07 1.17.1-.92-.85-.76-2.01-.72-3.66l.01.01ZM344.09 86.12c-.09-2.41-.22-4.83-.39-7.24v12.21c.15-.05.32-.09.47-.14.05-1.61-.03-3.23-.09-4.83h.01ZM440.69 66.79c-.22-.34-.45-.67-.69-.99-3.71-4.87-9.91-7.14-15.65-8.55-1.05-.26-2.12-.49-3.18-.71 2.29.59 4.48 1.26 6.64 2.02 7.19 2.54 10.57 5.41 12.88 8.23ZM305.09 72.46l1.2 3.6c.84 2.53 1.67 5.06 2.46 7.61.24.78.5 1.57.73 2.36.22-.04.44-.08.67-.12a776.9 776.9 0 0 1-5.01-13.57c-.02.04-.03.09-.05.13v-.01ZM345.49 90.25v.31c1.48-.42 3.05-.83 4.66-1.2-1.56.25-3.12.52-4.66.89ZM371.02 90.22c0-.57-.04-1.14-.11-1.71-.06-.02-.12-.04-.19-.05-.21-.05-.43-.08-.65-.11.42.16.74.88.95 1.87ZM398.93 54.23c-.13 0-.27-.01-.4-.02l.03.4c.11-.15.23-.27.37-.38ZM401.57 62.28v-.15c-1.22-.24-2.86-.61-3.23-1.25-.09-.15-.18-.51-.27-.98-.09.37-.2.73-.33 1.09 1.24.56 2.52.98 3.83 1.29ZM421.73 88.68c-2.97 1.65-6.28 3.12-9.69 3.68v.18c4.72-.14 11.63-3.85 16.33-8.38-2.04 1.75-4.33 3.24-6.63 4.53l-.01-.01ZM411.28 80.92c-.05-1.2-.09-2.4-.15-3.6-.21 5.66-.46 11.38-.47 14.51.24-.02.48-.04.71-.07.15-3.61.05-7.23-.09-10.83v-.01Z",
           transform: "translate(-144.023 -51.76)"
         }
       ),
-      /* @__PURE__ */ jsx155(
+      /* @__PURE__ */ jsx153(
         "path",
         {
           d: "M425.38 67.41c-3.5-1.45-7.19-2.57-14.06-3.62.09 1.97.06 4.88-.03 8.12.03.04.06.09.06.15.19 1.36.28 2.73.37 4.1.25 3.77.39 7.55.41 11.33 0 1.38-.01 2.76-.07 4.13 1.4-.25 2.78-.65 4.12-1.15 4.07-1.5 7.94-3.78 11.28-6.54 2.33-1.92 5.13-4.49 5.88-7.58.63-3.53-2.45-6.68-7.97-8.96l.01.02ZM411.35 92.53v-.06l-.34.03c.11.01.22.03.34.03ZM314.26 64.06c-.23-.59-.47-1.17-.7-1.75.57 1.62 1.11 3.25 1.6 4.9l.15.54 2.35 6.05c.32.82.66 1.64.98 2.46-1.38-4.1-2.83-8.17-4.39-12.2h.01ZM156.82 103.07c-.18.13-.38.23-.58.33 1.32-.03 2.66-.2 3.93-.34.86-.09 1.72-.22 2.58-.33-2.12.1-4.12.17-5.94.34h.01ZM210.14 68.88s.03.04.05.07c.18-.31.39-.64.58-.96-.21.3-.42.6-.64.89h.01ZM201.65 82.8c-.5.77-1.02 1.56-1.49 2.37 1.11-1.55 2.21-3.1 3.2-4.59-.23.23-.49.51-.75.79-.32.47-.65.95-.96 1.43ZM194.03 98.66c-.33-.4-.65-.84-1.05-1.17-.24-.2-.07-.49.17-.56-.23-.26-.42-.5-.63-.75 1.51-2.55 3.93-5.87 6.4-9.28-.17-.08-.29-.28-.2-.49.04-.09.09-.17.13-.26-1.21 1.78-2.42 3.55-3.61 5.33-.87 1.31-1.74 2.64-2.54 4-.29.5-.63 1.04-.87 1.61.81.65 1.63 1.27 2.47 1.88-.09-.11-.18-.21-.27-.32v.01ZM307.79 82.93c-1-3.17-2.05-6.32-3.1-9.48-1.62 4.08-3.69 9.17-6.16 15.19 3.32-1.04 6.77-1.87 10.27-2.5-.32-1.08-.67-2.15-1.01-3.21ZM149.5 80.7c.05-1.71.04-3.43 0-5.14-.1 2.26-.16 4.51-.22 6.77-.02.73-.03 1.46-.04 2.19.14-1.27.2-2.55.24-3.82h.02ZM228.98 98.3c.39 1.25.91 3.03.94 3.91.06-.03.12-.07.17-.1.08-1.29-.55-2.65-1.11-3.81ZM307.72 53.36c.81.5 1.53 1.04 2.07 1.49-.38-.8-.78-1.58-1.21-2.35-.17.03-.34.06-.51.11-.43.12-.86.26-1.29.41.35-.01.53.1.94.34ZM283.69 96.14c3.91-7.25 6.89-13.35 8.88-18.15l1.1-2.66c-1.27 2.64-2.56 5.27-3.83 7.9-1.53 3.15-3.06 6.31-4.58 9.47-.87 1.81-1.76 3.62-2.54 5.47.04.02.07.04.11.07.05.05.1.09.15.14.05-.73.27-1.48.71-2.24ZM289.92 103.23s-.04.01-.05.03c0-.02.04-.03.05-.04.05-.05.11-.1.16-.15l.21-.21c-.55 0-1.5-.27-2.55-.72.4.26.8.51 1.22.74.24.13.48.26.73.37.05.02.1.03.14.05a.27.27 0 0 1 .08-.07h.01ZM269.23 68.49c-.39-.19-.82-.48-1.33-.87-3.06-1.56-6.31-2.78-9.36-2.35-3.5.49-5.7 1.11-7.74 2.44 5.71-2.6 12.82-2.07 18.44.79l-.01-.01ZM177.87 53.69l1.06.03c-.96-.22-2-.25-2.89-.3-4.95-.26-9.99.33-14.86 1.19-2.44.43-4.88.95-7.28 1.59 9.09-1.76 15.69-2.77 23.97-2.51ZM219.85 55.51c-.18.12-.36.27-.56.45-.45.53-.86 1.11-1.26 1.66-1.91 2.61-3.71 5.31-5.57 7.95l-.12.18 8.05-10.11c-.18-.05-.36-.1-.55-.13h.01ZM510.71 54.1c.12-.15.29-.3.53-.45.69-.4 3.72-.63 5.87-.74-.36-.02-.73-.04-1.09-.05-1.84-.03-3.67.09-5.49.35.05.3.12.59.18.88v.01ZM510.76 86.02c1.37-3.07 2.49-6.27 3.57-9.46.55-1.64 1.12-3.3 1.6-4.97-1.59 4.01-3.67 9.14-6.2 15.3.24-.08.5-.14.74-.22.1-.22.19-.44.29-.65ZM566.95 75.76c.11-.02.23.03.31.11-.05-.13-.09-.26-.14-.39-.05.09-.11.18-.17.28ZM511.33 86.41c3.08-.89 6.24-1.62 9.46-2.14-1.51-3.98-2.98-7.96-4.39-11.87-.05.15-.09.31-.14.46-1.02 3.32-2.15 6.61-3.39 9.85-.48 1.25-.98 2.49-1.53 3.7h-.01ZM578.24 74.45c.11-.44.23-.87.35-1.31-.31.7-.64 1.39-.97 2.08.09.21.19.4.28.61.12-.46.23-.92.35-1.38h-.01ZM520.62 53.11c-.09 0-.18-.01-.28-.02.38.34.29 1.08.93 2.53l6.65 17.15c2.2 5.68 4.69 11.36 7.41 16.87l1.06 2.17c-2.95-7.05-5.92-14.08-8.87-21.13-1.58-3.79-3.16-7.59-4.7-11.4-.78-1.92-1.73-3.89-2.25-5.91-.03-.1 0-.19.04-.26h.01ZM578.78 77.87c1.45-5.77 3.07-10.43 3.58-13.36.05-.34.16-.88.31-1.55-.67 1.79-1.37 3.56-2.08 5.33-.12.43-.23.86-.35 1.29-.65 2.43-1.29 4.86-1.9 7.3.14.33.29.65.43 1l.01-.01ZM545.3 94.66c.02-.44.03-.83.05-1.12.02-1.01.05-2.02.11-3.02.03-6.66-.46-14.33-1.46-22.8-.13-.42-.27-1.24-.56-2.89 0-.02 0-.04-.01-.06.62 6.61.95 13.25 1.32 19.87.17 3.08.33 6.16.52 9.23.02.25.03.52.04.78l-.01.01ZM580.77 102.81c.13.2.27.38.37.49.27-.11.53-.22.8-.32-.43.09-.82.05-1.17-.16v-.01ZM530.48 104.07h.33c-.36-.13-.71-.32-1.04-.56.14.24.3.47.45.7.06-.08.14-.13.26-.13v-.01ZM542.63 58.82c.06.23.11.47.15.71.14-.33.36-.62.7-.86-.28.05-.57.11-.85.15ZM583.81 57.87c.15-.7.29-1.41.42-2.11-.14.45-.28.9-.42 1.34-.46 1.44-.89 2.89-1.31 4.34.44-1.19.88-2.37 1.31-3.57ZM523.62 91.48c-4.66 1.17-9.05 2.89-14.02 5.27 4.65-1.84 9.48-3.29 14.28-4.63-.09-.22-.17-.41-.26-.64ZM460.64 78.3c-.04-2.9-.11-5.81-.28-8.71-.1-1.68-.17-3.43-.5-5.09-.07.02-.14.03-.2.05.3 6.54.45 12.17.51 17.12.17-.07.34-.14.51-.2 0-1.06-.01-2.11-.03-3.17h-.01ZM470.63 63.24c-3.38-.26-6.81.32-10.1 1.1.41 2.01.47 4.14.57 6.18.18 3.55.25 7.11.27 10.67 3.31-1.38 6.5-3.12 9.3-5.35 1.96-1.56 3.86-3.41 5.02-5.66.73-1.41 1.19-3.22.26-4.65-1.09-1.7-3.46-2.14-5.32-2.29ZM460.29 63.68c1-.24 2.01-.46 3.04-.65-1.15.16-2.37.38-3.71.69v.13c.07-.02.15-.04.22-.05.11-.13.3-.18.45-.11v-.01ZM457.24 100.96c.43-.03.86-.07 1.29-.11.14-.49.27-.99.38-1.49-.44.7-1 1.23-1.67 1.6ZM482.88 104.98c-.18.23-.36.38-.55.47.14.09.27.19.4.28a70.76 70.76 0 0 0 4.37-4.63c.76-.89 1.52-1.81 2.19-2.77-.3-.27-.61-.53-.92-.79-.07 1.94-4.62 6.32-5.49 7.45v-.01Z",
           transform: "translate(-144.023 -51.76)"
         }
       ),
-      /* @__PURE__ */ jsx155(
+      /* @__PURE__ */ jsx153(
         "path",
         {
           d: "M474.36 63.31c-.4-.16-.84-.27-1.29-.37 1.56.42 3.08 1.22 3.76 2.74.62 1.4.32 2.95-.28 4.32.7-1.22.94-2.34.74-3.47-.24-1.33-1.19-2.54-2.93-3.21v-.01ZM477.34 89.18c-1.2-.81-2.4-1.62-3.6-2.42-.14.1-.26.19-.4.29 1.4.67 2.73 1.39 4 2.13ZM465.88 93.85c.37.25.74.5 1.1.75.46.32.92.65 1.38.97-1.57-1.2-2.01-1.61-2.49-1.72h.01ZM574.92 90.06c-2.28-5.21-4.93-11.13-5.67-12.26-.1-.15-1.57-3.01-1.63-3.08 0 0-.01.02-.02.02.4 1.37 1.09 2.69 1.65 3.99 2.14 4.95 4.36 9.86 6.67 14.73.6 1.26 1.21 2.52 1.83 3.78-.75-2.01-1.64-4.45-2.83-7.18ZM448.73 65.29c.1.2.22.38.34.57.22-.02.43-.06.65-.08v-.08c-.14-.05-.25 0-.99-.41ZM460.16 94.81c-.02.31-.06.59-.1.89-.03 1.71-.33 3.43-.79 5.07.15-.02.3-.03.45-.05.01-.04.02-.08.03-.11.09-.34.15-.69.2-1.03.17-1.07.25-2.16.33-3.24.05-.69.08-1.39.12-2.08-.27.1-.27.26-.24.57v-.02Z",
           transform: "translate(-144.023 -51.76)"
         }
       ),
-      /* @__PURE__ */ jsx155(
+      /* @__PURE__ */ jsx153(
         "path",
         {
           d: "m328.67 98.12-3.22-6.58c-1.29-2.63-2.53-5.29-3.72-7.97-.25-.85-.52-1.69-.79-2.53-.81-2.57-1.67-5.12-2.55-7.67-1.92-5.53-3.9-11.08-6.32-16.41-.72-1.58-1.46-3.44-2.63-4.79-.03-.17-.16-.29-.34-.36a.282.282 0 0 0-.23-.04c-.06-.01-.12 0-.18.01-.74.06-1.5.38-2.19.61-2.22.77-4.4 1.64-6.63 2.38-.03-.08-.06-.16-.09-.25-.15-.42-.82-.24-.67.19.03.09.07.19.1.28l-.18.06c-.36.11-.28.6 0 .68.18 1.18.63 2.36.98 3.49.03.09.06.17.08.26-.08.23-.17.46-.24.64-.37.98-.79 1.94-1.21 2.9-1.27 2.89-2.62 5.75-3.98 8.6-3.18 6.67-6.44 13.31-9.64 19.97-1.08 2.25-2.2 4.5-3.15 6.81-.13.32.24.5.5.37 1.34 1.33 2.84 2.5 4.4 3.57.65.44 1.31.87 2.01 1.24.4.22.86.48 1.33.5.24.01.35-.19.33-.37.11-.1.21-.21.28-.28.41-.41.81-.84 1.2-1.26.85-.92 1.69-1.87 2.5-2.84 6.31-2.34 12.6-4.31 18.71-5.84 2.14 5.3 3.43 8.43 3.97 9.58.55 1.05 1.15 1.88 1.82 2.52 1.32.56 6.96-.03 9.23-1.96.87-1.28 1.19-2.67.93-4.15-.09-.5-.22-.95-.4-1.33l-.01-.03Zm-20.09-45.61c.43.77.83 1.56 1.21 2.35-.54-.45-1.27-.99-2.07-1.49-.42-.24-.6-.35-.94-.34.43-.15.85-.29 1.29-.41.17-.05.34-.08.51-.11Zm-25.86 45.66c.78-1.85 1.67-3.66 2.54-5.47 1.51-3.16 3.05-6.31 4.58-9.47 1.28-2.63 2.56-5.26 3.83-7.9l-1.1 2.66c-1.99 4.79-4.97 10.9-8.88 18.15-.43.76-.66 1.51-.71 2.24-.05-.05-.1-.09-.15-.14a.259.259 0 0 0-.11-.07Zm6.24 4.71c-.42-.23-.82-.48-1.22-.74 1.05.45 2 .72 2.55.72l-.21.21c-.05.05-.11.1-.16.15-.01.01-.04.03-.05.04 0-.02.03-.02.05-.03a.27.27 0 0 0-.08.07c-.05-.02-.1-.03-.14-.05-.25-.1-.49-.24-.73-.37h-.01Zm15.73-29.43c1.05 3.15 2.1 6.31 3.1 9.48.34 1.06.69 2.13 1.01 3.21-3.5.63-6.95 1.46-10.27 2.5 2.48-6.03 4.54-11.11 6.16-15.19Zm4.79 12.57c-.23-.79-.49-1.58-.73-2.36-.79-2.54-1.63-5.08-2.46-7.61l-1.2-3.6c.02-.04.04-.09.05-.13 1.6 4.45 3.28 9 5.01 13.57l-.67.12v.01Zm5.83-18.27-.15-.54c-.49-1.64-1.03-3.28-1.6-4.9.23.58.47 1.17.7 1.75 1.56 4.03 3.01 8.1 4.39 12.2-.33-.82-.67-1.64-.98-2.46l-2.35-6.05h-.01ZM390.43 79.37c-.13-10.43-.22-17.5-.24-19.97-.24-1.6.21-2.88-.65-3.65-.14-.13-.32-.23-.52-.32h.03c.45 0 .45-.69 0-.7-1.75-.03-3.5-.04-5.25-.14-1.38-.08-2.76-.21-4.15-.31-.07 0-.12.01-.17.04-.21-.07-.47.03-.45.31l.03.45c-.11.14-.19.3-.22.5-.21 1.26-.32 13.67-.36 23.59-.32 5.79-.67 11.57-.97 17.36-.09 1.73-.29 3.54-.21 5.3-.39.02-.38.64.04.69v.12c.05.44.74.45.7 0v-.06c1.1.09 2.2.21 3.3.3 1.14.19 2.44.2 3.29.17 1.73-.05 2.92-.05 3.8-.37.45-.05.9-.11 1.35-.17.44-.06.25-.73-.19-.67h-.01c.24-.32.45-.72.62-1.25.66-1.84.41-6.36.34-11.33l-.13-9.9.02.01Zm-12.26 18.17c.09-1.91.2-3.81.31-5.71.06 5.38 0 6.14-.01 6.51-.05 1.65-.21 2.81.72 3.66-.39-.04-.78-.07-1.17-.1-.06-1.44.09-2.93.16-4.35l-.01-.01ZM588.97 53.85c-2.06-.25-3.17-.51-3.76-.6a.3.3 0 0 1 .04-.08c.22-.39-.39-.75-.6-.35-.56 1.02-.9 2.19-1.26 3.29-.61 1.88-1.17 3.78-1.72 5.68-.63 2.19-1.24 4.39-1.83 6.59-.81 2.03-1.67 4.05-2.61 6.03-1.7-3.64-3.11-6.04-4.03-7.57-2.26-3.74-2.85-5.48-3.57-6.08l.31-.09c.43-.12.25-.8-.19-.67-1.06.3-2.12.6-3.17.95-.93.32-1.85.69-2.76 1.07-.13.05-.19.16-.22.27-.04.02-.08.05-.11.07-.04-.06-.07-.12-.11-.18a.354.354 0 0 0-.48-.12c-.16.09-.22.32-.13.48l.33.54c0 .09.02.18.06.28.51 1.16.78 1.38.72 1.47-2.42 3.44-5.41 7.86-6.2 9.1-1.27 1.97-2.01 3.14-2.45 3.84l-.91-6.56-.43-4.1c-.19-1.85-.37-3.23-.53-4.13-.19-1.1-.3-2.15-.45-3.16-.2-1.36-.29-2.06-.47-2.42h.04c.45.02.45-.68 0-.7-3.43-.16-6.81.94-10.17 1.48-.24-.22-.73-.04-.58.32.24.59.33 1.25.43 1.87.17 1.06.29 2.13.4 3.2.32 3.09.53 6.2.74 9.3.44 6.75.77 13.51 1.17 20.26.11 1.95.13 3.96.46 5.89.05.3.37.31.55.14.74 1.71 2.87 1.27 6.13 1.27 1.34 0 2.39.04 2.99-.11.02.32.48.53.63.18 3.61-8.26 7.41-16.46 12.05-24.2.03-.05.04-.1.05-.15.3.73.64 1.45.94 2.16.97 2.26 1.97 4.52 2.98 6.76 2.26 5.03 4.54 10.07 7.09 14.96.47.9.94 1.79 1.47 2.65.2.32.4.67.66.96-.18.25 0 .68.34.54.91-.38 1.82-.75 2.76-1.07 1.04-.35 2.11-.65 3.17-.95.39-.11.28-.66-.07-.68.62-.4.95-.96.87-1.91-.3-3.34.72-7.47.86-8.52l2.14-11.43c1.75-10.74 3.13-17.51 3.23-20.86.02-.49.08-2.84.13-3.24.17-1.25.48-1-4.96-1.65l.03-.02Zm-46.19 5.67c-.04-.24-.09-.48-.15-.71l.85-.15c-.34.24-.56.53-.7.86Zm1.95 25.12c-.36-6.63-.7-13.26-1.32-19.87 0 .02 0 .04.01.06.29 1.65.44 2.47.56 2.89 1 8.46 1.5 16.14 1.46 22.8-.06.99-.1 2-.11 3.02-.01.29-.03.68-.05 1.12-.01-.26-.03-.53-.04-.78-.19-3.08-.35-6.16-.52-9.23l.01-.01Zm36.4 18.66c-.11-.11-.24-.29-.37-.49.35.21.74.26 1.17.16-.27.11-.53.22-.8.32v.01Zm-.89-33.72c.12-.43.23-.86.35-1.29.71-1.77 1.41-3.55 2.08-5.33-.15.68-.26 1.22-.31 1.55-.5 2.94-2.13 7.59-3.58 13.36-.15-.35-.29-.66-.43-1 .61-2.44 1.25-4.87 1.9-7.3l-.01.01Zm3.56-12.48c.14-.44.28-.89.42-1.34-.13.7-.27 1.41-.42 2.11-.43 1.19-.86 2.38-1.31 3.57.42-1.45.85-2.9 1.31-4.34Zm-5.22 16.05c-.11.44-.23.87-.35 1.31-.12.46-.23.92-.35 1.38-.1-.22-.19-.4-.28-.61.34-.69.66-1.38.97-2.08h.01Zm-11.64 2.62c.06-.1.12-.19.17-.28.05.13.09.26.14.39a.398.398 0 0 0-.31-.11Zm2.3 2.98c-.56-1.3-1.25-2.63-1.65-3.99 0 0 .01-.02.02-.02.06.08 1.52 2.93 1.63 3.08.73 1.13 3.38 7.04 5.67 12.26 1.2 2.73 2.08 5.17 2.83 7.18-.62-1.25-1.23-2.51-1.83-3.78-2.31-4.87-4.53-9.78-6.67-14.73ZM275.92 87.03c-1.06-2.18-1.13-3.45-2.44-2.93-1.52.57-2.94 1.3-4.5 2.1-1.4.72-2.68 1.44-3.92 2.12.01-.25-.24-.5-.51-.34-4.8 2.93-12.41 4.7-17.28 1.31-1.98-1.77-3.32-4.15-3.97-5.78-.29-.95-.49-1.94-.63-2.93-.14-3.34 1.58-6.53 3.9-9.12.8-.79 1.68-1.51 2.66-2.12 3.7-2.3 8.22-3.07 12.51-2.51 2.71.35 5.32 1.24 7.71 2.55.39.22.75-.39.35-.6-.18-.1-.37-.18-.55-.27.56.27 1.03.33 1.51.19l-.48.39c-.15.11-.23.3-.13.48.09.15.33.24.48.13 1.3-.97 2.46-2.09 3.45-3.37.37-.29.64-.6.65-.97v-.02c.08-.33-.03-.7-.21-1.08-.31-.87-.98-2.01-2.19-3.26-2.43-2.52-3.79-3.45-5.68-4.26-1.14-.49-3.12-1.06-4.42-1.23-3.28-.42-10.64-1.21-18.18 4.11-7.74 5.46-11.94 12.3-12.23 20.61-.08 2.06.04 3.98.34 5.71.74 4.18 2.57 8 5.44 11.34 4.26 4.99 9.76 7.52 16.34 7.52 4.85 0 9.69-1.77 14.89-4.62.23-.12.45-.23.68-.35 2.19-1.1 4.37-2.23 6.46-3.5.49-.3 1.03-.61 1.5-.98 1.47-.87 1.11-1.12.49-2.95-.39-1.14-.76-2.7-2.06-5.36l.02-.01Zm-17.38-21.76c3.05-.42 6.31.79 9.36 2.35.51.39.94.68 1.33.87-5.61-2.86-12.72-3.39-18.44-.79 2.05-1.33 4.24-1.95 7.74-2.44l.01.01ZM443.67 72.67c-.4-2.2-1.15-4.33-2.37-6.22-1.49-2.32-3.58-4.19-5.91-5.64-6.17-3.81-13.75-5.11-20.83-6.01-3.23-.41-6.47-.69-9.72-.92l-1.39-.12c-.85-.07-1.52-.1-2.05-.1-1.08-.06-2.17-.12-3.25-.17-.08 0-.14.02-.19.05-.1.05-.18.14-.16.3.27 2.55-.01 5.12-.92 7.52-.15.38.4.56.62.28 1.32.59 2.68 1.05 4.08 1.37 0 2.78-.14 7.58-.33 12.91 0 0 0 .02-.01.03-.61 3.66-.79 7.42-1 11.12-.23 4.01-.43 8.03-.44 12.05 0 .64 0 1.28.03 1.93.02.31 0 .68.15.96.06.11.14.16.24.17-.2.17-.21.54.11.59 3.83.67 7.78.71 11.68.25 2.3-.19 4.87-.65 7.65-1.56 1.85-.54 3.67-1.18 5.43-1.91 7.2-3.02 14.31-8.07 17.35-15.53.76-1.86 1.17-3.8 1.31-5.75.3-1.93.28-3.82-.09-5.58l.01-.02Zm-19.32-15.42c5.74 1.41 11.94 3.68 15.65 8.55.25.32.47.65.69.99-2.3-2.82-5.68-5.69-12.88-8.23-2.16-.76-4.35-1.43-6.64-2.02 1.06.21 2.13.45 3.18.71Zm-25.82-3.04c.13 0 .27.01.4.02-.14.1-.26.23-.37.38 0-.13-.02-.26-.03-.4Zm34.82 22.17c-.75 3.09-3.55 5.66-5.88 7.58-3.35 2.76-7.21 5.03-11.28 6.54-1.33.49-2.71.9-4.12 1.15.06-1.38.08-2.76.07-4.13-.02-3.78-.16-7.56-.41-11.33-.09-1.37-.18-2.74-.37-4.1 0-.06-.03-.11-.06-.15.09-3.25.12-6.16.03-8.12 6.86 1.05 10.56 2.17 14.06 3.62 5.52 2.28 8.59 5.44 7.97 8.96l-.01-.02Zm-22 16.15c-.12 0-.23-.02-.34-.03l.34-.03v.06Zm-.69-.7c0-3.13.26-8.84.47-14.51.06 1.2.11 2.41.15 3.6.15 3.6.25 7.23.09 10.83-.24.03-.48.05-.71.07v.01Zm-12.33-30.94c.37.63 2.01 1.01 3.23 1.25v.15c-1.31-.31-2.59-.73-3.83-1.29.12-.36.23-.72.33-1.09.08.48.18.84.27.98Zm13.7 31.65v-.18c3.41-.56 6.71-2.02 9.69-3.68 2.31-1.28 4.59-2.78 6.63-4.53-4.69 4.53-11.61 8.24-16.33 8.38l.01.01Zm24.07-.75c-2.05 1.93-4.37 3.56-6.83 4.95 2.7-1.78 5.52-4.03 8.42-6.87.82-.82 1.56-1.69 2.23-2.59-1.08 1.65-2.38 3.16-3.81 4.51h-.01ZM187.16 92.14c-.79-2.47-2.1-7.12-3.1-6.87-.19-.01-2.09.77-4.08 1.54-3.06 1.18-5.91 2.13-10.09 2.82-2.74.42-5.87 1.01-10.61 1.06.04-3.34.05-6.01.05-7.99 7.97-.65 12.33-2.11 16.37-3.55 1.11-.39 2.69-1.01 2.63-1.8-.08-.35-.55-1.39-1.17-2.61-.47-1.16-.98-2.31-1.61-3.38-.42-.71-1.04-1.69-1.86-2.06-.11-.08-.22-.13-.29-.12-.02 0-.04 0-.07.01-.19-.04-.39-.05-.6-.01-.17.03-.24.15-.25.28-.04.02-.09.04-.14.05-4.33 1.48-8.85 2.33-13.24 3.61a499.1 499.1 0 0 0-.31-8.19c4.51-.99 8.88-1.38 13.11-1.82 3.68-.38 6.28.12 7.47.34.59.11.9.16 1.16.18h.1c-.1.37.44.66.62.28.02-.04.03-.08.05-.13.15.2.53.22.62-.1.17-.58.19-1.21.21-1.81v-.36c.03-.15.05-.3.07-.45.52-2.47.33-5.09-.64-7.44-.11-.27-.44-.28-.6-.14-.08-.21-.15-.42-.24-.62-.19-.41-.79-.05-.6.35.03.07.05.15.09.22-.98-.42-2.15-.54-3.17-.63-2.17-.19-4.37-.14-6.54 0-5.7.35-11.4 1.3-16.91 2.79-2.08.56-4.13 1.22-6.14 2-4.54 1.05-3.79 1.51-2.17 6.07.18.51.46 1.68.54 1.94.82 2.47 1.08 2.13 3.1 2.13s0 .05 0 .08h.52c-.48 2.66-.51 5.45-.62 8.13-.15 3.48-.22 6.96-.28 10.45 0 .41-.01.82-.02 1.23-.16.29-.33.57-.51.85-.05.38-.09.77-.14 1.18-.42 3.52-.59 6.48-.52 8.8v.34c.02.47.05.76.06.87.16 1.57-.26 3.47 1.35 3.79 1.61.32 3.5.55 4.85.55.11 0 .22-.02.33-.02 1.79.24 3.67.05 5.45-.12 2.85-.28 5.69-.7 8.51-1.19 3.03-.53 6.05-1.14 9.04-1.86 2.4-.58 4.82-1.19 7.13-2.06.51-.19 1.73-.57 2.46-1.14 1.81-.68 2.18-1 1.57-2.67-.23-.62-.48-1.49-.91-2.78l-.03-.02Zm-11.12-38.71c.89.05 1.93.08 2.89.3-.33 0-.68-.02-1.06-.03-8.28-.26-14.88.75-23.97 2.51 2.41-.64 4.85-1.16 7.28-1.59 4.87-.86 9.91-1.45 14.86-1.19Zm-26.53 22.13c.03 1.71.04 3.43 0 5.14-.04 1.27-.11 2.55-.24 3.82 0-.73.02-1.46.04-2.19.05-2.26.12-4.51.22-6.77h-.02Zm6.73 27.85c.2-.1.4-.21.58-.33 1.82-.17 3.82-.24 5.94-.34-.86.11-1.72.24-2.58.33-1.27.14-2.61.31-3.93.34h-.01ZM534.48 85.44c-3.52-8.38-7.07-16.75-10.5-25.17-.63-1.54-1.25-3.09-1.86-4.65-.31-.8-.65-1.6-.87-2.43-.04-.17-.17-.24-.31-.25.1-.2 0-.51-.29-.53-1.59-.08-3.18-.22-4.78-.25-1.96-.03-3.91.13-5.84.42-.31.05-.31.38-.13.56-.03.06-.05.14-.04.22.23 1.54.63 3.06 1.16 4.53.13.35.27.7.41 1.06l-2.68 6.18c-.11.03-.2.09-.25.22-.67 1.9-1.52 3.73-2.34 5.56a536.85 536.85 0 0 1-3.9 8.45c-2.64 5.64-5.34 11.25-7.91 16.93-.44.97-.88 1.94-1.29 2.93-.2.48-.47 1-.55 1.52v.05c-.02.12.02.26.16.34 1.19.73 2.41 1.41 3.66 2.05 1.2.62 2.45 1.25 3.76 1.61.43.12.62-.55.19-.67-1.13-.31-2.2-.83-3.24-1.36 1.09.36 2.1.69 2.75.93 2.82 1.01 2.38 1.1 4.3-3.75 2.1-1.09 4.34-1.96 6.53-2.79 4.35-1.64 8.8-3.03 13.27-4.29.82 2.01 1.77 3.97 2.72 5.92.35.83.62 1.45.79 1.82.22.42.45.8.69 1.15.17.33.33.67.5 1 .42.8.84 1.63 1.4 2.35.23.29.6 0 .55-.31 1.53-.02 3.06-.07 4.58-.27.92-.12 1.82-.32 2.71-.54 1.39-.27 3.85-1.11 3.74-1.42-.67-1.96-1.55-3.87-2.34-5.78-1.57-3.78-3.16-7.56-4.75-11.33v-.01Zm-11.65-26.16c1.54 3.81 3.12 7.6 4.7 11.4 2.94 7.05 5.91 14.09 8.87 21.13l-1.06-2.17c-2.71-5.51-5.2-11.19-7.41-16.87l-6.65-17.15c-.65-1.45-.55-2.19-.93-2.53.09 0 .18.01.28.02a.29.29 0 0 0-.04.26c.52 2.02 1.47 3.98 2.25 5.91h-.01Zm-6.58 13.58c.05-.15.09-.31.14-.46 1.41 3.92 2.88 7.9 4.39 11.87-3.22.52-6.38 1.25-9.46 2.14.55-1.22 1.05-2.46 1.53-3.7 1.24-3.24 2.37-6.53 3.39-9.85h.01Zm-.23-20c.36 0 .73.03 1.09.05-2.15.1-5.18.33-5.87.74-.24.15-.41.3-.53.45-.06-.29-.13-.58-.18-.88 1.82-.26 3.65-.39 5.49-.35v-.01Zm-.09 18.72c-.49 1.67-1.05 3.33-1.6 4.97-1.07 3.19-2.19 6.38-3.57 9.46-.09.21-.19.43-.29.65-.25.07-.5.14-.74.22 2.53-6.16 4.61-11.29 6.2-15.3Zm-6.34 25.16c4.97-2.38 9.37-4.1 14.02-5.27l.26.64c-4.8 1.35-9.63 2.8-14.28 4.63Zm20.17 6.76c.33.23.68.42 1.04.56h-.33c-.12 0-.21.06-.26.13-.15-.23-.31-.45-.45-.7v.01ZM226.57 91.75c-3.55-4.74-6.68-9.11-9.31-12.99 9.2-15.25 10.05-17.81 10.35-18.38.17-.34 1.09-2.27.64-2.53-1.13-.65-1.03-.65-2.97-1.71-1.19-.65-3.04-1.61-4.53-2.12-1.71-.59-1.24-.36-3 2.77-.06.1-.11.2-.17.3-.75 1.02-1.48 2.05-2.2 3.09-1.88 2.71-3.73 5.45-5.69 8.1-3.68-4.91-6.88-8.76-9.51-11.43-.15-.15-.3-.29-.46-.42-1.27-1.28-7.24 3.53-7.93 5.58-.09.09-.19.16-.28.25-.27.26.03.64.33.58.19.65.5 1.29.94 1.91 3.85 5.06 7.19 9.76 9.94 14-1.23 2.61-3.06 5-4.67 7.38l-2.28 3.33c-.5.66-.93 1.23-1.29 1.69-.67.93-2.09 2.61-2.3 3.87-.51.85-1.16 1.84-1.29 2.83-.06.44.61.63.67.19.01-.08.04-.15.06-.22 1.36 1.08 2.76 2.11 4.19 3.11 1.3.91 2.62 1.85 4.04 2.56.21.1.4 0 .48-.17.24.07.48.14.72.2.44.1.62-.57.19-.67-2.02-.48-3.77-1.57-5.23-3.02-.47-.46-.9-.96-1.32-1.46 1.74 1.35 4.2 2.89 5.89 4.14 1.39 1.03 2.85-2.27 4.22-4.2 1.86-2.64 3.96-5.86 5.52-8.29l10.39 14.51c.67.81 1.14 1.21 1.57 1.36-.05.24.12.51.41.4 1.53-.58 3.05-1.19 4.54-1.87 1.52-.69 3.06-1.45 4.36-2.5a.28.28 0 0 0 .12-.23c1.66-1.1.81-1.74-1.41-4.91-1.13-1.58-1.71-2.36-3.7-5.01l-.03-.02Zm2.41 6.54c.56 1.15 1.19 2.52 1.11 3.81-.06.04-.12.07-.17.1-.03-.88-.55-2.66-.94-3.91Zm-16.51-32.73c1.86-2.65 3.65-5.35 5.57-7.95.4-.55.81-1.13 1.26-1.66.19-.18.38-.33.56-.45.18.03.36.08.55.13l-8.05 10.11.12-.18h-.01ZM192.7 95.48c.79-1.37 1.66-2.69 2.54-4 1.19-1.79 2.4-3.56 3.61-5.33-.04.09-.09.17-.13.26-.1.22.03.41.2.49-2.47 3.42-4.89 6.73-6.4 9.28.21.24.4.48.63.75-.24.07-.4.36-.17.56.4.33.72.77 1.05 1.17.09.11.18.21.27.32-.84-.61-1.66-1.24-2.47-1.88.24-.57.58-1.11.87-1.61v-.01Zm7.46-10.32c.47-.81.98-1.59 1.49-2.37.31-.48.64-.95.96-1.43.26-.29.52-.56.75-.79-.99 1.48-2.09 3.03-3.2 4.59Zm10.03-16.22s-.03-.05-.05-.07c.22-.29.43-.59.64-.89-.2.32-.4.65-.58.96h-.01ZM371.54 87.96c-.01-.08-.01-.16-.03-.23-.06-.38-.58-.29-.66.03-.3-.05-.6-.08-.81-.11-1.14-.15-2.29-.19-3.44-.2 1.04-.09 2.09-.18 3.14-.23.45-.02.45-.72 0-.7-6.57.35-13.14 1.23-19.65 2.11-1.53.21-3.05.42-4.57.68-.01 0-.02.01-.04.01-.04-3.33-.13-6.66-.24-9.99-.19-5.7-.4-11.41-.88-17.1-.13-1.51-.23-3.07-.49-4.58 0-.25 0-.48-.02-.68-.06-1.19-.04-2.61-.68-2.78-.16-.07-.72-.16-1.5-.24.22-.17.16-.62-.2-.63-1.19-.04-2.39.09-3.57.23-1.2.14-2.41.32-3.59.6-.16-.1-.41-.06-.5.12-.06.02-.13.03-.19.05-.35.1-.29.55-.03.66-.26.6-.19 2.27-.21 3-.02.66-.66 33.73-.9 40.3-.03.65.06 1.12.04 1.45-.16 3.05.87 4.96 6.34 3.93 1.09-.08 2.75-.77 5.36-1.43 4.13-1.04 5.78-1.52 6.2-1.65 6.43-1.69 6.78-1.97 11.72-2.43.55-.05 4.8-.38 6.03-.3.64.04 1.19.07 1.65.1.09 0 .16-.03.24-.05.1.27.56.33.66-.02.39-1.32.61-2.71.78-4.08.2-1.61.29-3.24.15-4.86.24.03.52-.23.38-.53-.09-.2-.27-.33-.49-.43v-.02Zm-.63.56c.07.57.11 1.14.11 1.71-.21-.99-.53-1.71-.95-1.87.22.03.44.06.65.11.06.01.12.04.19.05Zm-25.41 1.73c1.54-.36 3.1-.64 4.66-.89-1.61.37-3.18.77-4.66 1.2v-.31Zm-.86-7.37c-.07-1.37-.16-2.75-.25-4.12-.21-3.13-.45-6.27-.79-9.4.02-2.25.08-4.31.13-6.11.16 2.08.29 4.16.4 6.24.23 4.46.38 8.93.5 13.39h.01Zm-.94-4c.16 2.41.29 4.83.39 7.24.06 1.6.14 3.22.09 4.83-.15.05-.32.09-.47.14V78.88h-.01ZM483.72 92.83c-3.05-2.28-6.22-4.4-9.38-6.51 8.86-6.49 13.49-12.95 13.73-19.23.04-.76 0-1.5-.13-2.2-.67-3.82-3.5-6.68-8.39-8.48.13.04.27.08.4.13 3.92 1.39 7.74 4.23 8.5 8.56.34 1.95-.05 3.96-.98 5.69-.21.4.39.75.6.35 1.86-3.46 1.46-7.55-.97-10.63-3.53-4.47-9.76-5.88-15.16-6.16-2.32-.12-4.64-.04-6.95.19-6 .32-12.71 1.68-17.63 3.21-.37.11-.67.23-.92.35-.2-.17-.62.02-.57.37v.03c-.64.68-.18 1.64.48 3.21.38.91.67 1.89 1.15 2.58.32.76.68 1.51 1.13 2.19.14.21.38.19.53.07.19-.02.38-.05.57-.08v1.57c-.06.06-.1.13-.11.23-.27 4.18-.34 8.38-.48 12.57l-.3 9.03c-.24 3.91-.44 6.77-.46 7.26-.05.88-.11 1.95.07 2.81-.01.22-.02.43-.04.65 0 .11-.02.23-.03.35 0 .05-.03.27-.01.16-.05.4.5.59.64.28.05.04.12.08.2.08 1.75.13 3.5.28 5.25.3 1.69.02 3.38-.12 5.06-.32.08.23.36.39.55.15.06-.08.11-.17.16-.26.18-.09.24-.32.18-.48.05-.2.1-.4.13-.6.16-.86.25-1.74.33-2.62.11-1.17.17-2.34.23-3.51.15-.01.32-.03.52-.04.36-.03 1.73-.15 2.06-.15.39 0 .7-.02.95-.04 1.76 1.11 3.45 2.35 5.14 3.55 2.83 2.01 5.64 4.04 8.47 6.04 1.42 1 2.85 2 4.29 2.97.1.06.19.07.27.04.08 0 .17-.02.25-.1 1.61-1.56 3.15-3.18 4.6-4.88.75-.88 1.49-1.78 2.15-2.73.01.01.03.02.04.03.34.3.83-.2.49-.49-2.16-1.9-4.34-3.76-6.64-5.48l.03-.01Zm-6.38-3.65a55.72 55.72 0 0 0-4-2.13c.14-.1.26-.19.4-.29 1.2.81 2.4 1.61 3.6 2.42Zm-20.1 11.78c.67-.37 1.23-.91 1.67-1.6-.11.5-.24 1-.38 1.49-.43.04-.86.08-1.29.11Zm2.38-37.24c1.34-.31 2.56-.52 3.71-.69-1.03.19-2.04.41-3.04.65-.14-.07-.34-.02-.45.11-.07.02-.15.04-.22.05v-.13.01Zm.04.84c.07-.02.14-.03.2-.05.34 1.66.41 3.41.5 5.09.17 2.9.24 5.81.28 8.71l.03 3.17c-.17.07-.34.14-.51.2-.06-4.96-.21-10.58-.51-17.12h.01Zm16.04 5.62c-1.16 2.25-3.06 4.1-5.02 5.66-2.8 2.23-5.99 3.97-9.3 5.35-.01-3.56-.09-7.12-.27-10.67-.1-2.04-.16-4.16-.57-6.18 3.3-.78 6.72-1.36 10.1-1.1 1.85.14 4.23.59 5.32 2.29.92 1.43.46 3.24-.26 4.65Zm.85-.18c.6-1.37.9-2.92.28-4.32-.67-1.52-2.2-2.32-3.76-2.74.46.1.89.21 1.29.37 1.74.67 2.69 1.88 2.93 3.21.2 1.13-.05 2.25-.74 3.47V70Zm-27.47-4.14c-.12-.19-.23-.38-.34-.57.74.42.85.36.99.41v.08c-.22.03-.43.06-.65.08Zm11.21 30.46c-.08 1.08-.16 2.17-.33 3.24-.05.35-.11.69-.2 1.03 0 .04-.02.07-.03.11-.15.02-.3.04-.45.05.45-1.64.76-3.36.79-5.07.03-.29.08-.57.1-.89-.03-.31-.03-.47.24-.57-.04.69-.07 1.39-.12 2.08v.02Zm5.6-2.47c.48.11.92.52 2.49 1.72-.46-.32-.92-.65-1.38-.97-.37-.25-.73-.5-1.1-.75h-.01Zm21.23 7.24a70.76 70.76 0 0 1-4.37 4.63c-.14-.09-.27-.19-.4-.28.19-.09.37-.24.55-.47.87-1.14 5.43-5.51 5.49-7.45.31.26.62.53.92.79-.67.97-1.42 1.88-2.19 2.77v.01Z",
@@ -40361,24 +40000,24 @@ var ExcalidrawLogo = ({
   size = "small",
   withText
 }) => {
-  return /* @__PURE__ */ jsxs89("div", { className: `ExcalidrawLogo is-${size}`, style, children: [
-    /* @__PURE__ */ jsx155(LogoIcon, {}),
-    withText && /* @__PURE__ */ jsx155(LogoText, {})
+  return /* @__PURE__ */ jsxs88("div", { className: `ExcalidrawLogo is-${size}`, style, children: [
+    /* @__PURE__ */ jsx153(LogoIcon, {}),
+    withText && /* @__PURE__ */ jsx153(LogoText, {})
   ] });
 };
 
 // components/welcome-screen/WelcomeScreen.Center.tsx
-import { Fragment as Fragment28, jsx as jsx156, jsxs as jsxs90 } from "react/jsx-runtime";
+import { Fragment as Fragment28, jsx as jsx154, jsxs as jsxs89 } from "react/jsx-runtime";
 var WelcomeScreenMenuItemContent = ({
   icon,
   shortcut,
   children
 }) => {
   const editorInterface = useEditorInterface();
-  return /* @__PURE__ */ jsxs90(Fragment28, { children: [
-    /* @__PURE__ */ jsx156("div", { className: "welcome-screen-menu-item__icon", children: icon }),
-    /* @__PURE__ */ jsx156("div", { className: "welcome-screen-menu-item__text", children }),
-    shortcut && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx156("div", { className: "welcome-screen-menu-item__shortcut", children: shortcut })
+  return /* @__PURE__ */ jsxs89(Fragment28, { children: [
+    /* @__PURE__ */ jsx154("div", { className: "welcome-screen-menu-item__icon", children: icon }),
+    /* @__PURE__ */ jsx154("div", { className: "welcome-screen-menu-item__text", children }),
+    shortcut && editorInterface.formFactor !== "phone" && /* @__PURE__ */ jsx154("div", { className: "welcome-screen-menu-item__shortcut", children: shortcut })
   ] });
 };
 WelcomeScreenMenuItemContent.displayName = "WelcomeScreenMenuItemContent";
@@ -40390,14 +40029,14 @@ var WelcomeScreenMenuItem = ({
   className = "",
   ...props
 }) => {
-  return /* @__PURE__ */ jsx156(
+  return /* @__PURE__ */ jsx154(
     "button",
     {
       ...props,
       type: "button",
       className: `welcome-screen-menu-item ${className}`,
       onClick: onSelect,
-      children: /* @__PURE__ */ jsx156(WelcomeScreenMenuItemContent, { icon, shortcut, children })
+      children: /* @__PURE__ */ jsx154(WelcomeScreenMenuItemContent, { icon, shortcut, children })
     }
   );
 };
@@ -40410,7 +40049,7 @@ var WelcomeScreenMenuItemLink = ({
   className = "",
   ...props
 }) => {
-  return /* @__PURE__ */ jsx156(
+  return /* @__PURE__ */ jsx154(
     "a",
     {
       ...props,
@@ -40418,38 +40057,38 @@ var WelcomeScreenMenuItemLink = ({
       href,
       target: "_blank",
       rel: "noopener",
-      children: /* @__PURE__ */ jsx156(WelcomeScreenMenuItemContent, { icon, shortcut, children })
+      children: /* @__PURE__ */ jsx154(WelcomeScreenMenuItemContent, { icon, shortcut, children })
     }
   );
 };
 WelcomeScreenMenuItemLink.displayName = "WelcomeScreenMenuItemLink";
 var Center = ({ children }) => {
   const { WelcomeScreenCenterTunnel } = useTunnels();
-  return /* @__PURE__ */ jsx156(WelcomeScreenCenterTunnel.In, { children: /* @__PURE__ */ jsx156("div", { className: "welcome-screen-center", children: children || /* @__PURE__ */ jsxs90(Fragment28, { children: [
-    /* @__PURE__ */ jsx156(Logo, {}),
-    /* @__PURE__ */ jsx156(Heading, { children: t("welcomeScreen.defaults.center_heading") }),
-    /* @__PURE__ */ jsxs90(Menu, { children: [
-      /* @__PURE__ */ jsx156(MenuItemLoadScene, {}),
-      /* @__PURE__ */ jsx156(MenuItemHelp, {})
+  return /* @__PURE__ */ jsx154(WelcomeScreenCenterTunnel.In, { children: /* @__PURE__ */ jsx154("div", { className: "welcome-screen-center", children: children || /* @__PURE__ */ jsxs89(Fragment28, { children: [
+    /* @__PURE__ */ jsx154(Logo, {}),
+    /* @__PURE__ */ jsx154(Heading, { children: t("welcomeScreen.defaults.center_heading") }),
+    /* @__PURE__ */ jsxs89(Menu, { children: [
+      /* @__PURE__ */ jsx154(MenuItemLoadScene, {}),
+      /* @__PURE__ */ jsx154(MenuItemHelp, {})
     ] })
   ] }) }) });
 };
 Center.displayName = "Center";
 var Logo = ({ children }) => {
-  return /* @__PURE__ */ jsx156("div", { className: "welcome-screen-center__logo excalifont welcome-screen-decor", children: children || /* @__PURE__ */ jsx156(ExcalidrawLogo, { withText: true }) });
+  return /* @__PURE__ */ jsx154("div", { className: "welcome-screen-center__logo excalifont welcome-screen-decor", children: children || /* @__PURE__ */ jsx154(ExcalidrawLogo, { withText: true }) });
 };
 Logo.displayName = "Logo";
 var Heading = ({ children }) => {
-  return /* @__PURE__ */ jsx156("div", { className: "welcome-screen-center__heading welcome-screen-decor excalifont", children });
+  return /* @__PURE__ */ jsx154("div", { className: "welcome-screen-center__heading welcome-screen-decor excalifont", children });
 };
 Heading.displayName = "Heading";
 var Menu = ({ children }) => {
-  return /* @__PURE__ */ jsx156("div", { className: "welcome-screen-menu", children });
+  return /* @__PURE__ */ jsx154("div", { className: "welcome-screen-menu", children });
 };
 Menu.displayName = "Menu";
 var MenuItemHelp = () => {
   const actionManager = useExcalidrawActionManager();
-  return /* @__PURE__ */ jsx156(
+  return /* @__PURE__ */ jsx154(
     WelcomeScreenMenuItem,
     {
       onSelect: () => actionManager.executeAction(actionShortcuts),
@@ -40466,7 +40105,7 @@ var MenuItemLoadScene = () => {
   if (appState.viewModeEnabled) {
     return null;
   }
-  return /* @__PURE__ */ jsx156(
+  return /* @__PURE__ */ jsx154(
     WelcomeScreenMenuItem,
     {
       onSelect: () => actionManager.executeAction(actionLoadScene),
@@ -40481,7 +40120,7 @@ var MenuItemLiveCollaborationTrigger = ({
   onSelect
 }) => {
   const { t: t2 } = useI18n();
-  return /* @__PURE__ */ jsx156(WelcomeScreenMenuItem, { shortcut: null, onSelect, icon: usersIcon, children: t2("labels.liveCollaboration") });
+  return /* @__PURE__ */ jsx154(WelcomeScreenMenuItem, { shortcut: null, onSelect, icon: usersIcon, children: t2("labels.liveCollaboration") });
 };
 MenuItemLiveCollaborationTrigger.displayName = "MenuItemLiveCollaborationTrigger";
 Center.Logo = Logo;
@@ -40494,40 +40133,40 @@ Center.MenuItemLoadScene = MenuItemLoadScene;
 Center.MenuItemLiveCollaborationTrigger = MenuItemLiveCollaborationTrigger;
 
 // components/welcome-screen/WelcomeScreen.Hints.tsx
-import { jsx as jsx157, jsxs as jsxs91 } from "react/jsx-runtime";
+import { jsx as jsx155, jsxs as jsxs90 } from "react/jsx-runtime";
 var MenuHint = ({ children }) => {
   const { WelcomeScreenMenuHintTunnel } = useTunnels();
-  return /* @__PURE__ */ jsx157(WelcomeScreenMenuHintTunnel.In, { children: /* @__PURE__ */ jsxs91("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--menu", children: [
+  return /* @__PURE__ */ jsx155(WelcomeScreenMenuHintTunnel.In, { children: /* @__PURE__ */ jsxs90("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--menu", children: [
     WelcomeScreenMenuArrow,
-    /* @__PURE__ */ jsx157("div", { className: "welcome-screen-decor-hint__label", children: children || t("welcomeScreen.defaults.menuHint") })
+    /* @__PURE__ */ jsx155("div", { className: "welcome-screen-decor-hint__label", children: children || t("welcomeScreen.defaults.menuHint") })
   ] }) });
 };
 MenuHint.displayName = "MenuHint";
 var ToolbarHint = ({ children }) => {
   const { WelcomeScreenToolbarHintTunnel } = useTunnels();
-  return /* @__PURE__ */ jsx157(WelcomeScreenToolbarHintTunnel.In, { children: /* @__PURE__ */ jsxs91("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--toolbar", children: [
-    /* @__PURE__ */ jsx157("div", { className: "welcome-screen-decor-hint__label", children: children || t("welcomeScreen.defaults.toolbarHint") }),
+  return /* @__PURE__ */ jsx155(WelcomeScreenToolbarHintTunnel.In, { children: /* @__PURE__ */ jsxs90("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--toolbar", children: [
+    /* @__PURE__ */ jsx155("div", { className: "welcome-screen-decor-hint__label", children: children || t("welcomeScreen.defaults.toolbarHint") }),
     WelcomeScreenTopToolbarArrow
   ] }) });
 };
 ToolbarHint.displayName = "ToolbarHint";
 var HelpHint = ({ children }) => {
   const { WelcomeScreenHelpHintTunnel } = useTunnels();
-  return /* @__PURE__ */ jsx157(WelcomeScreenHelpHintTunnel.In, { children: /* @__PURE__ */ jsxs91("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--help", children: [
-    /* @__PURE__ */ jsx157("div", { children: children || t("welcomeScreen.defaults.helpHint") }),
+  return /* @__PURE__ */ jsx155(WelcomeScreenHelpHintTunnel.In, { children: /* @__PURE__ */ jsxs90("div", { className: "excalifont welcome-screen-decor welcome-screen-decor-hint welcome-screen-decor-hint--help", children: [
+    /* @__PURE__ */ jsx155("div", { children: children || t("welcomeScreen.defaults.helpHint") }),
     WelcomeScreenHelpArrow
   ] }) });
 };
 HelpHint.displayName = "HelpHint";
 
 // components/welcome-screen/WelcomeScreen.tsx
-import { Fragment as Fragment29, jsx as jsx158, jsxs as jsxs92 } from "react/jsx-runtime";
+import { Fragment as Fragment29, jsx as jsx156, jsxs as jsxs91 } from "react/jsx-runtime";
 var WelcomeScreen = (props) => {
-  return /* @__PURE__ */ jsx158(Fragment29, { children: props.children || /* @__PURE__ */ jsxs92(Fragment29, { children: [
-    /* @__PURE__ */ jsx158(Center, {}),
-    /* @__PURE__ */ jsx158(MenuHint, {}),
-    /* @__PURE__ */ jsx158(ToolbarHint, {}),
-    /* @__PURE__ */ jsx158(HelpHint, {})
+  return /* @__PURE__ */ jsx156(Fragment29, { children: props.children || /* @__PURE__ */ jsxs91(Fragment29, { children: [
+    /* @__PURE__ */ jsx156(Center, {}),
+    /* @__PURE__ */ jsx156(MenuHint, {}),
+    /* @__PURE__ */ jsx156(ToolbarHint, {}),
+    /* @__PURE__ */ jsx156(HelpHint, {})
   ] }) });
 };
 WelcomeScreen.displayName = "WelcomeScreen";
@@ -40537,6 +40176,9 @@ var WelcomeScreen_default = WelcomeScreen;
 
 // polyfill.ts
 var polyfill = () => {
+  if (typeof window === "undefined" || typeof Element === "undefined") {
+    return;
+  }
   if (!Array.prototype.at) {
     Object.defineProperty(Array.prototype, "at", {
       value: function(n) {
@@ -40629,12 +40271,12 @@ var reconcileElements = (localElements, remoteElements, localAppState) => {
 };
 
 // components/Stats/index.tsx
-import clsx66 from "clsx";
+import clsx65 from "clsx";
 import throttle4 from "lodash.throttle";
 import { useEffect as useEffect50, useMemo as useMemo12, useState as useState44, memo as memo5 } from "react";
 
 // components/Stats/DragInput.tsx
-import clsx65 from "clsx";
+import clsx64 from "clsx";
 import { useEffect as useEffect49, useRef as useRef45, useState as useState43 } from "react";
 
 // components/Stats/utils.ts
@@ -40766,7 +40408,7 @@ var getAtomicUnits = (targetElements, appState) => {
 };
 
 // components/Stats/DragInput.tsx
-import { jsx as jsx159, jsxs as jsxs93 } from "react/jsx-runtime";
+import { jsx as jsx157, jsxs as jsxs92 } from "react/jsx-runtime";
 var StatsDragInput = ({
   label,
   icon,
@@ -40871,13 +40513,13 @@ var StatsDragInput = ({
   if (!editable) {
     return null;
   }
-  return /* @__PURE__ */ jsxs93(
+  return /* @__PURE__ */ jsxs92(
     "div",
     {
-      className: clsx65("drag-input-container", !editable && "disabled"),
+      className: clsx64("drag-input-container", !editable && "disabled"),
       "data-testid": label,
       children: [
-        /* @__PURE__ */ jsx159(
+        /* @__PURE__ */ jsx157(
           "div",
           {
             className: "drag-input-label",
@@ -40965,10 +40607,10 @@ var StatsDragInput = ({
                 labelRef.current.style.cursor = "ew-resize";
               }
             },
-            children: icon ? /* @__PURE__ */ jsx159(InlineIcon, { icon }) : label
+            children: icon ? /* @__PURE__ */ jsx157(InlineIcon, { icon }) : label
           }
         ),
-        /* @__PURE__ */ jsx159(
+        /* @__PURE__ */ jsx157(
           "input",
           {
             className: "drag-input",
@@ -41015,7 +40657,7 @@ var StatsDragInput = ({
 var DragInput_default = StatsDragInput;
 
 // components/Stats/Angle.tsx
-import { jsx as jsx160 } from "react/jsx-runtime";
+import { jsx as jsx158 } from "react/jsx-runtime";
 var STEP_SIZE2 = 15;
 var handleDegreeChange = ({
   accumulatedChange,
@@ -41063,7 +40705,7 @@ var handleDegreeChange = ({
   }
 };
 var Angle = ({ element, scene, appState, property }) => {
-  return /* @__PURE__ */ jsx160(
+  return /* @__PURE__ */ jsx158(
     DragInput_default,
     {
       label: "A",
@@ -41081,7 +40723,7 @@ var Angle = ({ element, scene, appState, property }) => {
 var Angle_default = Angle;
 
 // components/Stats/CanvasGrid.tsx
-import { jsx as jsx161 } from "react/jsx-runtime";
+import { jsx as jsx159 } from "react/jsx-runtime";
 var STEP_SIZE3 = 5;
 var CanvasGrid = ({
   property,
@@ -41089,7 +40731,7 @@ var CanvasGrid = ({
   appState,
   setAppState
 }) => {
-  return /* @__PURE__ */ jsx161(
+  return /* @__PURE__ */ jsx159(
     DragInput_default,
     {
       label: "Grid step",
@@ -41132,7 +40774,7 @@ var CanvasGrid = ({
 var CanvasGrid_default = CanvasGrid;
 
 // components/Stats/Dimension.tsx
-import { jsx as jsx162 } from "react/jsx-runtime";
+import { jsx as jsx160 } from "react/jsx-runtime";
 var STEP_SIZE4 = 10;
 var _shouldKeepAspectRatio = (element) => {
   return element.type === "image";
@@ -41370,7 +41012,7 @@ var DimensionDragInput = ({
       value = round(element.crop.height * ratio, 2);
     }
   }
-  return /* @__PURE__ */ jsx162(
+  return /* @__PURE__ */ jsx160(
     DragInput_default,
     {
       label: property === "width" ? "W" : "H",
@@ -41388,7 +41030,7 @@ var DimensionDragInput = ({
 var Dimension_default = DimensionDragInput;
 
 // components/Stats/FontSize.tsx
-import { jsx as jsx163 } from "react/jsx-runtime";
+import { jsx as jsx161 } from "react/jsx-runtime";
 var MIN_FONT_SIZE = 4;
 var STEP_SIZE5 = 4;
 var handleFontSizeChange = ({
@@ -41436,7 +41078,7 @@ var FontSize = ({ element, scene, appState, property }) => {
   if (!_element) {
     return null;
   }
-  return /* @__PURE__ */ jsx163(
+  return /* @__PURE__ */ jsx161(
     DragInput_default,
     {
       label: "F",
@@ -41453,7 +41095,7 @@ var FontSize = ({ element, scene, appState, property }) => {
 var FontSize_default = FontSize;
 
 // components/Stats/MultiAngle.tsx
-import { jsx as jsx164 } from "react/jsx-runtime";
+import { jsx as jsx162 } from "react/jsx-runtime";
 var STEP_SIZE6 = 15;
 var handleDegreeChange2 = ({
   accumulatedChange,
@@ -41525,7 +41167,7 @@ var MultiAngle = ({
   const editable = editableLatestIndividualElements.some(
     (el) => isPropertyEditable(el, "angle")
   );
-  return /* @__PURE__ */ jsx164(
+  return /* @__PURE__ */ jsx162(
     DragInput_default,
     {
       label: "A",
@@ -41544,7 +41186,7 @@ var MultiAngle_default = MultiAngle;
 
 // components/Stats/MultiDimension.tsx
 import { useMemo as useMemo10 } from "react";
-import { jsx as jsx165 } from "react/jsx-runtime";
+import { jsx as jsx163 } from "react/jsx-runtime";
 var STEP_SIZE7 = 10;
 var getResizedUpdates = (anchorX, anchorY, scale, origElement) => {
   const offsetX = origElement.x - anchorX;
@@ -41865,7 +41507,7 @@ var MultiDimension = ({
   );
   const value = new Set(sizes).size === 1 ? Math.round(sizes[0] * 100) / 100 : "Mixed";
   const editable = sizes.length > 0;
-  return /* @__PURE__ */ jsx165(
+  return /* @__PURE__ */ jsx163(
     DragInput_default,
     {
       label: property === "width" ? "W" : "H",
@@ -41883,7 +41525,7 @@ var MultiDimension = ({
 var MultiDimension_default = MultiDimension;
 
 // components/Stats/MultiFontSize.tsx
-import { jsx as jsx166 } from "react/jsx-runtime";
+import { jsx as jsx164 } from "react/jsx-runtime";
 var MIN_FONT_SIZE2 = 4;
 var STEP_SIZE8 = 4;
 var getApplicableTextElements = (elements, elementsMap) => elements.reduce(
@@ -41973,7 +41615,7 @@ var MultiFontSize = ({
   );
   const value = new Set(fontSizes).size === 1 ? fontSizes[0] : "Mixed";
   const editable = fontSizes.length > 0;
-  return /* @__PURE__ */ jsx166(
+  return /* @__PURE__ */ jsx164(
     DragInput_default,
     {
       label: "F",
@@ -41992,7 +41634,7 @@ var MultiFontSize_default = MultiFontSize;
 
 // components/Stats/MultiPosition.tsx
 import { useMemo as useMemo11 } from "react";
-import { jsx as jsx167 } from "react/jsx-runtime";
+import { jsx as jsx165 } from "react/jsx-runtime";
 var moveElements = (property, changeInTopX, changeInTopY, originalElements, originalElementsMap, scene, appState) => {
   for (let i = 0; i < originalElements.length; i++) {
     const origElement = originalElements[i];
@@ -42158,7 +41800,7 @@ var MultiPosition = ({
     [atomicUnits, elementsMap, property]
   );
   const value = new Set(positions).size === 1 ? positions[0] : "Mixed";
-  return /* @__PURE__ */ jsx167(
+  return /* @__PURE__ */ jsx165(
     DragInput_default,
     {
       label: property === "x" ? "X" : "Y",
@@ -42174,7 +41816,7 @@ var MultiPosition = ({
 var MultiPosition_default = MultiPosition;
 
 // components/Stats/Position.tsx
-import { jsx as jsx168 } from "react/jsx-runtime";
+import { jsx as jsx166 } from "react/jsx-runtime";
 var handlePositionChange2 = ({
   accumulatedChange,
   instantChange,
@@ -42310,7 +41952,7 @@ var Position = ({
       );
     }
   }
-  return /* @__PURE__ */ jsx168(
+  return /* @__PURE__ */ jsx166(
     DragInput_default,
     {
       label: property === "x" ? "X" : "Y",
@@ -42326,7 +41968,7 @@ var Position = ({
 var Position_default = Position;
 
 // components/Stats/index.tsx
-import { Fragment as Fragment30, jsx as jsx169, jsxs as jsxs94 } from "react/jsx-runtime";
+import { Fragment as Fragment30, jsx as jsx167, jsxs as jsxs93 } from "react/jsx-runtime";
 var STATS_TIMEOUT = 50;
 var Stats = (props) => {
   const appState = useExcalidrawAppState();
@@ -42336,7 +41978,7 @@ var Stats = (props) => {
     includeBoundTextElement: false
   });
   const gridModeEnabled = isGridModeEnabled(props.app);
-  return /* @__PURE__ */ jsx169(
+  return /* @__PURE__ */ jsx167(
     StatsInner,
     {
       ...props,
@@ -42353,10 +41995,10 @@ var StatsRow = ({
   heading,
   style,
   ...rest
-}) => /* @__PURE__ */ jsx169(
+}) => /* @__PURE__ */ jsx167(
   "div",
   {
-    className: clsx66("exc-stats__row", { "exc-stats__row--heading": heading }),
+    className: clsx65("exc-stats__row", { "exc-stats__row--heading": heading }),
     style: {
       gridTemplateColumns: `repeat(${columns}, 1fr)`,
       ...style
@@ -42371,7 +42013,7 @@ var StatsRows = ({
   order,
   style,
   ...rest
-}) => /* @__PURE__ */ jsx169("div", { className: "exc-stats__rows", style: { order, ...style }, ...rest, children });
+}) => /* @__PURE__ */ jsx167("div", { className: "exc-stats__rows", style: { order, ...style }, ...rest, children });
 StatsRows.displayName = "StatsRows";
 Stats.StatsRow = StatsRow;
 Stats.StatsRows = StatsRows;
@@ -42420,15 +42062,15 @@ var StatsInner = memo5(
     const _frameAndChildrenSelectedTogether = useMemo12(() => {
       return frameAndChildrenSelectedTogether(selectedElements);
     }, [selectedElements]);
-    return /* @__PURE__ */ jsx169("div", { className: "exc-stats", children: /* @__PURE__ */ jsxs94(Island, { padding: 3, children: [
-      /* @__PURE__ */ jsxs94("div", { className: "title", children: [
-        /* @__PURE__ */ jsx169("h2", { children: t("stats.title") }),
-        /* @__PURE__ */ jsx169("div", { className: "close", onClick: onClose, children: CloseIcon })
+    return /* @__PURE__ */ jsx167("div", { className: "exc-stats", children: /* @__PURE__ */ jsxs93(Island, { padding: 3, children: [
+      /* @__PURE__ */ jsxs93("div", { className: "title", children: [
+        /* @__PURE__ */ jsx167("h2", { children: t("stats.title") }),
+        /* @__PURE__ */ jsx167("div", { className: "close", onClick: onClose, children: CloseIcon })
       ] }),
-      /* @__PURE__ */ jsxs94(
+      /* @__PURE__ */ jsxs93(
         Collapsible_default,
         {
-          label: /* @__PURE__ */ jsx169("h3", { children: t("stats.generalStats") }),
+          label: /* @__PURE__ */ jsx167("h3", { children: t("stats.generalStats") }),
           open: !!(appState.stats.panels & STATS_PANELS.generalStats),
           openTrigger: () => setAppState((state) => {
             return {
@@ -42439,23 +42081,23 @@ var StatsInner = memo5(
             };
           }),
           children: [
-            /* @__PURE__ */ jsxs94(StatsRows, { children: [
-              /* @__PURE__ */ jsx169(StatsRow, { heading: true, children: t("stats.scene") }),
-              /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, children: [
-                /* @__PURE__ */ jsx169("div", { children: t("stats.shapes") }),
-                /* @__PURE__ */ jsx169("div", { children: elements.length })
+            /* @__PURE__ */ jsxs93(StatsRows, { children: [
+              /* @__PURE__ */ jsx167(StatsRow, { heading: true, children: t("stats.scene") }),
+              /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, children: [
+                /* @__PURE__ */ jsx167("div", { children: t("stats.shapes") }),
+                /* @__PURE__ */ jsx167("div", { children: elements.length })
               ] }),
-              /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, children: [
-                /* @__PURE__ */ jsx169("div", { children: t("stats.width") }),
-                /* @__PURE__ */ jsx169("div", { children: sceneDimension.width })
+              /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, children: [
+                /* @__PURE__ */ jsx167("div", { children: t("stats.width") }),
+                /* @__PURE__ */ jsx167("div", { children: sceneDimension.width })
               ] }),
-              /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, children: [
-                /* @__PURE__ */ jsx169("div", { children: t("stats.height") }),
-                /* @__PURE__ */ jsx169("div", { children: sceneDimension.height })
+              /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, children: [
+                /* @__PURE__ */ jsx167("div", { children: t("stats.height") }),
+                /* @__PURE__ */ jsx167("div", { children: sceneDimension.height })
               ] }),
-              gridModeEnabled && /* @__PURE__ */ jsxs94(Fragment30, { children: [
-                /* @__PURE__ */ jsx169(StatsRow, { heading: true, children: "Canvas" }),
-                /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+              gridModeEnabled && /* @__PURE__ */ jsxs93(Fragment30, { children: [
+                /* @__PURE__ */ jsx167(StatsRow, { heading: true, children: "Canvas" }),
+                /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                   CanvasGrid_default,
                   {
                     property: "gridStep",
@@ -42470,17 +42112,17 @@ var StatsInner = memo5(
           ]
         }
       ),
-      !_frameAndChildrenSelectedTogether && selectedElements.length > 0 && /* @__PURE__ */ jsx169(
+      !_frameAndChildrenSelectedTogether && selectedElements.length > 0 && /* @__PURE__ */ jsx167(
         "div",
         {
           id: "elementStats",
           style: {
             marginTop: 12
           },
-          children: /* @__PURE__ */ jsx169(
+          children: /* @__PURE__ */ jsx167(
             Collapsible_default,
             {
-              label: /* @__PURE__ */ jsx169("h3", { children: t("stats.elementProperties") }),
+              label: /* @__PURE__ */ jsx167("h3", { children: t("stats.elementProperties") }),
               open: !!(appState.stats.panels & STATS_PANELS.elementProperties),
               openTrigger: () => setAppState((state) => {
                 return {
@@ -42490,18 +42132,18 @@ var StatsInner = memo5(
                   }
                 };
               }),
-              children: /* @__PURE__ */ jsxs94(StatsRows, { children: [
-                singleElement && /* @__PURE__ */ jsxs94(Fragment30, { children: [
-                  cropMode && /* @__PURE__ */ jsx169(StatsRow, { heading: true, children: t("labels.unCroppedDimension") }),
-                  appState.croppingElementId && isImageElement(singleElement) && unCroppedDimension && /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, children: [
-                    /* @__PURE__ */ jsx169("div", { children: t("stats.width") }),
-                    /* @__PURE__ */ jsx169("div", { children: round(unCroppedDimension.width, 2) })
+              children: /* @__PURE__ */ jsxs93(StatsRows, { children: [
+                singleElement && /* @__PURE__ */ jsxs93(Fragment30, { children: [
+                  cropMode && /* @__PURE__ */ jsx167(StatsRow, { heading: true, children: t("labels.unCroppedDimension") }),
+                  appState.croppingElementId && isImageElement(singleElement) && unCroppedDimension && /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, children: [
+                    /* @__PURE__ */ jsx167("div", { children: t("stats.width") }),
+                    /* @__PURE__ */ jsx167("div", { children: round(unCroppedDimension.width, 2) })
                   ] }),
-                  appState.croppingElementId && isImageElement(singleElement) && unCroppedDimension && /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, children: [
-                    /* @__PURE__ */ jsx169("div", { children: t("stats.height") }),
-                    /* @__PURE__ */ jsx169("div", { children: round(unCroppedDimension.height, 2) })
+                  appState.croppingElementId && isImageElement(singleElement) && unCroppedDimension && /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, children: [
+                    /* @__PURE__ */ jsx167("div", { children: t("stats.height") }),
+                    /* @__PURE__ */ jsx167("div", { children: round(unCroppedDimension.height, 2) })
                   ] }),
-                  /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(
                     StatsRow,
                     {
                       heading: true,
@@ -42510,7 +42152,7 @@ var StatsInner = memo5(
                       children: appState.croppingElementId ? t("labels.imageCropping") : t(`element.${singleElement.type}`)
                     }
                   ),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     Position_default,
                     {
                       element: singleElement,
@@ -42520,7 +42162,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     Position_default,
                     {
                       element: singleElement,
@@ -42530,7 +42172,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     Dimension_default,
                     {
                       property: "width",
@@ -42539,7 +42181,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     Dimension_default,
                     {
                       property: "height",
@@ -42548,7 +42190,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     Angle_default,
                     {
                       property: "angle",
@@ -42557,7 +42199,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     FontSize_default,
                     {
                       property: "fontSize",
@@ -42567,13 +42209,13 @@ var StatsInner = memo5(
                     }
                   ) })
                 ] }),
-                multipleElements && /* @__PURE__ */ jsxs94(Fragment30, { children: [
-                  elementsAreInSameGroup(multipleElements) && /* @__PURE__ */ jsx169(StatsRow, { heading: true, children: t("element.group") }),
-                  /* @__PURE__ */ jsxs94(StatsRow, { columns: 2, style: { margin: "0.3125rem 0" }, children: [
-                    /* @__PURE__ */ jsx169("div", { children: t("stats.shapes") }),
-                    /* @__PURE__ */ jsx169("div", { children: selectedElements.length })
+                multipleElements && /* @__PURE__ */ jsxs93(Fragment30, { children: [
+                  elementsAreInSameGroup(multipleElements) && /* @__PURE__ */ jsx167(StatsRow, { heading: true, children: t("element.group") }),
+                  /* @__PURE__ */ jsxs93(StatsRow, { columns: 2, style: { margin: "0.3125rem 0" }, children: [
+                    /* @__PURE__ */ jsx167("div", { children: t("stats.shapes") }),
+                    /* @__PURE__ */ jsx167("div", { children: selectedElements.length })
                   ] }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiPosition_default,
                     {
                       property: "x",
@@ -42584,7 +42226,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiPosition_default,
                     {
                       property: "y",
@@ -42595,7 +42237,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiDimension_default,
                     {
                       property: "width",
@@ -42606,7 +42248,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiDimension_default,
                     {
                       property: "height",
@@ -42617,7 +42259,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiAngle_default,
                     {
                       property: "angle",
@@ -42626,7 +42268,7 @@ var StatsInner = memo5(
                       appState
                     }
                   ) }),
-                  /* @__PURE__ */ jsx169(StatsRow, { children: /* @__PURE__ */ jsx169(
+                  /* @__PURE__ */ jsx167(StatsRow, { children: /* @__PURE__ */ jsx167(
                     MultiFontSize_default,
                     {
                       property: "fontSize",
@@ -42650,7 +42292,7 @@ var StatsInner = memo5(
 );
 
 // components/TTDDialog/TTDDialogTrigger.tsx
-import { jsx as jsx170 } from "react/jsx-runtime";
+import { jsx as jsx168 } from "react/jsx-runtime";
 var TTDDialogTrigger = ({
   children,
   icon
@@ -42658,7 +42300,7 @@ var TTDDialogTrigger = ({
   const { t: t2 } = useI18n();
   const { TTDDialogTriggerTunnel } = useTunnels();
   const setAppState = useExcalidrawSetAppState();
-  return /* @__PURE__ */ jsx170(TTDDialogTriggerTunnel.In, { children: /* @__PURE__ */ jsx170(
+  return /* @__PURE__ */ jsx168(TTDDialogTriggerTunnel.In, { children: /* @__PURE__ */ jsx168(
     DropdownMenu_default.Item,
     {
       onSelect: () => {
@@ -42666,7 +42308,7 @@ var TTDDialogTrigger = ({
         setAppState({ openDialog: { name: "ttd", tab: "text-to-diagram" } });
       },
       icon: icon ?? brainIcon,
-      badge: /* @__PURE__ */ jsx170(DropdownMenu_default.Item.Badge, { children: "AI" }),
+      badge: /* @__PURE__ */ jsx168(DropdownMenu_default.Item.Badge, { children: "AI" }),
       children: children ?? t2("labels.textToDiagram")
     }
   ) });
@@ -42848,7 +42490,7 @@ var DiagramToCodePlugin = (props) => {
 };
 
 // index.tsx
-import { jsx as jsx171 } from "react/jsx-runtime";
+import { jsx as jsx169 } from "react/jsx-runtime";
 polyfill_default();
 var ExcalidrawBase = (props) => {
   const {
@@ -42923,7 +42565,7 @@ var ExcalidrawBase = (props) => {
       document.removeEventListener("touchmove", handleTouchMove);
     };
   }, []);
-  return /* @__PURE__ */ jsx171(EditorJotaiProvider, { store: editorJotaiStore, children: /* @__PURE__ */ jsx171(InitializeApp, { langCode, theme, children: /* @__PURE__ */ jsx171(
+  return /* @__PURE__ */ jsx169(EditorJotaiProvider, { store: editorJotaiStore, children: /* @__PURE__ */ jsx169(InitializeApp, { langCode, theme, children: /* @__PURE__ */ jsx169(
     App_default,
     {
       onChange,

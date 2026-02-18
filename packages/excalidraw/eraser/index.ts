@@ -33,7 +33,10 @@ import type { Bounds } from "@excalidraw/common";
 import type { GlobalPoint, LineSegment } from "@excalidraw/math/types";
 import type { ElementsMap, ExcalidrawElement } from "@excalidraw/element/types";
 
-import { AnimatedTrail } from "../animated-trail";
+import {
+  AnimatedTrail,
+  type TrailSizeMappingDetails,
+} from "../animated-trail";
 
 import type { AnimationFrameHandler } from "../animation-frame-handler";
 
@@ -48,7 +51,7 @@ export class EraserTrail extends AnimatedTrail {
       streamline: 0.2,
       size: 5,
       keepHead: true,
-      sizeMapping: (c) => {
+      sizeMapping: (c: TrailSizeMappingDetails) => {
         const DECAY_TIME = 200;
         const DECAY_LENGTH = 10;
         const t = Math.max(
@@ -87,7 +90,7 @@ export class EraserTrail extends AnimatedTrail {
     const eraserPath: GlobalPoint[] =
       super
         .getCurrentTrail()
-        ?.originalPoints?.map((p) => pointFrom<GlobalPoint>(p[0], p[1])) || [];
+        ?.originalPoints?.map((p: import("../animated-trail").TrailPoint) => pointFrom<GlobalPoint>(p[0], p[1])) || [];
 
     if (eraserPath.length < 2) {
       return [];

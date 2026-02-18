@@ -27,7 +27,10 @@ import type {
 
 import { type AnimationFrameHandler } from "../animation-frame-handler";
 
-import { AnimatedTrail } from "../animated-trail";
+import {
+  AnimatedTrail,
+  type TrailSizeMappingDetails,
+} from "../animated-trail";
 
 import { getLassoSelectedElementIds } from "./utils";
 
@@ -51,7 +54,7 @@ export class LassoTrail extends AnimatedTrail {
     super(animationFrameHandler, app, {
       animateTrail: true,
       streamline: 0.4,
-      sizeMapping: (c) => {
+      sizeMapping: (c: TrailSizeMappingDetails) => {
         const DECAY_TIME = Infinity;
         const DECAY_LENGTH = 5000;
         const t = Math.max(
@@ -174,7 +177,7 @@ export class LassoTrail extends AnimatedTrail {
   private updateSelection = () => {
     const lassoPath = super
       .getCurrentTrail()
-      ?.originalPoints?.map((p) => pointFrom<GlobalPoint>(p[0], p[1]));
+      ?.originalPoints?.map((p: import("../animated-trail").TrailPoint) => pointFrom<GlobalPoint>(p[0], p[1]));
 
     const currentCanvasTranslate: CanvasTranslate = {
       scrollX: this.app.state.scrollX,

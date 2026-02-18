@@ -117,6 +117,10 @@ function Handle({
         top: `${top}px`,
         width: hitSize,
         height: hitSize,
+        // So handle stays clickable in packaged builds when consumer CSS is purged
+        position: "absolute",
+        pointerEvents: "auto",
+        cursor: "pointer",
       }}
       onPointerDown={handlePointerDown}
       onPointerEnter={handlePointerEnter}
@@ -181,7 +185,16 @@ export function QuickAddHandles({
     <div
       className="quick-add-handles"
       aria-hidden
-      style={{ "--quick-add-handle-color": QUICK_ADD_HANDLE_BLUE } as React.CSSProperties}
+      style={
+        {
+          "--quick-add-handle-color": QUICK_ADD_HANDLE_BLUE,
+          // Critical layout so handles show in packaged builds when consumer CSS is purged
+          position: "absolute",
+          inset: 0,
+          zIndex: 20,
+          pointerEvents: "none",
+        } as React.CSSProperties
+      }
     >
       {positions.map((pos) => (
         <Handle

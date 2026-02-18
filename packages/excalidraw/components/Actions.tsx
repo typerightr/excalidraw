@@ -71,7 +71,6 @@ import {
   EmbedIcon,
   extraToolsIcon,
   mermaidLogoIcon,
-  laserPointerToolIcon,
   MagicIcon,
   sharpArrowIcon,
   roundArrowIcon,
@@ -339,7 +338,6 @@ const CombinedShapeProperties = ({
     (appState.activeTool.type !== "selection" &&
       appState.activeTool.type !== "eraser" &&
       appState.activeTool.type !== "hand" &&
-      appState.activeTool.type !== "laser" &&
       appState.activeTool.type !== "lasso");
   const isOpen = appState.openPopup === "compactStrokeStyles";
 
@@ -1073,7 +1071,6 @@ export const ShapesSwitcher = ({
   const isFullStylesPanel = stylesPanelMode === "full";
   const isCompactStylesPanel = stylesPanelMode === "compact";
 
-  const laserToolSelected = activeTool.type === "laser";
   const lassoToolSelected =
     isFullStylesPanel &&
     activeTool.type === "lasso" &&
@@ -1150,12 +1147,7 @@ export const ShapesSwitcher = ({
         <DropdownMenu.Trigger
           className={clsx("App-toolbar__extra-tools-trigger", {
             "App-toolbar__extra-tools-trigger--selected":
-              embeddableToolSelected ||
-              lassoToolSelected ||
-              // in collab we're already highlighting the laser button
-              // outside toolbar, so let's not highlight extra-tools button
-              // on top of it
-              (laserToolSelected && !app.props.isCollaborating),
+              embeddableToolSelected || lassoToolSelected,
           })}
           onToggle={() => {
             setIsExtraToolsMenuOpen(!isExtraToolsMenuOpen);
@@ -1165,8 +1157,6 @@ export const ShapesSwitcher = ({
         >
           {embeddableToolSelected
             ? EmbedIcon
-            : laserToolSelected && !app.props.isCollaborating
-            ? laserPointerToolIcon
             : lassoToolSelected
             ? LassoIcon
             : extraToolsIcon}
@@ -1183,15 +1173,6 @@ export const ShapesSwitcher = ({
             selected={embeddableToolSelected}
           >
             {t("toolBar.embeddable")}
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            onSelect={() => app.setActiveTool({ type: "laser" })}
-            icon={laserPointerToolIcon}
-            data-testid="toolbar-laser"
-            selected={laserToolSelected}
-            shortcut={KEYS.K.toLocaleUpperCase()}
-          >
-            {t("toolBar.laser")}
           </DropdownMenu.Item>
           {isFullStylesPanel && (
             <DropdownMenu.Item

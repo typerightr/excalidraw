@@ -1934,8 +1934,7 @@ var TOOL_TYPE = {
   hand: "hand",
   frame: "frame",
   magicframe: "magicframe",
-  embeddable: "embeddable",
-  laser: "laser"
+  embeddable: "embeddable"
 };
 var EDITOR_LS_KEYS = {
   OAI_API_KEY: "excalidraw-oai-api-key",

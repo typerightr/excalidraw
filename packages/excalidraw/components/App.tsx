@@ -1911,10 +1911,7 @@ class App extends React.Component<AppProps, AppState> {
         : this.state.selectionElement ||
           this.state.newElement ||
           this.state.selectedElementsAreBeingDragged ||
-          this.state.resizingElement ||
-          (this.state.activeTool.type === "laser" &&
-            // technically we can just test on this once we make it more safe
-            this.state.cursorButton === "down");
+          this.state.resizingElement;
 
     const firstSelectedElement = selectedElements[0];
 
@@ -2224,8 +2221,7 @@ class App extends React.Component<AppProps, AppState> {
                                 )
                               : null;
                             return (
-                              originShape &&
-                              this.props.onQuickAddHandleActivate && (
+                              originShape && (
                                 <QuickAddHandles
                                   originShape={originShape}
                                   appState={this.state}
@@ -5043,15 +5039,6 @@ class App extends React.Component<AppProps, AppState> {
         }
       }
 
-      if (event.key === KEYS.K && !event.altKey && !event[KEYS.CTRL_OR_CMD]) {
-        if (this.state.activeTool.type === "laser") {
-          this.setActiveTool({ type: this.state.preferredSelectionTool.type });
-        } else {
-          this.setActiveTool({ type: "laser" });
-        }
-        return;
-      }
-
       if (
         event[KEYS.CTRL_OR_CMD] &&
         (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE)
@@ -7554,11 +7541,6 @@ class App extends React.Component<AppProps, AppState> {
         pointerDownState,
         this.state.activeTool.type,
       );
-    } else if (this.state.activeTool.type === "laser") {
-      this.laserTrails.startPath(
-        pointerDownState.lastCoords.x,
-        pointerDownState.lastCoords.y,
-      );
     } else if (this.state.activeTool.type === "StickyNote") {
       this.createStickyNoteOnPointerDown(pointerDownState);
     } else if (
@@ -7599,7 +7581,7 @@ class App extends React.Component<AppProps, AppState> {
       onPointerUp(_event || event.nativeEvent),
     );
 
-    if (!this.state.viewModeEnabled || this.state.activeTool.type === "laser") {
+    if (!this.state.viewModeEnabled) {
       window.addEventListener(EVENT.POINTER_MOVE, onPointerMove);
       window.addEventListener(EVENT.POINTER_UP, onPointerUp);
       window.addEventListener(EVENT.KEYDOWN, onKeyDown);
@@ -9552,10 +9534,6 @@ class App extends React.Component<AppProps, AppState> {
         return;
       }
 
-      if (this.state.activeTool.type === "laser") {
-        this.laserTrails.addPointToPath(pointerCoords.x, pointerCoords.y);
-      }
-
       const [gridX, gridY] = getGridPoint(
         pointerCoords.x,
         pointerCoords.y,
@@ -11298,11 +11276,6 @@ class App extends React.Component<AppProps, AppState> {
         bindOrUnbindBindingElements(linearElements, this.scene, this.state);
       }
 
-      if (activeTool.type === "laser") {
-        this.laserTrails.endPath();
-        return;
-      }
-
       const drawnElement = this.state.newElement;
       const containerToEdit =
         drawnElement && isTextBindableContainer(drawnElement, false)
@@ -12713,7 +12686,7 @@ class App extends React.Component<AppProps, AppState> {
     const pointer: CollaboratorPointer = {
       x: sceneX,
       y: sceneY,
-      tool: this.state.activeTool.type === "laser" ? "laser" : "pointer",
+      tool: "pointer",
     };
 
     this.props.onPointerUpdate?.({
@@ -12830,5 +12803,7 @@ export const createTestHook = () => {
   }
 };
 
-createTestHook();
+if (typeof window !== "undefined") {
+  createTestHook();
+}
 export default App;

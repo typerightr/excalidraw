@@ -1,20 +1,15 @@
-import { AnimatedTrail } from "./animated-trail";
 import type { Trail } from "./animated-trail";
 import type { AnimationFrameHandler } from "./animation-frame-handler";
 import type App from "./components/App";
+/**
+ * No-op stub for laser trails. Laser tool has been removed;
+ * this satisfies the Trail interface for SVGLayer.
+ */
 export declare class LaserTrails implements Trail {
-    private animationFrameHandler;
-    private app;
-    localTrail: AnimatedTrail;
-    private collabTrails;
-    private container?;
-    constructor(animationFrameHandler: AnimationFrameHandler, app: App);
-    private getTrailOptions;
-    startPath(x: number, y: number): void;
-    addPointToPath(x: number, y: number): void;
+    constructor(_animationFrameHandler: AnimationFrameHandler, _app: App);
+    startPath(_x: number, _y: number): void;
+    addPointToPath(_x: number, _y: number): void;
     endPath(): void;
-    start(container: SVGSVGElement): void;
+    start(_container: SVGSVGElement): void;
     stop(): void;
-    onFrame(): void;
-    private updateCollabTrails;
 }

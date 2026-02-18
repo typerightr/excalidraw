@@ -1,4 +1,7 @@
 const polyfill = () => {
+  if (typeof window === "undefined" || typeof Element === "undefined") {
+    return;
+  }
   if (!Array.prototype.at) {
     // Taken from https://github.com/tc39/proposal-relative-indexing-method#polyfill so that it works in tests
     /* eslint-disable */

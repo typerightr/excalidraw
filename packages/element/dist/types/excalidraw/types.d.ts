@@ -43,20 +43,13 @@ export type Collaborator = Readonly<{
 export type CollaboratorPointer = {
     x: number;
     y: number;
-    tool: "pointer" | "laser";
+    tool: "pointer";
     /**
-     * Whether to render cursor + username. Useful when you only want to render
-     * laser trail.
+     * Whether to render cursor + username.
      *
      * @default true
      */
     renderCursor?: boolean;
-    /**
-     * Explicit laser color.
-     *
-     * @default string collaborator's cursor color
-     */
-    laserColor?: string;
 };
 export type DataURL = string & {
     _brand: "DataURL";
@@ -85,7 +78,7 @@ export type BinaryFileData = {
 };
 export type BinaryFileMetadata = Omit<BinaryFileData, "dataURL">;
 export type BinaryFiles = Record<ExcalidrawElement["id"], BinaryFileData>;
-export type ToolType = "selection" | "lasso" | "rectangle" | "StickyNote" | "diamond" | "ellipse" | "arrow" | "line" | "freedraw" | "text" | "image" | "eraser" | "hand" | "frame" | "magicframe" | "embeddable" | "laser";
+export type ToolType = "selection" | "lasso" | "rectangle" | "StickyNote" | "diamond" | "ellipse" | "arrow" | "line" | "freedraw" | "text" | "image" | "eraser" | "hand" | "frame" | "magicframe" | "embeddable";
 export type ElementOrToolType = ExcalidrawElementType | ToolType | "custom";
 export type ActiveTool = {
     type: ToolType;
@@ -440,7 +433,7 @@ export interface ExcalidrawProps {
         pointer: {
             x: number;
             y: number;
-            tool: "pointer" | "laser";
+            tool: "pointer";
         };
         button: "down" | "up";
         pointersMap: Gesture["pointers"];
