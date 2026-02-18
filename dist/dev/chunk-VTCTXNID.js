@@ -1,6 +1,6 @@
 import {
   define_import_meta_env_default
-} from "./chunk-MY3FAOEC.js";
+} from "./chunk-YWROTW3S.js";
 import {
   __publicField
 } from "./chunk-XDFCUUT6.js";
@@ -26778,7 +26778,7 @@ var parseFileContents = async (blob) => {
   let contents;
   if (blob.type === MIME_TYPES.png) {
     try {
-      return await (await import("./data/image-AD77IYTE.js")).decodePngMetadata(blob);
+      return await (await import("./data/image-J242G44Y.js")).decodePngMetadata(blob);
     } catch (error) {
       if (error.message === "INVALID") {
         throw new ImageSceneDataError(
@@ -27657,4 +27657,4 @@ export {
   createFile,
   normalizeFile
 };
-//# sourceMappingURL=chunk-ZDK3NGAA.js.map
+//# sourceMappingURL=chunk-VTCTXNID.js.map
