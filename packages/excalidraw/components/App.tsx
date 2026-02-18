@@ -262,6 +262,7 @@ import {
   handleFocusPointPointerUp,
   maybeHandleArrowPointlikeDrag,
   getUncroppedWidthAndHeight,
+  orderByFractionalIndex,
 } from "@excalidraw/element";
 
 import type { GlobalPoint, LocalPoint, Radians } from "@excalidraw/math";
@@ -3320,8 +3321,12 @@ class App extends React.Component<AppProps, AppState> {
     // init, which would trigger onChange with empty elements, which would then
     // override whatever is in localStorage currently.
     if (!this.state.isLoading) {
-      this.props.onChange?.(elements, this.state, this.files);
-      this.onChangeEmitter.trigger(elements, this.state, this.files);
+      // Pass elements in canonical fractional-index order so collaboration
+      // layers (e.g. y-excalidraw) that use generateKeyBetween(prev, next)
+      // never see prev >= next, which would throw (e.g. when using frames).
+      const elementsInOrder = orderByFractionalIndex([...elements]);
+      this.props.onChange?.(elementsInOrder, this.state, this.files);
+      this.onChangeEmitter.trigger(elementsInOrder, this.state, this.files);
     }
   }
 

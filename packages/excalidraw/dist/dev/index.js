@@ -510,10 +510,10 @@ import {
   viewportCoordsToSceneCoords,
   wrapEvent,
   wrapText
-} from "./chunk-ZDK3NGAA.js";
+} from "./chunk-VTCTXNID.js";
 import {
   define_import_meta_env_default
-} from "./chunk-MY3FAOEC.js";
+} from "./chunk-YWROTW3S.js";
 import {
   en_default
 } from "./chunk-EWSB5O67.js";
@@ -9737,7 +9737,7 @@ var exportCanvas = async (type, elements, appState, files, {
     let blob = canvasToBlob(tempCanvas);
     if (appState.exportEmbedScene) {
       blob = blob.then(
-        (blob2) => import("./data/image-AD77IYTE.js").then(
+        (blob2) => import("./data/image-J242G44Y.js").then(
           ({ encodePngMetadata: encodePngMetadata2 }) => encodePngMetadata2({
             blob: blob2,
             metadata: serializeAsJSON(elements, appState, files, "local")
@@ -37645,8 +37645,9 @@ var App = class _App extends React47.Component {
     }
     this.store.commit(elementsMap, this.state);
     if (!this.state.isLoading) {
-      this.props.onChange?.(elements, this.state, this.files);
-      this.onChangeEmitter.trigger(elements, this.state, this.files);
+      const elementsInOrder = orderByFractionalIndex([...elements]);
+      this.props.onChange?.(elementsInOrder, this.state, this.files);
+      this.onChangeEmitter.trigger(elementsInOrder, this.state, this.files);
     }
   }
   static resetTapTwice() {
